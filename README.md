@@ -8,25 +8,24 @@
 http://112.124.68.145/
 ```
 
-建议使用 Chrome、Edge 或 Safari 浏览器访问。第一次打开时，三维场景、图片和静态资源需要加载，页面可能会等待几秒。
+建议使用 Chrome、Edge 浏览器访问。第一次打开时，三维场景、图片和静态资源需要加载，页面可能会等待几秒。
 
 ## 公网访问操作说明
 
 进入公网地址后，首页会展示三维场景和多个功能入口。用户可以根据需要进入不同模块体验。
 
-### 1. 地书日记 / 公寓交互
+### 1. 地书日记 / 邮局交互
 
-点击首页中的地书日记或公寓相关入口，进入交互页面。
+靠近符语邮局场景，点击入口按钮，进入交互页面。
 
 用户可以输入或选择事件内容，系统会将输入内容处理成结构化事件，并匹配对应的地书符号或图标。部分功能会调用大模型接口，因此生成结果时可能需要等待几秒。
 
-### 2. 图标书 Boook 页面
+### 2. 符语咖啡馆
 
-点击图标书相关入口后，可以进入图标组合与解释页面。
-
+靠近符语咖啡馆场景，点击入口按钮，进入交互页面。
 用户可以选择多个图标组成一个图标序列，系统会根据图标序列理解含义，并生成自然语言回应。该功能依赖服务器端的大模型 API Key，Key 不会暴露在浏览器中。
 
-### 3. 多人游戏模块
+### 3. 符语工坊/游戏模块
 
 点击游戏入口后，可以选择不同游戏模式。
 
@@ -47,84 +46,6 @@ http://112.124.68.145/
 - 如果大模型相关功能无响应，可能是 API Key、额度、网络或服务端接口暂时异常。
 - 如果多人房间加入失败，先确认房间码是否正确，再刷新页面重试。
 
-## 服务器运行与维护
-
-本项目当前使用阿里云 ECS + Docker Compose 部署。只要 ECS 实例保持运行、Docker 容器保持 `Up`、安全组开放 `80` 端口，其他用户就可以通过公网地址访问。
-
-进入服务器后，可以用以下命令查看容器状态：
-
-```bash
-cd ~/nlp_dishu
-docker compose ps
-```
-
-正常情况下应看到以下服务处于 `Up` 状态：
-
-```text
-web
-chain-server
-diary-server
-```
-
-查看最近日志：
-
-```bash
-cd ~/nlp_dishu
-docker compose logs --tail=100
-```
-
-持续查看日志：
-
-```bash
-cd ~/nlp_dishu
-docker compose logs -f --tail=100
-```
-
-重启服务：
-
-```bash
-cd ~/nlp_dishu
-docker compose restart
-```
-
-更新代码后重新构建并启动：
-
-```bash
-cd ~/nlp_dishu
-git pull
-docker compose up -d --build
-```
-
-停止服务：
-
-```bash
-cd ~/nlp_dishu
-docker compose down
-```
-
-注意：项目使用 `docker compose up -d` 后会在服务器后台运行，退出 SSH 或关闭 Workbench 不会影响公网访问。
-
-## 环境变量
-
-项目根目录需要 `.env` 文件保存私密配置。该文件不会提交到 GitHub。
-
-服务器上可由示例文件复制生成：
-
-```bash
-cp .env.example .env
-nano .env
-```
-
-配置内容示例：
-
-```env
-DEEPSEEK_API_KEY=your-real-key
-DEEPSEEK_API_BASE=https://api.deepseek.com
-DEEPSEEK_MODEL=deepseek-v4-flash
-FLASK_SECRET_KEY=change-me
-```
-
-不要将真实 API Key 提交到仓库。
 
 ## 本地运行说明
 
