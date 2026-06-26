@@ -91,23 +91,7 @@ docker-compose.yml                 服务器 Docker Compose 编排文件
 DEPLOY.md                          部署命令备忘
 ```
 
-## 模型与大文件说明
 
-首页三维场景模型 `Boook/cartoon.glb` 已经包含在仓库中，可以随代码一起部署。
-
-NLP 语义模型目录不会提交到 GitHub：
-
-```text
-game/models/
-```
-
-如果需要启用完整语义模型能力，需要将模型目录单独上传到服务器：
-
-```text
-/root/nlp_dishu/game/models/paraphrase-multilingual-MiniLM-L12-v2/
-```
-
-当前部署版本即使不上传该 NLP 模型，也可以完成主要公网演示流程；部分语义评分或语义检索功能会降级运行。
 
 ## 部署方案简述
 
