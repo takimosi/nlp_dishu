@@ -287,9 +287,7 @@
 
 <script>
 // ==================== 配置 ====================
-const API_BASE = window.location.port === '5001'
-    ? `http://${window.location.hostname}:5001`
-    : 'http://localhost:5001';
+const API_BASE = '';
 console.log('API_BASE:', API_BASE);
 
 let roomCode = null, playerId = null, playerName = null, isHost = false;
@@ -805,7 +803,7 @@ async function leaveRoom() {
 }
 
 function backToWorld() {
-    window.location.href = 'http://localhost:8080/index.html';
+    window.location.href = '/index.html';
 }
 
 function escapeHtml(str) {

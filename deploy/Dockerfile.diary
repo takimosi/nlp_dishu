@@ -1,0 +1,11 @@
+FROM python:3.12-slim
+
+ENV PYTHONDONTWRITEBYTECODE=1
+ENV PYTHONUNBUFFERED=1
+
+WORKDIR /app/diary
+
+COPY diary /app/diary
+
+EXPOSE 8000
+CMD ["python", "dishu_diary_apartment_server.py"]

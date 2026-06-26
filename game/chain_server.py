@@ -45,7 +45,10 @@ except ImportError as e:
     print(f"⚠️ BERT 评分模块未找到: {e}")
 
 # 数据存储
-ROOMS_FILE = os.path.join(os.path.dirname(__file__), 'chain_rooms.json')
+ROOMS_FILE = os.environ.get(
+    'CHAIN_ROOMS_FILE',
+    os.path.join(os.path.dirname(__file__), 'chain_rooms.json')
+)
 rooms = {}
 
 # 启动时的题库（画猜接龙专用）
@@ -853,4 +856,5 @@ if __name__ == '__main__':
     print("   支持模式: 画猜接龙 (chain) | 合作解谜 (coop)")
     print(f"   合作解谜题库: {len(GAME_QUESTIONS)} 题")
     print("=" * 50)
-    app.run(host='0.0.0.0', port=5001, debug=True)
+    debug = os.environ.get('FLASK_DEBUG', '').lower() in ('1', 'true', 'yes')
+    app.run(host='0.0.0.0', port=5001, debug=debug)

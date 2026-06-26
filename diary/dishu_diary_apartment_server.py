@@ -14,7 +14,7 @@ HTML_FILE = ROOT / "dishu_diary_apartment.html"
 SYMBOL_LIBRARY = ROOT / "地书日记生成器" / "data" / "symbol_library.json"
 ASSET_DIR = ROOT / "地书标注系统_V1.0 (1)" / "地书标注系统 V1.0" / "images"
 LOCAL_ASSET_DIR = ROOT / "assets"
-HOST = "127.0.0.1"
+HOST = os.environ.get("DISHU_APARTMENT_HOST", "0.0.0.0")
 PORT = int(os.environ.get("DISHU_APARTMENT_PORT", "8000"))
 
 # 运行期缓存：避免每次请求都重复读取符号库、构建索引或加载模型。
@@ -791,6 +791,20 @@ class Handler(BaseHTTPRequestHandler):
                         "source": "fallback",
                         "error": str(err),
                     })
+
+            if self.path == "/api/chat":
+                messages = data.get("messages") or []
+                temperature = float(data.get("temperature") or 0.72)
+                if not isinstance(messages, list):
+                    return json_response(self, {"error": "messages must be a list"}, 400)
+                content = call_deepseek(messages, temperature=temperature)
+                return json_response(self, {
+                    "choices": [{
+                        "message": {
+                            "content": content,
+                        }
+                    }]
+                })
 
             if self.path == "/api/search-symbols":
                 # 单个结构化事件 -> 地书符号候选列表。

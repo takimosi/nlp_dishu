@@ -594,7 +594,7 @@ function backToWorld() {
 </div>
 
 <script>
-const API_KEY = localStorage.getItem('DEEPSEEK_API_KEY') || '';
+const CHAT_API = '/api/chat';
 const IMG_BASE = 'auto_cut_segments/';
 
 const RAW_ICONS = [
@@ -792,10 +792,9 @@ ${vocab}
 【输出格式】严格只输出JSON：
 {"reply":"自然对话式中文回应（1~2句）","icons":[{"file":"000127","label":"咖啡馆"}]}`;
 
-  if (!API_KEY) throw new Error('DEEPSEEK_API_KEY is not configured');
-  const resp = await fetch('https://api.deepseek.com/v1/chat/completions', {
+  const resp = await fetch(CHAT_API, {
     method:'POST',
-    headers:{'Content-Type':'application/json','Authorization':`Bearer ${API_KEY}`},
+    headers:{'Content-Type':'application/json'},
     body: JSON.stringify({
       model:'deepseek-chat',
       messages:[{role:'system',content:system},{role:'user',content:`用户图标序列：${userDesc}\n请理解并回应。`}],

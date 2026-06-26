@@ -1,0 +1,9 @@
+.git
+.idea
+.vscode
+__pycache__
+*.pyc
+.env
+runtime
+game/models
+diary/.cache

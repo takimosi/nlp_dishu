@@ -317,9 +317,7 @@
 
 <script>
 // ==================== 配置 ====================
-const API_BASE = window.location.port === '5001'
-    ? `http://${window.location.hostname}:5001`
-    : 'http://localhost:5001';
+const API_BASE = '';
 console.log('API_BASE:', API_BASE);
 
 let roomCode = null, playerId = null, playerName = null, isHost = false;
@@ -355,11 +353,11 @@ for (const [file, label, category] of RAW_ICONS) {
 const CATEGORIES = ['全部', '时间', '人物动作', '地点场所', '交通出行', '方向箭头', '数字符号', '科技设备', '情感表达', '饮食', '自然天气'];
 
 function getImageUrl(file) {
-    return `http://localhost:8080/Boook/auto_cut_segments/${file}.jpg`;
+    return `/Boook/auto_cut_segments/${file}.jpg`;
 }
 
 function backToWorld() {
-    window.location.href = 'http://localhost:8080/index.html';
+    window.location.href = '/index.html';
 }
 
 // ==================== 页面渲染 ====================
