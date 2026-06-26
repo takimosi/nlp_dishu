@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <title>合作解谜 · 大厅</title>
+    <style>
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+        :root {
+            --ink: #1a1a18;
+            --paper: #f5f0e8;
+            --paper-dark: #ede8dc;
+            --border: #c8c0aa;
+            --coop: #4a6741;
+            --muted: #7a7468;
+        }
+        html, body { height: 100%; overflow: hidden; }
+        body {
+            background: linear-gradient(145deg, #2b221a 0%, #140f0a 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Noto Sans SC', sans-serif;
+            padding: 24px;
+        }
+        .game-console {
+            width: 600px;
+            max-width: 95vw;
+            background: linear-gradient(135deg, #ddd6c8 0%, #c2b9a6 100%);
+            border-radius: 48px;
+            box-shadow: 0 30px 40px rgba(0,0,0,0.6);
+            overflow: hidden;
+        }
+        .console-header { background: linear-gradient(90deg, var(--coop), #4a6741, var(--coop)); height: 14px; }
+        .console-body { padding: 30px; background: #e0dbce; }
+        .page-number { font-family: 'Space Mono', monospace; font-size: 10px; color: var(--muted); margin-bottom: 0.5rem; }
+        .title { text-align: center; margin-bottom: 30px; }
+        .title h1 { font-family: 'Noto Serif SC', serif; font-size: 24px; color: var(--coop); letter-spacing: 0.2em; }
+        .title p { font-size: 12px; color: var(--muted); margin-top: 8px; }
+        .two-buttons { display: flex; gap: 20px; justify-content: center; }
+        .big-btn {
+            width: 200px;
+            padding: 20px;
+            background: var(--coop);
+            color: white;
+            border: none;
+            border-radius: 20px;
+            font-size: 18px;
+            font-family: 'Space Mono', monospace;
+            cursor: pointer;
+            text-align: center;
+            transition: 0.1s;
+        }
+        .big-btn:hover { background: #3a5a30; transform: translateY(-2px); }
+        .back-link { display: block; text-align: center; margin-top: 30px; color: var(--muted); font-size: 11px; text-decoration: none; }
+    </style>
+</head>
+<body>
+<div style="position:fixed; top:15px; left:15px; z-index:9999;">
+  <button onclick="backToWorld()" style="background:rgba(0,0,0,0.7); border:1px solid #c09040; color:#c09040; padding:8px 16px; border-radius:30px; cursor:pointer; font-family:monospace; font-size:12px;">
+    ← 返回地书世界
+  </button>
+</div>
+
+<div class="game-console">
+    <div class="console-header"></div>
+    <div class="console-body">
+        <div class="page-number">⟡ 合作解谜 · 大厅 ⟡</div>
+        <div class="title">
+            <h1> 合作解谜</h1>
+            <p>三人合作，各自掌握不同标注维度，共同翻译图标序列</p>
+        </div>
+        <div class="two-buttons">
+            <div class="big-btn" onclick="goCreate()">创建房间</div>
+            <div class="big-btn" onclick="goJoin()">加入房间</div>
+        </div>
+        <a href="index.html" class="back-link">← 返回模式选择</a>
+    </div>
+</div>
+
+<script>
+function backToWorld() { window.location.href = 'http://localhost:8080/index.html'; }
+function goCreate() { window.location.href = 'coop_create.html'; }
+function goJoin() { window.location.href = 'coop_join.html'; }
+</script>
+</body>
+</html>

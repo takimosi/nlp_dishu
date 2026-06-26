@@ -1,0 +1,667 @@
+{
+  "total": 55,
+  "valid_count": 55,
+  "missing_count": 0,
+  "questions": [
+    {
+      "target_id": "seg_005823",
+      "leaf_start": 5823,
+      "image_path": "./auto_cut_segments\\005823.jpg",
+      "image_exists": true,
+      "annotations": {
+        "pos_like_category": "虚词/语法标记 / Grammatical Marker",
+        "pragmatic_meaning": "因为穷而放弃",
+        "morphological_features": "现在 / Present"
+      },
+      "reference_translation": "不屑"
+    },
+    {
+      "target_id": "seg_005948",
+      "leaf_start": 5948,
+      "image_path": "./auto_cut_segments\\005948.jpg",
+      "image_exists": true,
+      "annotations": {
+        "pos_like_category": "副词性 / Degree-like",
+        "pragmatic_meaning": "挂断电话",
+        "morphological_features": "进行体 / Progressive"
+      },
+      "reference_translation": "打电话"
+    },
+    {
+      "target_id": "seg_010773",
+      "leaf_start": 10773,
+      "image_path": "./auto_cut_segments\\010773.jpg",
+      "image_exists": true,
+      "annotations": {
+        "pos_like_category": "名词性 / Entity-like",
+        "pragmatic_meaning": "1点",
+        "morphological_features": "现在 / Present"
+      },
+      "reference_translation": "凌晨一点"
+    },
+    {
+      "target_id": "seg_010400",
+      "leaf_start": 10400,
+      "image_path": "./auto_cut_segments\\010400.jpg",
+      "image_exists": true,
+      "annotations": {
+        "pos_like_category": "名词性 / Entity-like",
+        "pragmatic_meaning": "\n",
+        "morphological_features": "现在 / Present"
+      },
+      "reference_translation": "看时间"
+    },
+    {
+      "target_id": "seg_010438",
+      "leaf_start": 10438,
+      "image_path": "./auto_cut_segments\\010438.jpg",
+      "image_exists": true,
+      "annotations": {
+        "pos_like_category": "动词性 / Action-like",
+        "pragmatic_meaning": "撞车",
+        "morphological_features": "进行体 / Progressive"
+      },
+      "reference_translation": "我乘坐的出租车与前面的车追尾了"
+    },
+    {
+      "target_id": "seg_010685",
+      "leaf_start": 10685,
+      "image_path": "./auto_cut_segments\\010685.jpg",
+      "image_exists": true,
+      "annotations": {
+        "pos_like_category": "名词性 / Entity-like",
+        "pragmatic_meaning": "表示等待的时钟",
+        "morphological_features": "现在 / Present"
+      },
+      "reference_translation": "某个时间"
+    },
+    {
+      "target_id": "seg_009168",
+      "leaf_start": 9168,
+      "image_path": "./auto_cut_segments\\009168.jpg",
+      "image_exists": true,
+      "annotations": {
+        "pos_like_category": "名词性 / Entity-like",
+        "pragmatic_meaning": "八点了",
+        "morphological_features": "现在 / Present"
+      },
+      "reference_translation": "时间\n"
+    },
+    {
+      "target_id": "seg_010997",
+      "leaf_start": 10997,
+      "image_path": "./auto_cut_segments\\010997.jpg",
+      "image_exists": true,
+      "annotations": {
+        "pos_like_category": "名词性 / Entity-like",
+        "pragmatic_meaning": "两点了",
+        "morphological_features": "现在 / Present"
+      },
+      "reference_translation": "两点了"
+    },
+    {
+      "target_id": "seg_011008",
+      "leaf_start": 11008,
+      "image_path": "./auto_cut_segments\\011008.jpg",
+      "image_exists": true,
+      "annotations": {
+        "pos_like_category": "名词性 / Entity-like",
+        "pragmatic_meaning": "电视播放了",
+        "morphological_features": "进行体 / Progressive"
+      },
+      "reference_translation": "在电视上看到"
+    },
+    {
+      "target_id": "seg_011369",
+      "leaf_start": 11369,
+      "image_path": "./auto_cut_segments\\011369.jpg",
+      "image_exists": true,
+      "annotations": {
+        "pos_like_category": "名词性 / Entity-like",
+        "pragmatic_meaning": "深夜",
+        "morphological_features": "现在 / Present"
+      },
+      "reference_translation": "钟表"
+    },
+    {
+      "target_id": "seg_011377",
+      "leaf_start": 11377,
+      "image_path": "./auto_cut_segments\\011377.jpg",
+      "image_exists": true,
+      "annotations": {
+        "pos_like_category": "标点/边界标记 / Boundary Marker",
+        "pragmatic_meaning": "句号",
+        "morphological_features": "完成体 / Perfect"
+      },
+      "reference_translation": "·"
+    },
+    {
+      "target_id": "seg_011372",
+      "leaf_start": 11372,
+      "image_path": "./auto_cut_segments\\011372.jpg",
+      "image_exists": true,
+      "annotations": {
+        "pos_like_category": "名词性 / Entity-like",
+        "pragmatic_meaning": "熟睡",
+        "morphological_features": "进行体 / Progressive"
+      },
+      "reference_translation": "睡觉"
+    },
+    {
+      "target_id": "seg_011380",
+      "leaf_start": 11380,
+      "image_path": "./auto_cut_segments\\011380.jpg",
+      "image_exists": true,
+      "annotations": {
+        "pos_like_category": "名词性 / Entity-like",
+        "pragmatic_meaning": "凌晨五点了",
+        "morphological_features": "现在 / Present"
+      },
+      "reference_translation": "五点"
+    },
+    {
+      "target_id": "seg_011383",
+      "leaf_start": 11383,
+      "image_path": "./auto_cut_segments\\011383.jpg",
+      "image_exists": true,
+      "annotations": {
+        "pos_like_category": "动词性 / Action-like",
+        "pragmatic_meaning": "一个人进入梦乡",
+        "morphological_features": "进行体 / Progressive"
+      },
+      "reference_translation": "做梦"
+    },
+    {
+      "target_id": "seg_011384",
+      "leaf_start": 11384,
+      "image_path": "./auto_cut_segments\\011384.jpg",
+      "image_exists": true,
+      "annotations": {
+        "pos_like_category": "动词性 / Action-like",
+        "pragmatic_meaning": "躺床上",
+        "morphological_features": "进行体 / Progressive"
+      },
+      "reference_translation": "做梦"
+    },
+    {
+      "target_id": "seg_011396",
+      "leaf_start": 11396,
+      "image_path": "./auto_cut_segments\\011396.jpg",
+      "image_exists": true,
+      "annotations": {
+        "pos_like_category": "动词性 / Action-like",
+        "pragmatic_meaning": "走到了一摞档案面前",
+        "morphological_features": "进行体 / Progressive"
+      },
+      "reference_translation": "工作"
+    },
+    {
+      "target_id": "seg_011468",
+      "leaf_start": 11468,
+      "image_path": "./auto_cut_segments\\011468.jpg",
+      "image_exists": true,
+      "annotations": {
+        "pos_like_category": "名词性 / Entity-like",
+        "pragmatic_meaning": "飞镖袭来",
+        "morphological_features": "进行体 / Progressive"
+      },
+      "reference_translation": "飞翔的大头针"
+    },
+    {
+      "target_id": "seg_011516",
+      "leaf_start": 11516,
+      "image_path": "./auto_cut_segments\\011516.jpg",
+      "image_exists": true,
+      "annotations": {
+        "pos_like_category": "标点/边界标记 / Boundary Marker",
+        "pragmatic_meaning": "一个梦结束了",
+        "morphological_features": "现在 / Present"
+      },
+      "reference_translation": "上一个梦结束"
+    },
+    {
+      "target_id": "seg_011517",
+      "leaf_start": 11517,
+      "image_path": "./auto_cut_segments\\011517.jpg",
+      "image_exists": true,
+      "annotations": {
+        "pos_like_category": "动词性 / Action-like",
+        "pragmatic_meaning": "在床上睡觉",
+        "morphological_features": "现在 / Present"
+      },
+      "reference_translation": "做梦"
+    },
+    {
+      "target_id": "seg_011518",
+      "leaf_start": 11518,
+      "image_path": "./auto_cut_segments\\011518.jpg",
+      "image_exists": true,
+      "annotations": {
+        "pos_like_category": "标点/边界标记 / Boundary Marker",
+        "pragmatic_meaning": "另一个梦开始了",
+        "morphological_features": "现在 / Present"
+      },
+      "reference_translation": "下一个梦开始"
+    },
+    {
+      "target_id": "seg_011529",
+      "leaf_start": 11529,
+      "image_path": "./auto_cut_segments\\011529.jpg",
+      "image_exists": true,
+      "annotations": {
+        "pos_like_category": "名词性 / Entity-like",
+        "pragmatic_meaning": "云中冒出了烛台",
+        "morphological_features": "进行体 / Progressive"
+      },
+      "reference_translation": "莫名其妙的灯"
+    },
+    {
+      "target_id": "seg_011544",
+      "leaf_start": 11544,
+      "image_path": "./auto_cut_segments\\011544.jpg",
+      "image_exists": true,
+      "annotations": {
+        "pos_like_category": "形容词性 / State-like",
+        "pragmatic_meaning": "太阳出来了",
+        "morphological_features": "强调 / Emphasis"
+      },
+      "reference_translation": "太阳"
+    },
+    {
+      "target_id": "seg_011584",
+      "leaf_start": 11584,
+      "image_path": "./auto_cut_segments\\011584.jpg",
+      "image_exists": true,
+      "annotations": {
+        "pos_like_category": "动词性 / Action-like",
+        "pragmatic_meaning": "穿过云往上飞",
+        "morphological_features": "进行体 / Progressive"
+      },
+      "reference_translation": "飞向云端"
+    },
+    {
+      "target_id": "seg_011587",
+      "leaf_start": 11587,
+      "image_path": "./auto_cut_segments\\011587.jpg",
+      "image_exists": true,
+      "annotations": {
+        "pos_like_category": "动词性 / Action-like",
+        "pragmatic_meaning": "向上冲",
+        "morphological_features": "进行体 / Progressive"
+      },
+      "reference_translation": "超人"
+    },
+    {
+      "target_id": "seg_011600",
+      "leaf_start": 11600,
+      "image_path": "./auto_cut_segments\\011600.jpg",
+      "image_exists": true,
+      "annotations": {
+        "pos_like_category": "名词性 / Entity-like",
+        "pragmatic_meaning": "穿过云层",
+        "morphological_features": "强调 / Emphasis"
+      },
+      "reference_translation": "云"
+    },
+    {
+      "target_id": "seg_011628",
+      "leaf_start": 11628,
+      "image_path": "./auto_cut_segments\\011628.jpg",
+      "image_exists": true,
+      "annotations": {
+        "pos_like_category": "名词性 / Entity-like",
+        "pragmatic_meaning": "都市",
+        "morphological_features": "强调 / Emphasis"
+      },
+      "reference_translation": "城市"
+    },
+    {
+      "target_id": "seg_011640",
+      "leaf_start": 11640,
+      "image_path": "./auto_cut_segments\\011640.jpg",
+      "image_exists": true,
+      "annotations": {
+        "pos_like_category": "标点/边界标记 / Boundary Marker",
+        "pragmatic_meaning": "惊讶",
+        "morphological_features": "强调 / Emphasis"
+      },
+      "reference_translation": "震惊"
+    },
+    {
+      "target_id": "seg_007640",
+      "leaf_start": 7640,
+      "image_path": "./auto_cut_segments\\007640.jpg",
+      "image_exists": true,
+      "annotations": {
+        "pos_like_category": "名词性 / Entity-like",
+        "pragmatic_meaning": "计算器",
+        "morphological_features": "完成体 / Perfect"
+      },
+      "reference_translation": "使用计算器"
+    },
+    {
+      "target_id": "seg_011000",
+      "leaf_start": 11000,
+      "image_path": "./auto_cut_segments\\011000.jpg",
+      "image_exists": true,
+      "annotations": {
+        "pos_like_category": "动词性 / Action-like",
+        "pragmatic_meaning": "床上睡觉",
+        "morphological_features": "复数/集合 / Plural-Collective"
+      },
+      "reference_translation": "躺在床上"
+    },
+    {
+      "target_id": "seg_011459",
+      "leaf_start": 11459,
+      "image_path": "./auto_cut_segments\\011459.jpg",
+      "image_exists": true,
+      "annotations": {
+        "pos_like_category": "动词性 / Action-like",
+        "pragmatic_meaning": "球到天上",
+        "morphological_features": "现在 / Present"
+      },
+      "reference_translation": "球飞云上了"
+    },
+    {
+      "target_id": "seg_011572",
+      "leaf_start": 11572,
+      "image_path": "./auto_cut_segments\\011572.jpg",
+      "image_exists": true,
+      "annotations": {
+        "pos_like_category": "名词性 / Entity-like",
+        "pragmatic_meaning": "怀孕了",
+        "morphological_features": "将来 / Future"
+      },
+      "reference_translation": "人怀孕"
+    },
+    {
+      "target_id": "seg_003470",
+      "leaf_start": 3470,
+      "image_path": "./auto_cut_segments\\003470.jpg",
+      "image_exists": true,
+      "annotations": {
+        "pos_like_category": "整句/整体表达 / Clause-like Unit",
+        "pragmatic_meaning": "不想工作",
+        "morphological_features": "现在 / Present"
+      },
+      "reference_translation": "下班"
+    },
+    {
+      "target_id": "seg_003472",
+      "leaf_start": 3472,
+      "image_path": "./auto_cut_segments\\003472.jpg",
+      "image_exists": true,
+      "annotations": {
+        "pos_like_category": "整句/整体表达 / Clause-like Unit",
+        "pragmatic_meaning": "苦笑",
+        "morphological_features": "现在 / Present"
+      },
+      "reference_translation": "开心"
+    },
+    {
+      "target_id": "seg_003521",
+      "leaf_start": 3521,
+      "image_path": "./auto_cut_segments\\003521.jpg",
+      "image_exists": true,
+      "annotations": {
+        "pos_like_category": "动词性 / Action-like",
+        "pragmatic_meaning": "失落",
+        "morphological_features": "现在 / Present"
+      },
+      "reference_translation": "忧愁"
+    },
+    {
+      "target_id": "seg_003522",
+      "leaf_start": 3522,
+      "image_path": "./auto_cut_segments\\003522.jpg",
+      "image_exists": true,
+      "annotations": {
+        "pos_like_category": "动词性 / Action-like",
+        "pragmatic_meaning": "担忧",
+        "morphological_features": "现在 / Present"
+      },
+      "reference_translation": "不开心"
+    },
+    {
+      "target_id": "seg_003533",
+      "leaf_start": 3533,
+      "image_path": "./auto_cut_segments\\003533.jpg",
+      "image_exists": true,
+      "annotations": {
+        "pos_like_category": "名词性 / Entity-like",
+        "pragmatic_meaning": "热咖啡",
+        "morphological_features": "复数/集合 / Plural-Collective"
+      },
+      "reference_translation": "咖啡"
+    },
+    {
+      "target_id": "seg_003535",
+      "leaf_start": 3535,
+      "image_path": "./auto_cut_segments\\003535.jpg",
+      "image_exists": true,
+      "annotations": {
+        "pos_like_category": "名词性 / Entity-like",
+        "pragmatic_meaning": "牛角包",
+        "morphological_features": "复数/集合 / Plural-Collective"
+      },
+      "reference_translation": "面包"
+    },
+    {
+      "target_id": "seg_003546",
+      "leaf_start": 3546,
+      "image_path": "./auto_cut_segments\\003546.jpg",
+      "image_exists": true,
+      "annotations": {
+        "pos_like_category": "名词性 / Entity-like",
+        "pragmatic_meaning": "热茶",
+        "morphological_features": "复数/集合 / Plural-Collective"
+      },
+      "reference_translation": "茶"
+    },
+    {
+      "target_id": "seg_003548",
+      "leaf_start": 3548,
+      "image_path": "./auto_cut_segments\\003548.jpg",
+      "image_exists": true,
+      "annotations": {
+        "pos_like_category": "名词性 / Entity-like",
+        "pragmatic_meaning": "苹果",
+        "morphological_features": "复数/集合 / Plural-Collective"
+      },
+      "reference_translation": "苹果"
+    },
+    {
+      "target_id": "seg_003583",
+      "leaf_start": 3583,
+      "image_path": "./auto_cut_segments\\003583.jpg",
+      "image_exists": true,
+      "annotations": {
+        "pos_like_category": "动词性 / Action-like",
+        "pragmatic_meaning": "开心地笑",
+        "morphological_features": "现在 / Present"
+      },
+      "reference_translation": "开心"
+    },
+    {
+      "target_id": "seg_003646",
+      "leaf_start": 3646,
+      "image_path": "./auto_cut_segments\\003646.jpg",
+      "image_exists": true,
+      "annotations": {
+        "pos_like_category": "动词性 / Action-like",
+        "pragmatic_meaning": "股价上涨",
+        "morphological_features": "进行体 / Progressive"
+      },
+      "reference_translation": "价格上升"
+    },
+    {
+      "target_id": "seg_003661",
+      "leaf_start": 3661,
+      "image_path": "./auto_cut_segments\\003661.jpg",
+      "image_exists": true,
+      "annotations": {
+        "pos_like_category": "动词性 / Action-like",
+        "pragmatic_meaning": "生气",
+        "morphological_features": "现在 / Present"
+      },
+      "reference_translation": "生气"
+    },
+    {
+      "target_id": "seg_003668",
+      "leaf_start": 3668,
+      "image_path": "./auto_cut_segments\\003668.jpg",
+      "image_exists": true,
+      "annotations": {
+        "pos_like_category": "名词性 / Entity-like",
+        "pragmatic_meaning": "股市升又跌",
+        "morphological_features": "进行体 / Progressive"
+      },
+      "reference_translation": "价格波动"
+    },
+    {
+      "target_id": "seg_003714",
+      "leaf_start": 3714,
+      "image_path": "./auto_cut_segments\\003714.jpg",
+      "image_exists": true,
+      "annotations": {
+        "pos_like_category": "整句/整体表达 / Clause-like Unit",
+        "pragmatic_meaning": "10点45分",
+        "morphological_features": "现在 / Present"
+      },
+      "reference_translation": "时间"
+    },
+    {
+      "target_id": "seg_003809",
+      "leaf_start": 3809,
+      "image_path": "./auto_cut_segments\\003809.jpg",
+      "image_exists": true,
+      "annotations": {
+        "pos_like_category": "整句/整体表达 / Clause-like Unit",
+        "pragmatic_meaning": "喜欢",
+        "morphological_features": "现在 / Present"
+      },
+      "reference_translation": "笑"
+    },
+    {
+      "target_id": "seg_003813",
+      "leaf_start": 3813,
+      "image_path": "./auto_cut_segments\\003813.jpg",
+      "image_exists": true,
+      "annotations": {
+        "pos_like_category": "整句/整体表达 / Clause-like Unit",
+        "pragmatic_meaning": "将近11点",
+        "morphological_features": "强调 / Emphasis"
+      },
+      "reference_translation": "时间"
+    },
+    {
+      "target_id": "seg_003834",
+      "leaf_start": 3834,
+      "image_path": "./auto_cut_segments\\003834.jpg",
+      "image_exists": true,
+      "annotations": {
+        "pos_like_category": "动词性 / Action-like",
+        "pragmatic_meaning": "坐下",
+        "morphological_features": "现在 / Present"
+      },
+      "reference_translation": "坐下"
+    },
+    {
+      "target_id": "seg_003652",
+      "leaf_start": 3652,
+      "image_path": "./auto_cut_segments\\003652.jpg",
+      "image_exists": true,
+      "annotations": {
+        "pos_like_category": "动词性 / Action-like",
+        "pragmatic_meaning": "我记得",
+        "morphological_features": "进行体 / Progressive"
+      },
+      "reference_translation": "人想象"
+    },
+    {
+      "target_id": "seg_007759",
+      "leaf_start": 7759,
+      "image_path": "./auto_cut_segments\\007759.jpg",
+      "image_exists": true,
+      "annotations": {
+        "pos_like_category": "动词性 / Action-like",
+        "pragmatic_meaning": "方向箭头",
+        "morphological_features": "进行体 / Progressive"
+      },
+      "reference_translation": "直走"
+    },
+    {
+      "target_id": "seg_010709",
+      "leaf_start": 10709,
+      "image_path": "./auto_cut_segments\\010709.jpg",
+      "image_exists": true,
+      "annotations": {
+        "pos_like_category": "形容词性 / State-like",
+        "pragmatic_meaning": "愁苦的脸",
+        "morphological_features": "现在 / Present"
+      },
+      "reference_translation": "不开心"
+    },
+    {
+      "target_id": "seg_011717",
+      "leaf_start": 11717,
+      "image_path": "./auto_cut_segments\\011717.jpg",
+      "image_exists": true,
+      "annotations": {
+        "pos_like_category": "名词性 / Entity-like",
+        "pragmatic_meaning": "傍晚",
+        "morphological_features": "现在 / Present"
+      },
+      "reference_translation": "钟表"
+    },
+    {
+      "target_id": "seg_009511",
+      "leaf_start": 9511,
+      "image_path": "./auto_cut_segments\\009511.jpg",
+      "image_exists": true,
+      "annotations": {
+        "pos_like_category": "名词性 / Entity-like",
+        "pragmatic_meaning": "钟表\n",
+        "morphological_features": "现在 / Present"
+      },
+      "reference_translation": "时间为9点"
+    },
+    {
+      "target_id": "seg_011347",
+      "leaf_start": 11347,
+      "image_path": "./auto_cut_segments\\011347.jpg",
+      "image_exists": true,
+      "annotations": {
+        "pos_like_category": "名词性 / Entity-like",
+        "pragmatic_meaning": "关灯",
+        "morphological_features": "现在 / Present"
+      },
+      "reference_translation": "关灯"
+    },
+    {
+      "target_id": "seg_003505",
+      "leaf_start": 3505,
+      "image_path": "./auto_cut_segments\\003505.jpg",
+      "image_exists": true,
+      "annotations": {
+        "pos_like_category": "形容词性 / State-like",
+        "pragmatic_meaning": "天气多变",
+        "morphological_features": "将来 / Future"
+      },
+      "reference_translation": "下雨"
+    },
+    {
+      "target_id": "seg_007433",
+      "leaf_start": 7433,
+      "image_path": "./auto_cut_segments\\007433.jpg",
+      "image_exists": true,
+      "annotations": {
+        "pos_like_category": "形容词性 / State-like",
+        "pragmatic_meaning": "舒服了",
+        "morphological_features": "进行体 / Progressive"
+      },
+      "reference_translation": "舒服了"
+    }
+  ]
+}

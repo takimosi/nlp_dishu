@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <title>创建房间 · 合作解谜</title>
+    <style>
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+        :root {
+            --ink: #1a1a18;
+            --paper: #f5f0e8;
+            --paper-dark: #ede8dc;
+            --border: #c8c0aa;
+            --coop: #4a6741;
+            --muted: #7a7468;
+        }
+        html, body { height: 100%; overflow: hidden; }
+        body {
+            background: linear-gradient(145deg, #2b221a 0%, #140f0a 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Noto Sans SC', sans-serif;
+            padding: 24px;
+        }
+        .game-console {
+            width: 500px;
+            max-width: 95vw;
+            background: linear-gradient(135deg, #ddd6c8 0%, #c2b9a6 100%);
+            border-radius: 48px;
+            box-shadow: 0 30px 40px rgba(0,0,0,0.6);
+            overflow: hidden;
+        }
+        .console-header { background: linear-gradient(90deg, var(--coop), #4a6741, var(--coop)); height: 14px; }
+        .console-body { padding: 30px; background: #e0dbce; }
+        .page-number { font-family: 'Space Mono', monospace; font-size: 10px; color: var(--muted); margin-bottom: 0.5rem; }
+        .title { text-align: center; margin-bottom: 30px; }
+        .title h1 { font-family: 'Noto Serif SC', serif; font-size: 20px; color: var(--coop); }
+        .input-group { margin-bottom: 20px; }
+        .input-group label { display: block; font-size: 11px; color: var(--muted); margin-bottom: 8px; }
+        .input-group input {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid var(--border);
+            border-radius: 40px;
+            font-size: 14px;
+            text-align: center;
+            font-family: inherit;
+        }
+        button {
+            width: 100%;
+            padding: 12px;
+            background: var(--coop);
+            color: white;
+            border: none;
+            border-radius: 40px;
+            font-size: 16px;
+            cursor: pointer;
+            font-family: 'Space Mono', monospace;
+        }
+        button:hover { background: #3a5a30; }
+        .error-msg { color: #c62828; font-size: 12px; margin-top: 10px; text-align: center; display: none; }
+        .back-link { display: block; text-align: center; margin-top: 20px; color: var(--muted); font-size: 11px; text-decoration: none; }
+    </style>
+</head>
+<body>
+<div style="position:fixed; top:15px; left:15px; z-index:9999;">
+  <button onclick="backToWorld()" style="background:rgba(0,0,0,0.7); border:1px solid #c09040; color:#c09040; padding:8px 16px; border-radius:30px; cursor:pointer; font-family:monospace; font-size:12px;">
+    ← 返回地书世界
+  </button>
+</div>
+
+<div class="game-console">
+    <div class="console-header"></div>
+    <div class="console-body">
+        <div class="page-number">⟡ 创建房间 ⟡</div>
+        <div class="title"><h1> 创建合作房间</h1></div>
+
+        <div class="input-group">
+            <label>你的名字</label>
+            <input type="text" id="playerName" placeholder="请输入你的名字" maxlength="10">
+        </div>
+
+        <div class="error-msg" id="errorMsg"></div>
+        <button id="createBtn" onclick="createRoom()">创建房间</button>
+
+        <a href="coop_lobby.html" class="back-link">← 返回大厅</a>
+    </div>
+</div>
+
+<script>
+const API_BASE = 'http://localhost:5001';
+
+function backToWorld() { window.location.href = 'http://localhost:8080/index.html'; }
+
+async function createRoom() {
+    const name = document.getElementById('playerName').value.trim();
+    const errorEl = document.getElementById('errorMsg');
+    if (!name) {
+        errorEl.innerText = '请输入你的名字';
+        errorEl.style.display = 'block';
+        return;
+    }
+    errorEl.style.display = 'none';
+
+    const btn = document.getElementById('createBtn');
+    btn.disabled = true;
+    btn.innerText = '创建中...';
+
+    try {
+        const resp = await fetch(`${API_BASE}/api/room/create`, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ name: name, max_players: 3, game_mode: 'coop' })
+        });
+        const data = await resp.json();
+        if (data.success) {
+            window.location.href = `mode1_coop.html?room=${data.room_code}&player=${data.player_id}&name=${encodeURIComponent(name)}`;
+        } else {
+            errorEl.innerText = data.error || '创建失败';
+            errorEl.style.display = 'block';
+            btn.disabled = false;
+            btn.innerText = '创建房间';
+        }
+    } catch(e) {
+        errorEl.innerText = '连接服务器失败，请确保后端已启动';
+        errorEl.style.display = 'block';
+        btn.disabled = false;
+        btn.innerText = '创建房间';
+        console.error(e);
+    }
+}
+</script>
+</body>
+</html>

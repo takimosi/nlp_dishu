@@ -1,0 +1,801 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <title>画猜接龙 · 游戏中</title>
+    <style>
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+        :root {
+            --ink: #1a1a18;
+            --paper: #f5f0e8;
+            --paper-dark: #ede8dc;
+            --paper-line: #d4ccb8;
+            --accent: #8b3a2a;
+            --muted: #7a7468;
+            --border: #c8c0aa;
+            --success: #3a6b3a;
+            --chain: #8b6914;
+            --bezel: #121212;
+            --plastic-light: #e0dbce;
+        }
+
+        html, body { height: 100%; overflow: hidden; }
+        body {
+            background: linear-gradient(145deg, #2b221a 0%, #140f0a 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Noto Sans SC', 'Microsoft YaHei', 'PingFang SC', sans-serif;
+            padding: 16px;
+        }
+
+        .game-console {
+            width: 1400px;
+            max-width: 98vw;
+            height: 94vh;
+            min-height: 700px;
+            background: linear-gradient(135deg, #ddd6c8 0%, #c2b9a6 100%);
+            border-radius: 48px;
+            box-shadow: 0 30px 40px rgba(0,0,0,0.6), inset 0 1px 2px rgba(255,255,240,0.7);
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+        }
+
+        .console-header { background: linear-gradient(90deg, var(--chain), #8b6914, var(--chain)); height: 14px; flex-shrink: 0; }
+        .console-body { background: var(--plastic-light); flex: 1; padding: 16px 24px; overflow: hidden; display: flex; flex-direction: column; }
+        .screen-bezel { background: var(--bezel); border-radius: 24px; padding: 16px 20px; flex: 1; display: flex; flex-direction: column; min-height: 0; }
+        .crt-screen { background: #1e2a1a; border-radius: 16px; flex: 1; display: flex; flex-direction: column; overflow: hidden; }
+        .game-content { flex: 1; padding: 1rem; background: var(--paper); overflow-y: auto; display: flex; flex-direction: column; gap: 16px; }
+
+        /* 顶部状态栏 */
+        .top-bar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 10px;
+            padding-bottom: 12px;
+            border-bottom: 1px solid var(--border);
+        }
+        .room-code-card {
+            background: #f0e8d8;
+            padding: 8px 16px;
+            border-radius: 40px;
+            border: 1px solid var(--chain);
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            font-size: 14px;
+        }
+        .room-code-value { font-family: 'Space Mono', monospace; font-size: 22px; font-weight: bold; color: var(--chain); letter-spacing: 0.1em; }
+        .copy-btn { background: var(--chain); color: white; border: none; padding: 4px 12px; border-radius: 40px; cursor: pointer; font-family: monospace; font-size: 12px; }
+        .game-status-badge { background: var(--ink); color: white; padding: 6px 16px; border-radius: 40px; font-family: monospace; font-size: 14px; }
+
+        /* 玩家列表 */
+        .player-list {
+            display: flex;
+            gap: 12px;
+            flex-wrap: wrap;
+            padding: 8px 0;
+        }
+        .player-tag {
+            background: white;
+            padding: 8px 18px;
+            border-radius: 40px;
+            font-size: 14px;
+            font-weight: 500;
+            border: 1px solid var(--border);
+            font-family: monospace;
+        }
+        .player-tag.current { background: var(--chain); color: white; border-color: var(--chain); }
+        .player-tag.host { background: #6a5010; color: white; }
+
+        /* 当前任务卡片 */
+        .task-card {
+            background: white;
+            border-radius: 20px;
+            padding: 20px;
+            text-align: center;
+            border: 2px solid var(--chain);
+        }
+        .task-label { font-size: 14px; color: var(--muted); font-family: monospace; margin-bottom: 10px; }
+        .task-content { font-size: 28px; font-weight: bold; color: var(--ink); }
+        .turn-hint { margin-top: 12px; font-size: 13px; color: var(--muted); }
+
+        /* 上一个人提交的区域 */
+        .last-submit {
+            background: var(--paper-dark);
+            border-radius: 16px;
+            padding: 16px;
+            border-left: 4px solid var(--chain);
+        }
+        .last-submit-title { font-size: 12px; color: var(--muted); font-family: monospace; margin-bottom: 8px; }
+        .last-submit-content { font-size: 16px; color: var(--ink); }
+        .last-submit-icons { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 8px; }
+        .last-submit-icons img { max-width: 50px; max-height: 50px; border: 1px solid var(--border); border-radius: 8px; background: white; padding: 4px; }
+
+        /* 图标库 */
+        .icon-library {
+            background: var(--paper-dark);
+            border-radius: 16px;
+            padding: 12px;
+            margin-top: 8px;
+        }
+        .cat-row {
+            display: flex;
+            gap: 8px;
+            overflow-x: auto;
+            padding-bottom: 8px;
+            margin-bottom: 12px;
+        }
+        .cat-btn {
+            padding: 6px 16px;
+            background: transparent;
+            border: 1px solid var(--border);
+            border-radius: 40px;
+            font-size: 13px;
+            font-weight: 500;
+            cursor: pointer;
+            font-family: monospace;
+            white-space: nowrap;
+            color: #1a1a18;
+        }
+        .cat-btn.active { background: var(--chain); color: white; border-color: var(--chain); }
+        .search-row { margin-bottom: 12px; }
+        .search-row input {
+            width: 100%;
+            padding: 10px 16px;
+            border: 1px solid var(--border);
+            border-radius: 40px;
+            font-size: 14px;
+            background: white;
+        }
+        .icon-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(80px, 1fr));
+            gap: 8px;
+            max-height: 200px;
+            overflow-y: auto;
+        }
+        .icon-card {
+            background: white;
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 8px 4px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.1s;
+        }
+        .icon-card:hover { transform: scale(0.96); border-color: var(--chain); background: #fff8e8; }
+        .icon-card img { max-width: 50px; max-height: 50px; }
+        .icon-card .label { font-size: 11px; margin-top: 6px; color: var(--muted); }
+
+        .composed-area {
+            background: white;
+            border-radius: 16px;
+            padding: 16px;
+            margin: 10px 0;
+            border: 1px solid var(--border);
+        }
+        .composed-icons { display: flex; gap: 10px; flex-wrap: wrap; min-height: 70px; }
+        .composed-icon { position: relative; background: var(--paper-dark); border-radius: 8px; padding: 4px; }
+        .composed-icon img { max-width: 50px; max-height: 50px; }
+        .remove-icon {
+            position: absolute;
+            top: -8px;
+            right: -8px;
+            width: 20px;
+            height: 20px;
+            background: var(--accent);
+            color: white;
+            border-radius: 50%;
+            font-size: 12px;
+            text-align: center;
+            line-height: 18px;
+            cursor: pointer;
+        }
+
+        textarea {
+            width: 100%;
+            padding: 14px;
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            font-family: inherit;
+            font-size: 16px;
+            margin: 10px 0;
+            resize: vertical;
+        }
+        button {
+            padding: 12px 28px;
+            background: var(--ink);
+            color: white;
+            border: none;
+            border-radius: 40px;
+            cursor: pointer;
+            font-family: monospace;
+            font-size: 16px;
+            font-weight: bold;
+        }
+        button:disabled { opacity: 0.5; cursor: not-allowed; }
+        .btn-success { background: var(--success); }
+
+        .control-deck {
+            background: #c9c0ae;
+            margin-top: 12px;
+            padding: 8px 20px;
+            border-radius: 28px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .back-link { font-family: monospace; font-size: 12px; color: #5f5542; text-decoration: none; }
+
+        /* 结果弹窗 */
+        .result-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0,0,0,0.85);
+            z-index: 1000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .result-card {
+            background: var(--paper);
+            border-radius: 32px;
+            padding: 30px;
+            max-width: 700px;
+            width: 90%;
+            max-height: 80vh;
+            overflow-y: auto;
+        }
+        .result-title { font-size: 28px; font-weight: bold; text-align: center; margin-bottom: 20px; color: var(--chain); }
+        .result-compare {
+            background: var(--paper-dark);
+            padding: 20px;
+            border-radius: 20px;
+            margin: 20px 0;
+            text-align: center;
+        }
+        .result-original { font-size: 22px; color: var(--success); font-weight: bold; }
+        .result-final { font-size: 22px; color: var(--accent); font-weight: bold; }
+        .result-similarity { font-size: 18px; margin-top: 12px; }
+        .result-similarity span { font-weight: bold; color: var(--chain); }
+        .result-chain {
+            margin-top: 20px;
+            max-height: 300px;
+            overflow-y: auto;
+        }
+        .result-chain-item {
+            background: var(--paper-dark);
+            border-radius: 12px;
+            padding: 12px;
+            margin-bottom: 10px;
+            border-left: 4px solid var(--chain);
+        }
+        .result-chain-author { font-weight: bold; color: var(--chain); font-family: monospace; font-size: 13px; }
+        .result-chain-content { margin-top: 6px; font-size: 14px; }
+        .result-chain-icons { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 6px; }
+        .result-chain-icons img { max-width: 40px; max-height: 40px; border-radius: 6px; background: white; padding: 2px; }
+
+        @media (max-width: 900px) {
+            .console-body { padding: 12px; }
+            .icon-grid { max-height: 150px; }
+            .task-content { font-size: 22px; }
+        }
+    </style>
+</head>
+<body>
+<div style="position:fixed; top:15px; left:15px; z-index:9999;">
+  <button onclick="backToWorld()" style="background:rgba(0,0,0,0.7); border:1px solid #c09040; color:#c09040; padding:8px 16px; border-radius:30px; cursor:pointer; font-family:monospace; font-size:12px;">
+    ← 返回地书世界
+  </button>
+</div>
+
+<div class="game-console">
+    <div class="console-header"></div>
+    <div class="console-body">
+        <div class="screen-bezel">
+            <div class="crt-screen">
+                <div class="game-content" id="gameContent">
+                    <!-- 动态内容由 JS 渲染 -->
+                </div>
+            </div>
+        </div>
+        <div class="control-deck">
+            <div class="console-brand" style="font-family:monospace; font-size:13px;">画猜接龙 · 符号传话</div>
+            <a href="chain_lobby.html" class="back-link">← 返回大厅</a>
+        </div>
+    </div>
+</div>
+
+<script>
+// ==================== 配置 ====================
+const API_BASE = window.location.port === '5001'
+    ? `http://${window.location.hostname}:5001`
+    : 'http://localhost:5001';
+console.log('API_BASE:', API_BASE);
+
+let roomCode = null, playerId = null, playerName = null, isHost = false;
+let pollInterval = null;
+let composedIconsList = [];
+let currentCategory = '全部';
+let searchKeyword = '';
+let savedGuess = '';
+
+// 图标库（与之前相同，为了代码简洁，这里用简化版，实际会用完整版）
+const RAW_ICONS = [
+  ['000002','时钟','时间'],['000052','时钟','时间'],['000088','时钟','时间'],['000126','时钟','时间'],['000301','时钟放大','时间'],['000313','沙漏-等待','时间'],['000314','沙漏-减少','时间'],['000315','沙漏-结束','时间'],['000633','时钟','时间'],['000654','时钟','时间'],['000676','时钟','时间'],['000709','时钟','时间'],['000779','截止时间','时间'],['000826','时钟','时间'],['000860','黑色时钟','时间'],['001017','闹钟禁止','时间'],['001254','时钟','时间'],['002300','时钟转','时间'],['002301','截止时间','时间'],['002417','时钟','时间'],['002439','时钟','时间'],['001724','圆形时钟','时间'],['003421','21:00时间牌','时间'],['003422','23:00时间牌','时间'],['003423','23:50时间牌','时间'],['003430','22:00时间牌','时间'],['003431','22:30时间牌','时间'],['003437','35:00时间牌','时间'],['003438','36:30时间牌','时间'],['003444','21:20时间牌','时间'],['003445','22:30时间牌','时间'],['003446','23:50时间牌','时间'],['003452','33:50时间牌','时间'],['003453','34:30时间牌','时间'],['003454','35:50时间牌','时间'],['003455','35:50时间牌','时间'],['004710','时间圆表','时间'],
+  ['000005','行人','人物动作'],['000128','坐下','人物动作'],['000129','站立','人物动作'],['000244','跑步','人物动作'],['000249','跑步','人物动作'],['000253','跑步','人物动作'],['000258','取行李','人物动作'],['000260','奔跑','人物动作'],['000264','奔跑','人物动作'],['000277','跑步','人物动作'],['000286','女性','人物动作'],['000289','奔跑','人物动作'],['000291','奔跑','人物动作'],['000297','坐椅等待','人物动作'],['000299','安检通道','人物动作'],['000307','触摸点击','人物动作'],['000333','开会交流','人物动作'],['000780','睡觉','人物动作'],['000828','眼睛看','人物动作'],['000861','行走前往','人物动作'],['001055','行走','人物动作'],['001080','人物标牌','人物动作'],['001085','行走出口','人物动作'],['001219','行走','人物动作'],['001223','行走','人物动作'],['001405','行走','人物动作'],['001443','站立人物','人物动作'],['001455','坐立人物','人物动作'],['001649','行走','人物动作'],['001664','行走','人物动作'],['001691','行走','人物动作'],['001717','等候人物','人物动作'],['001726','站立','人物动作'],['001727','站立','人物动作'],['001728','多人站立','人物动作'],['001878','行走','人物动作'],['001883','行走','人物动作'],['001884','跑步','人物动作'],['001919','站立人物','人物动作'],['002127','肥胖人物','人物动作'],['002214','下楼梯','人物动作'],['002228','跑步','人物动作'],['002235','上楼梯','人物动作'],['002244','跑步','人物动作'],['002249','跑步','人物动作'],['002264','跑步','人物动作'],['002274','跑步','人物动作'],['002277','跑步','人物动作'],['002286','女性','人物动作'],['002289','跑步','人物动作'],['002291','行走','人物动作'],['002297','坐椅等待','人物动作'],['002299','站立操作','人物动作'],['002307','触摸点击','人物动作'],['002358','取物人','人物动作'],['002400','男人站立','人物动作'],['002405','男人站立','人物动作'],['002406','男人站立','人物动作'],['002407','男人站立','人物动作'],['002408','男人站立','人物动作'],['002431','男人站立','人物动作'],['002434','男人站立','人物动作'],['002449','男人站立','人物动作'],['002665','男人站立','人物动作'],['002668','男人站立','人物动作'],['002690','男人站立','人物动作'],['002705','男女二人','人物动作'],['002707','女性站立','人物动作'],['002709','男人站立','人物动作'],['002712','行走','人物动作'],['002714','男人站立','人物动作'],['002717','男人站立','人物动作'],['002725','男女牵手','人物动作'],['002733','男女站立','人物动作'],['003119','男人站立','人物动作'],['003123','男人站立','人物动作'],['003125','男人站立','人物动作'],['003142','男人站立','人物动作'],['003159','男女二人','人物动作'],['003700','男人站立','人物动作'],['003701','男人站立','人物动作'],['003704','男人站立','人物动作'],['003706','行走','人物动作'],['003709','行走','人物动作'],['003800','男人站立','人物动作'],['003838','人物交流','人物动作'],['003830','行走','人物动作'],['003844','男人站立','人物动作'],['003861','女性头像','人物动作'],['003862','女性头像','人物动作'],['003863','女性头像','人物动作'],['003864','女性头像','人物动作'],['003865','女性头像','人物动作'],['003866','女性头像','人物动作'],['003867','女性头像','人物动作'],['003868','女性头像','人物动作'],['003869','女性头像','人物动作'],['004497','男人站立','人物动作'],['004537','男人站立','人物动作'],['004580','男人站立','人物动作'],['004585','男人站立','人物动作'],['004627','心形','人物动作'],['004637','女性','人物动作'],['004642','女性','人物动作'],['004657','男人站立','人物动作'],['004677','女性','人物动作'],['004683','女性','人物动作'],['004697','女性','人物动作'],['004714','人物肖像','人物动作'],['004727','男人站立','人物动作'],['004737','女性站立','人物动作'],['004738','男人站立','人物动作'],['004742','女性','人物动作'],['004831','女性站立','人物动作'],['005281','男人站立','人物动作'],['005291','人物表格','人物动作'],['005297','男人站立','人物动作'],['005298','男人站立','人物动作'],['005318','人物行走','人物动作'],['005729','行走','人物动作'],['005766','行走','人物动作'],['005773','行走','人物动作'],['005785','行走','人物动作'],['005799','男人站立','人物动作'],
+  ['000053','房子家','地点场所'],['000057','楼房建筑','地点场所'],['000127','咖啡馆','地点场所'],['000246','紧急出口','地点场所'],['000272','紧急出口','地点场所'],['000293','门出口','地点场所'],['000295','办公桌','地点场所'],['000829','室内外','地点场所'],['001024','窗格','地点场所'],['001038','卧室','地点场所'],['001046','卧室','地点场所'],['001052','工作台','地点场所'],['001058','房屋','地点场所'],['001060','出口标志','地点场所'],['001226','信箱房子','地点场所'],['001309','门','地点场所'],['001408','冰箱','地点场所'],['001414','冰箱','地点场所'],['001648','出口','地点场所'],['001655','锁孔','地点场所'],['001657','解锁','地点场所'],['001659','锁定','地点场所'],['001666','城市地图','地点场所'],['001680','三角警告','地点场所'],['001687','地铁','地点场所'],['001693','地铁','地点场所'],['002246','紧急出口','地点场所'],['002272','紧急出口','地点场所'],['002293','门','地点场所'],['002295','工作台','地点场所'],['003399','房产','地点场所'],['003400','房产','地点场所'],['003623','房子','地点场所'],['003624','房产','地点场所'],['004966','房子','地点场所'],['005058','房子','地点场所'],['005813','房子Chanel','地点场所'],['005774','文本表格','地点场所'],['005786','文本表格','地点场所'],
+  ['000055','高铁列车','交通出行'],['000827','卧铺','交通出行'],['001038','卧铺','交通出行'],['001681','火车','交通出行'],['001683','公共汽车','交通出行'],['001692','楼梯下行','交通出行'],['001870','高铁','交通出行'],['001871','列车','交通出行'],['001892','高铁','交通出行'],['001934','高铁','交通出行'],['002227','下楼梯','交通出行'],['003194','救护车','交通出行'],['003374','警车','交通出行'],['003390','牛奔跑','交通出行'],['003654','丰田车标','交通出行'],['003655','轿车','交通出行'],['004505','人与车','交通出行'],['004524','轿车','交通出行'],['004549','溜冰鞋','交通出行'],['004550','溜冰鞋','交通出行'],['004551','自行车','交通出行'],['004552','游泳','交通出行'],
+  ['000004','前进','方向箭头'],['000054','前进','方向箭头'],['000056','前进','方向箭头'],['000092','转向','方向箭头'],['000245','前进','方向箭头'],['000250','转弯','方向箭头'],['000251','向下转','方向箭头'],['000252','前进','方向箭头'],['000254','弯曲前进','方向箭头'],['000263','弯曲前行','方向箭头'],['000269','前进','方向箭头'],['000271','前进','方向箭头'],['000273','前进','方向箭头'],['000290','转弯继续','方向箭头'],['000292','前进','方向箭头'],['000294','前进','方向箭头'],['000862','前进','方向箭头'],['001011','前进','方向箭头'],['001023','前进','方向箭头'],['001037','折返','方向箭头'],['001049','前进','方向箭头'],['001054','前进','方向箭头'],['001089','前进','方向箭头'],['001090','前进','方向箭头'],['001271','前进','方向箭头'],['001279','前进','方向箭头'],['001285','向下','方向箭头'],['001313','前进','方向箭头'],['001434','前进','方向箭头'],['001444','前进小','方向箭头'],['001449','前进','方向箭头'],['001458','前进','方向箭头'],['001713','前进','方向箭头'],['001725','前进','方向箭头'],['001726','前进','方向箭头'],['001708','前进','方向箭头'],['002245','前进','方向箭头'],['002250','转弯','方向箭头'],['002251','弯曲','方向箭头'],['002253','转弯','方向箭头'],['002261','前进','方向箭头'],['002263','前进弯','方向箭头'],['002269','前进','方向箭头'],['002271','前进','方向箭头'],['002273','前进','方向箭头'],['002279','前进','方向箭头'],['002292','前进','方向箭头'],['002294','前进','方向箭头'],['002409','前进','方向箭头'],['002727','前进','方向箭头'],['002732','前进','方向箭头'],['003126','前进','方向箭头'],['003129','前进','方向箭头'],['003160','前进','方向箭头'],['003171','前进','方向箭头'],['003173','前进','方向箭头'],['003193','前进','方向箭头'],['003312','前进','方向箭头'],['003373','前进','方向箭头'],['003391','前进','方向箭头'],['003825','前进','方向箭头'],['003827','前进','方向箭头'],['003831','前进','方向箭头'],['003859','前进','方向箭头'],['004738','前进','方向箭头'],['005319','前进','方向箭头'],['005320','前进','方向箭头'],['005730','前进','方向箭头'],['005764','向左','方向箭头'],['005767','前进','方向箭头'],['005778','前进','方向箭头'],['005780','前进','方向箭头'],['005791','前进','方向箭头'],['005801','前进','方向箭头'],['005814','向左返回','方向箭头'],
+  ['000049','数字1','数字符号'],['000085','数字7','数字符号'],['000122','数字1','数字符号'],['000123','数字3','数字符号'],['000241','数字89','数字符号'],['000242','字母F','数字符号'],['000651','数字89','数字符号'],['000672','数字9','数字符号'],['000673','数字3','数字符号'],['000705','数字9','数字符号'],['000706','数字5','数字符号'],['000776','数字99','数字符号'],['000821','数字1','数字符号'],['000822','数字0','数字符号'],['000823','数字3','数字符号'],['000855','数字1','数字符号'],['000856','数字0','数字符号'],['000857','数字5','数字符号'],['002052','数字2','数字符号'],['002059','字母F','数字符号'],['002066','数字2','数字符号'],['002072','数字3上','数字符号'],['002073','字母F','数字符号'],['002076','向上','数字符号'],['002077','数字4','数字符号'],['002078','字母F','数字符号'],['002082','向上','数字符号'],['002083','数字5','数字符号'],['002084','字母F','数字符号'],['002122','87F温度','数字符号'],['002154','数字1','数字符号'],['002155','数字0','数字符号'],['002232','数字88','数字符号'],['002233','字母F','数字符号'],['002241','数字89','数字符号'],['002242','字母F','数字符号'],['003365','3000','数字符号'],['003375','条形码','数字符号'],['003377','数字8','数字符号'],['003381','#号','数字符号'],['003411','#号','数字符号'],['003883','26','数字符号'],['004495','字母A','数字符号'],
+  ['000089','笔记本电脑','科技设备'],['000091','鼠标光标','科技设备'],['000270','手机','科技设备'],['000309','关机电源','科技设备'],['000311','键盘电脑','科技设备'],['000317','打字键盘','科技设备'],['000321','笔记本','科技设备'],['000322','笔记本','科技设备'],['000326','音量','科技设备'],['000327','声波广播','科技设备'],['000329','WiFi网络','科技设备'],['000331','蓝牙','科技设备'],['000335','Skype通话','科技设备'],['001033','猫咪','科技设备'],['001034','电子屏','科技设备'],['001091','手机','科技设备'],['001092','手机框','科技设备'],['001093','Google+','科技设备'],['001094','RSS订阅','科技设备'],['001095','Facebook','科技设备'],['001229','电源咖啡','科技设备'],['001267','触摸','科技设备'],['001268','电源','科技设备'],['001270','收音机','科技设备'],['001272','收音机WiFi','科技设备'],['001676','手机','科技设备'],['001677','声波','科技设备'],['001678','屏幕','科技设备'],['002130','屏幕框','科技设备'],['002147','音量','科技设备'],['002148','声波','科技设备'],['002270','手机WiFi','科技设备'],['002311','笔记本','科技设备'],['002317','打字机','科技设备'],['002321','笔记本','科技设备'],['002322','笔记本','科技设备'],['003621','RSS','科技设备'],['003631','RSS','科技设备'],['003668','股票图','科技设备'],['003678','循环箭头','科技设备'],['003679','增长曲线','科技设备'],['004510','消息框','科技设备'],['004527','消息框','科技设备'],['004538','消息框','科技设备'],['004622','消息框','科技设备'],['004638','消息框','科技设备'],['004651','消息框','科技设备'],['004671','消息框','科技设备'],['004728','消息框','科技设备'],['004729','消息框','科技设备'],['005292','人物表格','科技设备'],['005740','对话气泡','科技设备'],['005754','对话气泡','科技设备'],
+  ['000090','信件邮件','情感表达'],['000130','对话聊天','情感表达'],['000280','停止禁止','情感表达'],['000281','感叹注意','情感表达'],['000282','停止手势','情感表达'],['000283','警告感叹','情感表达'],['001009','感叹号','情感表达'],['001013','感叹号','情感表达'],['001026','难过表情','情感表达'],['001027','眼睛','情感表达'],['001028','惊讶表情','情感表达'],['001040','搞怪表情','情感表达'],['001041','感叹号','情感表达'],['001042','难过表情','情感表达'],['001061','困惑表情','情感表达'],['001070','难过表情','情感表达'],['001071','哭泣表情','情感表达'],['001072','哭泣表情','情感表达'],['001073','大哭','情感表达'],['001077','困惑表情','情感表达'],['001078','猫抓','情感表达'],['001083','问号','情感表达'],['001097','开心表情','情感表达'],['001100','骷髅','情感表达'],['001101','骷髅表情','情感表达'],['001102','感叹号','情感表达'],['001104','大便表情','情感表达'],['001105','崩溃表情','情感表达'],['002049','生气表情','情感表达'],['002063','生气表情','情感表达'],['002081','困惑表情','情感表达'],['002087','困惑表情','情感表达'],['002093','困惑表情','情感表达'],['002101','生气表情','情感表达'],['002107','生气表情','情感表达'],['002113','惊吓表情','情感表达'],['002120','生气表情','情感表达'],['002121','生气表情','情感表达'],['002243','感叹号','情感表达'],['002281','感叹号','情感表达'],['002283','感叹号','情感表达'],['002399','邮件','情感表达'],['002402','眨眼','情感表达'],['002413','对话气泡','情感表达'],['002414','对话气泡','情感表达'],['002435','邮件','情感表达'],['002437','笑脸','情感表达'],['002438','感叹号','情感表达'],['002441','感叹号','情感表达'],['002655','感叹号','情感表达'],['002695','搞怪表情','情感表达'],['002703','心碎','情感表达'],['002710','哭泣表情','情感表达'],['002711','行走','情感表达'],['002713','心形','情感表达'],['002719','阅读','情感表达'],['002729','嘴唇','情感表达'],['002730','嘴唇','情感表达'],['002731','嘴唇','情感表达'],['003134','大笑表情','情感表达'],['003148','搞怪','情感表达'],['003383','嚎叫','情感表达'],['003413','上升','情感表达'],['003415','电影胶片','情感表达'],['003661','生气表情','情感表达'],['003686','对话气泡','情感表达'],['004568','难过表情','情感表达'],['004655','大笑','情感表达'],['004656','感叹','情感表达'],['004700','问号','情感表达'],['004701','困惑','情感表达'],['004702','心碎','情感表达'],['004703','感叹','情感表达'],['004704','心碎','情感表达'],['004705','难过表情','情感表达'],['004706','唇','情感表达'],['004723','眨眼','情感表达'],['005744','笑脸','情感表达'],
+  ['001233','咖啡杯热','饮食'],['001237','烤炉','饮食'],['001238','烤鱼','饮食'],['001240','厨师烹饪','饮食'],['001242','煎蛋','饮食'],['001247','面包','饮食'],['001248','平底锅','饮食'],['001252','炒锅','饮食'],['001256','茶壶','饮食'],['001257','饮料杯','饮食'],['001261','咖啡杯热','饮食'],['001395','早餐','饮食'],['001397','面包','饮食'],['001419','红酒','饮食'],['001420','红酒','饮食'],['001421','咖啡杯','饮食'],['001430','牛奶盒','饮食'],['001432','坐吃人','饮食'],['001433','牛奶盒','饮食'],['001436','昆虫','饮食'],['001445','三明治','饮食'],['001447','乐器','饮食'],['001448','饮品杯','饮食'],['001451','云朵','饮食'],['001452','云朵','饮食'],['001453','花朵','饮食'],['001457','三明治','饮食'],['001461','微波炉','饮食'],['001463','微波炉','饮食'],['001465','微波炉','饮食'],['001466','食物','饮食'],['001385','食物','饮食'],['001388','食物','饮食'],['002410','咖啡热','饮食'],['002411','问号','饮食'],['003614','咖啡','饮食'],['003642','茶杯','饮食'],['003664','咖啡杯热','饮食'],['003674','茶杯','饮食'],['003175','餐具','饮食'],['005258','食物','饮食'],['005269','饮料杯','饮食'],['005285','食物','饮食'],['005302','汉堡','饮食'],['005303','汉堡','饮食'],['005304','食物','饮食'],['005305','食物','饮食'],['005313','汉堡','饮食'],['005315','汉堡','饮食'],['005317','汉堡','饮食'],['005745','肺脏','饮食'],['004628','餐具','饮食'],['004629','鱼','饮食'],
+  ['001276','下雨云','自然天气'],['001278','阴天','自然天气'],['001282','大雨','自然天气'],['001284','温度计','自然天气'],['001292','雨伞','自然天气'],['002676','花朵','自然天气'],['002677','花朵','自然天气'],['003154','山脉','自然天气'],['003130','山脉','自然天气'],['003166','海浪','自然天气'],['003170','鱼群','自然天气'],['003172','大鱼','自然天气'],['003190','水滴','自然天气'],['003201','水滴','自然天气'],['003203','心形','自然天气'],['003419','月牙','自然天气'],['003420','月亮','自然天气'],['003429','月牙','自然天气'],['003436','太阳','自然天气'],['003441','月牙','自然天气'],['003443','月亮大','自然天气'],['003451','太阳圆','自然天气'],['004591','营地','自然天气'],['004592','火','自然天气'],['005731','下雨云','自然天气'],['005777','下雨云','自然天气'],['005779','阳光云','自然天气'],['005781','太阳','自然天气'],
+  ['000093','括号','其他'],['000639','标志','其他'],['000640','坦克','其他'],['000641','大炮','其他'],['001018','逗号','其他'],['001082','问号括号','其他'],['001288','前进','其他'],['001291','人脑','其他'],['001299','冰箱','其他'],['001300','耳朵','其他'],['001301','耳朵声','其他'],['001303','人脑','其他'],['001304','问号','其他'],['001396','符号','其他'],['001399','垃圾桶','其他'],['001401','人物广播','其他'],['001413','眼睛','其他'],['001416','眼镜','其他'],['001417','眼镜','其他'],['001418','靴子','其他'],['001438','表情','其他'],['001439','人物广播','其他'],['001446','羽毛笔','其他'],['001650','人物','其他'],['001653','上班人物','其他'],['001654','钥匙','其他'],['001668','地图','其他'],['001669','人物交通','其他'],['001670','问号','其他'],['001673','电梯','其他'],['001688','勾选','其他'],['001712','扫描仪','其他'],['001718','电梯','其他'],['001719','钟表','其他'],['001720','警告','其他'],['001721','崩溃','其他'],['001731','人物','其他'],['001732','医疗','其他'],['001733','医生','其他'],['001734','锁','其他'],['001735','喇叭','其他'],['001736','黑方块','其他'],['001853','出门','其他'],['001854','入门','其他'],['001855','人物行李','其他'],['001857','人物拥抱','其他'],['001858','人物行李','其他'],['001860','两人拥抱','其他'],['001862','难过表情','其他'],['001873','行李人物','其他'],['001876','挫败人物','其他'],['001886','椅子','其他'],['001887','椅子','其他'],['001894','时钟方向','其他'],['001897','工作人物','其他'],['001898','冲浪','其他'],['001903','折返','其他'],['001904','前进','其他'],['001905','耳朵声','其他'],['001907','冲浪','其他'],['001909','修理人','其他'],['001910','面罩','其他'],['001912','地铁禁止','其他'],['001914','禁止吸烟','其他'],['001915','勾选','其他'],['001920','等号','其他'],['001921','困惑','其他'],['001923','人物弯腰','其他'],['001924','向下','其他'],['001926','鞋子','其他'],['001929','帽子','其他'],['001935','减速','其他'],['001936','停止','其他'],['001937','列车进站','其他'],['001938','到站','其他'],['001939','多人行走','其他'],['001944','电梯人','其他'],['001945','挫败人物','其他'],['002060','禁止','其他'],['002065','人物修理','其他'],['002068','工具','其他'],['002069','工具','其他'],['002126','肥胖','其他'],['002128','出口','其他'],['002151','电梯','其他'],['002152','电梯人','其他'],['002153','人物','其他'],['002156','数字','其他'],['002303','噪点','其他'],['002308','减号','其他'],['002309','电源','其他'],['002310','减号','其他'],['002312','逗号','其他'],['002313','沙漏','其他'],['002314','沙漏减','其他'],['002315','沙漏完','其他'],['002318','尖括号','其他'],['003363','骷髅','其他'],['003364','叉号','其他'],['003366','猫头鹰','其他'],['003369','柱状图','其他'],['003370','三个点','其他'],['003371','鸡尾酒','其他'],['003372','蛇','其他'],['003376','叉号','其他'],['003377','数字8','其他'],['003378','数字8','其他'],['003379','手铐','其他'],['003380','井号','其他'],['003381','#号','其他'],['003382','柱状图','其他'],['003383','嚎叫','其他'],['003384','笑脸','其他'],['003385','两点','其他'],['003386','钱袋','其他'],['003387','三个点','其他'],['003389','折线图','其他'],['003392','熊','其他'],['003394','存钱罐','其他'],['003395','勾选','其他'],['003397','汽油站','其他'],['003398','房产','其他'],['003401','房产钱','其他'],['003402','球','其他'],['003405','医疗符号','其他'],['003406','三个点','其他'],['003407','三角警告','其他'],['003408','三角警告','其他'],['003409','三角警告','其他'],['003410','鸟','其他'],['003412','井号','其他'],['003416','胶片','其他'],['003417','三个点','其他'],['003418','猫','其他'],['003434','变形金刚','其他'],['003435','变形金刚','其他'],['003449','空白框','其他'],['003361','小鬼','其他'],['003687','工作','其他'],['004499','天平','其他'],['004509','人物工具','其他'],['004514','超人','其他'],['004516','背包','其他'],['004517','蝴蝶结眼镜','其他'],['004518','感叹','其他'],['004530','行李钱','其他'],['004531','钱币','其他'],['004532','感叹','其他'],['004545','女性','其他'],['004547','心形','其他'],['004555','心形','其他'],['004556','电影放映','其他'],['004557','问号','其他'],['004558','问号','其他'],['004570','电影放映','其他'],['004574','禁止爱情','其他'],['004575','感叹','其他'],['004587','心形','其他'],['004588','心形','其他'],['004589','心形','其他'],['004590','钓鱼','其他'],['004630','刀叉','其他'],['004631','刀叉','其他'],['004632','问号','其他'],['004644','音符','其他'],['004660','音符','其他'],['004661','小提琴','其他'],['004662','钢琴','其他'],['004663','竖琴','其他'],['004678','心形禁止','其他'],['004679','小提琴','其他'],['004680','钢琴','其他'],['004681','竖琴','其他'],['004685','吉他','其他'],['004687','鼓','其他'],['004688','演奏','其他'],['004689','演奏','其他'],['004690','吉他手','其他'],['004713','和号','其他'],['004715','人物工具','其他'],['004740','大黑圈','其他'],['005223','球','其他'],['005224','球','其他'],['005227','牛','其他'],['005247','鸟','其他'],['005287','鞋子','其他'],
+];
+
+const iconDB = new Map();
+for (const [file, label, category] of RAW_ICONS) {
+    const padded = file.padStart(6, '0');
+    if (!iconDB.has(padded)) {
+        iconDB.set(padded, { file: padded, label, category });
+    }
+}
+
+const CATEGORIES = ['全部', '时间', '人物动作', '地点场所', '交通出行', '方向箭头', '数字符号', '科技设备', '情感表达', '饮食', '自然天气'];
+
+function getImageUrl(file) {
+    return `http://localhost:8080/Boook/auto_cut_segments/${file}.jpg`;
+}
+
+function backToWorld() {
+    window.location.href = 'http://localhost:8080/index.html';
+}
+
+// ==================== 页面渲染 ====================
+let currentState = null;
+
+async function init() {
+    const urlParams = new URLSearchParams(window.location.search);
+    roomCode = urlParams.get('room');
+    playerId = urlParams.get('player');
+    playerName = decodeURIComponent(urlParams.get('name') || '玩家');
+    if (!roomCode || !playerId) {
+        window.location.href = 'chain_lobby.html';
+        return;
+    }
+    document.getElementById('gameContent').innerHTML = renderGame();
+    document.getElementById('roomCodeDisplay').innerText = roomCode;
+
+    pollInterval = setInterval(pollRoom, 1500);
+    await pollRoom();
+}
+
+function renderGame() {
+    return `
+        <div class="top-bar">
+            <div class="room-code-card">
+                <span>房间号</span>
+                <span class="room-code-value" id="roomCodeDisplay">---</span>
+                <button class="copy-btn" onclick="copyRoomCode()">复制</button>
+            </div>
+            <div class="game-status-badge" id="statusBadge">加载中...</div>
+        </div>
+        <div class="player-list" id="playerList"></div>
+        <div id="taskArea"></div>
+        <div id="lastSubmitArea" style="display:none;"></div>
+        <div id="actionArea" style="display:none;">
+            <div class="icon-library">
+                <div class="cat-row" id="catRow"></div>
+                <div class="search-row">
+                    <input type="text" id="searchInput" placeholder="搜索图标..." oninput="onSearch()">
+                </div>
+                <div class="icon-grid" id="iconGrid"></div>
+            </div>
+            <div class="composed-area">
+                <div style="font-size:14px; margin-bottom:8px; font-weight:bold;">你的图标序列</div>
+                <div class="composed-icons" id="composedIcons"></div>
+                <button id="submitBtn" onclick="submitAction()" style="margin-top:12px;">提交</button>
+            </div>
+        </div>
+        <div id="guessArea" style="display:none;">
+            <textarea id="guessInput" rows="2" placeholder="用一句话描述你看到的图标序列..."></textarea>
+            <button id="guessSubmitBtn" onclick="submitGuess()">提交</button>
+        </div>
+        <button onclick="leaveRoom()" style="margin-top:12px;">离开房间</button>
+    `;
+}
+
+function copyRoomCode() {
+    const code = document.getElementById('roomCodeDisplay').innerText;
+    if (code && code !== '---') {
+        navigator.clipboard.writeText(code);
+        alert('房间码已复制：' + code);
+    }
+}
+
+function onSearch() {
+    const input = document.getElementById('searchInput');
+    searchKeyword = input ? input.value.toLowerCase().trim() : '';
+    renderIconGrid();
+}
+
+function renderCategories() {
+    const container = document.getElementById('catRow');
+    if (!container) return;
+    container.innerHTML = '';
+    CATEGORIES.forEach(cat => {
+        const btn = document.createElement('button');
+        btn.className = 'cat-btn' + (cat === currentCategory ? ' active' : '');
+        btn.textContent = cat;
+        btn.onclick = () => {
+            currentCategory = cat;
+            renderCategories();
+            renderIconGrid();
+        };
+        container.appendChild(btn);
+    });
+}
+
+function renderIconGrid() {
+    const container = document.getElementById('iconGrid');
+    if (!container) return;
+    container.innerHTML = '';
+
+    let icons = Array.from(iconDB.values());
+    if (currentCategory !== '全部') {
+        icons = icons.filter(ic => ic.category === currentCategory);
+    }
+    if (searchKeyword) {
+        icons = icons.filter(ic => ic.label.toLowerCase().includes(searchKeyword) || ic.category.toLowerCase().includes(searchKeyword));
+    }
+    icons.sort((a,b) => a.label.localeCompare(b.label));
+
+    for (const icon of icons.slice(0, 80)) {
+        const card = document.createElement('div');
+        card.className = 'icon-card';
+        card.onclick = () => addToCompose(icon);
+        card.innerHTML = `<img src="${getImageUrl(icon.file)}" onerror="this.style.display='none'"><div class="label">${icon.label}</div>`;
+        container.appendChild(card);
+    }
+    if (icons.length === 0) {
+        container.innerHTML = '<div style="grid-column:1/-1; text-align:center; padding:20px; color:var(--muted);">没有找到图标</div>';
+    }
+}
+
+function addToCompose(icon) {
+    composedIconsList.push({ ...icon });
+    renderComposedIcons();
+}
+
+function removeFromCompose(idx) {
+    composedIconsList.splice(idx, 1);
+    renderComposedIcons();
+}
+
+function renderComposedIcons() {
+    const container = document.getElementById('composedIcons');
+    if (!container) return;
+    container.innerHTML = '';
+    if (composedIconsList.length === 0) {
+        container.innerHTML = '<div style="color:var(--muted); font-size:14px;">点击上方图标添加到序列...</div>';
+        return;
+    }
+    composedIconsList.forEach((icon, idx) => {
+        const div = document.createElement('div');
+        div.className = 'composed-icon';
+        div.innerHTML = `<img src="${getImageUrl(icon.file)}"><div class="remove-icon" onclick="event.stopPropagation();removeFromCompose(${idx})">×</div>`;
+        container.appendChild(div);
+    });
+}
+
+async function submitAction() {
+    if (composedIconsList.length === 0) {
+        alert('请先选择图标');
+        return;
+    }
+    const resp = await fetch(`${API_BASE}/api/room/submit`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+            room_code: roomCode,
+            player_id: playerId,
+            action: 'draw',
+            content: composedIconsList
+        })
+    });
+    const data = await resp.json();
+    if (data.success) {
+        composedIconsList = [];
+        renderComposedIcons();
+        alert('提交成功！');
+        await pollRoom();
+    } else {
+        alert(data.error || '提交失败');
+    }
+}
+
+async function submitGuess() {
+    const guess = document.getElementById('guessInput').value.trim();
+    if (!guess) {
+        alert('请输入你的猜测');
+        return;
+    }
+    const resp = await fetch(`${API_BASE}/api/room/submit`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+            room_code: roomCode,
+            player_id: playerId,
+            action: 'guess',
+            content: guess
+        })
+    });
+    const data = await resp.json();
+    if (data.success) {
+        savedGuess = '';
+        document.getElementById('guessInput').value = '';
+        alert('提交成功！');
+        await pollRoom();
+    } else {
+        alert(data.error || '提交失败');
+    }
+}
+
+async function leaveRoom() {
+    if (roomCode && playerId) {
+        await fetch(`${API_BASE}/api/room/leave`, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ room_code: roomCode, player_id: playerId })
+        });
+    }
+    if (pollInterval) clearInterval(pollInterval);
+    window.location.href = 'chain_lobby.html';
+}
+
+// ==================== 轮询和UI更新 ====================
+async function pollRoom() {
+    try {
+        const resp = await fetch(`${API_BASE}/api/room/state?room_code=${roomCode}&player_id=${playerId}`);
+        const data = await resp.json();
+        if (data.success) {
+            updateUI(data.state);
+            if (data.state.status === 'finished') {
+                clearInterval(pollInterval);
+                showResult(data.state);
+            }
+        } else if (data.error === '房间不存在') {
+            clearInterval(pollInterval);
+            alert('房间已关闭');
+            window.location.href = 'chain_lobby.html';
+        }
+    } catch(e) {
+        console.error('轮询失败', e);
+    }
+}
+
+function updateUI(state) {
+    currentState = state;
+
+    // 更新玩家列表
+    const playerList = document.getElementById('playerList');
+    if (playerList) {
+        playerList.innerHTML = '';
+        state.players.forEach(p => {
+            const tag = document.createElement('span');
+            tag.className = 'player-tag';
+            if (p.id === playerId) tag.classList.add('current');
+            if (p.name === state.host) tag.classList.add('host');
+            tag.textContent = p.name;
+            playerList.appendChild(tag);
+        });
+    }
+
+    // 更新状态徽章
+    const statusBadge = document.getElementById('statusBadge');
+    if (statusBadge) {
+        if (state.status === 'waiting') statusBadge.textContent = '等待中';
+        else if (state.status === 'playing') statusBadge.textContent = '游戏中';
+        else statusBadge.textContent = '已结束';
+    }
+
+    // 显示开始按钮（房主专用）
+    const existingStartBtn = document.getElementById('startBtnArea');
+    if (state.status === 'waiting' && state.host === playerName && state.players.length >= 2) {
+        if (!existingStartBtn) {
+            const startDiv = document.createElement('div');
+            startDiv.id = 'startBtnArea';
+            startDiv.style.textAlign = 'center';
+            startDiv.style.margin = '10px 0';
+            startDiv.innerHTML = '<button onclick="startGame()" class="btn-success" style="font-size:16px; padding:12px 24px;">开始游戏</button>';
+            const taskArea = document.getElementById('taskArea');
+            if (taskArea) taskArea.parentNode.insertBefore(startDiv, taskArea);
+        }
+    } else if (existingStartBtn) {
+        existingStartBtn.remove();
+    }
+
+    // 游戏进行中的UI
+    const taskArea = document.getElementById('taskArea');
+    const actionArea = document.getElementById('actionArea');
+    const guessArea = document.getElementById('guessArea');
+    const lastSubmitArea = document.getElementById('lastSubmitArea');
+
+    if (state.status === 'playing') {
+        const isMyTurn = state.is_my_turn;
+
+        // ========== 显示当前任务 ==========
+        if (taskArea) {
+            if (isMyTurn) {
+                // 当前玩家：显示具体任务
+                const isLastRound = (state.chain.length + 1) >= state.total_rounds;
+                const taskDesc = state.current_task === 'draw' ? '画图阶段' : '猜图阶段';
+                const finalHint = isLastRound && state.current_task === 'guess' ? '（最终回合）' : '';
+                taskArea.innerHTML = `
+                    <div class="task-card">
+                        <div class="task-label">你的回合 · ${taskDesc}${finalHint}</div>
+                        <div class="task-content">${state.current_prompt || '等待中...'}</div>
+                    </div>
+                `;
+            } else {
+                // 其他玩家：只显示等待
+                taskArea.innerHTML = `
+                    <div class="task-card">
+                        <div class="task-label">游戏中</div>
+                        <div class="task-content">等待其他玩家...</div>
+                    </div>
+                `;
+            }
+        }
+
+        // ========== 显示上一个人的提交（只有轮到的人能看到） ==========
+        if (lastSubmitArea) {
+            if (isMyTurn && state.last_item && state.last_item.author !== playerName) {
+                // 只有轮到的人，且上一个人不是自己，才显示上一个人的内容
+                let lastHtml = '';
+                if (state.last_item.type === 'draw') {
+                    const icons = state.last_item.content || [];
+                    lastHtml = `<div class="last-submit">
+                        <div class="last-submit-title">上一个人画的图标：</div>
+                        <div class="last-submit-icons">${icons.map(ic => `<img src="${getImageUrl(ic.file)}" title="${ic.label}">`).join('')}</div>
+                    </div>`;
+                } else if (state.last_item.type === 'guess') {
+                    lastHtml = `<div class="last-submit">
+                        <div class="last-submit-title">上一个人猜的内容：</div>
+                        <div class="last-submit-content">「${escapeHtml(state.last_item.content)}」</div>
+                    </div>`;
+                }
+                lastSubmitArea.innerHTML = lastHtml;
+                lastSubmitArea.style.display = 'block';
+            } else {
+                lastSubmitArea.style.display = 'none';
+            }
+        }
+
+        // ========== 显示操作区 ==========
+        if (state.current_task === 'draw' && state.is_my_turn) {
+            if (actionArea) actionArea.style.display = 'block';
+            if (guessArea) guessArea.style.display = 'none';
+            renderCategories();
+            renderIconGrid();
+        } else if (state.current_task === 'guess' && state.is_my_turn) {
+            if (actionArea) actionArea.style.display = 'none';
+            if (guessArea) guessArea.style.display = 'block';
+            const guessInput = document.getElementById('guessInput');
+            if (guessInput && savedGuess) {
+                guessInput.value = savedGuess;
+            }
+            if (guessInput) {
+                guessInput.oninput = (e) => { savedGuess = e.target.value; };
+            }
+        } else {
+            if (actionArea) actionArea.style.display = 'none';
+            if (guessArea) guessArea.style.display = 'none';
+        }
+    } else {
+        if (taskArea) taskArea.innerHTML = '';
+        if (actionArea) actionArea.style.display = 'none';
+        if (guessArea) guessArea.style.display = 'none';
+        if (lastSubmitArea) lastSubmitArea.style.display = 'none';
+    }
+}
+async function startGame() {
+    const resp = await fetch(`${API_BASE}/api/room/start`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ room_code: roomCode, player_id: playerId })
+    });
+    const data = await resp.json();
+    if (!data.success) {
+        alert(data.error || '开始失败');
+    } else {
+        await pollRoom();
+    }
+}
+
+function showResult(state) {
+    const original = state.original_prompt || '?';
+    let finalGuess = '?';
+    for (let i = state.chain.length - 1; i >= 0; i--) {
+        if (state.chain[i].type === 'guess') {
+            finalGuess = state.chain[i].content;
+            break;
+        }
+    }
+
+    const similarity = state.final_score ? Math.round(state.final_score * 100) : 0;
+
+    // 构建完整链条HTML
+    let chainHtml = '';
+    for (let i = 1; i < state.chain.length; i++) {
+        const item = state.chain[i];
+        if (item.type === 'draw') {
+            const icons = item.content || [];
+            chainHtml += `
+                <div class="result-chain-item">
+                    <div class="result-chain-author">${escapeHtml(item.author)} 画图</div>
+                    <div class="result-chain-icons">${icons.map(ic => `<img src="${getImageUrl(ic.file)}" title="${ic.label}">`).join('')}</div>
+                </div>
+            `;
+        } else if (item.type === 'guess') {
+            chainHtml += `
+                <div class="result-chain-item">
+                    <div class="result-chain-author">${escapeHtml(item.author)} 猜图</div>
+                    <div class="result-chain-content">「${escapeHtml(item.content)}」</div>
+                </div>
+            `;
+        }
+    }
+
+    const overlay = document.createElement('div');
+    overlay.className = 'result-overlay';
+    overlay.innerHTML = `
+        <div class="result-card">
+            <div class="result-title">游戏结束</div>
+            <div class="result-compare">
+                <div style="margin-bottom:12px;">原始词语</div>
+                <div class="result-original">${escapeHtml(original)}</div>
+                <div style="margin:20px 0;">传话后</div>
+                <div class="result-final">${escapeHtml(finalGuess)}</div>
+                <div class="result-similarity">语义相似度：<span>${similarity}%</span></div>
+            </div>
+            <div class="result-chain">
+                <div style="font-weight:bold; margin-bottom:10px;">完整接龙链条</div>
+                ${chainHtml}
+            </div>
+            <div style="text-align:center; margin-top:24px;">
+                <button onclick="closeResultAndLeave()" style="background:var(--chain); padding:12px 28px;">返回大厅</button>
+            </div>
+        </div>
+    `;
+
+    document.body.appendChild(overlay);
+}
+
+function closeResultAndLeave() {
+    const overlay = document.querySelector('.result-overlay');
+    if (overlay) overlay.remove();
+    leaveRoom();
+}
+
+function escapeHtml(str) {
+    if (!str) return '';
+    return String(str).replace(/[&<>]/g, m => m === '&' ? '&amp;' : m === '<' ? '&lt;' : '&gt;');
+}
+
+// 启动
+init();
+</script>
+</body>
+</html>

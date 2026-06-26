@@ -1,0 +1,836 @@
+
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lexicon Café</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&family=Noto+Serif+SC:wght@300;400;600&family=DM+Mono:ital,wght@0,300;1,300&display=swap');
+
+:root {
+  --bg: #2e1e0e;
+  --gold: #c09040;
+  --gold2: #ddb86a;
+  --gold3: #eecf88;
+  --cream: #eddec8;
+  --cream2: #dfd0b8;
+  --paper: #f0e8d8;
+  --paper-dark: #e6dece;
+  --paper-line: #ccc3aa;
+  --ink: #22130a;
+  --muted: rgba(150,96,45,0.52);
+  --border: rgba(160,108,48,0.24);
+  --border2: rgba(180,128,58,0.38);
+  --shadow: rgba(0,0,0,0.42);
+  --glow: rgba(192,144,64,0.12);
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html, body { height: 100%; font-family: 'Noto Serif SC', serif; background: var(--bg); color: var(--cream); overflow: hidden; }
+
+.bg-layer {
+  position: fixed; inset: 0; z-index: 0;
+  background: url('coffee.jpg') center/cover no-repeat;
+  filter: brightness(0.88) saturate(0.78);
+}
+.bg-overlay {
+  position: fixed; inset: 0; z-index: 0;
+  background: linear-gradient(
+    160deg,
+    rgba(18,8,2,0.30) 0%,
+    rgba(24,12,4,0.20) 50%,
+    rgba(18,8,2,0.28) 100%
+  );
+}
+.bg-texture {
+  position: fixed; inset: 0; z-index: 0; pointer-events: none;
+  background-image:
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)' opacity='0.03'/%3E%3C/svg%3E");
+  opacity: 0.18;
+}
+
+#app { display: flex; flex-direction: column; height: 100vh; position: relative; }
+
+/* ── 顶栏 ── */
+.hdr {
+  padding: 0;
+  background: rgba(16,8,2,0.86);
+  border-bottom: 1px solid rgba(160,108,40,0.35);
+  backdrop-filter: blur(30px) saturate(1.3);
+  -webkit-backdrop-filter: blur(30px) saturate(1.3);
+  display: flex; align-items: stretch; justify-content: center;
+  flex-shrink: 0; z-index: 10; position: relative;
+  overflow: hidden;
+}
+
+/* 顶部金线 */
+.hdr::before {
+  content: '';
+  position: absolute; top: 0; left: 0; right: 0; height: 1.5px;
+  background: linear-gradient(90deg,
+    transparent 0%,
+    rgba(192,144,64,0.0) 8%,
+    rgba(192,144,64,0.55) 30%,
+    rgba(221,184,106,0.95) 50%,
+    rgba(192,144,64,0.55) 70%,
+    rgba(192,144,64,0.0) 92%,
+    transparent 100%
+  );
+}
+/* 底部细金线 */
+.hdr::after {
+  content: '';
+  position: absolute; bottom: 0; left: 0; right: 0; height: 1px;
+  background: linear-gradient(90deg,
+    transparent 0%,
+    rgba(192,144,64,0.0) 18%,
+    rgba(192,144,64,0.38) 42%,
+    rgba(221,184,106,0.58) 50%,
+    rgba(192,144,64,0.38) 58%,
+    rgba(192,144,64,0.0) 82%,
+    transparent 100%
+  );
+}
+
+.hdr-center {
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
+  padding: 11px 64px 10px;
+  position: relative;
+}
+
+/* 标题左右菱形花饰 */
+.hdr-center::before,
+.hdr-center::after {
+  content: '◆';
+  position: absolute; top: 50%; transform: translateY(-50%);
+  font-size: 6px; color: rgba(192,144,64,0.45);
+}
+.hdr-center::before { right: 18px; }
+.hdr-center::after  { left: 18px; }
+
+.hdr-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 20px;
+  font-weight: 600;
+  font-style: italic;
+  letter-spacing: 0.36em;
+  color: #e0b86a;
+  text-shadow:
+    0 0 32px rgba(192,144,64,0.38),
+    0 0 8px rgba(192,144,64,0.18),
+    0 1px 3px rgba(0,0,0,0.6);
+  text-transform: uppercase;
+  line-height: 1;
+}
+
+/* 标题下横线 + 副标题 */
+.hdr-rule {
+  display: flex; align-items: center; gap: 7px; margin-top: 5px; width: 100%;
+}
+.hdr-rule::before, .hdr-rule::after {
+  content: ''; flex: 1; height: 0.5px;
+  background: linear-gradient(90deg, transparent, rgba(192,144,64,0.42));
+}
+.hdr-rule::after {
+  background: linear-gradient(90deg, rgba(192,144,64,0.42), transparent);
+}
+.hdr-rule-txt {
+  font-family: 'DM Mono', monospace;
+  font-size: 8px;
+  letter-spacing: 0.40em;
+  color: rgba(192,144,64,0.50);
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+/* ── 角落装饰 ── */
+.corner-ornament {
+  position: fixed; width: 72px; height: 72px; z-index: 1; pointer-events: none; opacity: 0.14;
+}
+.corner-tl { top: 0; left: 0; }
+.corner-tr { top: 0; right: 0; transform: scaleX(-1); }
+.corner-bl { bottom: 0; left: 0; transform: scaleY(-1); }
+.corner-br { bottom: 0; right: 0; transform: scale(-1); }
+
+/* ── 聊天区域 ── */
+.chat-area {
+  flex: 1; overflow-y: auto; padding: 24px 28px 18px;
+  display: flex; flex-direction: column; gap: 22px; min-height: 0;
+  position: relative; z-index: 5;
+}
+.chat-area::-webkit-scrollbar { width: 4px; }
+.chat-area::-webkit-scrollbar-track { background: transparent; }
+.chat-area::-webkit-scrollbar-thumb { background: rgba(192,144,64,0.16); border-radius: 2px; }
+
+/* ── 消息行 ── */
+.msg-row {
+  display: flex; gap: 12px; max-width: 86%;
+  animation: fadeUp 0.3s cubic-bezier(0.16,1,0.3,1);
+}
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(12px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+.msg-row.user { align-self: flex-end; flex-direction: row-reverse; }
+.msg-row.ai   { align-self: flex-start; }
+
+/* 头像 */
+.av {
+  width: 44px; height: 44px; border-radius: 50%; flex-shrink: 0;
+  overflow: hidden; margin-top: 4px;
+  box-shadow: 0 2px 10px var(--shadow);
+}
+.av img { width: 100%; height: 100%; object-fit: cover; }
+.av.ai   { border: 1.5px solid rgba(192,144,64,0.42); box-shadow: 0 0 10px rgba(192,144,64,0.14); }
+.av.user { border: 1.5px solid rgba(168,122,68,0.36); }
+
+/* ── AI 气泡 ── */
+.msg-row.ai .bubble {
+  position: relative;
+  padding: 16px 18px 14px;
+  background: rgba(238,228,208,0.94);
+  border: 1px solid rgba(168,124,68,0.30);
+  border-radius: 2px 14px 14px 14px;
+  color: #1a0c03;
+  box-shadow:
+    3px 5px 24px rgba(0,0,0,0.30),
+    inset 0 1px 0 rgba(255,252,240,0.65),
+    inset 0 -1px 0 rgba(150,100,40,0.05);
+}
+.msg-row.ai .bubble::before {
+  content: '';
+  position: absolute; top: 6px; bottom: 6px; left: 0; width: 3px;
+  background: linear-gradient(180deg,
+    rgba(148,96,38,0.0) 0%,
+    rgba(148,96,38,0.22) 20%,
+    rgba(148,96,38,0.14) 80%,
+    rgba(148,96,38,0.0) 100%
+  );
+  border-radius: 0 0 0 2px;
+}
+.msg-row.ai .bubble::after {
+  content: '';
+  position: absolute; inset: 0; border-radius: inherit; pointer-events: none;
+  background-image: repeating-linear-gradient(
+    transparent,
+    transparent 27px,
+    rgba(148,104,45,0.052) 27px,
+    rgba(148,104,45,0.052) 28px
+  );
+  background-position: 0 14px;
+}
+
+/* ── 用户气泡 ── */
+.msg-row.user .bubble {
+  position: relative;
+  padding: 14px 16px 12px;
+  background: rgba(225,210,184,0.90);
+  border: 1px solid rgba(168,116,56,0.34);
+  border-radius: 14px 2px 14px 14px;
+  color: #1a0c03;
+  box-shadow:
+    -3px 5px 22px rgba(0,0,0,0.26),
+    inset 0 1px 0 rgba(255,248,228,0.42);
+}
+.msg-row.user .bubble::before {
+  content: '';
+  position: absolute; top: 6px; bottom: 6px; right: 0; width: 3px;
+  background: linear-gradient(180deg,
+    rgba(192,144,64,0.0) 0%,
+    rgba(192,144,64,0.26) 30%,
+    rgba(192,144,64,0.16) 70%,
+    rgba(192,144,64,0.0) 100%
+  );
+  border-radius: 0 2px 2px 0;
+}
+
+/* ── 气泡内图标行 ── */
+.bbl-icons {
+  display: flex; flex-wrap: wrap; gap: 8px; align-items: flex-end; margin-bottom: 4px;
+}
+.bbl-ic { display: flex; flex-direction: column; align-items: center; gap: 3px; }
+.msg-row.ai .bbl-ic img {
+  width: 46px; height: 46px; object-fit: contain; border-radius: 6px;
+  background: rgba(0,0,0,0.03);
+  border: 1px solid rgba(148,104,45,0.14);
+  padding: 4px;
+}
+.msg-row.user .bbl-ic img {
+  width: 46px; height: 46px; object-fit: contain; border-radius: 6px;
+  background: rgba(240,228,205,0.42);
+  border: 1px solid rgba(168,116,48,0.18);
+  padding: 4px;
+}
+.msg-row.ai .bbl-ic .lbl {
+  font-size: 9px; font-family: 'DM Mono', monospace;
+  color: rgba(88,52,16,0.58); max-width: 46px;
+  overflow: hidden; text-overflow: ellipsis; white-space: nowrap; text-align: center;
+}
+.msg-row.user .bbl-ic .lbl {
+  font-size: 9px; font-family: 'DM Mono', monospace;
+  color: rgba(88,52,16,0.52); max-width: 46px;
+  overflow: hidden; text-overflow: ellipsis; white-space: nowrap; text-align: center;
+}
+
+/* 气泡文字 */
+.bbl-text {
+  position: relative; z-index: 1;
+  margin-top: 10px; padding-top: 10px;
+  border-top: 1px solid rgba(148,104,45,0.15);
+  font-size: 15px; line-height: 2.0;
+  font-family: 'Noto Serif SC', serif; font-weight: 400;
+  color: #1e0e04; letter-spacing: 0.02em;
+}
+.bbl-text::first-letter {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.6em; font-weight: 600;
+  color: var(--gold); float: left; line-height: 1; margin-right: 3px; margin-top: 2px;
+}
+.msg-row.user .bbl-text { color: #1e0e04; border-top-color: rgba(148,104,45,0.16); }
+.msg-row.user .bbl-text::first-letter { color: #7e4010; }
+
+/* 思考动画 */
+.thinking { display: flex; gap: 5px; align-items: center; padding: 5px 2px; }
+.thinking span {
+  width: 7px; height: 7px; background: var(--gold); border-radius: 50%;
+  animation: pulse 1.3s infinite;
+}
+.thinking span:nth-child(2) { animation-delay: 0.2s; background: var(--gold2); }
+.thinking span:nth-child(3) { animation-delay: 0.4s; }
+@keyframes pulse {
+  0%,80%,100% { transform: scale(0.6); opacity: 0.2; }
+  40%          { transform: scale(1); opacity: 1; }
+}
+
+/* 欢迎语 */
+.welcome { text-align: center; padding: 32px 24px 10px; }
+.welcome-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 26px; font-weight: 300; font-style: italic;
+  color: var(--gold3); letter-spacing: 0.1em;
+  text-shadow: 0 2px 18px rgba(192,144,64,0.32);
+  margin-bottom: 12px;
+}
+.welcome p {
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic; font-size: 16px;
+  color: rgba(238,218,185,0.76); line-height: 2.1;
+  text-shadow: 0 2px 10px rgba(0,0,0,0.55);
+}
+.welcome-rule { width: 140px; margin: 16px auto 0; display: flex; align-items: center; gap: 8px; }
+.welcome-rule::before, .welcome-rule::after {
+  content: ''; flex: 1; height: 1px;
+  background: linear-gradient(90deg, transparent, var(--gold)); opacity: 0.3;
+}
+.welcome-rule::after { background: linear-gradient(90deg, var(--gold), transparent); }
+.welcome-rule-dot { width: 4px; height: 4px; background: var(--gold); border-radius: 50%; opacity: 0.44; flex-shrink: 0; }
+
+/* ══════════════════════════════════
+   底部输入区 — 深色咖啡桌面
+══════════════════════════════════ */
+.bottom {
+  flex-shrink: 0;
+  background: rgba(14,7,2,0.88);
+  border-top: 1px solid rgba(148,100,35,0.32);
+  backdrop-filter: blur(32px) saturate(1.15);
+  -webkit-backdrop-filter: blur(32px) saturate(1.15);
+  display: flex; flex-direction: column; max-height: 50vh; z-index: 10; position: relative;
+}
+.bottom::before {
+  content: '';
+  position: absolute; top: 0; left: 24px; right: 24px; height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(221,184,106,0.45), transparent);
+}
+
+/* 输入行 */
+.compose-row {
+  padding: 10px 14px 9px;
+  display: flex; align-items: center; gap: 8px;
+  border-bottom: 1px solid rgba(148,100,35,0.13);
+}
+.chips-wrap {
+  flex: 1; min-height: 42px; max-height: 70px;
+  background: rgba(26,12,3,0.60);
+  border: 1px solid rgba(160,108,42,0.24);
+  border-radius: 8px; padding: 7px 11px;
+  display: flex; flex-wrap: wrap; gap: 5px; align-items: center;
+  overflow-y: auto; cursor: default; transition: border-color 0.2s;
+}
+.chips-wrap:hover { border-color: rgba(192,144,64,0.44); }
+.chips-wrap::-webkit-scrollbar { width: 0; }
+.chip {
+  display: inline-flex; align-items: center; gap: 4px;
+  background: rgba(192,144,64,0.13);
+  border: 1px solid rgba(192,144,64,0.34);
+  border-radius: 5px; padding: 2px 6px 2px 5px;
+  animation: popIn 0.15s cubic-bezier(0.34,1.56,0.64,1);
+}
+@keyframes popIn {
+  from { transform: scale(0.7); opacity: 0; }
+  to   { transform: scale(1); opacity: 1; }
+}
+.chip img { width: 18px; height: 18px; object-fit: contain; }
+.chip-txt { font-size: 10px; font-family: 'DM Mono', monospace; color: #d0a862; max-width: 56px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.chip-x { font-size: 12px; color: rgba(192,144,64,0.32); cursor: pointer; margin-left: 1px; transition: color 0.15s; }
+.chip-x:hover { color: #c25038; }
+.ph { font-size: 11px; color: rgba(168,118,55,0.32); font-family: 'DM Mono', monospace; font-style: italic; user-select: none; }
+
+.btn-send {
+  padding: 10px 22px;
+  background: linear-gradient(135deg, #a87228 0%, #6a3410 100%);
+  border: 1px solid rgba(160,100,34,0.52);
+  border-radius: 7px; color: #f2dca8;
+  font-family: 'Noto Serif SC', serif; font-size: 14px; font-weight: 400; letter-spacing: 0.06em;
+  cursor: pointer; white-space: nowrap; transition: all 0.18s;
+  box-shadow: 0 2px 12px rgba(100,55,12,0.38);
+  text-shadow: 0 1px 4px rgba(0,0,0,0.38);
+}
+.btn-send:hover:not(:disabled) { filter: brightness(1.14); transform: translateY(-1px); box-shadow: 0 4px 16px rgba(100,55,12,0.48); }
+.btn-send:disabled { opacity: 0.28; cursor: not-allowed; transform: none; }
+.btn-clr {
+  padding: 10px 12px; background: transparent;
+  border: 1px solid rgba(148,100,35,0.24); border-radius: 7px;
+  color: rgba(192,148,72,0.52); font-family: 'DM Mono', monospace; font-size: 10px;
+  cursor: pointer; transition: all 0.15s; white-space: nowrap;
+}
+.btn-clr:hover { border-color: rgba(148,100,35,0.48); color: #c09040; }
+
+/* 分类标签 */
+.cat-row {
+  padding: 6px 12px 5px; display: flex; gap: 4px;
+  overflow-x: auto; border-bottom: 1px solid rgba(148,100,35,0.10);
+  flex-shrink: 0; align-items: center;
+}
+.cat-row::-webkit-scrollbar { height: 0; }
+.cat-btn {
+  padding: 5px 13px; border-radius: 3px; font-size: 12px;
+  font-family: 'Noto Serif SC', serif;
+  cursor: pointer; border: 1px solid rgba(148,100,35,0.20);
+  color: rgba(210,165,82,0.62); background: transparent; white-space: nowrap; transition: all 0.15s;
+  letter-spacing: 0.02em;
+}
+.cat-btn:hover { border-color: #b88838; color: #d4a848; background: rgba(192,144,64,0.08); }
+.cat-btn.active {
+  background: rgba(192,144,64,0.16); border-color: rgba(168,108,38,0.64); color: #ddb86a;
+  box-shadow: inset 0 1px 0 rgba(255,255,255,0.05);
+}
+
+/* 搜索 — 去掉 emoji，用纯文本标签 */
+.search-row {
+  padding: 6px 14px 5px; border-bottom: 1px solid rgba(148,100,35,0.08);
+  flex-shrink: 0; display: flex; align-items: center; gap: 10px;
+}
+.search-label {
+  font-size: 10px; font-family: 'DM Mono', monospace;
+  color: rgba(192,144,64,0.38); flex-shrink: 0; letter-spacing: 0.1em;
+}
+.search-row input {
+  flex: 1; padding: 5px 13px;
+  background: rgba(18,8,2,0.48); border: 1px solid rgba(148,100,35,0.20);
+  border-radius: 14px; color: #dcc07a; font-family: 'DM Mono', monospace;
+  font-size: 11px; outline: none; transition: all 0.2s;
+}
+.search-row input::placeholder { color: rgba(168,118,50,0.26); }
+.search-row input:focus { border-color: rgba(192,144,64,0.46); background: rgba(22,10,2,0.58); }
+
+/* 图标网格 */
+.icon-grid {
+  flex: 1; overflow-y: auto; padding: 8px 12px;
+  display: grid; grid-template-columns: repeat(auto-fill, minmax(74px, 1fr));
+  gap: 6px; align-content: start;
+}
+.icon-grid::-webkit-scrollbar { width: 4px; }
+.icon-grid::-webkit-scrollbar-thumb { background: rgba(160,108,42,0.16); border-radius: 2px; }
+
+/* 图标卡片 — 黑底金边 */
+.ic-card {
+  aspect-ratio: 1;
+  background: rgba(22,10,2,0.72);
+  border: 1px solid rgba(148,100,35,0.22);
+  border-radius: 9px;
+  cursor: pointer; display: flex; flex-direction: column;
+  align-items: center; justify-content: center;
+  padding: 7px 5px 6px; gap: 4px; transition: all 0.15s; position: relative;
+}
+.ic-card:hover {
+  background: rgba(38,18,4,0.92);
+  border-color: rgba(192,144,64,0.52);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 14px rgba(0,0,0,0.38), 0 0 0 1px rgba(192,144,64,0.12);
+}
+.ic-card:active { transform: scale(0.92); }
+.ic-card img {
+  width: 58%; height: 50%; object-fit: contain;
+  filter: brightness(0.88) saturate(0.80);
+}
+.ic-card .ic-lb {
+  font-size: 11px; font-family: 'Noto Serif SC', serif;
+  color: rgba(210,162,72,0.72); text-align: center;
+  overflow: hidden; text-overflow: ellipsis; white-space: nowrap;
+  width: 100%; padding: 0 3px; line-height: 1.3;
+}
+.ic-card .no-img {
+  width: 64%; height: 54%; display: none; align-items: center; justify-content: center;
+  font-size: 8px; font-family: 'DM Mono', monospace;
+  color: rgba(168,118,45,0.24); text-align: center; line-height: 1.3;
+}
+.ic-card::after {
+  content: attr(data-tip); position: absolute; bottom: calc(100% + 6px);
+  left: 50%; transform: translateX(-50%);
+  background: rgba(14,6,1,0.97); color: var(--gold2); font-size: 10px;
+  font-family: 'DM Mono', monospace; padding: 4px 10px; border-radius: 4px;
+  white-space: nowrap; border: 1px solid rgba(160,108,38,0.32); pointer-events: none;
+  opacity: 0; transition: opacity 0.14s; z-index: 20;
+}
+.ic-card:hover::after { opacity: 1; }
+.empty-msg {
+  grid-column: 1/-1; text-align: center; padding: 24px;
+  font-family: 'DM Mono', monospace; font-size: 11px; color: rgba(168,118,45,0.28);
+}
+
+/* 加载条 */
+#lbar {
+  position: fixed; top: 0; left: 0; right: 0; height: 2px; display: none;
+  background: linear-gradient(90deg, transparent 0%, var(--gold2) 50%, transparent 100%);
+  animation: sweep 1.4s linear infinite; z-index: 1000;
+}
+@keyframes sweep { 0%{transform:translateX(-100%)} 100%{transform:translateX(100%)} }
+
+.toast {
+  position: fixed; bottom: 24px; right: 24px;
+  background: rgba(16,7,1,0.97); border: 1px solid rgba(160,82,42,0.36);
+  color: #cc9268; padding: 10px 16px; border-radius: 8px;
+  font-family: 'DM Mono', monospace; font-size: 11px; z-index: 999;
+  animation: fadeUp 0.24s ease-out; max-width: 340px; line-height: 1.5;
+  box-shadow: 0 4px 18px rgba(0,0,0,0.45);
+}
+
+</style>
+</head>
+<body>
+<div style="position:fixed; top:15px; left:15px; z-index:9999;">
+  <button onclick="backToWorld()" style="background:rgba(0,0,0,0.7); border:1px solid #c09040; color:#c09040; padding:8px 16px; border-radius:30px; cursor:pointer; font-family:monospace; font-size:12px; backdrop-filter:blur(5px);">
+    ← 返回地书世界
+  </button>
+</div>
+
+<script>
+function backToWorld() {
+  // 保存当前位置（从主城进入时的位置已经在 sessionStorage 中）
+  window.location.href = '../index.html';
+}
+</script>
+<div id="lbar"></div>
+<div class="bg-layer"></div>
+<div class="bg-overlay"></div>
+<div class="bg-texture"></div>
+
+<!-- 角落装饰 -->
+<div class="corner-ornament corner-tl">
+<svg viewBox="0 0 72 72" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <path d="M2 2 L2 32 M2 2 L32 2" stroke="#c9922a" stroke-width="1.5"/>
+  <path d="M2 2 L20 20" stroke="#c9922a" stroke-width="0.7" stroke-dasharray="2,3" opacity="0.5"/>
+  <circle cx="2" cy="2" r="2.5" fill="#c9922a"/>
+  <circle cx="32" cy="2" r="1.2" fill="#c9922a" opacity="0.45"/>
+  <circle cx="2" cy="32" r="1.2" fill="#c9922a" opacity="0.45"/>
+  <path d="M8 8 Q14 2 20 8 Q26 14 34 8" stroke="#c9922a" stroke-width="0.6" fill="none" opacity="0.35"/>
+</svg>
+</div>
+<div class="corner-ornament corner-tr">
+<svg viewBox="0 0 72 72" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <path d="M2 2 L2 32 M2 2 L32 2" stroke="#c9922a" stroke-width="1.5"/>
+  <path d="M2 2 L20 20" stroke="#c9922a" stroke-width="0.7" stroke-dasharray="2,3" opacity="0.5"/>
+  <circle cx="2" cy="2" r="2.5" fill="#c9922a"/>
+  <circle cx="32" cy="2" r="1.2" fill="#c9922a" opacity="0.45"/>
+  <circle cx="2" cy="32" r="1.2" fill="#c9922a" opacity="0.45"/>
+</svg>
+</div>
+<div class="corner-ornament corner-bl">
+<svg viewBox="0 0 72 72" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <path d="M2 2 L2 32 M2 2 L32 2" stroke="#c9922a" stroke-width="1.5"/>
+  <circle cx="2" cy="2" r="2.5" fill="#c9922a"/>
+</svg>
+</div>
+<div class="corner-ornament corner-br">
+<svg viewBox="0 0 72 72" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <path d="M2 2 L2 32 M2 2 L32 2" stroke="#c9922a" stroke-width="1.5"/>
+  <circle cx="2" cy="2" r="2.5" fill="#c9922a"/>
+</svg>
+</div>
+
+<!-- ══ 主体 ══ -->
+<div id="app">
+  <div class="hdr">
+    <div class="hdr-center">
+      <div class="hdr-title">Lexicon Café</div>
+      <div class="hdr-subtitle">Pictographic Language Space</div>
+    </div>
+  </div>
+
+  <div class="chat-area" id="chatArea">
+    <div class="welcome">
+      <div class="welcome-title">欢迎来到 Lexicon Café</div>
+      <p>从下方图库选取图标，用图片拼出你的话<br><em>AI 会读懂你的视觉语言，并用图标回应你</em></p>
+      <div class="welcome-rule"><div class="welcome-rule-dot"></div></div>
+    </div>
+  </div>
+
+  <div class="bottom">
+    <div class="compose-row">
+      <div class="chips-wrap" id="chipsWrap">
+        <span class="ph" id="ph">选择图标，拼出你的消息……</span>
+      </div>
+      <button class="btn-send" id="sendBtn" onclick="sendMsg()" disabled>发送</button>
+      <button class="btn-clr" onclick="clearCompose()">清空</button>
+    </div>
+    <div class="cat-row" id="catRow"></div>
+    <div class="search-row">
+      <span class="search-label"></span>
+      <input type="text" id="searchInput" placeholder="搜索图标…" oninput="renderGrid()" />
+    </div>
+    <div class="icon-grid" id="iconGrid"></div>
+  </div>
+</div>
+
+<script>
+const API_KEY = localStorage.getItem('DEEPSEEK_API_KEY') || '';
+const IMG_BASE = 'auto_cut_segments/';
+
+const RAW_ICONS = [
+  ['000002','时钟','时间'],['000052','时钟','时间'],['000088','时钟','时间'],['000126','时钟','时间'],['000301','时钟放大','时间'],['000313','沙漏-等待','时间'],['000314','沙漏-减少','时间'],['000315','沙漏-结束','时间'],['000633','时钟','时间'],['000654','时钟','时间'],['000676','时钟','时间'],['000709','时钟','时间'],['000779','截止时间','时间'],['000826','时钟','时间'],['000860','黑色时钟','时间'],['001017','闹钟禁止','时间'],['001254','时钟','时间'],['002300','时钟转','时间'],['002301','截止时间','时间'],['002417','时钟','时间'],['002439','时钟','时间'],['001724','圆形时钟','时间'],['003421','21:00时间牌','时间'],['003422','23:00时间牌','时间'],['003423','23:50时间牌','时间'],['003430','22:00时间牌','时间'],['003431','22:30时间牌','时间'],['003437','35:00时间牌','时间'],['003438','36:30时间牌','时间'],['003444','21:20时间牌','时间'],['003445','22:30时间牌','时间'],['003446','23:50时间牌','时间'],['003452','33:50时间牌','时间'],['003453','34:30时间牌','时间'],['003454','35:50时间牌','时间'],['003455','35:50时间牌','时间'],['004710','时间圆表','时间'],
+  ['000005','行人','人物动作'],['000128','坐下','人物动作'],['000129','站立','人物动作'],['000244','跑步','人物动作'],['000249','跑步','人物动作'],['000253','跑步','人物动作'],['000258','取行李','人物动作'],['000260','奔跑','人物动作'],['000264','奔跑','人物动作'],['000277','跑步','人物动作'],['000286','女性','人物动作'],['000289','奔跑','人物动作'],['000291','奔跑','人物动作'],['000297','坐椅等待','人物动作'],['000299','安检通道','人物动作'],['000307','触摸点击','人物动作'],['000333','开会交流','人物动作'],['000780','睡觉','人物动作'],['000828','眼睛看','人物动作'],['000861','行走前往','人物动作'],['001055','行走','人物动作'],['001080','人物标牌','人物动作'],['001085','行走出口','人物动作'],['001219','行走','人物动作'],['001223','行走','人物动作'],['001405','行走','人物动作'],['001443','站立人物','人物动作'],['001455','坐立人物','人物动作'],['001649','行走','人物动作'],['001664','行走','人物动作'],['001691','行走','人物动作'],['001717','等候人物','人物动作'],['001726','站立','人物动作'],['001727','站立','人物动作'],['001728','多人站立','人物动作'],['001878','行走','人物动作'],['001883','行走','人物动作'],['001884','跑步','人物动作'],['001919','站立人物','人物动作'],['002127','肥胖人物','人物动作'],['002214','下楼梯','人物动作'],['002228','跑步','人物动作'],['002235','上楼梯','人物动作'],['002244','跑步','人物动作'],['002249','跑步','人物动作'],['002264','跑步','人物动作'],['002274','跑步','人物动作'],['002277','跑步','人物动作'],['002286','女性','人物动作'],['002289','跑步','人物动作'],['002291','行走','人物动作'],['002297','坐椅等待','人物动作'],['002299','站立操作','人物动作'],['002307','触摸点击','人物动作'],['002358','取物人','人物动作'],['002400','男人站立','人物动作'],['002405','男人站立','人物动作'],['002406','男人站立','人物动作'],['002407','男人站立','人物动作'],['002408','男人站立','人物动作'],['002431','男人站立','人物动作'],['002434','男人站立','人物动作'],['002449','男人站立','人物动作'],['002665','男人站立','人物动作'],['002668','男人站立','人物动作'],['002690','男人站立','人物动作'],['002705','男女二人','人物动作'],['002707','女性站立','人物动作'],['002709','男人站立','人物动作'],['002712','行走','人物动作'],['002714','男人站立','人物动作'],['002717','男人站立','人物动作'],['002725','男女牵手','人物动作'],['002733','男女站立','人物动作'],['003119','男人站立','人物动作'],['003123','男人站立','人物动作'],['003125','男人站立','人物动作'],['003142','男人站立','人物动作'],['003159','男女二人','人物动作'],['003700','男人站立','人物动作'],['003701','男人站立','人物动作'],['003704','男人站立','人物动作'],['003706','行走','人物动作'],['003709','行走','人物动作'],['003800','男人站立','人物动作'],['003838','人物交流','人物动作'],['003830','行走','人物动作'],['003844','男人站立','人物动作'],['003861','女性头像','人物动作'],['003862','女性头像','人物动作'],['003863','女性头像','人物动作'],['003864','女性头像','人物动作'],['003865','女性头像','人物动作'],['003866','女性头像','人物动作'],['003867','女性头像','人物动作'],['003868','女性头像','人物动作'],['003869','女性头像','人物动作'],['004497','男人站立','人物动作'],['004537','男人站立','人物动作'],['004580','男人站立','人物动作'],['004585','男人站立','人物动作'],['004627','心形','人物动作'],['004637','女性','人物动作'],['004642','女性','人物动作'],['004657','男人站立','人物动作'],['004677','女性','人物动作'],['004683','女性','人物动作'],['004697','女性','人物动作'],['004714','人物肖像','人物动作'],['004727','男人站立','人物动作'],['004737','女性站立','人物动作'],['004738','男人站立','人物动作'],['004742','女性','人物动作'],['004831','女性站立','人物动作'],['005281','男人站立','人物动作'],['005291','人物表格','人物动作'],['005297','男人站立','人物动作'],['005298','男人站立','人物动作'],['005318','人物行走','人物动作'],['005729','行走','人物动作'],['005766','行走','人物动作'],['005773','行走','人物动作'],['005785','行走','人物动作'],['005799','男人站立','人物动作'],
+  ['000053','房子家','地点场所'],['000057','楼房建筑','地点场所'],['000127','咖啡馆','地点场所'],['000246','紧急出口','地点场所'],['000272','紧急出口','地点场所'],['000293','门出口','地点场所'],['000295','办公桌','地点场所'],['000829','室内外','地点场所'],['001024','窗格','地点场所'],['001038','卧室','地点场所'],['001046','卧室','地点场所'],['001052','工作台','地点场所'],['001058','房屋','地点场所'],['001060','出口标志','地点场所'],['001226','信箱房子','地点场所'],['001309','门','地点场所'],['001408','冰箱','地点场所'],['001414','冰箱','地点场所'],['001648','出口','地点场所'],['001655','锁孔','地点场所'],['001657','解锁','地点场所'],['001659','锁定','地点场所'],['001666','城市地图','地点场所'],['001680','三角警告','地点场所'],['001687','地铁','地点场所'],['001693','地铁','地点场所'],['002246','紧急出口','地点场所'],['002272','紧急出口','地点场所'],['002293','门','地点场所'],['002295','工作台','地点场所'],['003399','房产','地点场所'],['003400','房产','地点场所'],['003623','房子','地点场所'],['003624','房产','地点场所'],['004966','房子','地点场所'],['005058','房子','地点场所'],['005813','房子Chanel','地点场所'],['005774','文本表格','地点场所'],['005786','文本表格','地点场所'],
+  ['000055','高铁列车','交通出行'],['000827','卧铺','交通出行'],['001038','卧铺','交通出行'],['001681','火车','交通出行'],['001683','公共汽车','交通出行'],['001692','楼梯下行','交通出行'],['001870','高铁','交通出行'],['001871','列车','交通出行'],['001892','高铁','交通出行'],['001934','高铁','交通出行'],['002227','下楼梯','交通出行'],['003194','救护车','交通出行'],['003374','警车','交通出行'],['003390','牛奔跑','交通出行'],['003654','丰田车标','交通出行'],['003655','轿车','交通出行'],['004505','人与车','交通出行'],['004524','轿车','交通出行'],['004549','溜冰鞋','交通出行'],['004550','溜冰鞋','交通出行'],['004551','自行车','交通出行'],['004552','游泳','交通出行'],
+  ['000004','前进','方向箭头'],['000054','前进','方向箭头'],['000056','前进','方向箭头'],['000092','转向','方向箭头'],['000245','前进','方向箭头'],['000250','转弯','方向箭头'],['000251','向下转','方向箭头'],['000252','前进','方向箭头'],['000254','弯曲前进','方向箭头'],['000263','弯曲前行','方向箭头'],['000269','前进','方向箭头'],['000271','前进','方向箭头'],['000273','前进','方向箭头'],['000290','转弯继续','方向箭头'],['000292','前进','方向箭头'],['000294','前进','方向箭头'],['000862','前进','方向箭头'],['001011','前进','方向箭头'],['001023','前进','方向箭头'],['001037','折返','方向箭头'],['001049','前进','方向箭头'],['001054','前进','方向箭头'],['001089','前进','方向箭头'],['001090','前进','方向箭头'],['001271','前进','方向箭头'],['001279','前进','方向箭头'],['001285','向下','方向箭头'],['001313','前进','方向箭头'],['001434','前进','方向箭头'],['001444','前进小','方向箭头'],['001449','前进','方向箭头'],['001458','前进','方向箭头'],['001713','前进','方向箭头'],['001725','前进','方向箭头'],['001726','前进','方向箭头'],['001708','前进','方向箭头'],['002245','前进','方向箭头'],['002250','转弯','方向箭头'],['002251','弯曲','方向箭头'],['002253','转弯','方向箭头'],['002261','前进','方向箭头'],['002263','前进弯','方向箭头'],['002269','前进','方向箭头'],['002271','前进','方向箭头'],['002273','前进','方向箭头'],['002279','前进','方向箭头'],['002292','前进','方向箭头'],['002294','前进','方向箭头'],['002409','前进','方向箭头'],['002727','前进','方向箭头'],['002732','前进','方向箭头'],['003126','前进','方向箭头'],['003129','前进','方向箭头'],['003160','前进','方向箭头'],['003171','前进','方向箭头'],['003173','前进','方向箭头'],['003193','前进','方向箭头'],['003312','前进','方向箭头'],['003373','前进','方向箭头'],['003391','前进','方向箭头'],['003825','前进','方向箭头'],['003827','前进','方向箭头'],['003831','前进','方向箭头'],['003859','前进','方向箭头'],['004738','前进','方向箭头'],['005319','前进','方向箭头'],['005320','前进','方向箭头'],['005730','前进','方向箭头'],['005764','向左','方向箭头'],['005767','前进','方向箭头'],['005778','前进','方向箭头'],['005780','前进','方向箭头'],['005791','前进','方向箭头'],['005801','前进','方向箭头'],['005814','向左返回','方向箭头'],
+  ['000049','数字1','数字符号'],['000085','数字7','数字符号'],['000122','数字1','数字符号'],['000123','数字3','数字符号'],['000241','数字89','数字符号'],['000242','字母F','数字符号'],['000651','数字89','数字符号'],['000672','数字9','数字符号'],['000673','数字3','数字符号'],['000705','数字9','数字符号'],['000706','数字5','数字符号'],['000776','数字99','数字符号'],['000821','数字1','数字符号'],['000822','数字0','数字符号'],['000823','数字3','数字符号'],['000855','数字1','数字符号'],['000856','数字0','数字符号'],['000857','数字5','数字符号'],['002052','数字2','数字符号'],['002059','字母F','数字符号'],['002066','数字2','数字符号'],['002072','数字3上','数字符号'],['002073','字母F','数字符号'],['002076','向上','数字符号'],['002077','数字4','数字符号'],['002078','字母F','数字符号'],['002082','向上','数字符号'],['002083','数字5','数字符号'],['002084','字母F','数字符号'],['002122','87F温度','数字符号'],['002154','数字1','数字符号'],['002155','数字0','数字符号'],['002232','数字88','数字符号'],['002233','字母F','数字符号'],['002241','数字89','数字符号'],['002242','字母F','数字符号'],['003365','3000','数字符号'],['003375','条形码','数字符号'],['003377','数字8','数字符号'],['003381','#号','数字符号'],['003411','#号','数字符号'],['003883','26','数字符号'],['004495','字母A','数字符号'],
+  ['000089','笔记本电脑','科技设备'],['000091','鼠标光标','科技设备'],['000270','手机','科技设备'],['000309','关机电源','科技设备'],['000311','键盘电脑','科技设备'],['000317','打字键盘','科技设备'],['000321','笔记本','科技设备'],['000322','笔记本','科技设备'],['000326','音量','科技设备'],['000327','声波广播','科技设备'],['000329','WiFi网络','科技设备'],['000331','蓝牙','科技设备'],['000335','Skype通话','科技设备'],['001033','猫咪','科技设备'],['001034','电子屏','科技设备'],['001091','手机','科技设备'],['001092','手机框','科技设备'],['001093','Google+','科技设备'],['001094','RSS订阅','科技设备'],['001095','Facebook','科技设备'],['001229','电源咖啡','科技设备'],['001267','触摸','科技设备'],['001268','电源','科技设备'],['001270','收音机','科技设备'],['001272','收音机WiFi','科技设备'],['001676','手机','科技设备'],['001677','声波','科技设备'],['001678','屏幕','科技设备'],['002130','屏幕框','科技设备'],['002147','音量','科技设备'],['002148','声波','科技设备'],['002270','手机WiFi','科技设备'],['002311','笔记本','科技设备'],['002317','打字机','科技设备'],['002321','笔记本','科技设备'],['002322','笔记本','科技设备'],['003621','RSS','科技设备'],['003631','RSS','科技设备'],['003668','股票图','科技设备'],['003678','循环箭头','科技设备'],['003679','增长曲线','科技设备'],['004510','消息框','科技设备'],['004527','消息框','科技设备'],['004538','消息框','科技设备'],['004622','消息框','科技设备'],['004638','消息框','科技设备'],['004651','消息框','科技设备'],['004671','消息框','科技设备'],['004728','消息框','科技设备'],['004729','消息框','科技设备'],['005292','人物表格','科技设备'],['005740','对话气泡','科技设备'],['005754','对话气泡','科技设备'],
+  ['000090','信件邮件','情感表达'],['000130','对话聊天','情感表达'],['000280','停止禁止','情感表达'],['000281','感叹注意','情感表达'],['000282','停止手势','情感表达'],['000283','警告感叹','情感表达'],['001009','感叹号','情感表达'],['001013','感叹号','情感表达'],['001026','难过表情','情感表达'],['001027','眼睛','情感表达'],['001028','惊讶表情','情感表达'],['001040','搞怪表情','情感表达'],['001041','感叹号','情感表达'],['001042','难过表情','情感表达'],['001061','困惑表情','情感表达'],['001070','难过表情','情感表达'],['001071','哭泣表情','情感表达'],['001072','哭泣表情','情感表达'],['001073','大哭','情感表达'],['001077','困惑表情','情感表达'],['001078','猫抓','情感表达'],['001083','问号','情感表达'],['001097','开心表情','情感表达'],['001100','骷髅','情感表达'],['001101','骷髅表情','情感表达'],['001102','感叹号','情感表达'],['001104','大便表情','情感表达'],['001105','崩溃表情','情感表达'],['002049','生气表情','情感表达'],['002063','生气表情','情感表达'],['002081','困惑表情','情感表达'],['002087','困惑表情','情感表达'],['002093','困惑表情','情感表达'],['002101','生气表情','情感表达'],['002107','生气表情','情感表达'],['002113','惊吓表情','情感表达'],['002120','生气表情','情感表达'],['002121','生气表情','情感表达'],['002243','感叹号','情感表达'],['002281','感叹号','情感表达'],['002283','感叹号','情感表达'],['002399','邮件','情感表达'],['002402','眨眼','情感表达'],['002413','对话气泡','情感表达'],['002414','对话气泡','情感表达'],['002435','邮件','情感表达'],['002437','笑脸','情感表达'],['002438','感叹号','情感表达'],['002441','感叹号','情感表达'],['002655','感叹号','情感表达'],['002695','搞怪表情','情感表达'],['002703','心碎','情感表达'],['002710','哭泣表情','情感表达'],['002711','行走','情感表达'],['002713','心形','情感表达'],['002719','阅读','情感表达'],['002729','嘴唇','情感表达'],['002730','嘴唇','情感表达'],['002731','嘴唇','情感表达'],['003134','大笑表情','情感表达'],['003148','搞怪','情感表达'],['003383','嚎叫','情感表达'],['003413','上升','情感表达'],['003415','电影胶片','情感表达'],['003661','生气表情','情感表达'],['003686','对话气泡','情感表达'],['004568','难过表情','情感表达'],['004655','大笑','情感表达'],['004656','感叹','情感表达'],['004700','问号','情感表达'],['004701','困惑','情感表达'],['004702','心碎','情感表达'],['004703','感叹','情感表达'],['004704','心碎','情感表达'],['004705','难过表情','情感表达'],['004706','唇','情感表达'],['004723','眨眼','情感表达'],['005744','笑脸','情感表达'],
+  ['001233','咖啡杯热','饮食'],['001237','烤炉','饮食'],['001238','烤鱼','饮食'],['001240','厨师烹饪','饮食'],['001242','煎蛋','饮食'],['001247','面包','饮食'],['001248','平底锅','饮食'],['001252','炒锅','饮食'],['001256','茶壶','饮食'],['001257','饮料杯','饮食'],['001261','咖啡杯热','饮食'],['001395','早餐','饮食'],['001397','面包','饮食'],['001419','红酒','饮食'],['001420','红酒','饮食'],['001421','咖啡杯','饮食'],['001430','牛奶盒','饮食'],['001432','坐吃人','饮食'],['001433','牛奶盒','饮食'],['001436','昆虫','饮食'],['001445','三明治','饮食'],['001447','乐器','饮食'],['001448','饮品杯','饮食'],['001451','云朵','饮食'],['001452','云朵','饮食'],['001453','花朵','饮食'],['001457','三明治','饮食'],['001461','微波炉','饮食'],['001463','微波炉','饮食'],['001465','微波炉','饮食'],['001466','食物','饮食'],['001385','食物','饮食'],['001388','食物','饮食'],['002410','咖啡热','饮食'],['002411','问号','饮食'],['003614','咖啡','饮食'],['003642','茶杯','饮食'],['003664','咖啡杯热','饮食'],['003674','茶杯','饮食'],['003175','餐具','饮食'],['005258','食物','饮食'],['005269','饮料杯','饮食'],['005285','食物','饮食'],['005302','汉堡','饮食'],['005303','汉堡','饮食'],['005304','食物','饮食'],['005305','食物','饮食'],['005313','汉堡','饮食'],['005315','汉堡','饮食'],['005317','汉堡','饮食'],['005745','肺脏','饮食'],['004628','餐具','饮食'],['004629','鱼','饮食'],
+  ['001276','下雨云','自然天气'],['001278','阴天','自然天气'],['001282','大雨','自然天气'],['001284','温度计','自然天气'],['001292','雨伞','自然天气'],['002676','花朵','自然天气'],['002677','花朵','自然天气'],['003154','山脉','自然天气'],['003130','山脉','自然天气'],['003166','海浪','自然天气'],['003170','鱼群','自然天气'],['003172','大鱼','自然天气'],['003190','水滴','自然天气'],['003201','水滴','自然天气'],['003203','心形','自然天气'],['003419','月牙','自然天气'],['003420','月亮','自然天气'],['003429','月牙','自然天气'],['003436','太阳','自然天气'],['003441','月牙','自然天气'],['003443','月亮大','自然天气'],['003451','太阳圆','自然天气'],['004591','营地','自然天气'],['004592','火','自然天气'],['005731','下雨云','自然天气'],['005777','下雨云','自然天气'],['005779','阳光云','自然天气'],['005781','太阳','自然天气'],
+  ['000093','括号','其他'],['000639','标志','其他'],['000640','坦克','其他'],['000641','大炮','其他'],['001018','逗号','其他'],['001082','问号括号','其他'],['001288','前进','其他'],['001291','人脑','其他'],['001299','冰箱','其他'],['001300','耳朵','其他'],['001301','耳朵声','其他'],['001303','人脑','其他'],['001304','问号','其他'],['001396','符号','其他'],['001399','垃圾桶','其他'],['001401','人物广播','其他'],['001413','眼睛','其他'],['001416','眼镜','其他'],['001417','眼镜','其他'],['001418','靴子','其他'],['001438','表情','其他'],['001439','人物广播','其他'],['001446','羽毛笔','其他'],['001650','人物','其他'],['001653','上班人物','其他'],['001654','钥匙','其他'],['001668','地图','其他'],['001669','人物交通','其他'],['001670','问号','其他'],['001673','电梯','其他'],['001688','勾选','其他'],['001712','扫描仪','其他'],['001718','电梯','其他'],['001719','钟表','其他'],['001720','警告','其他'],['001721','崩溃','其他'],['001731','人物','其他'],['001732','医疗','其他'],['001733','医生','其他'],['001734','锁','其他'],['001735','喇叭','其他'],['001736','黑方块','其他'],['001853','出门','其他'],['001854','入门','其他'],['001855','人物行李','其他'],['001857','人物拥抱','其他'],['001858','人物行李','其他'],['001860','两人拥抱','其他'],['001862','难过表情','其他'],['001873','行李人物','其他'],['001876','挫败人物','其他'],['001886','椅子','其他'],['001887','椅子','其他'],['001894','时钟方向','其他'],['001897','工作人物','其他'],['001898','冲浪','其他'],['001903','折返','其他'],['001904','前进','其他'],['001905','耳朵声','其他'],['001907','冲浪','其他'],['001909','修理人','其他'],['001910','面罩','其他'],['001912','地铁禁止','其他'],['001914','禁止吸烟','其他'],['001915','勾选','其他'],['001920','等号','其他'],['001921','困惑','其他'],['001923','人物弯腰','其他'],['001924','向下','其他'],['001926','鞋子','其他'],['001929','帽子','其他'],['001935','减速','其他'],['001936','停止','其他'],['001937','列车进站','其他'],['001938','到站','其他'],['001939','多人行走','其他'],['001944','电梯人','其他'],['001945','挫败人物','其他'],['002060','禁止','其他'],['002065','人物修理','其他'],['002068','工具','其他'],['002069','工具','其他'],['002126','肥胖','其他'],['002128','出口','其他'],['002151','电梯','其他'],['002152','电梯人','其他'],['002153','人物','其他'],['002156','数字','其他'],['002303','噪点','其他'],['002308','减号','其他'],['002309','电源','其他'],['002310','减号','其他'],['002312','逗号','其他'],['002313','沙漏','其他'],['002314','沙漏减','其他'],['002315','沙漏完','其他'],['002318','尖括号','其他'],['003363','骷髅','其他'],['003364','叉号','其他'],['003366','猫头鹰','其他'],['003369','柱状图','其他'],['003370','三个点','其他'],['003371','鸡尾酒','其他'],['003372','蛇','其他'],['003376','叉号','其他'],['003377','数字8','其他'],['003378','数字8','其他'],['003379','手铐','其他'],['003380','井号','其他'],['003381','#号','其他'],['003382','柱状图','其他'],['003383','嚎叫','其他'],['003384','笑脸','其他'],['003385','两点','其他'],['003386','钱袋','其他'],['003387','三个点','其他'],['003389','折线图','其他'],['003392','熊','其他'],['003394','存钱罐','其他'],['003395','勾选','其他'],['003397','汽油站','其他'],['003398','房产','其他'],['003401','房产钱','其他'],['003402','球','其他'],['003405','医疗符号','其他'],['003406','三个点','其他'],['003407','三角警告','其他'],['003408','三角警告','其他'],['003409','三角警告','其他'],['003410','鸟','其他'],['003412','井号','其他'],['003416','胶片','其他'],['003417','三个点','其他'],['003418','猫','其他'],['003434','变形金刚','其他'],['003435','变形金刚','其他'],['003449','空白框','其他'],['003361','小鬼','其他'],['003687','工作','其他'],['004499','天平','其他'],['004509','人物工具','其他'],['004514','超人','其他'],['004516','背包','其他'],['004517','蝴蝶结眼镜','其他'],['004518','感叹','其他'],['004530','行李钱','其他'],['004531','钱币','其他'],['004532','感叹','其他'],['004545','女性','其他'],['004547','心形','其他'],['004555','心形','其他'],['004556','电影放映','其他'],['004557','问号','其他'],['004558','问号','其他'],['004570','电影放映','其他'],['004574','禁止爱情','其他'],['004575','感叹','其他'],['004587','心形','其他'],['004588','心形','其他'],['004589','心形','其他'],['004590','钓鱼','其他'],['004630','刀叉','其他'],['004631','刀叉','其他'],['004632','问号','其他'],['004644','音符','其他'],['004660','音符','其他'],['004661','小提琴','其他'],['004662','钢琴','其他'],['004663','竖琴','其他'],['004678','心形禁止','其他'],['004679','小提琴','其他'],['004680','钢琴','其他'],['004681','竖琴','其他'],['004685','吉他','其他'],['004687','鼓','其他'],['004688','演奏','其他'],['004689','演奏','其他'],['004690','吉他手','其他'],['004713','和号','其他'],['004715','人物工具','其他'],['004740','大黑圈','其他'],['005223','球','其他'],['005224','球','其他'],['005227','牛','其他'],['005247','鸟','其他'],['005287','鞋子','其他'],
+];
+
+const iconDB = new Map();
+for (const [file, label, category] of RAW_ICONS) {
+  const padded = file.padStart(6,'0');
+  if (!iconDB.has(padded)) iconDB.set(padded, { file: padded, label, category });
+}
+
+let composed = [];
+let currentCat = '时间';
+
+function imgSrc(file) { return IMG_BASE + file + '.jpg'; }
+
+(function init() {
+  buildCatTabs();
+  renderGrid();
+  setTimeout(async () => {
+    await addAIMsg(
+      [{ file: '000127', label: '咖啡馆' }, { file: '000004', label: '→' }, { file: '000130', label: '对话' }],
+      '欢迎光临！从下方选择图标，拼出你想说的话——我会读懂你的图形语言，然后用图标回应你。'
+    );
+  }, 700);
+})();
+
+function buildCatTabs() {
+  const ORDER = ['时间','人物动作','地点场所','交通出行','方向箭头','数字符号','科技设备','情感表达','饮食','自然天气','其他'];
+  const row = document.getElementById('catRow');
+  row.innerHTML = '';
+  ORDER.forEach(label => {
+    const b = document.createElement('button');
+    b.className = 'cat-btn' + (label === currentCat ? ' active' : '');
+    b.textContent = label;
+    b.onclick = () => {
+      currentCat = label;
+      document.querySelectorAll('.cat-btn').forEach(x => x.classList.remove('active'));
+      b.classList.add('active');
+      renderGrid();
+    };
+    row.appendChild(b);
+  });
+}
+
+function renderGrid() {
+  const grid = document.getElementById('iconGrid');
+  grid.innerHTML = '';
+  const search = document.getElementById('searchInput').value.toLowerCase().trim();
+  let icons = Array.from(iconDB.values());
+  if (search) {
+    icons = icons.filter(ic => ic.label.toLowerCase().includes(search) || ic.category.toLowerCase().includes(search));
+  } else {
+    icons = icons.filter(ic => ic.category === currentCat);
+  }
+  if (!icons.length) { grid.innerHTML = '<div class="empty-msg">未找到相关图标</div>'; return; }
+  icons.sort((a,b) => a.file.localeCompare(b.file));
+  for (const icon of icons) {
+    const card = document.createElement('div');
+    card.className = 'ic-card';
+    card.setAttribute('data-tip', icon.label);
+    const img = document.createElement('img');
+    img.src = imgSrc(icon.file); img.alt = icon.label;
+    const noImg = document.createElement('div');
+    noImg.className = 'no-img'; noImg.style.display = 'none'; noImg.textContent = icon.file.slice(-4);
+    img.onerror = () => { img.style.display = 'none'; noImg.style.display = 'flex'; };
+    const lb = document.createElement('span');
+    lb.className = 'ic-lb'; lb.textContent = icon.label;
+    card.appendChild(img); card.appendChild(noImg); card.appendChild(lb);
+    card.onclick = () => addToCompose(icon);
+    grid.appendChild(card);
+  }
+}
+
+function addToCompose(icon) { composed.push({...icon}); renderCompose(); }
+function removeFromCompose(idx) { composed.splice(idx,1); renderCompose(); }
+function clearCompose() { composed = []; renderCompose(); }
+
+function renderCompose() {
+  const wrap = document.getElementById('chipsWrap');
+  const ph = document.getElementById('ph');
+  const btn = document.getElementById('sendBtn');
+  wrap.querySelectorAll('.chip').forEach(c => c.remove());
+  if (!composed.length) { ph.style.display=''; btn.disabled=true; return; }
+  ph.style.display='none'; btn.disabled=false;
+  composed.forEach((ic,i) => {
+    const chip = document.createElement('div'); chip.className='chip';
+    const img = document.createElement('img'); img.src=imgSrc(ic.file); img.alt=ic.label;
+    const sp = document.createElement('span'); sp.className='chip-txt'; sp.textContent=ic.label;
+    const x = document.createElement('span'); x.className='chip-x'; x.textContent='×';
+    x.onclick = e => { e.stopPropagation(); removeFromCompose(i); };
+    chip.appendChild(img); chip.appendChild(sp); chip.appendChild(x);
+    wrap.appendChild(chip);
+  });
+}
+
+function addUserMsg(iconsArr) {
+  const chat = document.getElementById('chatArea');
+  const row = document.createElement('div'); row.className='msg-row user';
+  // 用户消息：只显示图标图片，不显示文字标签
+  const iconsHtml = iconsArr.map(ic=>`
+    <div class="bbl-ic">
+      <img src="${imgSrc(ic.file)}" alt="${ic.label}" />
+    </div>`).join('');
+  row.innerHTML=`
+    <div class="av user"><img src="tx2.jpg" alt="你" onerror="this.src='';this.parentNode.style.background='#e8d4b0';this.parentNode.style.display='flex';this.parentNode.style.alignItems='center';this.parentNode.style.justifyContent='center';this.parentNode.textContent='☺'" /></div>
+    <div class="bubble"><div class="bbl-icons">${iconsHtml}</div></div>`;
+  chat.appendChild(row); chat.scrollTop=chat.scrollHeight;
+}
+async function addAIMsg(iconsArr, text) {
+  const chat = document.getElementById('chatArea');
+  const row = document.createElement('div'); row.className='msg-row ai';
+  const iconsHtml = iconsArr.map(ic=>`
+    <div class="bbl-ic">
+      <img src="${imgSrc(ic.file)}" alt="${ic.label}" />
+      <span class="lbl">${ic.label}</span>
+    </div>`).join('');
+  row.innerHTML=`
+    <div class="av ai"><img src="tx1.jpg" alt="AI" onerror="this.src='';this.parentNode.style.background='#f0e8d4';this.parentNode.style.display='flex';this.parentNode.style.alignItems='center';this.parentNode.style.justifyContent='center';this.parentNode.textContent='☕'" /></div>
+    <div class="bubble">
+      <div class="bbl-icons">${iconsHtml}</div>
+      <div class="bbl-text">${text}</div>
+    </div>`;
+  chat.appendChild(row); chat.scrollTop=chat.scrollHeight;
+}
+
+function showThinking() {
+  const chat = document.getElementById('chatArea');
+  const row = document.createElement('div'); row.className='msg-row ai'; row.id='thinkRow';
+  row.innerHTML=`
+    <div class="av ai"><img src="tx1.jpg" alt="AI" onerror="this.src='';this.parentNode.style.background='#f0e8d4';this.parentNode.style.display='flex';this.parentNode.style.alignItems='center';this.parentNode.style.justifyContent='center';this.parentNode.textContent='☕'" /></div>
+    <div class="bubble"><div class="thinking"><span></span><span></span><span></span></div></div>`;
+  chat.appendChild(row); chat.scrollTop=chat.scrollHeight;
+}
+
+async function sendMsg() {
+  if (!composed.length) return;
+  const icons = [...composed]; clearCompose();
+  addUserMsg(icons); showThinking();
+  document.getElementById('sendBtn').disabled = true;
+  document.getElementById('lbar').style.display = 'block';
+  try {
+    const result = await callDeepSeek(icons);
+    document.getElementById('thinkRow')?.remove();
+    await addAIMsg(result.icons, result.reply);
+  } catch(err) {
+    document.getElementById('thinkRow')?.remove();
+    showToast('出错了：' + err.message);
+    await addAIMsg([{file:'000281',label:'注意'}], '抱歉，出现了一点问题，请稍后再试。');
+  } finally {
+    document.getElementById('lbar').style.display = 'none';
+    document.getElementById('sendBtn').disabled = false;
+  }
+}
+
+function buildVocabPrompt() {
+  const groups = {};
+  iconDB.forEach(e => {
+    if (!groups[e.category]) groups[e.category] = [];
+    if (groups[e.category].length < 25) groups[e.category].push(e);
+  });
+  let v = '';
+  for (const [cat, items] of Object.entries(groups)) {
+    v += `\n【${cat}】 `;
+    v += items.map(ic => `${ic.file}=${ic.label}`).join(', ');
+  }
+  return v;
+}
+
+async function callDeepSeek(userIcons) {
+  const userDesc = userIcons.map(ic=>`[${ic.file}:${ic.label}]`).join(' ');
+  const vocab = buildVocabPrompt();
+  const system = `你是"Lexicon Café"的AI朋友，和用户用《地书》图形语言聊天。
+
+【核心原则】
+- 用户发来图标序列，你要像朋友聊天一样回应，不是解释或翻译图标
+- 把图标当成用户说的话，直接聊，有来有往，有情感、有反应、有问题
+- 中文回复要像真人对话：自然、有温度、可以追问、可以分享感受
+- 图标回复：选3~6个图标组合成你想说的意思，要能"读出"你的回应
+
+【可用图标词汇表】
+${vocab}
+
+【输出格式】严格只输出JSON：
+{"reply":"自然对话式中文回应（1~2句）","icons":[{"file":"000127","label":"咖啡馆"}]}`;
+
+  if (!API_KEY) throw new Error('DEEPSEEK_API_KEY is not configured');
+  const resp = await fetch('https://api.deepseek.com/v1/chat/completions', {
+    method:'POST',
+    headers:{'Content-Type':'application/json','Authorization':`Bearer ${API_KEY}`},
+    body: JSON.stringify({
+      model:'deepseek-chat',
+      messages:[{role:'system',content:system},{role:'user',content:`用户图标序列：${userDesc}\n请理解并回应。`}],
+      temperature:0.72, max_tokens:600
+    })
+  });
+  if (!resp.ok) { const e=await resp.json().catch(()=>({})); throw new Error(e?.error?.message||`HTTP ${resp.status}`); }
+  const data = await resp.json();
+  const raw = (data.choices?.[0]?.message?.content||'').trim();
+  let parsed;
+  try { parsed = JSON.parse(raw.replace(/^```json\s*/i,'').replace(/\s*```$/,'').trim()); }
+  catch { const m=raw.match(/\{[\s\S]*\}/); if(!m) throw new Error('格式解析错误'); parsed=JSON.parse(m[0]); }
+  const reply = parsed.reply || '收到～';
+  const validIcons = (parsed.icons||[])
+    .map(ic=>iconDB.has(ic.file)?{file:ic.file,label:ic.label||iconDB.get(ic.file).label}:null)
+    .filter(Boolean).slice(0,7);
+  if (!validIcons.length) {
+    const fb=Array.from(iconDB.values()).slice(0,3);
+    return {reply,icons:fb.map(e=>({file:e.file,label:e.label}))};
+  }
+  return {reply,icons:validIcons};
+}
+
+function showToast(msg) {
+  const t=document.createElement('div'); t.className='toast'; t.textContent=msg;
+  document.body.appendChild(t); setTimeout(()=>t?.remove(),4000);
+}
+
+document.addEventListener('keydown', e => {
+  if (e.key==='Enter' && !e.shiftKey) {
+    const btn=document.getElementById('sendBtn');
+    if (btn && !btn.disabled) sendMsg();
+  }
+});
+</script>
+</body>
+</html>
+

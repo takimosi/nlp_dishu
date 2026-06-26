@@ -1,0 +1,1067 @@
+
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>地书日记</title>
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --ink: #1a1a18;
+    --paper: #f5f0e8;
+    --paper-dark: #ede8dc;
+    --paper-line: #d4ccb8;
+    --accent: #8b3a2a;
+    --accent-light: #c4604a;
+    --muted: #7a7468;
+    --symbol-bg: #2a2a26;
+    --symbol-fg: #f5f0e8;
+    --border: #c8c0aa;
+    --success: #3a6b3a;
+  }
+
+  body {
+    background: #e8d1b6;
+    min-height: 100vh;
+    font-family: 'Noto Sans SC', 'Microsoft YaHei', 'PingFang SC', sans-serif;
+    color: var(--ink);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .room-bg {
+    width: 100%;
+    min-height: 100vh;
+    background:
+      linear-gradient(180deg, rgba(68,48,34,0.18), rgba(244,220,188,0.36)),
+      url('assets/warm-apartment-bg.png') center/cover fixed no-repeat,
+      #e8d1b6;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 1.1rem 1.5rem 3rem;
+  }
+
+  .room-header {
+    text-align: center;
+    margin-bottom: 1.1rem;
+    color: var(--paper);
+    text-shadow: 0 2px 12px rgba(58,34,18,0.48);
+  }
+
+  .room-title {
+    font-family: 'Noto Serif SC', serif;
+    font-size: 17px;
+    font-weight: 300;
+    letter-spacing: 0.5em;
+    color: rgba(255,250,240,0.88);
+    margin-bottom: 0.5rem;
+  }
+
+  .room-name {
+    font-family: 'Space Mono', monospace;
+    font-size: 12px;
+    color: rgba(255,250,240,0.62);
+    letter-spacing: 0.3em;
+  }
+
+  .desk {
+    width: 100%;
+    max-width: 1360px;
+    background: rgba(86,62,45,0.74);
+    border-radius: 4px 4px 0 0;
+    padding: 2.35rem 2.6rem 1.65rem;
+    box-shadow: 0 22px 70px rgba(64,37,20,0.45);
+    position: relative;
+    backdrop-filter: blur(4px);
+  }
+
+  .desk::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, #5a4d42, #7a6a5a, #5a4d42);
+  }
+
+  .notebook {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    background: var(--paper);
+    border-radius: 2px;
+    box-shadow: 0 2px 20px rgba(0,0,0,0.4), inset 0 0 0 1px rgba(0,0,0,0.1);
+    overflow: hidden;
+    min-height: 710px;
+    position: relative;
+  }
+
+  .notebook::before {
+    content: '';
+    position: absolute;
+    left: 50%;
+    top: 0; bottom: 0;
+    width: 2px;
+    background: linear-gradient(180deg, #c8b89a, #a89878, #c8b89a);
+    transform: translateX(-50%);
+    z-index: 10;
+    box-shadow: -2px 0 6px rgba(0,0,0,0.1), 2px 0 6px rgba(0,0,0,0.1);
+  }
+
+  .page {
+    padding: 2.8rem 2.45rem;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .page-left {
+    background: var(--paper);
+    border-right: none;
+  }
+
+  .page-right {
+    background: #f0ebe0;
+    background-image: repeating-linear-gradient(
+      transparent, transparent 27px,
+      var(--paper-line) 27px, var(--paper-line) 28px
+    );
+    background-position: 0 44px;
+  }
+
+  .page-number {
+    font-family: 'Space Mono', monospace;
+    font-size: 12px;
+    color: var(--muted);
+    letter-spacing: 0.2em;
+    margin-bottom: 1.5rem;
+    opacity: 0.6;
+  }
+
+  .date-stamp {
+    font-family: 'Space Mono', monospace;
+    font-size: 16px;
+    color: var(--muted);
+    margin-bottom: 1.5rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid var(--paper-line);
+  }
+
+  .section-label {
+    font-family: 'Noto Serif SC', serif;
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 0.3em;
+    color: var(--muted);
+    text-transform: uppercase;
+    margin-bottom: 0.75rem;
+  }
+
+  .input-area {
+    width: 100%;
+    background: transparent;
+    border: none;
+    outline: none;
+    font-family: 'Noto Serif SC', serif;
+    font-size: 19px;
+    line-height: 36px;
+    color: var(--ink);
+    resize: none;
+    min-height: 270px;
+  }
+
+  .input-area::placeholder {
+    color: var(--paper-line);
+    font-style: italic;
+  }
+
+  .event-chips {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin-top: 1rem;
+    min-height: 32px;
+  }
+
+  .chip {
+    font-size: 12px;
+    font-family: 'Space Mono', monospace;
+    background: var(--paper-dark);
+    border: 1px solid var(--border);
+    border-radius: 2px;
+    padding: 5px 10px;
+    color: var(--ink);
+    cursor: pointer;
+    transition: all 0.15s;
+  }
+
+  .chip.active {
+    background: var(--ink);
+    color: var(--paper);
+    border-color: var(--ink);
+  }
+
+  .action-bar {
+    display: flex;
+    gap: 8px;
+    margin-top: 1.5rem;
+    padding-top: 1rem;
+    border-top: 1px solid var(--paper-line);
+  }
+
+  .btn {
+    font-family: 'Space Mono', monospace;
+    font-size: 13px;
+    letter-spacing: 0.1em;
+    padding: 10px 18px;
+    border: 1px solid var(--border);
+    background: transparent;
+    color: var(--ink);
+    cursor: pointer;
+    border-radius: 2px;
+    transition: all 0.15s;
+  }
+
+  .btn:hover { background: var(--paper-dark); }
+
+  .btn-primary {
+    background: var(--ink);
+    color: var(--paper);
+    border-color: var(--ink);
+  }
+
+  .btn-primary:hover { background: #333330; }
+
+  .btn-primary:disabled {
+    opacity: 0.4;
+    cursor: not-allowed;
+  }
+
+  .symbol-scroll {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    padding-top: 0.5rem;
+  }
+
+  .symbol-event-group {
+    animation: fadeUp 0.4s ease both;
+  }
+
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(8px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .event-label {
+    font-size: 15px;
+    font-family: 'Space Mono', monospace;
+    color: var(--muted);
+    margin-bottom: 9px;
+    letter-spacing: 0.15em;
+  }
+
+  .symbol-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 4px;
+    align-items: center;
+  }
+
+  .symbol-image-strip {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    min-height: 68px;
+    max-width: 100%;
+    padding: 8px 10px;
+    border: 1px solid rgba(26,26,24,0.12);
+    background: rgba(255,255,255,0.42);
+  }
+
+  .symbol-image-strip img {
+    display: block;
+    max-width: 58px;
+    max-height: 62px;
+    object-fit: contain;
+    mix-blend-mode: multiply;
+  }
+
+  .symbol-image-strip.compact img {
+    max-width: 36px;
+    max-height: 40px;
+  }
+
+  .symbol-choice {
+    border: 1px solid var(--border);
+    background: var(--paper);
+    cursor: pointer;
+    padding: 4px;
+    border-radius: 2px;
+    transition: all 0.15s;
+    max-width: 168px;
+  }
+
+  .symbol-choice.active {
+    border-color: var(--ink);
+    background: #fffdf6;
+    box-shadow: inset 0 0 0 1px var(--ink);
+  }
+
+  .symbol-choice-label {
+    display: block;
+    margin-top: 4px;
+    font-size: 11px;
+    color: var(--muted);
+    font-family: 'Noto Serif SC', serif;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .symbol-token {
+    display: inline-flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2px;
+    cursor: pointer;
+    position: relative;
+    padding: 2px;
+    border-radius: 2px;
+    transition: background 0.15s;
+  }
+
+  .symbol-token:hover { background: var(--paper-line); }
+
+  .symbol-token:hover .symbol-tooltip {
+    opacity: 1;
+    transform: translateY(-2px);
+  }
+
+  .symbol-glyph {
+    font-size: 22px;
+    line-height: 1;
+  }
+
+  .symbol-tooltip {
+    position: absolute;
+    bottom: 100%;
+    left: 50%;
+    transform: translateX(-50%) translateY(0);
+    background: var(--ink);
+    color: var(--paper);
+    font-size: 9px;
+    font-family: 'Space Mono', monospace;
+    padding: 3px 6px;
+    border-radius: 2px;
+    white-space: nowrap;
+    pointer-events: none;
+    opacity: 0;
+    transition: all 0.15s;
+    z-index: 100;
+  }
+
+  .symbol-sep {
+    font-size: 14px;
+    color: var(--paper-line);
+    margin: 0 2px;
+    font-family: 'Space Mono', monospace;
+  }
+
+  .emotion-bar {
+    margin-top: 1.5rem;
+    padding-top: 1rem;
+    border-top: 1px solid var(--paper-line);
+  }
+
+  .emotion-track {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-top: 6px;
+  }
+
+  .emotion-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    flex-shrink: 0;
+  }
+
+  .emotion-label {
+    font-size: 11px;
+    font-family: 'Space Mono', monospace;
+    color: var(--muted);
+  }
+
+  .emotion-value {
+    font-size: 11px;
+    font-family: 'Noto Serif SC', serif;
+    color: var(--ink);
+  }
+
+  .loading-state {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 2rem 0;
+    color: var(--muted);
+    font-family: 'Space Mono', monospace;
+    font-size: 13px;
+  }
+
+  .loading-dots span {
+    animation: blink 1.2s infinite;
+    display: inline-block;
+  }
+  .loading-dots span:nth-child(2) { animation-delay: 0.2s; }
+  .loading-dots span:nth-child(3) { animation-delay: 0.4s; }
+
+  @keyframes blink {
+    0%, 80%, 100% { opacity: 0.2; }
+    40% { opacity: 1; }
+  }
+
+  .empty-state {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 280px;
+    gap: 12px;
+    color: var(--paper-line);
+    font-family: 'Noto Serif SC', serif;
+    font-size: 15px;
+    text-align: center;
+    line-height: 2;
+  }
+
+  .empty-glyph {
+    font-size: 42px;
+    opacity: 0.4;
+  }
+
+  .export-bar {
+    display: flex;
+    gap: 8px;
+    margin-top: 1.5rem;
+    padding-top: 1rem;
+    border-top: 1px solid var(--paper-line);
+  }
+
+  .wall-section {
+    width: 100%;
+    max-width: 1360px;
+    margin-top: 0;
+    background: rgba(72,50,35,0.82);
+    padding: 1.5rem 2rem;
+    border-top: 2px solid #4a4238;
+  }
+
+  .wall-header {
+    font-family: 'Space Mono', monospace;
+    font-size: 12px;
+    letter-spacing: 0.3em;
+    color: rgba(245,240,232,0.35);
+    margin-bottom: 1rem;
+  }
+
+  .wall-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+    gap: 8px;
+  }
+
+  .wall-entry {
+    background: var(--paper);
+    border-radius: 2px;
+    padding: 10px;
+    cursor: pointer;
+    transition: transform 0.15s;
+  }
+
+  .wall-entry:hover { transform: translateY(-2px); }
+
+  .wall-entry-symbols {
+    font-size: 16px;
+    line-height: 1.6;
+    margin-bottom: 4px;
+  }
+
+  .wall-entry-meta {
+    font-size: 9px;
+    font-family: 'Space Mono', monospace;
+    color: var(--muted);
+  }
+
+  .wall-empty {
+    font-size: 11px;
+    font-family: 'Space Mono', monospace;
+    color: rgba(245,240,232,0.2);
+    letter-spacing: 0.15em;
+  }
+
+  .step-indicator {
+    display: flex;
+    gap: 4px;
+    margin-bottom: 1rem;
+  }
+
+  .step-dot {
+    width: 20px;
+    height: 3px;
+    background: var(--paper-line);
+    border-radius: 2px;
+    transition: background 0.3s;
+  }
+
+  .step-dot.active { background: var(--ink); }
+  .step-dot.done { background: var(--muted); }
+
+  .api-notice {
+    font-size: 11px;
+    font-family: 'Space Mono', monospace;
+    color: var(--muted);
+    margin-top: 8px;
+    opacity: 0.7;
+  }
+
+  .source-note {
+    font-size: 14px;
+    font-family: 'Space Mono', monospace;
+    color: var(--muted);
+    margin-top: 10px;
+    opacity: 0.75;
+  }
+
+  .error-msg {
+    font-size: 11px;
+    font-family: 'Space Mono', monospace;
+    color: var(--accent);
+    margin-top: 8px;
+    padding: 8px;
+    background: rgba(139,58,42,0.1);
+    border-radius: 2px;
+    border-left: 2px solid var(--accent);
+  }
+
+  .highlight-row {
+    background: rgba(139,58,42,0.05);
+    border-left: 2px solid var(--accent-light);
+    padding-left: 8px;
+    border-radius: 0 2px 2px 0;
+    margin: 4px 0;
+  }
+
+</style>
+</head>
+<body>
+
+<div style="position:fixed; top:15px; left:15px; z-index:9999;">
+  <button onclick="backToWorld()" style="background:rgba(0,0,0,0.7); border:1px solid #c09040; color:#c09040; padding:8px 16px; border-radius:30px; cursor:pointer; font-family:monospace; font-size:12px; backdrop-filter:blur(5px);">
+    ← 返回地书世界
+  </button>
+</div>
+
+<script>
+// 主城服务运行在 8080，日记服务运行在 8000；这里做页面跳转。
+function backToWorld() {
+  window.location.href = 'http://localhost:8080/index.html';
+}
+</script>
+<div class="room-bg">
+
+  <div class="room-header">
+    <div class="room-title">地　书　日　记</div>
+    <div class="room-name">BOOK FROM THE GROUND · DIARY</div>
+  </div>
+
+  <div class="desk">
+    <div class="notebook">
+
+      <!-- 左页：输入 -->
+      <div class="page page-left" id="leftPage">
+        <div class="page-number">p. 01</div>
+        <div class="date-stamp" id="dateStamp"></div>
+
+        <div class="step-indicator" id="stepIndicator">
+          <div class="step-dot active" id="step1"></div>
+          <div class="step-dot" id="step2"></div>
+          <div class="step-dot" id="step3"></div>
+        </div>
+
+        <div id="inputPhase">
+          <div class="section-label">今天发生了什么</div>
+          <textarea
+            class="input-area"
+            id="diaryInput"
+            placeholder="写下今天的几件事&#10;&#10;例：早上赖床，骑车去学校&#10;下午组会汇报，有点紧张&#10;晚上一个人吃了碗面&#10;夜里想了很多…"
+            maxlength="500"
+          ></textarea>
+
+          <div class="event-chips" id="eventChips"></div>
+
+          <div id="errorMsg" class="error-msg" style="display:none;"></div>
+
+          <div class="action-bar">
+            <button class="btn btn-primary" id="generateBtn" onclick="generateDiary()">
+              符号化 →
+            </button>
+            <button class="btn" onclick="clearAll()">清空</button>
+          </div>
+          <div class="api-notice">DeepSeek 事件结构化 · 向量检索地书标注素材</div>
+        </div>
+
+        <div id="editPhase" style="display:none;">
+          <div class="section-label">调整符号</div>
+          <div id="editPanel"></div>
+          <div class="action-bar">
+            <button class="btn btn-primary" onclick="confirmDiary()">确认生成 →</button>
+            <button class="btn" onclick="backToInput()">← 重写</button>
+          </div>
+        </div>
+
+        <div id="donePhase" style="display:none;">
+          <div class="section-label">已记录</div>
+          <div style="font-family:'Noto Serif SC',serif; font-size:13px; color:var(--muted); line-height:2; margin-top:1rem;">
+            今天的地书日记已写好，<br>翻开右页查看。
+          </div>
+          <div class="export-bar">
+            <button class="btn btn-primary" onclick="exportDiary()">导出图片</button>
+            <button class="btn" onclick="saveToWall()">发布到公告墙</button>
+            <button class="btn" onclick="startNewDay()">记录新的一天</button>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- 右页：符号输出 -->
+      <div class="page page-right" id="rightPage">
+        <div class="page-number">p. 02</div>
+        <div class="date-stamp" style="opacity:0.4;" id="rightDateStamp"></div>
+
+        <div id="symbolOutput">
+          <div class="empty-state">
+            <div class="empty-glyph">□</div>
+            <div>在左页写下今天<br>符号会在这里出现</div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- 公告墙 -->
+  <div class="wall-section">
+    <div class="wall-header">▸ 公告墙 · 所有人的今天</div>
+    <div class="wall-grid" id="wallGrid">
+      <div class="wall-empty">暂无记录</div>
+    </div>
+  </div>
+
+</div>
+
+<script>
+// 前端运行状态：
+// symbolLibraryCount 显示后端可检索符号数量；
+// diaryEvents 保存结构化后的事件；
+// diarySymbols 保存每个事件的候选符号与当前选择；
+// wallEntries 保存公告墙里的临时发布记录。
+let symbolLibraryCount = 0;
+let diaryEvents = [];
+let diarySymbols = [];
+let wallEntries = [];
+
+function init() {
+  // 初始化日期、公告墙，并读取后端向量库状态。
+  const now = new Date();
+  const dateStr = now.toLocaleDateString('zh-CN', { year: 'numeric', month: 'long', day: 'numeric', weekday: 'long' });
+  document.getElementById('dateStamp').textContent = dateStr;
+  document.getElementById('rightDateStamp').textContent = dateStr;
+  loadWall();
+  loadSymbolLibrary();
+}
+
+async function loadSymbolLibrary() {
+  // 调用 /api/vector-stats，确认后端符号库、embedding 和 FAISS 状态。
+  try {
+    const resp = await fetch('/api/vector-stats');
+    if (!resp.ok) throw new Error('向量库状态读取失败');
+    const stats = await resp.json();
+    symbolLibraryCount = stats.count || 0;
+    renderEventChips([`已载入 ${symbolLibraryCount} 个地书向量`]);
+  } catch (err) {
+    renderEventChips(['请通过本地服务器打开页面']);
+  }
+}
+
+function setStep(n) {
+  // 更新三步进度点：输入 -> 调整候选 -> 完成。
+  for (let i = 1; i <= 3; i++) {
+    const dot = document.getElementById('step' + i);
+    if (i < n) { dot.className = 'step-dot done'; }
+    else if (i === n) { dot.className = 'step-dot active'; }
+    else { dot.className = 'step-dot'; }
+  }
+}
+
+async function generateDiary() {
+  // 主流程：输入日记 -> 结构化事件 -> 检索候选符号 -> 进入编辑阶段。
+  const text = document.getElementById('diaryInput').value.trim();
+  if (!text) return;
+
+  const btn = document.getElementById('generateBtn');
+  btn.disabled = true;
+  btn.textContent = '分析中...';
+  document.getElementById('errorMsg').style.display = 'none';
+  showLoadingRight();
+
+  try {
+    if (!symbolLibraryCount) await loadSymbolLibrary();
+    const structured = await structureText(text);
+    diaryEvents = structured.events;
+    renderEventChips(diaryEvents.map(ev => ev.action || '事件'));
+
+    diarySymbols = await Promise.all(diaryEvents.map(async (event) => {
+      const candidates = await searchSymbols(event, 5);
+      return {
+        event,
+        candidates,
+        chosen: candidates[0] || null,
+        source: structured.source,
+      };
+    }));
+
+    setStep(2);
+    document.getElementById('inputPhase').style.display = 'none';
+    document.getElementById('editPhase').style.display = 'block';
+    renderEditPanel();
+    renderSymbolsRight(false);
+  } catch (e) {
+    document.getElementById('errorMsg').textContent = '无法生成：' + e.message;
+    document.getElementById('errorMsg').style.display = 'block';
+    showEmptyRight();
+  } finally {
+    btn.disabled = false;
+    btn.textContent = '符号化 →';
+  }
+}
+
+async function structureText(text) {
+  // 调用后端 /api/structure：自然语言日记 -> 结构化事件 JSON。
+  const resp = await fetch('/api/structure', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ text })
+  });
+  if (!resp.ok) throw new Error('事件结构化接口不可用');
+  const data = await resp.json();
+  const events = Array.isArray(data.events) ? data.events : [];
+  if (!events.length) throw new Error('没有抽取到事件');
+  return { events: events.map(normalizeEvent), source: data.source || 'unknown' };
+}
+
+function normalizeEvent(event) {
+  // 统一事件字段，避免后端返回缺字段时影响前端渲染。
+  return {
+    time: event.time || '未知',
+    action: event.action || '事件',
+    object: event.object || event.subject || '',
+    location: event.location || '',
+    emotion: event.emotion || '平静',
+    modifier: event.modifier || '',
+    raw_text: event.raw_text || '',
+    keywords: Array.isArray(event.keywords) ? event.keywords : []
+  };
+}
+
+async function searchSymbols(event, limit) {
+  // 调用后端 /api/search-symbols：单个事件 JSON -> 地书符号候选列表。
+  const resp = await fetch('/api/search-symbols', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ event, limit })
+  });
+  if (!resp.ok) throw new Error('向量检索接口不可用');
+  const data = await resp.json();
+  return Array.isArray(data.candidates) ? data.candidates : [];
+}
+
+function renderEditPanel() {
+  // 渲染候选符号选择区：每个事件显示一组候选，点击后更新当前选择。
+  const panel = document.getElementById('editPanel');
+  panel.innerHTML = '';
+
+  diarySymbols.forEach((item, i) => {
+    const div = document.createElement('div');
+    div.style.cssText = 'margin-bottom:12px; padding-bottom:12px; border-bottom:1px solid var(--paper-line);';
+
+    const timeAction = document.createElement('div');
+    timeAction.style.cssText = 'font-size:11px; color:var(--muted); font-family:Space Mono,monospace; margin-bottom:6px;';
+    timeAction.textContent = `${item.event.time} · ${item.event.action}${item.event.location ? ' · ' + item.event.location : ''}`;
+    div.appendChild(timeAction);
+
+    const symRow = document.createElement('div');
+    symRow.style.cssText = 'display:flex; gap:6px; flex-wrap:wrap;';
+
+    if (!item.candidates.length) {
+      symRow.innerHTML = '<div class="source-note">没有可用候选，保留为缺失符号。</div>';
+    }
+
+    item.candidates.forEach((sym) => {
+      const btn = document.createElement('button');
+      btn.className = 'symbol-choice' + (item.chosen && item.chosen.group_id === sym.group_id ? ' active' : '');
+      btn.title = symbolLabel(sym);
+      btn.innerHTML = renderImageStripHtml(sym, 4, 'compact') + `<span class="symbol-choice-label">${escapeHtml(symbolLabel(sym))}</span>`;
+      btn.onclick = () => {
+        diarySymbols[i].chosen = sym;
+        renderEditPanel();
+        renderSymbolsRight(false);
+      };
+      symRow.appendChild(btn);
+    });
+
+    div.appendChild(symRow);
+    panel.appendChild(div);
+  });
+}
+
+function confirmDiary() {
+  // 用户确认候选选择后，进入最终图形日记展示状态。
+  setStep(3);
+  document.getElementById('editPhase').style.display = 'none';
+  document.getElementById('donePhase').style.display = 'block';
+  renderSymbolsRight(true);
+}
+
+function renderSymbolsRight(final) {
+  // 根据 diarySymbols 渲染右页图形序列；final=true 时增加高亮和情绪曲线。
+  const out = document.getElementById('symbolOutput');
+  out.innerHTML = '';
+
+  const scroll = document.createElement('div');
+  scroll.className = 'symbol-scroll';
+
+  diarySymbols.forEach((item, i) => {
+    const group = document.createElement('div');
+    group.className = 'symbol-event-group';
+    group.style.animationDelay = (i * 0.1) + 's';
+
+    const label = document.createElement('div');
+    label.className = 'event-label';
+    label.textContent = `${item.event.time} — ${item.event.action}`;
+    group.appendChild(label);
+
+    const row = document.createElement('div');
+    row.className = 'symbol-row';
+    if (final) row.className += ' highlight-row';
+
+    if (item.chosen) {
+      row.innerHTML = renderImageStripHtml(item.chosen, 8, '');
+    } else {
+      row.innerHTML = `<div class="source-note">AI扩展符号：${escapeHtml(recommendCombo(item.event))}</div>`;
+    }
+
+    group.appendChild(row);
+
+    const note = document.createElement('div');
+    note.className = 'source-note';
+    const matchNote = item.chosen ? `${symbolLabel(item.chosen)} · score ${item.chosen.score}` : '缺失符号';
+    note.textContent = matchNote;
+    group.appendChild(note);
+    scroll.appendChild(group);
+  });
+
+  if (final) scroll.appendChild(renderEmotionSection());
+  out.appendChild(scroll);
+}
+
+function renderEmotionSection() {
+  // 根据每个事件的 emotion 字段生成简单的“今日情绪曲线”。
+  const emotionSection = document.createElement('div');
+  emotionSection.className = 'emotion-bar';
+
+  const el = document.createElement('div');
+  el.className = 'section-label';
+  el.textContent = '今日情绪弧线';
+  emotionSection.appendChild(el);
+
+  const track = document.createElement('div');
+  track.style.cssText = 'display:flex; gap:4px; margin-top:8px; align-items:flex-end;';
+
+  const colorMap = {
+    '平静': '#a89878', '紧张': '#8b3a2a', '焦虑': '#8b3a2a', '疲惫': '#6a6458',
+    '开心': '#3a6b3a', '高兴': '#3a6b3a', '难过': '#4a5a7a', '思考': '#7a6a5a',
+    '无聊': '#b0a898', '迷茫': '#4a5a7a'
+  };
+
+  diarySymbols.forEach(item => {
+    const em = item.event.emotion || '平静';
+    const bar = document.createElement('div');
+    const h = /紧张|焦虑|开心|高兴/.test(em) ? 32 : /疲惫|难过|迷茫/.test(em) ? 16 : 24;
+    bar.style.cssText = `width:20px; border-radius:2px 2px 0 0; background:${colorMap[em] || '#a89878'}; height:${h}px;`;
+    bar.title = em;
+    track.appendChild(bar);
+  });
+
+  emotionSection.appendChild(track);
+  return emotionSection;
+}
+
+function renderImageStripHtml(symbol, limit, extraClass) {
+  // 把一个符号的 image_paths 渲染成连续图形片段。
+  const paths = (symbol.image_paths || []).slice(0, limit);
+  if (!paths.length) return '<div class="source-note">缺失图形素材</div>';
+  return `<span class="symbol-image-strip ${escapeHtml(extraClass || '')}">${
+    paths.map((path, index) => `<img src="${escapeHtml(path)}" alt="${escapeHtml(symbolLabel(symbol))}-${index + 1}">`).join('')
+  }</span>`;
+}
+
+function showLoadingRight() {
+  // 检索期间右页 loading 状态。
+  const out = document.getElementById('symbolOutput');
+  out.innerHTML = '<div class="loading-state">符号化中 <div class="loading-dots"><span>.</span><span>.</span><span>.</span></div></div>';
+}
+
+function showEmptyRight() {
+  // 右页空状态：还没有生成图形日记。
+  const out = document.getElementById('symbolOutput');
+  out.innerHTML = '<div class="empty-state"><div class="empty-glyph">□</div><div>在左页写下今天<br>符号会在这里出现</div></div>';
+}
+
+function backToInput() {
+  // 从候选调整阶段返回输入阶段。
+  setStep(1);
+  document.getElementById('editPhase').style.display = 'none';
+  document.getElementById('inputPhase').style.display = 'block';
+  document.getElementById('generateBtn').disabled = false;
+  document.getElementById('generateBtn').textContent = '符号化 →';
+  showEmptyRight();
+}
+
+function clearAll() {
+  // 清空输入框和错误提示，但保留当前符号库状态提示。
+  document.getElementById('diaryInput').value = '';
+  document.getElementById('errorMsg').style.display = 'none';
+  renderEventChips(symbolLibraryCount ? [`已载入 ${symbolLibraryCount} 个地书向量`] : []);
+}
+
+function startNewDay() {
+  // 完成后重新开始一篇新的地书日记。
+  setStep(1);
+  document.getElementById('donePhase').style.display = 'none';
+  document.getElementById('inputPhase').style.display = 'block';
+  document.getElementById('diaryInput').value = '';
+  document.getElementById('generateBtn').disabled = false;
+  document.getElementById('generateBtn').textContent = '符号化 →';
+  diaryEvents = [];
+  diarySymbols = [];
+  showEmptyRight();
+}
+
+function saveToWall() {
+  // 将当前选择的前几个符号片段发布到页面下方公告墙。
+  if (!diarySymbols.length) return;
+  const now = new Date();
+  const entry = {
+    items: diarySymbols.map(item => item.chosen).filter(Boolean).slice(0, 5),
+    time: now.toLocaleTimeString('zh-CN', { hour: '2-digit', minute: '2-digit' }),
+    date: now.toLocaleDateString('zh-CN', { month: 'short', day: 'numeric' }),
+  };
+  wallEntries.unshift(entry);
+  if (wallEntries.length > 12) wallEntries.pop();
+  renderWall();
+}
+
+function renderWall() {
+  // 根据 wallEntries 重新渲染公告墙。
+  const grid = document.getElementById('wallGrid');
+  if (!wallEntries.length) {
+    grid.innerHTML = '<div class="wall-empty">暂无记录</div>';
+    return;
+  }
+  grid.innerHTML = wallEntries.map(e => `
+    <div class="wall-entry">
+      <div class="wall-entry-symbols">${(e.items || []).map(sym => renderImageStripHtml(sym, 3, 'compact')).join('')}</div>
+      <div class="wall-entry-meta">${escapeHtml(e.date)} ${escapeHtml(e.time)}</div>
+    </div>
+  `).join('');
+}
+
+function loadWall() {
+  // 当前公告墙只保存在前端内存中，刷新页面后清空。
+  wallEntries = [];
+  renderWall();
+}
+
+function exportDiary() {
+  // 使用浏览器打印能力导出/保存当前页面。
+  window.print();
+}
+
+function renderEventChips(labels) {
+  // 在输入区下方展示结构化出的事件动作标签。
+  const chips = document.getElementById('eventChips');
+  chips.innerHTML = '';
+  labels.slice(0, 8).forEach((label, index) => {
+    const chip = document.createElement('span');
+    chip.className = 'chip' + (index === 0 ? ' active' : '');
+    chip.textContent = label;
+    chips.appendChild(chip);
+  });
+}
+
+function symbolLabel(symbol) {
+  // 候选符号的展示名称优先取自由翻译，其次取语用/字面释义。
+  return symbol.free_translation || symbol.pragmatic_meaning || symbol.literal_gloss || symbol.group_id || '地书片段';
+}
+
+function summarizeSymbol(symbol) {
+  // 保留候选符号的关键信息，便于后续解释或调试。
+  return {
+    group_id: symbol.group_id,
+    free_translation: symbol.free_translation,
+    literal_gloss: symbol.literal_gloss,
+    pragmatic_meaning: symbol.pragmatic_meaning,
+    pos_like_category: symbol.pos_like_category,
+    semantic_primitives: symbol.semantic_primitives,
+    score: symbol.score,
+    reasons: symbol.reasons
+  };
+}
+
+function fallbackExplanation(event, symbol) {
+  // 如果解释接口不可用，使用本地模板生成说明。
+  return `系统把“${event.action || '事件'}”检索到“${symbolLabel(symbol)}”。这个选择来自日记关键词与《地书》标注文本、语义基元的混合匹配。`;
+}
+
+function missingExplanation(event) {
+  // 没有检索到合适符号时，给出一个可读的临时组合建议。
+  return `该事件没有检索到足够接近的原始图形组，建议用“${recommendCombo(event)}”临时补全。`;
+}
+
+function recommendCombo(event) {
+  // 本地补全建议：按事件文本中的主题词给出图形组合方向。
+  const text = [event.action, event.object, event.location, event.emotion, event.raw_text].join('');
+  if (/吃|喝|饭|咖啡|外卖/.test(text)) return '食物 + 人物 + 购买/享用';
+  if (/地铁|打车|机场|回家|公司|去|到|骑/.test(text)) return '人物 + 交通工具 + 方向';
+  if (/会|汇报|聊天|电话|消息/.test(text)) return '多人 + 对话 + 屏幕';
+  if (/焦虑|紧张|疲惫|开心|难过/.test(text)) return '人物 + 情绪 + 重复动作';
+  return '人物 + 动作 + 场景';
+}
+
+function escapeHtml(value) {
+  // 渲染用户输入和后端文本前做 HTML 转义，避免破坏页面结构。
+  return String(value == null ? '' : value)
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;')
+    .replace(/'/g, '&#039;');
+}
+
+init();
+</script>
+</body>
+</html>

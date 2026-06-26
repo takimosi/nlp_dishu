@@ -1,0 +1,29 @@
+# Secrets and local environment
+.env
+.env.*
+!.env.example
+
+# Python caches and virtual environments
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+env/
+
+# Local runtime state
+game/chain_rooms.json
+diary/.cache/
+*.log
+
+# Large local model files
+game/models/
+
+# Editor and OS files
+.idea/
+.vscode/
+.DS_Store
+Thumbs.db
+
+# Generated local artifacts
+outputs/
+.codex_start_probe.*.txt

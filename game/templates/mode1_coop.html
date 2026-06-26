@@ -1,0 +1,819 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <title>合作解谜 · 符号游戏</title>
+    <style>
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+        :root {
+            --ink: #1a1a18;
+            --paper: #f5f0e8;
+            --paper-dark: #ede8dc;
+            --paper-line: #d4ccb8;
+            --accent: #8b3a2a;
+            --accent-light: #c4604a;
+            --muted: #7a7468;
+            --border: #c8c0aa;
+            --success: #3a6b3a;
+            --coop: #4a6741;
+            --bezel: #121212;
+            --plastic-light: #e0dbce;
+        }
+
+        html, body { height: 100%; overflow: hidden; }
+        body {
+            background: linear-gradient(145deg, #2b221a 0%, #140f0a 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Noto Sans SC', 'Microsoft YaHei', 'PingFang SC', sans-serif;
+            padding: 16px;
+        }
+
+        .game-console {
+            width: 1000px;
+            max-width: 95vw;
+            height: 92vh;
+            min-height: 650px;
+            background: linear-gradient(135deg, #ddd6c8 0%, #c2b9a6 100%);
+            border-radius: 48px;
+            box-shadow: 0 30px 40px rgba(0,0,0,0.6), inset 0 1px 2px rgba(255,255,240,0.7);
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+        }
+
+        .console-header { background: linear-gradient(90deg, var(--coop), #4a6741, var(--coop)); height: 14px; flex-shrink: 0; }
+        .console-body { background: var(--plastic-light); flex: 1; padding: 16px 24px; overflow: hidden; display: flex; flex-direction: column; }
+        .screen-bezel { background: var(--bezel); border-radius: 24px; padding: 16px 20px; flex: 1; display: flex; flex-direction: column; min-height: 0; }
+        .crt-screen { background: #1e2a1a; border-radius: 16px; flex: 1; display: flex; flex-direction: column; overflow: hidden; }
+        .game-content { flex: 1; padding: 1rem; background: var(--paper); overflow-y: auto; display: flex; flex-direction: column; gap: 16px; }
+
+        .top-bar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 10px;
+            padding-bottom: 12px;
+            border-bottom: 1px solid var(--border);
+        }
+        .room-code-card {
+            background: #f0e8d8;
+            padding: 8px 16px;
+            border-radius: 40px;
+            border: 1px solid var(--coop);
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            font-size: 14px;
+        }
+        .room-code-value { font-family: 'Space Mono', monospace; font-size: 22px; font-weight: bold; color: var(--coop); letter-spacing: 0.1em; }
+        .copy-btn { background: var(--coop); color: white; border: none; padding: 4px 12px; border-radius: 40px; cursor: pointer; font-family: monospace; font-size: 12px; }
+        .game-status-badge { background: var(--ink); color: white; padding: 6px 16px; border-radius: 40px; font-family: monospace; font-size: 14px; }
+
+        .player-list {
+            display: flex;
+            gap: 12px;
+            flex-wrap: wrap;
+            padding: 8px 0;
+        }
+        .player-tag {
+            background: white;
+            padding: 8px 18px;
+            border-radius: 40px;
+            font-size: 14px;
+            font-weight: 500;
+            border: 1px solid var(--border);
+            font-family: monospace;
+        }
+        .player-tag.current { background: var(--coop); color: white; border-color: var(--coop); }
+        .player-tag.host { background: #3a5232; color: white; }
+
+        .role-card {
+            background: white;
+            border-radius: 20px;
+            padding: 20px;
+            border: 2px solid var(--coop);
+        }
+        .role-title {
+            font-size: 20px;
+            font-weight: bold;
+            color: var(--coop);
+            margin-bottom: 16px;
+            font-family: monospace;
+        }
+        .role-annotation {
+            background: var(--paper-dark);
+            border-radius: 12px;
+            padding: 16px;
+            font-size: 15px;
+            line-height: 1.6;
+            margin: 12px 0;
+        }
+        .role-label {
+            font-size: 12px;
+            color: var(--muted);
+            margin-bottom: 8px;
+            font-family: monospace;
+        }
+
+        .icon-sequence {
+            display: flex;
+            justify-content: center;
+            gap: 16px;
+            flex-wrap: wrap;
+            margin: 16px 0;
+        }
+        .icon-sequence img {
+            max-width: 100px;
+            max-height: 100px;
+            border: 1px solid var(--border);
+            background: white;
+            padding: 6px;
+            border-radius: 12px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+            object-fit: contain;
+        }
+
+        .others-description {
+            background: var(--paper-dark);
+            border-radius: 16px;
+            padding: 16px;
+            margin: 12px 0;
+            border-left: 4px solid var(--coop);
+        }
+        .others-title { font-size: 12px; color: var(--muted); font-family: monospace; margin-bottom: 12px; }
+        .others-item {
+            background: white;
+            padding: 12px 16px;
+            margin-bottom: 10px;
+            border-radius: 12px;
+            font-size: 14px;
+        }
+        .others-author { font-weight: bold; color: var(--coop); font-size: 12px; margin-bottom: 6px; font-family: monospace; }
+
+        .context-info {
+            background: #fff8e7;
+            border-left: 4px solid #ffb347;
+            padding: 16px;
+            margin: 12px 0;
+            border-radius: 12px;
+        }
+        .context-title {
+            font-size: 12px;
+            color: #f57c00;
+            font-family: monospace;
+            margin-bottom: 8px;
+        }
+        .context-content {
+            font-size: 14px;
+            color: var(--ink);
+            line-height: 1.5;
+        }
+
+        textarea {
+            width: 100%;
+            padding: 14px;
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            font-family: inherit;
+            font-size: 14px;
+            margin: 12px 0;
+            resize: vertical;
+        }
+        button {
+            padding: 12px 28px;
+            background: var(--ink);
+            color: white;
+            border: none;
+            border-radius: 40px;
+            cursor: pointer;
+            font-family: monospace;
+            font-size: 16px;
+            font-weight: bold;
+            transition: all 0.15s;
+        }
+        button:hover:not(:disabled) { background: #333330; transform: translateY(-1px); }
+        button:disabled { opacity: 0.5; cursor: not-allowed; }
+        .btn-submit { background: var(--coop); }
+        .btn-submit:hover:not(:disabled) { background: #3a5a30; }
+
+        .result-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0,0,0,0.85);
+            z-index: 1000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .result-card {
+            background: var(--paper);
+            border-radius: 32px;
+            padding: 30px;
+            max-width: 700px;
+            width: 90%;
+            max-height: 80vh;
+            overflow-y: auto;
+        }
+        .result-title { font-size: 28px; font-weight: bold; text-align: center; margin-bottom: 20px; color: var(--coop); }
+        .result-score {
+            background: var(--paper-dark);
+            border-radius: 20px;
+            padding: 20px;
+            text-align: center;
+            margin: 20px 0;
+        }
+        .result-original { font-size: 22px; color: var(--success); font-weight: bold; }
+        .result-team-score { font-size: 28px; font-weight: bold; color: var(--coop); margin: 10px 0; }
+        .result-item {
+            background: white;
+            border-radius: 12px;
+            padding: 12px;
+            margin-bottom: 10px;
+            border-left: 4px solid var(--coop);
+        }
+        .result-item-role { font-weight: bold; color: var(--coop); font-family: monospace; font-size: 12px; }
+        .result-item-content { margin-top: 6px; font-size: 13px; }
+        .result-item-score { color: var(--success); font-weight: bold; margin-top: 6px; }
+
+        .control-deck {
+            background: #c9c0ae;
+            margin-top: 12px;
+            padding: 8px 20px;
+            border-radius: 28px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .back-link { font-family: monospace; font-size: 12px; color: #5f5542; text-decoration: none; }
+
+        @media (max-width: 700px) {
+            .console-body { padding: 12px; }
+            .role-title { font-size: 18px; }
+            .icon-sequence img { max-width: 70px; max-height: 70px; }
+        }
+    </style>
+</head>
+<body>
+<div style="position:fixed; top:15px; left:15px; z-index:9999;">
+  <button onclick="backToWorld()" style="background:rgba(0,0,0,0.7); border:1px solid #c09040; color:#c09040; padding:8px 16px; border-radius:30px; cursor:pointer; font-family:monospace; font-size:12px;">
+    ← 返回地书世界
+  </button>
+</div>
+
+<div class="game-console">
+    <div class="console-header"></div>
+    <div class="console-body">
+        <div class="screen-bezel">
+            <div class="crt-screen">
+                <div class="game-content" id="gameContent">
+                    <!-- 动态内容 -->
+                </div>
+            </div>
+        </div>
+        <div class="control-deck">
+            <div class="console-brand" style="font-family:monospace; font-size:13px;">合作解谜 · 符号传话</div>
+            <a href="coop_lobby.html" class="back-link">← 返回大厅</a>
+        </div>
+    </div>
+</div>
+
+<script>
+// ==================== 配置 ====================
+const API_BASE = window.location.port === '5001'
+    ? `http://${window.location.hostname}:5001`
+    : 'http://localhost:5001';
+console.log('API_BASE:', API_BASE);
+
+let roomCode = null, playerId = null, playerName = null, isHost = false;
+let pollInterval = null;
+let myRole = null;
+let myTask = null;
+let myAnnotation = null;
+let currentPhase = 'waiting';
+let lastRenderedPhase = null;
+let round1Content = '';
+let round2Content = '';
+let round3Content = '';
+let iconImages = [];
+let segSequence = [];
+let playerContextIcons = [];  // 当前玩家的专属上下文图标
+
+// ==================== 页面初始化 ====================
+async function init() {
+    const urlParams = new URLSearchParams(window.location.search);
+    roomCode = urlParams.get('room');
+    playerId = urlParams.get('player');
+    playerName = decodeURIComponent(urlParams.get('name') || '玩家');
+
+    if (!roomCode || !playerId) {
+        window.location.href = 'coop_lobby.html';
+        return;
+    }
+
+    renderGame();
+    startPolling();
+}
+
+function renderGame() {
+    const container = document.getElementById('gameContent');
+    container.innerHTML = `
+        <div class="top-bar">
+            <div class="room-code-card">
+                <span>房间号</span>
+                <span class="room-code-value" id="roomCodeDisplay">${roomCode || '---'}</span>
+                <button class="copy-btn" onclick="copyRoomCode()">复制</button>
+            </div>
+            <div class="game-status-badge" id="statusBadge">加载中...</div>
+        </div>
+        <div class="player-list" id="playerList"></div>
+        <div id="gameArea"></div>
+        <button onclick="leaveRoom()" style="margin-top:12px;">离开房间</button>
+    `;
+    document.getElementById('roomCodeDisplay').innerText = roomCode;
+}
+
+function copyRoomCode() {
+    if (roomCode) {
+        navigator.clipboard.writeText(roomCode);
+        alert('房间码已复制：' + roomCode);
+    }
+}
+
+// ==================== 轮询 ====================
+function startPolling() {
+    if (pollInterval) clearInterval(pollInterval);
+    pollInterval = setInterval(pollState, 1500);
+    pollState();
+}
+
+async function pollState() {
+    try {
+        const resp = await fetch(`${API_BASE}/api/room/state?room_code=${roomCode}&player_id=${playerId}`);
+        const data = await resp.json();
+        if (data.success) {
+            if (data.state) {
+                updateUI(data.state);
+            } else {
+                console.warn('收到空的游戏状态');
+            }
+        } else if (data.error === '房间不存在') {
+            clearInterval(pollInterval);
+            alert('房间已关闭');
+            window.location.href = 'coop_lobby.html';
+        }
+    } catch(e) {
+        console.error('轮询失败', e);
+    }
+}
+
+function updateUI(state) {
+    const playerList = document.getElementById('playerList');
+    if (playerList) {
+        playerList.innerHTML = '';
+        state.players.forEach(p => {
+            const tag = document.createElement('span');
+            tag.className = 'player-tag';
+            if (p.id === playerId) tag.classList.add('current');
+            if (p.name === state.host) tag.classList.add('host');
+            tag.textContent = p.name;
+            playerList.appendChild(tag);
+        });
+    }
+
+    const statusBadge = document.getElementById('statusBadge');
+    if (statusBadge) {
+        if (state.status === 'waiting') statusBadge.textContent = '[等待中]';
+        else if (state.status === 'playing') statusBadge.textContent = '[游戏中]';
+        else statusBadge.textContent = '[已结束]';
+    }
+
+    isHost = (state.host === playerName);
+    const newPhase = state.coop_phase;
+    const phaseChanged = (newPhase !== currentPhase);
+    currentPhase = newPhase;
+
+    const gameArea = document.getElementById('gameArea');
+
+    if (state.status === 'waiting' && isHost && state.players.length >= 2) {
+        gameArea.innerHTML = `
+            <div style="text-align: center; padding: 40px;">
+                <div style="font-size: 16px; margin-bottom: 20px;">玩家已就绪，可以开始游戏</div>
+                <button onclick="startGame()" style="background: var(--coop); font-size: 18px; padding: 14px 32px;">开始游戏</button>
+            </div>
+        `;
+        return;
+    }
+
+    if (state.status === 'waiting') {
+        gameArea.innerHTML = `
+            <div style="text-align: center; padding: 40px;">
+                <div style="font-size: 16px; color: var(--muted);">等待房主开始游戏...</div>
+            </div>
+        `;
+        return;
+    }
+
+    if (state.status === 'playing') {
+        if (!state.coop_role_assigned || !state.coop_role) {
+            gameArea.innerHTML = `<div style="text-align: center; padding: 40px;">游戏初始化中...</div>`;
+            return;
+        }
+
+        const myRoleData = state.coop_role[playerId];
+        if (myRoleData && (!myRole || myRole !== myRoleData.name)) {
+            myRole = myRoleData.name;
+            myTask = myRoleData.task;
+            const annotations = state.current_question?.annotations || {};
+            myAnnotation = annotations[myTask] || '暂无标注信息';
+
+            if (state.current_question?.icon_images) {
+                iconImages = state.current_question.icon_images;
+                segSequence = state.current_question.seg_sequence || [];
+            } else {
+                iconImages = [];
+                segSequence = [];
+            }
+
+            // 获取当前玩家的专属上下文图标（第二轮使用）
+            playerContextIcons = state.player_context_icons || [];
+
+            console.log('角色已分配:', { myRole, myTask, contextIconsCount: playerContextIcons.length });
+        }
+
+        if (phaseChanged || lastRenderedPhase !== currentPhase) {
+            lastRenderedPhase = currentPhase;
+            renderByPhase(state);
+        }
+    } else if (currentPhase === 'finished') {
+        clearInterval(pollInterval);
+        showResult(state);
+    }
+}
+
+function renderByPhase(state) {
+    if (currentPhase === 'round1') {
+        renderRound1(state);
+    } else if (currentPhase === 'round2') {
+        renderRound2(state);
+    } else if (currentPhase === 'round3') {
+        renderRound3(state);
+    }
+}
+
+// 第一轮：只有语境专家可以看到图
+function renderRound1(state) {
+    const existingInput = document.getElementById('round1Input');
+    if (existingInput && !state.coop_round1_submitted.includes(playerId)) {
+        round1Content = existingInput.value;
+    }
+
+    const gameArea = document.getElementById('gameArea');
+    const hasSubmitted = state.coop_round1_submitted.includes(playerId);
+
+    // 只有语境专家(pragmatic_meaning)能看到图标序列
+    let iconsHtml = '';
+    if (myTask === 'pragmatic_meaning' && iconImages && iconImages.length > 0) {
+        iconsHtml = `
+            <div class="icon-sequence">
+                ${iconImages.map(src => `<img src="${src}" alt="图标" onerror="this.style.display='none'">`).join('')}
+            </div>
+            <div style="font-size: 12px; color: var(--muted); text-align: center; margin-top: -8px;">
+                序列: ${segSequence.join(' → ')}
+            </div>
+        `;
+    }
+
+    let roleHint = '';
+    let annotationHtml = '';
+
+    if (myTask === 'pragmatic_meaning') {
+        roleHint = '[语境专家] 请仔细观察图标序列，用文字描述每个图标的内容';
+    } else if (myTask === 'pos_like_category') {
+        roleHint = '[词性专家] 分享你看到的词性/类别标注信息';
+        if (myAnnotation) {
+            annotationHtml = `
+                <div class="role-annotation">
+                    <div class="role-label">你看到的标注信息（词性/类别）</div>
+                    <div>${escapeHtml(myAnnotation)}</div>
+                </div>
+            `;
+        }
+    } else if (myTask === 'morphological_features') {
+        roleHint = '[形态专家] 分享你看到的形态特征标注信息';
+        if (myAnnotation) {
+            annotationHtml = `
+                <div class="role-annotation">
+                    <div class="role-label">你看到的标注信息（形态特征）</div>
+                    <div>${escapeHtml(myAnnotation)}</div>
+                </div>
+            `;
+        }
+    }
+
+    gameArea.innerHTML = `
+        <div class="role-card">
+            <div class="role-title">${myRole || '专家'}</div>
+            <div style="font-size: 13px; color: var(--muted); margin-bottom: 16px;">${roleHint}</div>
+            ${iconsHtml}
+            ${annotationHtml}
+            <div style="margin: 16px 0;">
+                <div style="font-size: 13px; color: var(--muted);">第1轮 · 分享你的信息</div>
+            </div>
+            <textarea id="round1Input" rows="3" placeholder="${myTask === 'pragmatic_meaning' ? '描述每个图标画的是什么...' : '根据你看到的标注信息，分享给队友...'}" ${hasSubmitted ? 'disabled' : ''}>${escapeHtml(round1Content)}</textarea>
+            ${!hasSubmitted ? '<button class="btn-submit" onclick="submitRound1()" style="margin-top: 10px;">提交</button>' : '<div style="color: var(--success); text-align: center; margin-top: 10px;">已提交，等待其他玩家...</div>'}
+        </div>
+    `;
+}
+
+// 第二轮：所有玩家都能看到上下文图标（每个人看到的不同）
+function renderRound2(state) {
+    const existingInput = document.getElementById('round2Input');
+    if (existingInput && !state.coop_round2_submitted.includes(playerId)) {
+        round2Content = existingInput.value;
+    }
+
+    const gameArea = document.getElementById('gameArea');
+    const hasSubmitted = state.coop_round2_submitted.includes(playerId);
+
+    // 所有玩家都能看到专属上下文图标
+    let contextIconsHtml = '';
+    if (playerContextIcons && playerContextIcons.length > 0) {
+        contextIconsHtml = `
+            <div class="icon-sequence" style="justify-content: flex-start;">
+                ${playerContextIcons.map(src => `<img src="${src}" alt="上下文图标" onerror="this.style.display='none'" style="max-width: 80px;">`).join('')}
+            </div>
+            <div style="font-size: 12px; color: var(--muted); margin-bottom: 12px;">以上是相关的上下文图标（共${playerContextIcons.length}张）</div>
+        `;
+    } else {
+        contextIconsHtml = `<div style="color: var(--muted); margin: 12px 0;">（没有额外的上下文图标）</div>`;
+    }
+
+    let roleHint = '';
+    if (myTask === 'pragmatic_meaning') {
+        roleHint = '[语境专家] 结合上方上下文图标，补充你的分析';
+    } else if (myTask === 'pos_like_category') {
+        roleHint = '[词性专家] 结合上方上下文图标，分析词性/类别的一致性';
+    } else if (myTask === 'morphological_features') {
+        roleHint = '[形态专家] 结合上方上下文图标，分析形态特征的连贯性';
+    }
+
+    gameArea.innerHTML = `
+        <div class="role-card">
+            <div class="role-title">${myRole || '专家'}</div>
+            <div style="font-size: 13px; color: var(--muted); margin-bottom: 16px;">${roleHint}</div>
+            <div class="context-info">
+                <div class="context-title">上下文图标</div>
+                <div class="context-content">请仔细观察这些与当前序列相关的上下文图标</div>
+                ${contextIconsHtml}
+            </div>
+            <div style="margin: 16px 0;">
+                <div style="font-size: 13px; color: var(--muted);">第2轮 · 结合上下文，补充你的分析</div>
+            </div>
+            <textarea id="round2Input" rows="3" placeholder="结合上下文图标信息，补充你的分析..." ${hasSubmitted ? 'disabled' : ''}>${escapeHtml(round2Content)}</textarea>
+            ${!hasSubmitted ? '<button class="btn-submit" onclick="submitRound2()" style="margin-top: 10px;">提交</button>' : '<div style="color: var(--success); text-align: center; margin-top: 10px;">已提交，等待其他玩家...</div>'}
+        </div>
+    `;
+}
+
+function renderRound3(state) {
+    const existingInput = document.getElementById('round3Input');
+    if (existingInput && !state.coop_round3_submitted.includes(playerId)) {
+        round3Content = existingInput.value;
+    }
+
+    const gameArea = document.getElementById('gameArea');
+    const hasSubmitted = state.coop_round3_submitted.includes(playerId);
+
+    const otherDescriptions = [];
+    for (const [pid, data] of Object.entries(state.coop_round1_data)) {
+        if (pid !== playerId) {
+            otherDescriptions.push({ round: 1, ...data });
+        }
+    }
+    for (const [pid, data] of Object.entries(state.coop_round2_data)) {
+        if (pid !== playerId) {
+            otherDescriptions.push({ round: 2, ...data });
+        }
+    }
+
+    gameArea.innerHTML = `
+        <div class="role-card">
+            <div class="role-title">${myRole || '专家'}</div>
+            <div class="others-description">
+                <div class="others-title">其他玩家分享的信息</div>
+                ${otherDescriptions.map(d => `
+                    <div class="others-item">
+                        <div class="others-author">第${d.round}轮 · ${d.role} - ${d.name}</div>
+                        <div>${escapeHtml(d.content)}</div>
+                    </div>
+                `).join('')}
+                ${otherDescriptions.length === 0 ? '<div style="color: var(--muted);">等待其他玩家分享...</div>' : ''}
+            </div>
+            <div style="margin: 16px 0;">
+                <div style="font-size: 13px; color: var(--muted);">第3轮 · 提交完整翻译</div>
+            </div>
+            <textarea id="round3Input" rows="3" placeholder="结合所有信息，翻译这个图标序列..." ${hasSubmitted ? 'disabled' : ''}>${escapeHtml(round3Content)}</textarea>
+            ${!hasSubmitted ? '<button class="btn-submit" onclick="submitRound3()" style="margin-top: 10px;">提交</button>' : '<div style="color: var(--success); text-align: center; margin-top: 10px;">已提交，等待其他玩家...</div>'}
+        </div>
+    `;
+}
+
+async function submitRound1() {
+    const input = document.getElementById('round1Input');
+    const content = input.value.trim();
+    if (!content) {
+        alert('请输入内容后再提交');
+        return;
+    }
+    round1Content = content;
+
+    try {
+        const resp = await fetch(`${API_BASE}/api/room/submit`, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+                room_code: roomCode,
+                player_id: playerId,
+                action: 'round1',
+                content: content
+            })
+        });
+        const data = await resp.json();
+        if (data.success) {
+            alert('提交成功！');
+            await pollState();
+        } else {
+            alert(data.error || '提交失败');
+        }
+    } catch(e) {
+        alert('提交失败：' + e.message);
+    }
+}
+
+async function submitRound2() {
+    const input = document.getElementById('round2Input');
+    const content = input.value.trim();
+    if (!content) {
+        alert('请输入内容后再提交');
+        return;
+    }
+    round2Content = content;
+
+    try {
+        const resp = await fetch(`${API_BASE}/api/room/submit`, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+                room_code: roomCode,
+                player_id: playerId,
+                action: 'round2',
+                content: content
+            })
+        });
+        const data = await resp.json();
+        if (data.success) {
+            alert('提交成功！');
+            await pollState();
+        } else {
+            alert(data.error || '提交失败');
+        }
+    } catch(e) {
+        alert('提交失败：' + e.message);
+    }
+}
+
+async function submitRound3() {
+    const input = document.getElementById('round3Input');
+    const content = input.value.trim();
+    if (!content) {
+        alert('请输入内容后再提交');
+        return;
+    }
+    round3Content = content;
+
+    try {
+        const resp = await fetch(`${API_BASE}/api/room/submit`, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+                room_code: roomCode,
+                player_id: playerId,
+                action: 'round3',
+                content: content
+            })
+        });
+        const data = await resp.json();
+        if (data.success) {
+            alert('提交成功！');
+            await pollState();
+        } else {
+            alert(data.error || '提交失败');
+        }
+    } catch(e) {
+        alert('提交失败：' + e.message);
+    }
+}
+
+async function startGame() {
+    try {
+        const resp = await fetch(`${API_BASE}/api/room/start`, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ room_code: roomCode, player_id: playerId })
+        });
+        const data = await resp.json();
+        if (data.success) {
+            await pollState();
+        } else {
+            alert(data.error || '开始失败');
+        }
+    } catch(e) {
+        alert('开始失败：' + e.message);
+    }
+}
+
+function showResult(state) {
+    const scores = state.coop_scores || {};
+    const currentQ = state.current_question || {};
+    const original = currentQ.reference_translation || '?';
+
+    let teamTotal = 0;
+    let scoreItems = '';
+    let playerCount = 0;
+
+    for (const [pid, score] of Object.entries(scores)) {
+        const playerInfo = state.coop_round3_data[pid] || {};
+        const scorePercent = Math.round(score * 100);
+        teamTotal += score;
+        playerCount++;
+        scoreItems += `
+            <div class="result-item">
+                <div class="result-item-role">${playerInfo.role || '专家'} - ${playerInfo.name || '玩家'}</div>
+                <div class="result-item-content">翻译：「${escapeHtml(playerInfo.content || '')}」</div>
+                <div class="result-item-score">相似度：${scorePercent}%</div>
+            </div>
+        `;
+    }
+
+    const teamAvg = playerCount > 0 ? Math.round((teamTotal / playerCount) * 100) : 0;
+
+    const overlay = document.createElement('div');
+    overlay.className = 'result-overlay';
+    overlay.innerHTML = `
+        <div class="result-card">
+            <div class="result-title">游戏结束</div>
+            <div class="result-score">
+                <div style="margin-bottom: 12px;">原始词语</div>
+                <div class="result-original">${escapeHtml(original)}</div>
+                <div class="result-team-score">团队总分：${teamAvg}%</div>
+            </div>
+            <div style="font-weight: bold; margin-bottom: 10px;">个人得分</div>
+            ${scoreItems}
+            <div style="text-align: center; margin-top: 24px;">
+                <button onclick="closeResultAndLeave()" style="background: var(--coop); padding: 12px 28px;">返回大厅</button>
+            </div>
+        </div>
+    `;
+
+    document.body.appendChild(overlay);
+}
+
+function closeResultAndLeave() {
+    const overlay = document.querySelector('.result-overlay');
+    if (overlay) overlay.remove();
+    leaveRoom();
+}
+
+async function leaveRoom() {
+    if (roomCode && playerId) {
+        await fetch(`${API_BASE}/api/room/leave`, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ room_code: roomCode, player_id: playerId })
+        });
+    }
+    if (pollInterval) clearInterval(pollInterval);
+    window.location.href = 'coop_lobby.html';
+}
+
+function backToWorld() {
+    window.location.href = 'http://localhost:8080/index.html';
+}
+
+function escapeHtml(str) {
+    if (!str) return '';
+    return String(str).replace(/[&<>]/g, m => m === '&' ? '&amp;' : m === '<' ? '&lt;' : '&gt;');
+}
+
+init();
+</script>
+</body>
+</html>

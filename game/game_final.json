@@ -1,0 +1,6139 @@
+{
+  "questions": [
+    {
+      "seg_sequence": [
+        "seg_011009",
+        "seg_011010",
+        "seg_011011"
+      ],
+      "icon_images": [
+        "./auto_cut_segments/011009.jpg",
+        "./auto_cut_segments/011010.jpg",
+        "./auto_cut_segments/011011.jpg"
+      ],
+      "annotations": {
+        "pos_like_category": "整句/整体表达 / Clause-like Unit",
+        "pragmatic_meaning": "2012年大洪水",
+        "morphological_features": "进行体 / Progressive"
+      },
+      "reference_translation": "2012年发生了海啸"
+    },
+    {
+      "seg_sequence": [
+        "seg_011012",
+        "seg_011013",
+        "seg_011014"
+      ],
+      "icon_images": [
+        "./auto_cut_segments/011012.jpg",
+        "./auto_cut_segments/011013.jpg",
+        "./auto_cut_segments/011014.jpg"
+      ],
+      "annotations": {
+        "pos_like_category": "整句/整体表达 / Clause-like Unit",
+        "pragmatic_meaning": "诺亚方舟在某一个地方",
+        "morphological_features": "完成体 / Perfect"
+      },
+      "reference_translation": "坐船跑"
+    },
+    {
+      "seg_sequence": [
+        "seg_005830",
+        "seg_005831",
+        "seg_005832",
+        "seg_005833"
+      ],
+      "icon_images": [
+        "./auto_cut_segments/005830.jpg",
+        "./auto_cut_segments/005831.jpg",
+        "./auto_cut_segments/005832.jpg",
+        "./auto_cut_segments/005833.jpg"
+      ],
+      "annotations": {
+        "pos_like_category": "动词性 / Action-like",
+        "pragmatic_meaning": "走了一会",
+        "morphological_features": "进行体 / Progressive"
+      },
+      "reference_translation": "走路"
+    },
+    {
+      "seg_sequence": [
+        "seg_005850",
+        "seg_005851"
+      ],
+      "icon_images": [
+        "./auto_cut_segments/005850.jpg",
+        "./auto_cut_segments/005851.jpg"
+      ],
+      "annotations": {
+        "pos_like_category": "名词性 / Entity-like",
+        "pragmatic_meaning": "走进书店",
+        "morphological_features": "现在 / Present"
+      },
+      "reference_translation": "走进图书馆"
+    },
+    {
+      "seg_sequence": [
+        "seg_005853",
+        "seg_005854",
+        "seg_005855"
+      ],
+      "icon_images": [
+        "./auto_cut_segments/005853.jpg",
+        "./auto_cut_segments/005854.jpg",
+        "./auto_cut_segments/005855.jpg"
+      ],
+      "annotations": {
+        "pos_like_category": "名词性 / Entity-like",
+        "pragmatic_meaning": "选书",
+        "morphological_features": "将来 / Future"
+      },
+      "reference_translation": "看到周围全是书"
+    },
+    {
+      "seg_sequence": [
+        "seg_006024",
+        "seg_006025",
+        "seg_006026",
+        "seg_006027",
+        "seg_006028"
+      ],
+      "icon_images": [
+        "./auto_cut_segments/006024.jpg",
+        "./auto_cut_segments/006025.jpg",
+        "./auto_cut_segments/006026.jpg",
+        "./auto_cut_segments/006027.jpg",
+        "./auto_cut_segments/006028.jpg"
+      ],
+      "annotations": {
+        "pos_like_category": "形容词性 / State-like",
+        "pragmatic_meaning": "五星级",
+        "morphological_features": "程度增强 / Intensified"
+      },
+      "reference_translation": "五星级酒店"
+    },
+    {
+      "seg_sequence": [
+        "seg_006036",
+        "seg_006037",
+        "seg_006038",
+        "seg_006039"
+      ],
+      "icon_images": [
+        "./auto_cut_segments/006036.jpg",
+        "./auto_cut_segments/006037.jpg",
+        "./auto_cut_segments/006038.jpg",
+        "./auto_cut_segments/006039.jpg"
+      ],
+      "annotations": {
+        "pos_like_category": "形容词性 / State-like",
+        "pragmatic_meaning": "四星级",
+        "morphological_features": "程度增强 / Intensified"
+      },
+      "reference_translation": "四星级酒店"
+    },
+    {
+      "seg_sequence": [
+        "seg_006046",
+        "seg_006047",
+        "seg_006048"
+      ],
+      "icon_images": [
+        "./auto_cut_segments/006046.jpg",
+        "./auto_cut_segments/006047.jpg",
+        "./auto_cut_segments/006048.jpg"
+      ],
+      "annotations": {
+        "pos_like_category": "形容词性 / State-like",
+        "pragmatic_meaning": "三星级",
+        "morphological_features": "程度增强 / Intensified"
+      },
+      "reference_translation": "三星级酒店"
+    },
+    {
+      "seg_sequence": [
+        "seg_006093",
+        "seg_006094"
+      ],
+      "icon_images": [
+        "./auto_cut_segments/006093.jpg",
+        "./auto_cut_segments/006094.jpg"
+      ],
+      "annotations": {
+        "pos_like_category": "名词性 / Entity-like",
+        "pragmatic_meaning": "把书合上",
+        "morphological_features": "进行体 / Progressive"
+      },
+      "reference_translation": "看书"
+    },
+    {
+      "seg_sequence": [
+        "seg_006135",
+        "seg_006136"
+      ],
+      "icon_images": [
+        "./auto_cut_segments/006135.jpg",
+        "./auto_cut_segments/006136.jpg"
+      ],
+      "annotations": {
+        "pos_like_category": "动词性 / Action-like",
+        "pragmatic_meaning": "把银行卡递给收银员",
+        "morphological_features": "现在 / Present"
+      },
+      "reference_translation": "借银行卡"
+    },
+    {
+      "seg_sequence": [
+        "seg_005802",
+        "seg_005803",
+        "seg_005804"
+      ],
+      "icon_images": [
+        "./auto_cut_segments/005802.jpg",
+        "./auto_cut_segments/005803.jpg",
+        "./auto_cut_segments/005804.jpg"
+      ],
+      "annotations": {
+        "pos_like_category": "名词性 / Entity-like",
+        "pragmatic_meaning": "一对要结婚的朋友",
+        "morphological_features": "将来 / Future"
+      },
+      "reference_translation": "一对夫妻"
+    },
+    {
+      "seg_sequence": [
+        "seg_005834",
+        "seg_005835",
+        "seg_005836",
+        "seg_005837",
+        "seg_005838",
+        "seg_005839"
+      ],
+      "icon_images": [
+        "./auto_cut_segments/005834.jpg",
+        "./auto_cut_segments/005835.jpg",
+        "./auto_cut_segments/005836.jpg",
+        "./auto_cut_segments/005837.jpg",
+        "./auto_cut_segments/005838.jpg",
+        "./auto_cut_segments/005839.jpg"
+      ],
+      "annotations": {
+        "pos_like_category": "动词性 / Action-like",
+        "pragmatic_meaning": "看到了书店",
+        "morphological_features": "进行体 / Progressive"
+      },
+      "reference_translation": "看到一本书"
+    },
+    {
+      "seg_sequence": [
+        "seg_006110",
+        "seg_006111"
+      ],
+      "icon_images": [
+        "./auto_cut_segments/006110.jpg",
+        "./auto_cut_segments/006111.jpg"
+      ],
+      "annotations": {
+        "pos_like_category": "动词性 / Action-like",
+        "pragmatic_meaning": "返回",
+        "morphological_features": "否定 / Negation"
+      },
+      "reference_translation": "折返"
+    },
+    {
+      "seg_sequence": [
+        "seg_006311",
+        "seg_006312",
+        "seg_006313"
+      ],
+      "icon_images": [
+        "./auto_cut_segments/006311.jpg",
+        "./auto_cut_segments/006312.jpg",
+        "./auto_cut_segments/006313.jpg"
+      ],
+      "annotations": {
+        "pos_like_category": "名词性 / Entity-like",
+        "pragmatic_meaning": "离开商店",
+        "morphological_features": "现在 / Present"
+      },
+      "reference_translation": "走访"
+    },
+    {
+      "seg_sequence": [
+        "seg_006315",
+        "seg_006316",
+        "seg_006317",
+        "seg_006318"
+      ],
+      "icon_images": [
+        "./auto_cut_segments/006315.jpg",
+        "./auto_cut_segments/006316.jpg",
+        "./auto_cut_segments/006317.jpg",
+        "./auto_cut_segments/006318.jpg"
+      ],
+      "annotations": {
+        "pos_like_category": "名词性 / Entity-like",
+        "pragmatic_meaning": "看了眼时间",
+        "morphological_features": "进行体 / Progressive"
+      },
+      "reference_translation": "看时间"
+    },
+    {
+      "seg_sequence": [
+        "seg_006320",
+        "seg_006321",
+        "seg_006322"
+      ],
+      "icon_images": [
+        "./auto_cut_segments/006320.jpg",
+        "./auto_cut_segments/006321.jpg",
+        "./auto_cut_segments/006322.jpg"
+      ],
+      "annotations": {
+        "pos_like_category": "名词性 / Entity-like",
+        "pragmatic_meaning": "回到大楼",
+        "morphological_features": "将来 / Future"
+      },
+      "reference_translation": "去高楼大厦"
+    },
+    {
+      "seg_sequence": [
+        "seg_011137",
+        "seg_011138",
+        "seg_011139"
+      ],
+      "icon_images": [
+        "./auto_cut_segments/011137.jpg",
+        "./auto_cut_segments/011138.jpg",
+        "./auto_cut_segments/011139.jpg"
+      ],
+      "annotations": {
+        "pos_like_category": "动词性 / Action-like",
+        "pragmatic_meaning": "四处环视",
+        "morphological_features": "现在 / Present"
+      },
+      "reference_translation": "寻找目标没找到"
+    },
+    {
+      "seg_sequence": [
+        "seg_007809",
+        "seg_007810",
+        "seg_007811"
+      ],
+      "icon_images": [
+        "./auto_cut_segments/007809.jpg",
+        "./auto_cut_segments/007810.jpg",
+        "./auto_cut_segments/007811.jpg"
+      ],
+      "annotations": {
+        "pos_like_category": "动词性 / Action-like",
+        "pragmatic_meaning": "进房间",
+        "morphological_features": "进行体 / Progressive"
+      },
+      "reference_translation": "回家"
+    },
+    {
+      "seg_sequence": [
+        "seg_007821",
+        "seg_007822",
+        "seg_007823"
+      ],
+      "icon_images": [
+        "./auto_cut_segments/007821.jpg",
+        "./auto_cut_segments/007822.jpg",
+        "./auto_cut_segments/007823.jpg"
+      ],
+      "annotations": {
+        "pos_like_category": "形容词性 / State-like",
+        "pragmatic_meaning": "调强度",
+        "morphological_features": "程度增强 / Intensified"
+      },
+      "reference_translation": "房间越来越凉快"
+    },
+    {
+      "seg_sequence": [
+        "seg_007893",
+        "seg_007894",
+        "seg_007895",
+        "seg_007896",
+        "seg_007897",
+        "seg_007898"
+      ],
+      "icon_images": [
+        "./auto_cut_segments/007893.jpg",
+        "./auto_cut_segments/007894.jpg",
+        "./auto_cut_segments/007895.jpg",
+        "./auto_cut_segments/007896.jpg",
+        "./auto_cut_segments/007897.jpg",
+        "./auto_cut_segments/007898.jpg"
+      ],
+      "annotations": {
+        "pos_like_category": "整句/整体表达 / Clause-like Unit",
+        "pragmatic_meaning": "换衣服",
+        "morphological_features": "完成体 / Perfect"
+      },
+      "reference_translation": "换衣服"
+    },
+    {
+      "seg_sequence": [
+        "seg_007944",
+        "seg_007945",
+        "seg_007946"
+      ],
+      "icon_images": [
+        "./auto_cut_segments/007944.jpg",
+        "./auto_cut_segments/007945.jpg",
+        "./auto_cut_segments/007946.jpg"
+      ],
+      "annotations": {
+        "pos_like_category": "形容词性 / State-like",
+        "pragmatic_meaning": "挑选口红",
+        "morphological_features": "强调 / Emphasis"
+      },
+      "reference_translation": "这根口红？"
+    },
+    {
+      "seg_sequence": [
+        "seg_007947",
+        "seg_007948",
+        "seg_007949"
+      ],
+      "icon_images": [
+        "./auto_cut_segments/007947.jpg",
+        "./auto_cut_segments/007948.jpg",
+        "./auto_cut_segments/007949.jpg"
+      ],
+      "annotations": {
+        "pos_like_category": "形容词性 / State-like",
+        "pragmatic_meaning": "挑选口红",
+        "morphological_features": "强调 / Emphasis"
+      },
+      "reference_translation": "还是这根？"
+    },
+    {
+      "seg_sequence": [
+        "seg_007969",
+        "seg_007970",
+        "seg_007971",
+        "seg_007972",
+        "seg_007973"
+      ],
+      "icon_images": [
+        "./auto_cut_segments/007969.jpg",
+        "./auto_cut_segments/007970.jpg",
+        "./auto_cut_segments/007971.jpg",
+        "./auto_cut_segments/007972.jpg",
+        "./auto_cut_segments/007973.jpg"
+      ],
+      "annotations": {
+        "pos_like_category": "名词性 / Entity-like",
+        "pragmatic_meaning": "涂睫毛",
+        "morphological_features": "完成体 / Perfect"
+      },
+      "reference_translation": "画眼妆"
+    },
+    {
+      "seg_sequence": [
+        "seg_007989",
+        "seg_007990",
+        "seg_007991",
+        "seg_007992"
+      ],
+      "icon_images": [
+        "./auto_cut_segments/007989.jpg",
+        "./auto_cut_segments/007990.jpg",
+        "./auto_cut_segments/007991.jpg",
+        "./auto_cut_segments/007992.jpg"
+      ],
+      "annotations": {
+        "pos_like_category": "动词性 / Action-like",
+        "pragmatic_meaning": "关音乐",
+        "morphological_features": "完成体 / Perfect"
+      },
+      "reference_translation": "关掉音响"
+    },
+    {
+      "seg_sequence": [
+        "seg_008003",
+        "seg_008004",
+        "seg_008005"
+      ],
+      "icon_images": [
+        "./auto_cut_segments/008003.jpg",
+        "./auto_cut_segments/008004.jpg",
+        "./auto_cut_segments/008005.jpg"
+      ],
+      "annotations": {
+        "pos_like_category": "动词性 / Action-like",
+        "pragmatic_meaning": "出门",
+        "morphological_features": "完成体 / Perfect"
+      },
+      "reference_translation": "香喷出门"
+    },
+    {
+      "seg_sequence": [
+        "seg_008049",
+        "seg_008050",
+        "seg_008051",
+        "seg_008052"
+      ],
+      "icon_images": [
+        "./auto_cut_segments/008049.jpg",
+        "./auto_cut_segments/008050.jpg",
+        "./auto_cut_segments/008051.jpg",
+        "./auto_cut_segments/008052.jpg"
+      ],
+      "annotations": {
+        "pos_like_category": "动词性 / Action-like",
+        "pragmatic_meaning": "拿手机",
+        "morphological_features": "进行体 / Progressive"
+      },
+      "reference_translation": "想打电话"
+    },
+    {
+      "seg_sequence": [
+        "seg_008060",
+        "seg_008061",
+        "seg_008062",
+        "seg_008063",
+        "seg_008064"
+      ],
+      "icon_images": [
+        "./auto_cut_segments/008060.jpg",
+        "./auto_cut_segments/008061.jpg",
+        "./auto_cut_segments/008062.jpg",
+        "./auto_cut_segments/008063.jpg",
+        "./auto_cut_segments/008064.jpg"
+      ],
+      "annotations": {
+        "pos_like_category": "动词性 / Action-like",
+        "pragmatic_meaning": "打电话",
+        "morphological_features": "进行体 / Progressive"
+      },
+      "reference_translation": "想给朋友打电话"
+    },
+    {
+      "seg_sequence": [
+        "seg_008068",
+        "seg_008069",
+        "seg_008070",
+        "seg_008071",
+        "seg_008072"
+      ],
+      "icon_images": [
+        "./auto_cut_segments/008068.jpg",
+        "./auto_cut_segments/008069.jpg",
+        "./auto_cut_segments/008070.jpg",
+        "./auto_cut_segments/008071.jpg",
+        "./auto_cut_segments/008072.jpg"
+      ],
+      "annotations": {
+        "pos_like_category": "动词性 / Action-like",
+        "pragmatic_meaning": "看遥控器",
+        "morphological_features": "强调 / Emphasis"
+      },
+      "reference_translation": "拿的是..."
+    },
+    {
+      "seg_sequence": [
+        "seg_008245",
+        "seg_008246",
+        "seg_008247",
+        "seg_008248",
+        "seg_008249",
+        "seg_008250",
+        "seg_008251",
+        "seg_008252",
+        "seg_008253"
+      ],
+      "icon_images": [
+        "./auto_cut_segments/008245.jpg",
+        "./auto_cut_segments/008246.jpg",
+        "./auto_cut_segments/008247.jpg",
+        "./auto_cut_segments/008248.jpg",
+        "./auto_cut_segments/008249.jpg",
+        "./auto_cut_segments/008250.jpg",
+        "./auto_cut_segments/008251.jpg",
+        "./auto_cut_segments/008252.jpg",
+        "./auto_cut_segments/008253.jpg"
+      ],
+      "annotations": {
+        "pos_like_category": "动词性 / Action-like",
+        "pragmatic_meaning": "问地点",
+        "morphological_features": "进行体 / Progressive"
+      },
+      "reference_translation": "哪能喝酒"
+    },
+    {
+      "seg_sequence": [
+        "seg_010416",
+        "seg_010417",
+        "seg_010418",
+        "seg_010419",
+        "seg_010420",
+        "seg_010421"
+      ],
+      "icon_images": [
+        "./auto_cut_segments/010416.jpg",
+        "./auto_cut_segments/010417.jpg",
+        "./auto_cut_segments/010418.jpg",
+        "./auto_cut_segments/010419.jpg",
+        "./auto_cut_segments/010420.jpg",
+        "./auto_cut_segments/010421.jpg"
+      ],
+      "annotations": {
+        "pos_like_category": "形容词性 / State-like",
+        "pragmatic_meaning": "从城东到城西",
+        "morphological_features": "强调 / Emphasis"
+      },
+      "reference_translation": "司机开了导航，重新规划了路线"
+    },
+    {
+      "seg_sequence": [
+        "seg_010423",
+        "seg_010424"
+      ],
+      "icon_images": [
+        "./auto_cut_segments/010423.jpg",
+        "./auto_cut_segments/010424.jpg"
+      ],
+      "annotations": {
+        "pos_like_category": "形容词性 / State-like",
+        "pragmatic_meaning": "疲惫",
+        "morphological_features": "强调 / Emphasis"
+      },
+      "reference_translation": "乘客有些犯困，"
+    },
+    {
+      "seg_sequence": [
+        "seg_010434",
+        "seg_010435",
+        "seg_010436",
+        "seg_010437"
+      ],
+      "icon_images": [
+        "./auto_cut_segments/010434.jpg",
+        "./auto_cut_segments/010435.jpg",
+        "./auto_cut_segments/010436.jpg",
+        "./auto_cut_segments/010437.jpg"
+      ],
+      "annotations": {
+        "pos_like_category": "动词性 / Action-like",
+        "pragmatic_meaning": "红灯停",
+        "morphological_features": "强调 / Emphasis"
+      },
+      "reference_translation": "前面路口突然变成红灯"
+    },
+    {
+      "seg_sequence": [
+        "seg_010411",
+        "seg_010412",
+        "seg_010413"
+      ],
+      "icon_images": [
+        "./auto_cut_segments/010411.jpg",
+        "./auto_cut_segments/010412.jpg",
+        "./auto_cut_segments/010413.jpg"
+      ],
+      "annotations": {
+        "pos_like_category": "动词性 / Action-like",
+        "pragmatic_meaning": "坐上车说了家的地址",
+        "morphological_features": "进行体 / Progressive"
+      },
+      "reference_translation": "他和司机说希望能把自己送回家"
+    },
+    {
+      "seg_sequence": [
+        "seg_010516",
+        "seg_010517"
+      ],
+      "icon_images": [
+        "./auto_cut_segments/010516.jpg",
+        "./auto_cut_segments/010517.jpg"
+      ],
+      "annotations": {
+        "pos_like_category": "动词性 / Action-like",
+        "pragmatic_meaning": "警车来了",
+        "morphological_features": "现在 / Present"
+      },
+      "reference_translation": "很快，警察来了"
+    },
+    {
+      "seg_sequence": [
+        "seg_010440",
+        "seg_010441",
+        "seg_010442"
+      ],
+      "icon_images": [
+        "./auto_cut_segments/010440.jpg",
+        "./auto_cut_segments/010441.jpg",
+        "./auto_cut_segments/010442.jpg"
+      ],
+      "annotations": {
+        "pos_like_category": "动词性 / Action-like",
+        "pragmatic_meaning": "惊醒",
+        "morphological_features": "进行体 / Progressive"
+      },
+      "reference_translation": "乘客被碰撞惊醒"
+    },
+    {
+      "seg_sequence": [
+        "seg_011368",
+        "seg_011369",
+        "seg_011370"
+      ],
+      "icon_images": [
+        "./auto_cut_segments/011368.jpg",
+        "./auto_cut_segments/011369.jpg",
+        "./auto_cut_segments/011370.jpg"
+      ],
+      "annotations": {
+        "pos_like_category": "名词性 / Entity-like",
+        "pragmatic_meaning": "时间",
+        "morphological_features": "现在 / Present"
+      },
+      "reference_translation": "4点了"
+    },
+    {
+      "seg_sequence": [
+        "seg_011371",
+        "seg_011372",
+        "seg_011373"
+      ],
+      "icon_images": [
+        "./auto_cut_segments/011371.jpg",
+        "./auto_cut_segments/011372.jpg",
+        "./auto_cut_segments/011373.jpg"
+      ],
+      "annotations": {
+        "pos_like_category": "动词性 / Action-like",
+        "pragmatic_meaning": "睡觉",
+        "morphological_features": "进行体 / Progressive"
+      },
+      "reference_translation": "他正在睡觉"
+    },
+    {
+      "seg_sequence": [
+        "seg_010688",
+        "seg_010689"
+      ],
+      "icon_images": [
+        "./auto_cut_segments/010688.jpg",
+        "./auto_cut_segments/010689.jpg"
+      ],
+      "annotations": {
+        "pos_like_category": "动词性 / Action-like",
+        "pragmatic_meaning": "路边",
+        "morphological_features": "现在 / Present"
+      },
+      "reference_translation": "走路"
+    },
+    {
+      "seg_sequence": [
+        "seg_010690",
+        "seg_010691"
+      ],
+      "icon_images": [
+        "./auto_cut_segments/010690.jpg",
+        "./auto_cut_segments/010691.jpg"
+      ],
+      "annotations": {
+        "pos_like_category": "动词性 / Action-like",
+        "pragmatic_meaning": "搭计程车",
+        "morphological_features": "现在 / Present"
+      },
+      "reference_translation": "拦不到车"
+    },
+    {
+      "seg_sequence": [
+        "seg_010720",
+        "seg_010721",
+        "seg_010722",
+        "seg_010723"
+      ],
+      "icon_images": [
+        "./auto_cut_segments/010720.jpg",
+        "./auto_cut_segments/010721.jpg",
+        "./auto_cut_segments/010722.jpg",
+        "./auto_cut_segments/010723.jpg"
+      ],
+      "annotations": {
+        "pos_like_category": "动词性 / Action-like",
+        "pragmatic_meaning": "走",
+        "morphological_features": "现在 / Present"
+      },
+      "reference_translation": "走啊走"
+    },
+    {
+      "seg_sequence": [
+        "seg_010745",
+        "seg_010746",
+        "seg_010747"
+      ],
+      "icon_images": [
+        "./auto_cut_segments/010745.jpg",
+        "./auto_cut_segments/010746.jpg",
+        "./auto_cut_segments/010747.jpg"
+      ],
+      "annotations": {
+        "pos_like_category": "动词性 / Action-like",
+        "pragmatic_meaning": "走路",
+        "morphological_features": "现在 / Present"
+      },
+      "reference_translation": "走"
+    },
+    {
+      "seg_sequence": [
+        "seg_010765",
+        "seg_010766"
+      ],
+      "icon_images": [
+        "./auto_cut_segments/010765.jpg",
+        "./auto_cut_segments/010766.jpg"
+      ],
+      "annotations": {
+        "pos_like_category": "动词性 / Action-like",
+        "pragmatic_meaning": "走",
+        "morphological_features": "复数/集合 / Plural-Collective"
+      },
+      "reference_translation": "走路"
+    },
+    {
+      "seg_sequence": [
+        "seg_010769",
+        "seg_010770"
+      ],
+      "icon_images": [
+        "./auto_cut_segments/010769.jpg",
+        "./auto_cut_segments/010770.jpg"
+      ],
+      "annotations": {
+        "pos_like_category": "动词性 / Action-like",
+        "pragmatic_meaning": "脚步",
+        "morphological_features": "现在 / Present"
+      },
+      "reference_translation": "走路"
+    },
+    {
+      "seg_sequence": [
+        "seg_009179",
+        "seg_009180"
+      ],
+      "icon_images": [
+        "./auto_cut_segments/009179.jpg",
+        "./auto_cut_segments/009180.jpg"
+      ],
+      "annotations": {
+        "pos_like_category": "动词性 / Action-like",
+        "pragmatic_meaning": "爱意更加浓厚",
+        "morphological_features": "进行体 / Progressive"
+      },
+      "reference_translation": "愉快相爱"
+    },
+    {
+      "seg_sequence": [
+        "seg_009181",
+        "seg_009182",
+        "seg_009183"
+      ],
+      "icon_images": [
+        "./auto_cut_segments/009181.jpg",
+        "./auto_cut_segments/009182.jpg",
+        "./auto_cut_segments/009183.jpg"
+      ],
+      "annotations": {
+        "pos_like_category": "标点/边界标记 / Boundary Marker",
+        "pragmatic_meaning": "恋爱很久很久",
+        "morphological_features": "过去 / Past"
+      },
+      "reference_translation": "等了一会"
+    },
+    {
+      "seg_sequence": [
+        "seg_009195",
+        "seg_009196",
+        "seg_009197"
+      ],
+      "icon_images": [
+        "./auto_cut_segments/009195.jpg",
+        "./auto_cut_segments/009196.jpg",
+        "./auto_cut_segments/009197.jpg"
+      ],
+      "annotations": {
+        "pos_like_category": "动词性 / Action-like",
+        "pragmatic_meaning": "非常疑惑",
+        "morphological_features": "将来 / Future"
+      },
+      "reference_translation": "是谁？"
+    },
+    {
+      "seg_sequence": [
+        "seg_009201",
+        "seg_009202",
+        "seg_009203"
+      ],
+      "icon_images": [
+        "./auto_cut_segments/009201.jpg",
+        "./auto_cut_segments/009202.jpg",
+        "./auto_cut_segments/009203.jpg"
+      ],
+      "annotations": {
+        "pos_like_category": "动词性 / Action-like",
+        "pragmatic_meaning": "手机又开始震动",
+        "morphological_features": "进行体 / Progressive"
+      },
+      "reference_translation": "手机又响了"
+    },
+    {
+      "seg_sequence": [
+        "seg_009456",
+        "seg_009457",
+        "seg_009458",
+        "seg_009459"
+      ],
+      "icon_images": [
+        "./auto_cut_segments/009456.jpg",
+        "./auto_cut_segments/009457.jpg",
+        "./auto_cut_segments/009458.jpg",
+        "./auto_cut_segments/009459.jpg"
+      ],
+      "annotations": {
+        "pos_like_category": "动词性 / Action-like",
+        "pragmatic_meaning": "病人哭了",
+        "morphological_features": "完成体 / Perfect"
+      },
+      "reference_translation": "伤心"
+    },
+    {
+      "seg_sequence": [
+        "seg_009298",
+        "seg_009299",
+        "seg_009300",
+        "seg_009301"
+      ],
+      "icon_images": [
+        "./auto_cut_segments/009298.jpg",
+        "./auto_cut_segments/009299.jpg",
+        "./auto_cut_segments/009300.jpg",
+        "./auto_cut_segments/009301.jpg"
+      ],
+      "annotations": {
+        "pos_like_category": "动词性 / Action-like",
+        "pragmatic_meaning": "打了声招呼",
+        "morphological_features": "现在 / Present"
+      },
+      "reference_translation": "再见"
+    },
+    {
+      "seg_sequence": [
+        "seg_009319",
+        "seg_009320",
+        "seg_009321"
+      ],
+      "icon_images": [
+        "./auto_cut_segments/009319.jpg",
+        "./auto_cut_segments/009320.jpg",
+        "./auto_cut_segments/009321.jpg"
+      ],
+      "annotations": {
+        "pos_like_category": "动词性 / Action-like",
+        "pragmatic_meaning": "点了西红柿鸡蛋面",
+        "morphological_features": "现在 / Present"
+      },
+      "reference_translation": "等饭"
+    },
+    {
+      "seg_sequence": [
+        "seg_009324",
+        "seg_009325"
+      ],
+      "icon_images": [
+        "./auto_cut_segments/009324.jpg",
+        "./auto_cut_segments/009325.jpg"
+      ],
+      "annotations": {
+        "pos_like_category": "名词性 / Entity-like",
+        "pragmatic_meaning": "时间到了",
+        "morphological_features": "现在 / Present"
+      },
+      "reference_translation": "五分钟过去了"
+    },
+    {
+      "seg_sequence": [
+        "seg_009341",
+        "seg_009342",
+        "seg_009343"
+      ],
+      "icon_images": [
+        "./auto_cut_segments/009341.jpg",
+        "./auto_cut_segments/009342.jpg",
+        "./auto_cut_segments/009343.jpg"
+      ],
+      "annotations": {
+        "pos_like_category": "动词性 / Action-like",
+        "pragmatic_meaning": "到达医院",
+        "morphological_features": "将来 / Future"
+      },
+      "reference_translation": "上医院"
+    },
+    {
+      "seg_sequence": [
+        "seg_009345",
+        "seg_009346"
+      ],
+      "icon_images": [
+        "./auto_cut_segments/009345.jpg",
+        "./auto_cut_segments/009346.jpg"
+      ],
+      "annotations": {
+        "pos_like_category": "动词性 / Action-like",
+        "pragmatic_meaning": "看到病床上空无一人",
+        "morphological_features": "现在 / Present"
+      },
+      "reference_translation": "找病人"
+    },
+    {
+      "seg_sequence": [
+        "seg_009417",
+        "seg_009418",
+        "seg_009419"
+      ],
+      "icon_images": [
+        "./auto_cut_segments/009417.jpg",
+        "./auto_cut_segments/009418.jpg",
+        "./auto_cut_segments/009419.jpg"
+      ],
+      "annotations": {
+        "pos_like_category": "动词性 / Action-like",
+        "pragmatic_meaning": "又进医院",
+        "morphological_features": "将来 / Future"
+      },
+      "reference_translation": "出院"
+    },
+    {
+      "seg_sequence": [
+        "seg_009462",
+        "seg_009463",
+        "seg_009464"
+      ],
+      "icon_images": [
+        "./auto_cut_segments/009462.jpg",
+        "./auto_cut_segments/009463.jpg",
+        "./auto_cut_segments/009464.jpg"
+      ],
+      "annotations": {
+        "pos_like_category": "动词性 / Action-like",
+        "pragmatic_meaning": "起来大口吃拉面",
+        "morphological_features": "进行体 / Progressive"
+      },
+      "reference_translation": "吃面"
+    },
+    {
+      "seg_sequence": [
+        "seg_009468",
+        "seg_009469"
+      ],
+      "icon_images": [
+        "./auto_cut_segments/009468.jpg",
+        "./auto_cut_segments/009469.jpg"
+      ],
+      "annotations": {
+        "pos_like_category": "动词性 / Action-like",
+        "pragmatic_meaning": "称赞面条好吃",
+        "morphological_features": "强调 / Emphasis"
+      },
+      "reference_translation": "好吃"
+    },
+    {
+      "seg_sequence": [
+        "seg_009475",
+        "seg_009476",
+        "seg_009477"
+      ],
+      "icon_images": [
+        "./auto_cut_segments/009475.jpg",
+        "./auto_cut_segments/009476.jpg",
+        "./auto_cut_segments/009477.jpg"
+      ],
+      "annotations": {
+        "pos_like_category": "动词性 / Action-like",
+        "pragmatic_meaning": "想起曾经去喝酒",
+        "morphological_features": "强调 / Emphasis"
+      },
+      "reference_translation": "想喝酒"
+    },
+    {
+      "seg_sequence": [
+        "seg_009492",
+        "seg_009493",
+        "seg_009494"
+      ],
+      "icon_images": [
+        "./auto_cut_segments/009492.jpg",
+        "./auto_cut_segments/009493.jpg",
+        "./auto_cut_segments/009494.jpg"
+      ],
+      "annotations": {
+        "pos_like_category": "动词性 / Action-like",
+        "pragmatic_meaning": "确认病人没有问题",
+        "morphological_features": "将来 / Future"
+      },
+      "reference_translation": "睡好觉"
+    },
+    {
+      "seg_sequence": [
+        "seg_010807",
+        "seg_010808"
+      ],
+      "icon_images": [
+        "./auto_cut_segments/010807.jpg",
+        "./auto_cut_segments/010808.jpg"
+      ],
+      "annotations": {
+        "pos_like_category": "形容词性 / State-like",
+        "pragmatic_meaning": "感到开心",
+        "morphological_features": "现在 / Present"
+      },
+      "reference_translation": "人很高兴"
+    },
+    {
+      "seg_sequence": [
+        "seg_010820",
+        "seg_010821",
+        "seg_010822"
+      ],
+      "icon_images": [
+        "./auto_cut_segments/010820.jpg",
+        "./auto_cut_segments/010821.jpg",
+        "./auto_cut_segments/010822.jpg"
+      ],
+      "annotations": {
+        "pos_like_category": "动词性 / Action-like",
+        "pragmatic_meaning": "回卧室",
+        "morphological_features": "进行体 / Progressive"
+      },
+      "reference_translation": "人回卧室"
+    },
+    {
+      "seg_sequence": [
+        "seg_010840",
+        "seg_010841",
+        "seg_010842",
+        "seg_010843",
+        "seg_010844",
+        "seg_010845",
+        "seg_010846",
+        "seg_010847",
+        "seg_010848"
+      ],
+      "icon_images": [
+        "./auto_cut_segments/010840.jpg",
+        "./auto_cut_segments/010841.jpg",
+        "./auto_cut_segments/010842.jpg",
+        "./auto_cut_segments/010843.jpg",
+        "./auto_cut_segments/010844.jpg",
+        "./auto_cut_segments/010845.jpg",
+        "./auto_cut_segments/010846.jpg",
+        "./auto_cut_segments/010847.jpg",
+        "./auto_cut_segments/010848.jpg"
+      ],
+      "annotations": {
+        "pos_like_category": "动词性 / Action-like",
+        "pragmatic_meaning": "看电视里在播abc news",
+        "morphological_features": "现在 / Present"
+      },
+      "reference_translation": "abc频道"
+    },
+    {
+      "seg_sequence": [
+        "seg_010837",
+        "seg_010838",
+        "seg_010839"
+      ],
+      "icon_images": [
+        "./auto_cut_segments/010837.jpg",
+        "./auto_cut_segments/010838.jpg",
+        "./auto_cut_segments/010839.jpg"
+      ],
+      "annotations": {
+        "pos_like_category": "动词性 / Action-like",
+        "pragmatic_meaning": "躺下",
+        "morphological_features": "进行体 / Progressive"
+      },
+      "reference_translation": "躺着更舒服"
+    },
+    {
+      "seg_sequence": [
+        "seg_010864",
+        "seg_010865",
+        "seg_010866",
+        "seg_010867"
+      ],
+      "icon_images": [
+        "./auto_cut_segments/010864.jpg",
+        "./auto_cut_segments/010865.jpg",
+        "./auto_cut_segments/010866.jpg",
+        "./auto_cut_segments/010867.jpg"
+      ],
+      "annotations": {
+        "pos_like_category": "动词性 / Action-like",
+        "pragmatic_meaning": "换台",
+        "morphological_features": "现在 / Present"
+      },
+      "reference_translation": "用遥控器换了台"
+    },
+    {
+      "seg_sequence": [
+        "seg_010873",
+        "seg_010874",
+        "seg_010875",
+        "seg_010876"
+      ],
+      "icon_images": [
+        "./auto_cut_segments/010873.jpg",
+        "./auto_cut_segments/010874.jpg",
+        "./auto_cut_segments/010875.jpg",
+        "./auto_cut_segments/010876.jpg"
+      ],
+      "annotations": {
+        "pos_like_category": "动词性 / Action-like",
+        "pragmatic_meaning": "熊猫在打滚",
+        "morphological_features": "进行体 / Progressive"
+      },
+      "reference_translation": "看到熊猫打滚"
+    },
+    {
+      "seg_sequence": [
+        "seg_010927",
+        "seg_010928",
+        "seg_010929"
+      ],
+      "icon_images": [
+        "./auto_cut_segments/010927.jpg",
+        "./auto_cut_segments/010928.jpg",
+        "./auto_cut_segments/010929.jpg"
+      ],
+      "annotations": {
+        "pos_like_category": "动词性 / Action-like",
+        "pragmatic_meaning": "猎杀大象",
+        "morphological_features": "进行体 / Progressive"
+      },
+      "reference_translation": "一个猎人在猎杀大象"
+    },
+    {
+      "seg_sequence": [
+        "seg_010943",
+        "seg_010944",
+        "seg_010945",
+        "seg_010946"
+      ],
+      "icon_images": [
+        "./auto_cut_segments/010943.jpg",
+        "./auto_cut_segments/010944.jpg",
+        "./auto_cut_segments/010945.jpg",
+        "./auto_cut_segments/010946.jpg"
+      ],
+      "annotations": {
+        "pos_like_category": "动词性 / Action-like",
+        "pragmatic_meaning": "换台",
+        "morphological_features": "进行体 / Progressive"
+      },
+      "reference_translation": "换台"
+    },
+    {
+      "seg_sequence": [
+        "seg_010972",
+        "seg_010973",
+        "seg_010974",
+        "seg_010975",
+        "seg_010976"
+      ],
+      "icon_images": [
+        "./auto_cut_segments/010972.jpg",
+        "./auto_cut_segments/010973.jpg",
+        "./auto_cut_segments/010974.jpg",
+        "./auto_cut_segments/010975.jpg",
+        "./auto_cut_segments/010976.jpg"
+      ],
+      "annotations": {
+        "pos_like_category": "名词性 / Entity-like",
+        "pragmatic_meaning": "电视播放某某内容",
+        "morphological_features": "重复/迭代 / Iterative"
+      },
+      "reference_translation": "电视机不知道在播放什么了"
+    },
+    {
+      "seg_sequence": [
+        "seg_010968",
+        "seg_010969",
+        "seg_010970",
+        "seg_010971"
+      ],
+      "icon_images": [
+        "./auto_cut_segments/010968.jpg",
+        "./auto_cut_segments/010969.jpg",
+        "./auto_cut_segments/010970.jpg",
+        "./auto_cut_segments/010971.jpg"
+      ],
+      "annotations": {
+        "pos_like_category": "动词性 / Action-like",
+        "pragmatic_meaning": "换台",
+        "morphological_features": "进行体 / Progressive"
+      },
+      "reference_translation": "换台"
+    },
+    {
+      "seg_sequence": [
+        "seg_010982",
+        "seg_010983",
+        "seg_010984",
+        "seg_010985",
+        "seg_010986"
+      ],
+      "icon_images": [
+        "./auto_cut_segments/010982.jpg",
+        "./auto_cut_segments/010983.jpg",
+        "./auto_cut_segments/010984.jpg",
+        "./auto_cut_segments/010985.jpg",
+        "./auto_cut_segments/010986.jpg"
+      ],
+      "annotations": {
+        "pos_like_category": "动词性 / Action-like",
+        "pragmatic_meaning": "眼睛慢慢闭上了",
+        "morphological_features": "进行体 / Progressive"
+      },
+      "reference_translation": "慢慢的闭上了眼睛"
+    },
+    {
+      "seg_sequence": [
+        "seg_010990",
+        "seg_010991"
+      ],
+      "icon_images": [
+        "./auto_cut_segments/010990.jpg",
+        "./auto_cut_segments/010991.jpg"
+      ],
+      "annotations": {
+        "pos_like_category": "动词性 / Action-like",
+        "pragmatic_meaning": "电视还在发出声音",
+        "morphological_features": "进行体 / Progressive"
+      },
+      "reference_translation": "电视机还在播放中。。"
+    },
+    {
+      "seg_sequence": [
+        "seg_007813",
+        "seg_007814",
+        "seg_007815",
+        "seg_007816"
+      ],
+      "icon_images": [
+        "./auto_cut_segments/007813.jpg",
+        "./auto_cut_segments/007814.jpg",
+        "./auto_cut_segments/007815.jpg",
+        "./auto_cut_segments/007816.jpg"
+      ],
+      "annotations": {
+        "pos_like_category": "整句/整体表达 / Clause-like Unit",
+        "pragmatic_meaning": "开空调",
+        "morphological_features": "完成体 / Perfect"
+      },
+      "reference_translation": "开空调"
+    },
+    {
+      "seg_sequence": [
+        "seg_007825",
+        "seg_007826",
+        "seg_007827"
+      ],
+      "icon_images": [
+        "./auto_cut_segments/007825.jpg",
+        "./auto_cut_segments/007826.jpg",
+        "./auto_cut_segments/007827.jpg"
+      ],
+      "annotations": {
+        "pos_like_category": "动词性 / Action-like",
+        "pragmatic_meaning": "打开冰箱",
+        "morphological_features": "完成体 / Perfect"
+      },
+      "reference_translation": "我去冰箱"
+    },
+    {
+      "seg_sequence": [
+        "seg_007829",
+        "seg_007830",
+        "seg_007831"
+      ],
+      "icon_images": [
+        "./auto_cut_segments/007829.jpg",
+        "./auto_cut_segments/007830.jpg",
+        "./auto_cut_segments/007831.jpg"
+      ],
+      "annotations": {
+        "pos_like_category": "动词性 / Action-like",
+        "pragmatic_meaning": "拿出饮料",
+        "morphological_features": "复数/集合 / Plural-Collective"
+      },
+      "reference_translation": "拿好喝的"
+    },
+    {
+      "seg_sequence": [
+        "seg_007837",
+        "seg_007838",
+        "seg_007839",
+        "seg_007840",
+        "seg_007841",
+        "seg_007842"
+      ],
+      "icon_images": [
+        "./auto_cut_segments/007837.jpg",
+        "./auto_cut_segments/007838.jpg",
+        "./auto_cut_segments/007839.jpg",
+        "./auto_cut_segments/007840.jpg",
+        "./auto_cut_segments/007841.jpg",
+        "./auto_cut_segments/007842.jpg"
+      ],
+      "annotations": {
+        "pos_like_category": "整句/整体表达 / Clause-like Unit",
+        "pragmatic_meaning": "去浴室洗澡",
+        "morphological_features": "完成体 / Perfect"
+      },
+      "reference_translation": "上厕所洗澡"
+    },
+    {
+      "seg_sequence": [
+        "seg_007901",
+        "seg_007902",
+        "seg_007903",
+        "seg_007904",
+        "seg_007905",
+        "seg_007906",
+        "seg_007907",
+        "seg_007908",
+        "seg_007909"
+      ],
+      "icon_images": [
+        "./auto_cut_segments/007901.jpg",
+        "./auto_cut_segments/007902.jpg",
+        "./auto_cut_segments/007903.jpg",
+        "./auto_cut_segments/007904.jpg",
+        "./auto_cut_segments/007905.jpg",
+        "./auto_cut_segments/007906.jpg",
+        "./auto_cut_segments/007907.jpg",
+        "./auto_cut_segments/007908.jpg",
+        "./auto_cut_segments/007909.jpg"
+      ],
+      "annotations": {
+        "pos_like_category": "名词性 / Entity-like",
+        "pragmatic_meaning": "全套衣服",
+        "morphological_features": "完成体 / Perfect"
+      },
+      "reference_translation": "换衣服"
+    },
+    {
+      "seg_sequence": [
+        "seg_007956",
+        "seg_007957",
+        "seg_007958"
+      ],
+      "icon_images": [
+        "./auto_cut_segments/007956.jpg",
+        "./auto_cut_segments/007957.jpg",
+        "./auto_cut_segments/007958.jpg"
+      ],
+      "annotations": {
+        "pos_like_category": "动词性 / Action-like",
+        "pragmatic_meaning": "涂口红",
+        "morphological_features": "完成体 / Perfect"
+      },
+      "reference_translation": "涂口红"
+    },
+    {
+      "seg_sequence": [
+        "seg_007960",
+        "seg_007961",
+        "seg_007962"
+      ],
+      "icon_images": [
+        "./auto_cut_segments/007960.jpg",
+        "./auto_cut_segments/007961.jpg",
+        "./auto_cut_segments/007962.jpg"
+      ],
+      "annotations": {
+        "pos_like_category": "动词性 / Action-like",
+        "pragmatic_meaning": "给口红盖好盖子",
+        "morphological_features": "完成体 / Perfect"
+      },
+      "reference_translation": "盖上盖子"
+    },
+    {
+      "seg_sequence": [
+        "seg_007978",
+        "seg_007979",
+        "seg_007980"
+      ],
+      "icon_images": [
+        "./auto_cut_segments/007978.jpg",
+        "./auto_cut_segments/007979.jpg",
+        "./auto_cut_segments/007980.jpg"
+      ],
+      "annotations": {
+        "pos_like_category": "动词性 / Action-like",
+        "pragmatic_meaning": "吹头发",
+        "morphological_features": "完成体 / Perfect"
+      },
+      "reference_translation": "吹手"
+    },
+    {
+      "seg_sequence": [
+        "seg_008094",
+        "seg_008095",
+        "seg_008096",
+        "seg_008097",
+        "seg_008098"
+      ],
+      "icon_images": [
+        "./auto_cut_segments/008094.jpg",
+        "./auto_cut_segments/008095.jpg",
+        "./auto_cut_segments/008096.jpg",
+        "./auto_cut_segments/008097.jpg",
+        "./auto_cut_segments/008098.jpg"
+      ],
+      "annotations": {
+        "pos_like_category": "动词性 / Action-like",
+        "pragmatic_meaning": "用座机给手机打电话",
+        "morphological_features": "进行体 / Progressive"
+      },
+      "reference_translation": "用座机打电话给手机"
+    },
+    {
+      "seg_sequence": [
+        "seg_008112",
+        "seg_008113"
+      ],
+      "icon_images": [
+        "./auto_cut_segments/008112.jpg",
+        "./auto_cut_segments/008113.jpg"
+      ],
+      "annotations": {
+        "pos_like_category": "动词性 / Action-like",
+        "pragmatic_meaning": "拿到手机",
+        "morphological_features": "进行体 / Progressive"
+      },
+      "reference_translation": "拿起手机"
+    },
+    {
+      "seg_sequence": [
+        "seg_008115",
+        "seg_008116"
+      ],
+      "icon_images": [
+        "./auto_cut_segments/008115.jpg",
+        "./auto_cut_segments/008116.jpg"
+      ],
+      "annotations": {
+        "pos_like_category": "动词性 / Action-like",
+        "pragmatic_meaning": "急忙出门",
+        "morphological_features": "进行体 / Progressive"
+      },
+      "reference_translation": "极速出门"
+    },
+    {
+      "seg_sequence": [
+        "seg_008120",
+        "seg_008121",
+        "seg_008122",
+        "seg_008123",
+        "seg_008124"
+      ],
+      "icon_images": [
+        "./auto_cut_segments/008120.jpg",
+        "./auto_cut_segments/008121.jpg",
+        "./auto_cut_segments/008122.jpg",
+        "./auto_cut_segments/008123.jpg",
+        "./auto_cut_segments/008124.jpg"
+      ],
+      "annotations": {
+        "pos_like_category": "动词性 / Action-like",
+        "pragmatic_meaning": "跑去花店",
+        "morphological_features": "进行体 / Progressive"
+      },
+      "reference_translation": "冲去花店"
+    },
+    {
+      "seg_sequence": [
+        "seg_008137",
+        "seg_008138",
+        "seg_008139"
+      ],
+      "icon_images": [
+        "./auto_cut_segments/008137.jpg",
+        "./auto_cut_segments/008138.jpg",
+        "./auto_cut_segments/008139.jpg"
+      ],
+      "annotations": {
+        "pos_like_category": "动词性 / Action-like",
+        "pragmatic_meaning": "从店里出来",
+        "morphological_features": "进行体 / Progressive"
+      },
+      "reference_translation": "离开"
+    },
+    {
+      "seg_sequence": [
+        "seg_008221",
+        "seg_008222",
+        "seg_008223",
+        "seg_008224",
+        "seg_008225",
+        "seg_008226",
+        "seg_008227",
+        "seg_008228",
+        "seg_008229",
+        "seg_008230",
+        "seg_008231",
+        "seg_008232",
+        "seg_008233"
+      ],
+      "icon_images": [
+        "./auto_cut_segments/008221.jpg",
+        "./auto_cut_segments/008222.jpg",
+        "./auto_cut_segments/008223.jpg",
+        "./auto_cut_segments/008224.jpg",
+        "./auto_cut_segments/008225.jpg",
+        "./auto_cut_segments/008226.jpg",
+        "./auto_cut_segments/008227.jpg",
+        "./auto_cut_segments/008228.jpg",
+        "./auto_cut_segments/008229.jpg",
+        "./auto_cut_segments/008230.jpg",
+        "./auto_cut_segments/008231.jpg",
+        "./auto_cut_segments/008232.jpg",
+        "./auto_cut_segments/008233.jpg"
+      ],
+      "annotations": {
+        "pos_like_category": "动词性 / Action-like",
+        "pragmatic_meaning": "大爷耳朵不好听不清",
+        "morphological_features": "强调 / Emphasis"
+      },
+      "reference_translation": "老头耳背"
+    },
+    {
+      "seg_sequence": [
+        "seg_008254",
+        "seg_008255",
+        "seg_008256",
+        "seg_008257",
+        "seg_008258",
+        "seg_008259",
+        "seg_008260",
+        "seg_008261",
+        "seg_008262",
+        "seg_008263"
+      ],
+      "icon_images": [
+        "./auto_cut_segments/008254.jpg",
+        "./auto_cut_segments/008255.jpg",
+        "./auto_cut_segments/008256.jpg",
+        "./auto_cut_segments/008257.jpg",
+        "./auto_cut_segments/008258.jpg",
+        "./auto_cut_segments/008259.jpg",
+        "./auto_cut_segments/008260.jpg",
+        "./auto_cut_segments/008261.jpg",
+        "./auto_cut_segments/008262.jpg",
+        "./auto_cut_segments/008263.jpg"
+      ],
+      "annotations": {
+        "pos_like_category": "整句/整体表达 / Clause-like Unit",
+        "pragmatic_meaning": "交警指了方向",
+        "morphological_features": "完成体 / Perfect"
+      },
+      "reference_translation": "那边"
+    },
+    {
+      "seg_sequence": [
+        "seg_008301",
+        "seg_008302",
+        "seg_008303",
+        "seg_008304",
+        "seg_008305",
+        "seg_008306"
+      ],
+      "icon_images": [
+        "./auto_cut_segments/008301.jpg",
+        "./auto_cut_segments/008302.jpg",
+        "./auto_cut_segments/008303.jpg",
+        "./auto_cut_segments/008304.jpg",
+        "./auto_cut_segments/008305.jpg",
+        "./auto_cut_segments/008306.jpg"
+      ],
+      "annotations": {
+        "pos_like_category": "动词性 / Action-like",
+        "pragmatic_meaning": "女孩不能在酒吧喝酒",
+        "morphological_features": "强调 / Emphasis"
+      },
+      "reference_translation": "我只是想喝酒没想来看钢管舞"
+    },
+    {
+      "seg_sequence": [
+        "seg_010426",
+        "seg_010427",
+        "seg_010428"
+      ],
+      "icon_images": [
+        "./auto_cut_segments/010426.jpg",
+        "./auto_cut_segments/010427.jpg",
+        "./auto_cut_segments/010428.jpg"
+      ],
+      "annotations": {
+        "pos_like_category": "动词性 / Action-like",
+        "pragmatic_meaning": "闭上眼睛",
+        "morphological_features": "强调 / Emphasis"
+      },
+      "reference_translation": "于是乘客闭上了眼"
+    },
+    {
+      "seg_sequence": [
+        "seg_011000",
+        "seg_011001",
+        "seg_011002"
+      ],
+      "icon_images": [
+        "./auto_cut_segments/011000.jpg",
+        "./auto_cut_segments/011001.jpg",
+        "./auto_cut_segments/011002.jpg"
+      ],
+      "annotations": {
+        "pos_like_category": "整句/整体表达 / Clause-like Unit",
+        "pragmatic_meaning": "睡着了",
+        "morphological_features": "进行体 / Progressive"
+      },
+      "reference_translation": "睡梦中"
+    },
+    {
+      "seg_sequence": [
+        "seg_011003",
+        "seg_011004",
+        "seg_011005"
+      ],
+      "icon_images": [
+        "./auto_cut_segments/011003.jpg",
+        "./auto_cut_segments/011004.jpg",
+        "./auto_cut_segments/011005.jpg"
+      ],
+      "annotations": {
+        "pos_like_category": "标点/边界标记 / Boundary Marker",
+        "pragmatic_meaning": "然后",
+        "morphological_features": "强调 / Emphasis"
+      },
+      "reference_translation": "过了一会"
+    },
+    {
+      "seg_sequence": [
+        "seg_011820",
+        "seg_011821",
+        "seg_011822",
+        "seg_011823"
+      ],
+      "icon_images": [
+        "./auto_cut_segments/011820.jpg",
+        "./auto_cut_segments/011821.jpg",
+        "./auto_cut_segments/011822.jpg",
+        "./auto_cut_segments/011823.jpg"
+      ],
+      "annotations": {
+        "pos_like_category": "动词性 / Action-like",
+        "pragmatic_meaning": "改玩马里奥",
+        "morphological_features": "现在 / Present"
+      },
+      "reference_translation": "还是玩马里奥吧"
+    },
+    {
+      "seg_sequence": [
+        "seg_011996",
+        "seg_011997",
+        "seg_011998"
+      ],
+      "icon_images": [
+        "./auto_cut_segments/011996.jpg",
+        "./auto_cut_segments/011997.jpg",
+        "./auto_cut_segments/011998.jpg"
+      ],
+      "annotations": {
+        "pos_like_category": "动词性 / Action-like",
+        "pragmatic_meaning": "劲爆的我也不知道的什么游戏游玩过程",
+        "morphological_features": "现在 / Present"
+      },
+      "reference_translation": "我使用了手刀"
+    },
+    {
+      "seg_sequence": [
+        "seg_009526",
+        "seg_009527"
+      ],
+      "icon_images": [
+        "./auto_cut_segments/009526.jpg",
+        "./auto_cut_segments/009527.jpg"
+      ],
+      "annotations": {
+        "pos_like_category": "动词性 / Action-like",
+        "pragmatic_meaning": "警车",
+        "morphological_features": "现在 / Present"
+      },
+      "reference_translation": "打到车"
+    },
+    {
+      "seg_sequence": [
+        "seg_009594",
+        "seg_009595",
+        "seg_009596"
+      ],
+      "icon_images": [
+        "./auto_cut_segments/009594.jpg",
+        "./auto_cut_segments/009595.jpg",
+        "./auto_cut_segments/009596.jpg"
+      ],
+      "annotations": {
+        "pos_like_category": "动词性 / Action-like",
+        "pragmatic_meaning": "疑惑",
+        "morphological_features": "现在 / Present"
+      },
+      "reference_translation": "他很疑惑发生了什么"
+    },
+    {
+      "seg_sequence": [
+        "seg_007022",
+        "seg_007023"
+      ],
+      "icon_images": [
+        "./auto_cut_segments/007022.jpg",
+        "./auto_cut_segments/007023.jpg"
+      ],
+      "annotations": {
+        "pos_like_category": "动词性 / Action-like",
+        "pragmatic_meaning": "开始放映",
+        "morphological_features": "完成体 / Perfect"
+      },
+      "reference_translation": "小喇叭哔哔哔"
+    },
+    {
+      "seg_sequence": [
+        "seg_007056",
+        "seg_007057"
+      ],
+      "icon_images": [
+        "./auto_cut_segments/007056.jpg",
+        "./auto_cut_segments/007057.jpg"
+      ],
+      "annotations": {
+        "pos_like_category": "动词性 / Action-like",
+        "pragmatic_meaning": "尝试说话",
+        "morphological_features": "进行体 / Progressive"
+      },
+      "reference_translation": "hello"
+    },
+    {
+      "seg_sequence": [
+        "seg_007339",
+        "seg_007340"
+      ],
+      "icon_images": [
+        "./auto_cut_segments/007339.jpg",
+        "./auto_cut_segments/007340.jpg"
+      ],
+      "annotations": {
+        "pos_like_category": "动词性 / Action-like",
+        "pragmatic_meaning": "担忧地看着",
+        "morphological_features": "进行体 / Progressive"
+      },
+      "reference_translation": "hey"
+    },
+    {
+      "seg_sequence": [
+        "seg_001985",
+        "seg_001986"
+      ],
+      "icon_images": [
+        "./auto_cut_segments/001985.jpg",
+        "./auto_cut_segments/001986.jpg"
+      ],
+      "annotations": {
+        "pos_like_category": "整句/整体表达 / Clause-like Unit",
+        "pragmatic_meaning": "列车到站",
+        "morphological_features": "重复/迭代 / Iterative"
+      },
+      "reference_translation": "地铁到站"
+    },
+    {
+      "seg_sequence": [
+        "seg_007844",
+        "seg_007845",
+        "seg_007846"
+      ],
+      "icon_images": [
+        "./auto_cut_segments/007844.jpg",
+        "./auto_cut_segments/007845.jpg",
+        "./auto_cut_segments/007846.jpg"
+      ],
+      "annotations": {
+        "pos_like_category": "动词性 / Action-like",
+        "pragmatic_meaning": "进屋晾衣服",
+        "morphological_features": "进行体 / Progressive"
+      },
+      "reference_translation": "换衣服"
+    },
+    {
+      "seg_sequence": [
+        "seg_007858",
+        "seg_007859",
+        "seg_007860",
+        "seg_007861",
+        "seg_007862",
+        "seg_007863",
+        "seg_007864"
+      ],
+      "icon_images": [
+        "./auto_cut_segments/007858.jpg",
+        "./auto_cut_segments/007859.jpg",
+        "./auto_cut_segments/007860.jpg",
+        "./auto_cut_segments/007861.jpg",
+        "./auto_cut_segments/007862.jpg",
+        "./auto_cut_segments/007863.jpg",
+        "./auto_cut_segments/007864.jpg"
+      ],
+      "annotations": {
+        "pos_like_category": "动词性 / Action-like",
+        "pragmatic_meaning": "照镜子",
+        "morphological_features": "比较 / Comparative"
+      },
+      "reference_translation": "照镜子"
+    },
+    {
+      "seg_sequence": [
+        "seg_007866",
+        "seg_007867"
+      ],
+      "icon_images": [
+        "./auto_cut_segments/007866.jpg",
+        "./auto_cut_segments/007867.jpg"
+      ],
+      "annotations": {
+        "pos_like_category": "动词性 / Action-like",
+        "pragmatic_meaning": "确认自己形象",
+        "morphological_features": "完成体 / Perfect"
+      },
+      "reference_translation": "ootd很满意"
+    },
+    {
+      "seg_sequence": [
+        "seg_007887",
+        "seg_007888",
+        "seg_007889",
+        "seg_007890",
+        "seg_007891"
+      ],
+      "icon_images": [
+        "./auto_cut_segments/007887.jpg",
+        "./auto_cut_segments/007888.jpg",
+        "./auto_cut_segments/007889.jpg",
+        "./auto_cut_segments/007890.jpg",
+        "./auto_cut_segments/007891.jpg"
+      ],
+      "annotations": {
+        "pos_like_category": "动词性 / Action-like",
+        "pragmatic_meaning": "进入浴室洗澡洗漱",
+        "morphological_features": "完成体 / Perfect"
+      },
+      "reference_translation": "上厕所洗澡"
+    },
+    {
+      "seg_sequence": [
+        "seg_007911",
+        "seg_007912",
+        "seg_007913",
+        "seg_007914",
+        "seg_007915",
+        "seg_007916"
+      ],
+      "icon_images": [
+        "./auto_cut_segments/007911.jpg",
+        "./auto_cut_segments/007912.jpg",
+        "./auto_cut_segments/007913.jpg",
+        "./auto_cut_segments/007914.jpg",
+        "./auto_cut_segments/007915.jpg",
+        "./auto_cut_segments/007916.jpg"
+      ],
+      "annotations": {
+        "pos_like_category": "动词性 / Action-like",
+        "pragmatic_meaning": "照镜子觉得很ok",
+        "morphological_features": "比较 / Comparative"
+      },
+      "reference_translation": "镜子里有绝世美女"
+    },
+    {
+      "seg_sequence": [
+        "seg_007920",
+        "seg_007921",
+        "seg_007922",
+        "seg_007923",
+        "seg_007924"
+      ],
+      "icon_images": [
+        "./auto_cut_segments/007920.jpg",
+        "./auto_cut_segments/007921.jpg",
+        "./auto_cut_segments/007922.jpg",
+        "./auto_cut_segments/007923.jpg",
+        "./auto_cut_segments/007924.jpg"
+      ],
+      "annotations": {
+        "pos_like_category": "动词性 / Action-like",
+        "pragmatic_meaning": "男的去卫生间",
+        "morphological_features": "进行体 / Progressive"
+      },
+      "reference_translation": "上厕所"
+    },
+    {
+      "seg_sequence": [
+        "seg_007926",
+        "seg_007927",
+        "seg_007928",
+        "seg_007929",
+        "seg_007930",
+        "seg_007931",
+        "seg_007932"
+      ],
+      "icon_images": [
+        "./auto_cut_segments/007926.jpg",
+        "./auto_cut_segments/007927.jpg",
+        "./auto_cut_segments/007928.jpg",
+        "./auto_cut_segments/007929.jpg",
+        "./auto_cut_segments/007930.jpg",
+        "./auto_cut_segments/007931.jpg",
+        "./auto_cut_segments/007932.jpg"
+      ],
+      "annotations": {
+        "pos_like_category": "动词性 / Action-like",
+        "pragmatic_meaning": "照镜子",
+        "morphological_features": "比较 / Comparative"
+      },
+      "reference_translation": "照镜子"
+    },
+    {
+      "seg_sequence": [
+        "seg_007934",
+        "seg_007935"
+      ],
+      "icon_images": [
+        "./auto_cut_segments/007934.jpg",
+        "./auto_cut_segments/007935.jpg"
+      ],
+      "annotations": {
+        "pos_like_category": "动词性 / Action-like",
+        "pragmatic_meaning": "梳头",
+        "morphological_features": "进行体 / Progressive"
+      },
+      "reference_translation": "梳头"
+    },
+    {
+      "seg_sequence": [
+        "seg_007939",
+        "seg_007940",
+        "seg_007941",
+        "seg_007942"
+      ],
+      "icon_images": [
+        "./auto_cut_segments/007939.jpg",
+        "./auto_cut_segments/007940.jpg",
+        "./auto_cut_segments/007941.jpg",
+        "./auto_cut_segments/007942.jpg"
+      ],
+      "annotations": {
+        "pos_like_category": "动词性 / Action-like",
+        "pragmatic_meaning": "脸上涂粉底",
+        "morphological_features": "进行体 / Progressive"
+      },
+      "reference_translation": "化妆"
+    },
+    {
+      "seg_sequence": [
+        "seg_007964",
+        "seg_007965"
+      ],
+      "icon_images": [
+        "./auto_cut_segments/007964.jpg",
+        "./auto_cut_segments/007965.jpg"
+      ],
+      "annotations": {
+        "pos_like_category": "动词性 / Action-like",
+        "pragmatic_meaning": "放进包里",
+        "morphological_features": "完成体 / Perfect"
+      },
+      "reference_translation": "口红收到包里"
+    },
+    {
+      "seg_sequence": [
+        "seg_007974",
+        "seg_007975",
+        "seg_007976"
+      ],
+      "icon_images": [
+        "./auto_cut_segments/007974.jpg",
+        "./auto_cut_segments/007975.jpg",
+        "./auto_cut_segments/007976.jpg"
+      ],
+      "annotations": {
+        "pos_like_category": "动词性 / Action-like",
+        "pragmatic_meaning": "找风筒",
+        "morphological_features": "完成体 / Perfect"
+      },
+      "reference_translation": "涂指甲"
+    },
+    {
+      "seg_sequence": [
+        "seg_007983",
+        "seg_007984",
+        "seg_007985"
+      ],
+      "icon_images": [
+        "./auto_cut_segments/007983.jpg",
+        "./auto_cut_segments/007984.jpg",
+        "./auto_cut_segments/007985.jpg"
+      ],
+      "annotations": {
+        "pos_like_category": "动词性 / Action-like",
+        "pragmatic_meaning": "思考",
+        "morphological_features": "进行体 / Progressive"
+      },
+      "reference_translation": "思考"
+    },
+    {
+      "seg_sequence": [
+        "seg_008011",
+        "seg_008012",
+        "seg_008013",
+        "seg_008014"
+      ],
+      "icon_images": [
+        "./auto_cut_segments/008011.jpg",
+        "./auto_cut_segments/008012.jpg",
+        "./auto_cut_segments/008013.jpg",
+        "./auto_cut_segments/008014.jpg"
+      ],
+      "annotations": {
+        "pos_like_category": "动词性 / Action-like",
+        "pragmatic_meaning": "耐克鞋？",
+        "morphological_features": "强调 / Emphasis"
+      },
+      "reference_translation": "穿耐克吗？"
+    },
+    {
+      "seg_sequence": [
+        "seg_008015",
+        "seg_008016",
+        "seg_008017",
+        "seg_008018"
+      ],
+      "icon_images": [
+        "./auto_cut_segments/008015.jpg",
+        "./auto_cut_segments/008016.jpg",
+        "./auto_cut_segments/008017.jpg",
+        "./auto_cut_segments/008018.jpg"
+      ],
+      "annotations": {
+        "pos_like_category": "名词性 / Entity-like",
+        "pragmatic_meaning": "阿迪？",
+        "morphological_features": "强调 / Emphasis"
+      },
+      "reference_translation": "还是阿迪？"
+    },
+    {
+      "seg_sequence": [
+        "seg_008026",
+        "seg_008027",
+        "seg_008028",
+        "seg_008029",
+        "seg_008030"
+      ],
+      "icon_images": [
+        "./auto_cut_segments/008026.jpg",
+        "./auto_cut_segments/008027.jpg",
+        "./auto_cut_segments/008028.jpg",
+        "./auto_cut_segments/008029.jpg",
+        "./auto_cut_segments/008030.jpg"
+      ],
+      "annotations": {
+        "pos_like_category": "动词性 / Action-like",
+        "pragmatic_meaning": "刷鞋",
+        "morphological_features": "完成体 / Perfect"
+      },
+      "reference_translation": "给我擦皮鞋"
+    },
+    {
+      "seg_sequence": [
+        "seg_008309",
+        "seg_008310",
+        "seg_008311",
+        "seg_008312",
+        "seg_008313"
+      ],
+      "icon_images": [
+        "./auto_cut_segments/008309.jpg",
+        "./auto_cut_segments/008310.jpg",
+        "./auto_cut_segments/008311.jpg",
+        "./auto_cut_segments/008312.jpg",
+        "./auto_cut_segments/008313.jpg"
+      ],
+      "annotations": {
+        "pos_like_category": "动词性 / Action-like",
+        "pragmatic_meaning": "对指路的保安感到无语",
+        "morphological_features": "复数/集合 / Plural-Collective"
+      },
+      "reference_translation": "这警官真是一坨"
+    },
+    {
+      "seg_sequence": [
+        "seg_008041",
+        "seg_008042",
+        "seg_008043"
+      ],
+      "icon_images": [
+        "./auto_cut_segments/008041.jpg",
+        "./auto_cut_segments/008042.jpg",
+        "./auto_cut_segments/008043.jpg"
+      ],
+      "annotations": {
+        "pos_like_category": "动词性 / Action-like",
+        "pragmatic_meaning": "走到路上",
+        "morphological_features": "进行体 / Progressive"
+      },
+      "reference_translation": "一位香喷女士过马路"
+    },
+    {
+      "seg_sequence": [
+        "seg_008053",
+        "seg_008054"
+      ],
+      "icon_images": [
+        "./auto_cut_segments/008053.jpg",
+        "./auto_cut_segments/008054.jpg"
+      ],
+      "annotations": {
+        "pos_like_category": "动词性 / Action-like",
+        "pragmatic_meaning": "出门",
+        "morphological_features": "进行体 / Progressive"
+      },
+      "reference_translation": "出门中"
+    },
+    {
+      "seg_sequence": [
+        "seg_008066",
+        "seg_008067"
+      ],
+      "icon_images": [
+        "./auto_cut_segments/008066.jpg",
+        "./auto_cut_segments/008067.jpg"
+      ],
+      "annotations": {
+        "pos_like_category": "动词性 / Action-like",
+        "pragmatic_meaning": "震惊",
+        "morphological_features": "强调 / Emphasis"
+      },
+      "reference_translation": "惊讶!"
+    },
+    {
+      "seg_sequence": [
+        "seg_008075",
+        "seg_008076",
+        "seg_008077"
+      ],
+      "icon_images": [
+        "./auto_cut_segments/008075.jpg",
+        "./auto_cut_segments/008076.jpg",
+        "./auto_cut_segments/008077.jpg"
+      ],
+      "annotations": {
+        "pos_like_category": "名词性 / Entity-like",
+        "pragmatic_meaning": "遥控器是关空调的",
+        "morphological_features": "强调 / Emphasis"
+      },
+      "reference_translation": "空调遥控器！"
+    },
+    {
+      "seg_sequence": [
+        "seg_008084",
+        "seg_008085"
+      ],
+      "icon_images": [
+        "./auto_cut_segments/008084.jpg",
+        "./auto_cut_segments/008085.jpg"
+      ],
+      "annotations": {
+        "pos_like_category": "动词性 / Action-like",
+        "pragmatic_meaning": "跑进家中",
+        "morphological_features": "进行体 / Progressive"
+      },
+      "reference_translation": "极速回家"
+    },
+    {
+      "seg_sequence": [
+        "seg_008102",
+        "seg_008103",
+        "seg_008104",
+        "seg_008105",
+        "seg_008106",
+        "seg_008107",
+        "seg_008108"
+      ],
+      "icon_images": [
+        "./auto_cut_segments/008102.jpg",
+        "./auto_cut_segments/008103.jpg",
+        "./auto_cut_segments/008104.jpg",
+        "./auto_cut_segments/008105.jpg",
+        "./auto_cut_segments/008106.jpg",
+        "./auto_cut_segments/008107.jpg",
+        "./auto_cut_segments/008108.jpg"
+      ],
+      "annotations": {
+        "pos_like_category": "连接/关系标记 / Connector",
+        "pragmatic_meaning": "找到手机",
+        "morphological_features": "强调 / Emphasis"
+      },
+      "reference_translation": "看到手机了"
+    },
+    {
+      "seg_sequence": [
+        "seg_008294",
+        "seg_008295",
+        "seg_008296",
+        "seg_008297",
+        "seg_008298",
+        "seg_008299"
+      ],
+      "icon_images": [
+        "./auto_cut_segments/008294.jpg",
+        "./auto_cut_segments/008295.jpg",
+        "./auto_cut_segments/008296.jpg",
+        "./auto_cut_segments/008297.jpg",
+        "./auto_cut_segments/008298.jpg",
+        "./auto_cut_segments/008299.jpg"
+      ],
+      "annotations": {
+        "pos_like_category": "动词性 / Action-like",
+        "pragmatic_meaning": "看到胸",
+        "morphological_features": "强调 / Emphasis"
+      },
+      "reference_translation": "omg，my eyes"
+    },
+    {
+      "seg_sequence": [
+        "seg_008274",
+        "seg_008275",
+        "seg_008276",
+        "seg_008277",
+        "seg_008278",
+        "seg_008279",
+        "seg_008280"
+      ],
+      "icon_images": [
+        "./auto_cut_segments/008274.jpg",
+        "./auto_cut_segments/008275.jpg",
+        "./auto_cut_segments/008276.jpg",
+        "./auto_cut_segments/008277.jpg",
+        "./auto_cut_segments/008278.jpg",
+        "./auto_cut_segments/008279.jpg",
+        "./auto_cut_segments/008280.jpg"
+      ],
+      "annotations": {
+        "pos_like_category": "动词性 / Action-like",
+        "pragmatic_meaning": "一路跑到卖酒的地方",
+        "morphological_features": "复数/集合 / Plural-Collective"
+      },
+      "reference_translation": "奔去喝酒"
+    },
+    {
+      "seg_sequence": [
+        "seg_008240",
+        "seg_008241",
+        "seg_008242",
+        "seg_008243"
+      ],
+      "icon_images": [
+        "./auto_cut_segments/008240.jpg",
+        "./auto_cut_segments/008241.jpg",
+        "./auto_cut_segments/008242.jpg",
+        "./auto_cut_segments/008243.jpg"
+      ],
+      "annotations": {
+        "pos_like_category": "动词性 / Action-like",
+        "pragmatic_meaning": "看向警察",
+        "morphological_features": "强调 / Emphasis"
+      },
+      "reference_translation": "hi，officer"
+    },
+    {
+      "seg_sequence": [
+        "seg_008234",
+        "seg_008235",
+        "seg_008236"
+      ],
+      "icon_images": [
+        "./auto_cut_segments/008234.jpg",
+        "./auto_cut_segments/008235.jpg",
+        "./auto_cut_segments/008236.jpg"
+      ],
+      "annotations": {
+        "pos_like_category": "动词性 / Action-like",
+        "pragmatic_meaning": "大爷找到执勤的保安",
+        "morphological_features": "进行体 / Progressive"
+      },
+      "reference_translation": "老头让你找officer"
+    },
+    {
+      "seg_sequence": [
+        "seg_008197",
+        "seg_008198",
+        "seg_008199",
+        "seg_008200"
+      ],
+      "icon_images": [
+        "./auto_cut_segments/008197.jpg",
+        "./auto_cut_segments/008198.jpg",
+        "./auto_cut_segments/008199.jpg",
+        "./auto_cut_segments/008200.jpg"
+      ],
+      "annotations": {
+        "pos_like_category": "动词性 / Action-like",
+        "pragmatic_meaning": "这路咋走来自",
+        "morphological_features": "进行体 / Progressive"
+      },
+      "reference_translation": "迷路了"
+    },
+    {
+      "seg_sequence": [
+        "seg_008204",
+        "seg_008205",
+        "seg_008206",
+        "seg_008207"
+      ],
+      "icon_images": [
+        "./auto_cut_segments/008204.jpg",
+        "./auto_cut_segments/008205.jpg",
+        "./auto_cut_segments/008206.jpg",
+        "./auto_cut_segments/008207.jpg"
+      ],
+      "annotations": {
+        "pos_like_category": "动词性 / Action-like",
+        "pragmatic_meaning": "看到拄拐杖的老爷爷",
+        "morphological_features": "强调 / Emphasis"
+      },
+      "reference_translation": "看到一老头"
+    },
+    {
+      "seg_sequence": [
+        "seg_008193",
+        "seg_008194"
+      ],
+      "icon_images": [
+        "./auto_cut_segments/008193.jpg",
+        "./auto_cut_segments/008194.jpg"
+      ],
+      "annotations": {
+        "pos_like_category": "动词性 / Action-like",
+        "pragmatic_meaning": "我觉得ok",
+        "morphological_features": "完成体 / Perfect"
+      },
+      "reference_translation": "ok啊"
+    },
+    {
+      "seg_sequence": [
+        "seg_008173",
+        "seg_008174",
+        "seg_008175",
+        "seg_008176",
+        "seg_008177"
+      ],
+      "icon_images": [
+        "./auto_cut_segments/008173.jpg",
+        "./auto_cut_segments/008174.jpg",
+        "./auto_cut_segments/008175.jpg",
+        "./auto_cut_segments/008176.jpg",
+        "./auto_cut_segments/008177.jpg"
+      ],
+      "annotations": {
+        "pos_like_category": "动词性 / Action-like",
+        "pragmatic_meaning": "离开",
+        "morphological_features": "进行体 / Progressive"
+      },
+      "reference_translation": "过马路"
+    },
+    {
+      "seg_sequence": [
+        "seg_008155",
+        "seg_008156",
+        "seg_008157",
+        "seg_008158"
+      ],
+      "icon_images": [
+        "./auto_cut_segments/008155.jpg",
+        "./auto_cut_segments/008156.jpg",
+        "./auto_cut_segments/008157.jpg",
+        "./auto_cut_segments/008158.jpg"
+      ],
+      "annotations": {
+        "pos_like_category": "动词性 / Action-like",
+        "pragmatic_meaning": "遇到女孩",
+        "morphological_features": "进行体 / Progressive"
+      },
+      "reference_translation": "看到美丽女士"
+    },
+    {
+      "seg_sequence": [
+        "seg_008009",
+        "seg_008010"
+      ],
+      "icon_images": [
+        "./auto_cut_segments/008009.jpg",
+        "./auto_cut_segments/008010.jpg"
+      ],
+      "annotations": {
+        "pos_like_category": "代词/指示性 / Deictic-like",
+        "pragmatic_meaning": "说",
+        "morphological_features": "进行体 / Progressive"
+      },
+      "reference_translation": "思考"
+    },
+    {
+      "seg_sequence": [
+        "seg_008126",
+        "seg_008127",
+        "seg_008128",
+        "seg_008129",
+        "seg_008130",
+        "seg_008131",
+        "seg_008132",
+        "seg_008133",
+        "seg_008134"
+      ],
+      "icon_images": [
+        "./auto_cut_segments/008126.jpg",
+        "./auto_cut_segments/008127.jpg",
+        "./auto_cut_segments/008128.jpg",
+        "./auto_cut_segments/008129.jpg",
+        "./auto_cut_segments/008130.jpg",
+        "./auto_cut_segments/008131.jpg",
+        "./auto_cut_segments/008132.jpg",
+        "./auto_cut_segments/008133.jpg",
+        "./auto_cut_segments/008134.jpg"
+      ],
+      "annotations": {
+        "pos_like_category": "动词性 / Action-like",
+        "pragmatic_meaning": "要朵花",
+        "morphological_features": "进行体 / Progressive"
+      },
+      "reference_translation": "要买十二朵"
+    },
+    {
+      "seg_sequence": [
+        "seg_008141",
+        "seg_008142",
+        "seg_008143",
+        "seg_008144",
+        "seg_008145",
+        "seg_008146",
+        "seg_008147",
+        "seg_008148",
+        "seg_008149",
+        "seg_008150",
+        "seg_008151"
+      ],
+      "icon_images": [
+        "./auto_cut_segments/008141.jpg",
+        "./auto_cut_segments/008142.jpg",
+        "./auto_cut_segments/008143.jpg",
+        "./auto_cut_segments/008144.jpg",
+        "./auto_cut_segments/008145.jpg",
+        "./auto_cut_segments/008146.jpg",
+        "./auto_cut_segments/008147.jpg",
+        "./auto_cut_segments/008148.jpg",
+        "./auto_cut_segments/008149.jpg",
+        "./auto_cut_segments/008150.jpg",
+        "./auto_cut_segments/008151.jpg"
+      ],
+      "annotations": {
+        "pos_like_category": "动词性 / Action-like",
+        "pragmatic_meaning": "我想",
+        "morphological_features": "进行体 / Progressive"
+      },
+      "reference_translation": "看不懂"
+    },
+    {
+      "seg_sequence": [
+        "seg_008160",
+        "seg_008161"
+      ],
+      "icon_images": [
+        "./auto_cut_segments/008160.jpg",
+        "./auto_cut_segments/008161.jpg"
+      ],
+      "annotations": {
+        "pos_like_category": "动词性 / Action-like",
+        "pragmatic_meaning": "微笑打招呼",
+        "morphological_features": "进行体 / Progressive"
+      },
+      "reference_translation": "你好你好"
+    },
+    {
+      "seg_sequence": [
+        "seg_008170",
+        "seg_008171"
+      ],
+      "icon_images": [
+        "./auto_cut_segments/008170.jpg",
+        "./auto_cut_segments/008171.jpg"
+      ],
+      "annotations": {
+        "pos_like_category": "动词性 / Action-like",
+        "pragmatic_meaning": "离开女孩",
+        "morphological_features": "强调 / Emphasis"
+      },
+      "reference_translation": "女士"
+    },
+    {
+      "seg_sequence": [
+        "seg_008209",
+        "seg_008210",
+        "seg_008211",
+        "seg_008212",
+        "seg_008213"
+      ],
+      "icon_images": [
+        "./auto_cut_segments/008209.jpg",
+        "./auto_cut_segments/008210.jpg",
+        "./auto_cut_segments/008211.jpg",
+        "./auto_cut_segments/008212.jpg",
+        "./auto_cut_segments/008213.jpg"
+      ],
+      "annotations": {
+        "pos_like_category": "动词性 / Action-like",
+        "pragmatic_meaning": "上前打招呼",
+        "morphological_features": "进行体 / Progressive"
+      },
+      "reference_translation": "你好"
+    },
+    {
+      "seg_sequence": [
+        "seg_008216",
+        "seg_008217",
+        "seg_008218"
+      ],
+      "icon_images": [
+        "./auto_cut_segments/008216.jpg",
+        "./auto_cut_segments/008217.jpg",
+        "./auto_cut_segments/008218.jpg"
+      ],
+      "annotations": {
+        "pos_like_category": "动词性 / Action-like",
+        "pragmatic_meaning": "问哪里卖酒",
+        "morphological_features": "强调 / Emphasis"
+      },
+      "reference_translation": "哪能喝酒"
+    },
+    {
+      "seg_sequence": [
+        "seg_008291",
+        "seg_008292",
+        "seg_008293"
+      ],
+      "icon_images": [
+        "./auto_cut_segments/008291.jpg",
+        "./auto_cut_segments/008292.jpg",
+        "./auto_cut_segments/008293.jpg"
+      ],
+      "annotations": {
+        "pos_like_category": "动词性 / Action-like",
+        "pragmatic_meaning": "女孩跳舞",
+        "morphological_features": "强调 / Emphasis"
+      },
+      "reference_translation": "omg"
+    },
+    {
+      "seg_sequence": [
+        "seg_008055",
+        "seg_008056",
+        "seg_008057"
+      ],
+      "icon_images": [
+        "./auto_cut_segments/008055.jpg",
+        "./auto_cut_segments/008056.jpg",
+        "./auto_cut_segments/008057.jpg"
+      ],
+      "annotations": {
+        "pos_like_category": "连接/关系标记 / Connector",
+        "pragmatic_meaning": "好一阵",
+        "morphological_features": "复数/集合 / Plural-Collective"
+      },
+      "reference_translation": "过了一会"
+    },
+    {
+      "seg_sequence": [
+        "seg_007847",
+        "seg_007848",
+        "seg_007849",
+        "seg_007850",
+        "seg_007851",
+        "seg_007852",
+        "seg_007853",
+        "seg_007854",
+        "seg_007855"
+      ],
+      "icon_images": [
+        "./auto_cut_segments/007847.jpg",
+        "./auto_cut_segments/007848.jpg",
+        "./auto_cut_segments/007849.jpg",
+        "./auto_cut_segments/007850.jpg",
+        "./auto_cut_segments/007851.jpg",
+        "./auto_cut_segments/007852.jpg",
+        "./auto_cut_segments/007853.jpg",
+        "./auto_cut_segments/007854.jpg",
+        "./auto_cut_segments/007855.jpg"
+      ],
+      "annotations": {
+        "pos_like_category": "名词性 / Entity-like",
+        "pragmatic_meaning": "换衣服",
+        "morphological_features": "完成体 / Perfect"
+      },
+      "reference_translation": "穿上一身帅气西装"
+    },
+    {
+      "seg_sequence": [
+        "seg_008178",
+        "seg_008179",
+        "seg_008180"
+      ],
+      "icon_images": [
+        "./auto_cut_segments/008178.jpg",
+        "./auto_cut_segments/008179.jpg",
+        "./auto_cut_segments/008180.jpg"
+      ],
+      "annotations": {
+        "pos_like_category": "标点/边界标记 / Boundary Marker",
+        "pragmatic_meaning": "好一阵",
+        "morphological_features": "复数/集合 / Plural-Collective"
+      },
+      "reference_translation": "过了一会"
+    },
+    {
+      "seg_sequence": [
+        "seg_011008",
+        "seg_011009",
+        "seg_011010",
+        "seg_011011",
+        "seg_011012",
+        "seg_011013",
+        "seg_011014",
+        "seg_011015",
+        "seg_011016",
+        "seg_011017",
+        "seg_011018"
+      ],
+      "icon_images": [
+        "./auto_cut_segments/011008.jpg",
+        "./auto_cut_segments/011009.jpg",
+        "./auto_cut_segments/011010.jpg",
+        "./auto_cut_segments/011011.jpg",
+        "./auto_cut_segments/011012.jpg",
+        "./auto_cut_segments/011013.jpg",
+        "./auto_cut_segments/011014.jpg",
+        "./auto_cut_segments/011015.jpg",
+        "./auto_cut_segments/011016.jpg",
+        "./auto_cut_segments/011017.jpg",
+        "./auto_cut_segments/011018.jpg"
+      ],
+      "annotations": {
+        "pos_like_category": "动词性 / Action-like",
+        "pragmatic_meaning": "电视新闻",
+        "morphological_features": "进行体 / Progressive"
+      },
+      "reference_translation": "电视上在放2012大洪水诺亚方舟"
+    },
+    {
+      "seg_sequence": [
+        "seg_011375",
+        "seg_011376",
+        "seg_011377"
+      ],
+      "icon_images": [
+        "./auto_cut_segments/011375.jpg",
+        "./auto_cut_segments/011376.jpg",
+        "./auto_cut_segments/011377.jpg"
+      ],
+      "annotations": {
+        "pos_like_category": "整句/整体表达 / Clause-like Unit",
+        "pragmatic_meaning": "一夜无眠",
+        "morphological_features": "进行体 / Progressive"
+      },
+      "reference_translation": "时间变化"
+    },
+    {
+      "seg_sequence": [
+        "seg_011397",
+        "seg_011398",
+        "seg_011399",
+        "seg_011400",
+        "seg_011401",
+        "seg_011402",
+        "seg_011403",
+        "seg_011404",
+        "seg_011405",
+        "seg_011406",
+        "seg_011407",
+        "seg_011408",
+        "seg_011409",
+        "seg_011410",
+        "seg_011411",
+        "seg_011412",
+        "seg_011413",
+        "seg_011414",
+        "seg_011415"
+      ],
+      "icon_images": [
+        "./auto_cut_segments/011397.jpg",
+        "./auto_cut_segments/011398.jpg",
+        "./auto_cut_segments/011399.jpg",
+        "./auto_cut_segments/011400.jpg",
+        "./auto_cut_segments/011401.jpg",
+        "./auto_cut_segments/011402.jpg",
+        "./auto_cut_segments/011403.jpg",
+        "./auto_cut_segments/011404.jpg",
+        "./auto_cut_segments/011405.jpg",
+        "./auto_cut_segments/011406.jpg",
+        "./auto_cut_segments/011407.jpg",
+        "./auto_cut_segments/011408.jpg",
+        "./auto_cut_segments/011409.jpg",
+        "./auto_cut_segments/011410.jpg",
+        "./auto_cut_segments/011411.jpg",
+        "./auto_cut_segments/011412.jpg",
+        "./auto_cut_segments/011413.jpg",
+        "./auto_cut_segments/011414.jpg",
+        "./auto_cut_segments/011415.jpg"
+      ],
+      "annotations": {
+        "pos_like_category": "整句/整体表达 / Clause-like Unit",
+        "pragmatic_meaning": "死死盯着那摞档案",
+        "morphological_features": "复数/集合 / Plural-Collective"
+      },
+      "reference_translation": "看到"
+    },
+    {
+      "seg_sequence": [
+        "seg_011495",
+        "seg_011496",
+        "seg_011497"
+      ],
+      "icon_images": [
+        "./auto_cut_segments/011495.jpg",
+        "./auto_cut_segments/011496.jpg",
+        "./auto_cut_segments/011497.jpg"
+      ],
+      "annotations": {
+        "pos_like_category": "整句/整体表达 / Clause-like Unit",
+        "pragmatic_meaning": "左右摇摆的热气球",
+        "morphological_features": "复数/集合 / Plural-Collective"
+      },
+      "reference_translation": "一个摇晃的热气球"
+    },
+    {
+      "seg_sequence": [
+        "seg_011569",
+        "seg_011570",
+        "seg_011571"
+      ],
+      "icon_images": [
+        "./auto_cut_segments/011569.jpg",
+        "./auto_cut_segments/011570.jpg",
+        "./auto_cut_segments/011571.jpg"
+      ],
+      "annotations": {
+        "pos_like_category": "标点/边界标记 / Boundary Marker",
+        "pragmatic_meaning": "很久之后",
+        "morphological_features": "复数/集合 / Plural-Collective"
+      },
+      "reference_translation": "过了一会"
+    },
+    {
+      "seg_sequence": [
+        "seg_011588",
+        "seg_011589",
+        "seg_011590",
+        "seg_011591"
+      ],
+      "icon_images": [
+        "./auto_cut_segments/011588.jpg",
+        "./auto_cut_segments/011589.jpg",
+        "./auto_cut_segments/011590.jpg",
+        "./auto_cut_segments/011591.jpg"
+      ],
+      "annotations": {
+        "pos_like_category": "副词性 / Degree-like",
+        "pragmatic_meaning": "雷雨交加",
+        "morphological_features": "重复/迭代 / Iterative"
+      },
+      "reference_translation": "打雷下雨"
+    },
+    {
+      "seg_sequence": [
+        "seg_011613",
+        "seg_011614",
+        "seg_011615",
+        "seg_011616"
+      ],
+      "icon_images": [
+        "./auto_cut_segments/011613.jpg",
+        "./auto_cut_segments/011614.jpg",
+        "./auto_cut_segments/011615.jpg",
+        "./auto_cut_segments/011616.jpg"
+      ],
+      "annotations": {
+        "pos_like_category": "整句/整体表达 / Clause-like Unit",
+        "pragmatic_meaning": "竖着乡下费",
+        "morphological_features": "进行体 / Progressive"
+      },
+      "reference_translation": "风向下吹"
+    },
+    {
+      "seg_sequence": [
+        "seg_011646",
+        "seg_011647",
+        "seg_011648"
+      ],
+      "icon_images": [
+        "./auto_cut_segments/011646.jpg",
+        "./auto_cut_segments/011647.jpg",
+        "./auto_cut_segments/011648.jpg"
+      ],
+      "annotations": {
+        "pos_like_category": "整句/整体表达 / Clause-like Unit",
+        "pragmatic_meaning": "眼睛突然睁开",
+        "morphological_features": "进行体 / Progressive"
+      },
+      "reference_translation": "吓醒了"
+    },
+    {
+      "seg_sequence": [
+        "seg_011649",
+        "seg_011650",
+        "seg_011651"
+      ],
+      "icon_images": [
+        "./auto_cut_segments/011649.jpg",
+        "./auto_cut_segments/011650.jpg",
+        "./auto_cut_segments/011651.jpg"
+      ],
+      "annotations": {
+        "pos_like_category": "副词性 / Degree-like",
+        "pragmatic_meaning": "震惊",
+        "morphological_features": "复数/集合 / Plural-Collective"
+      },
+      "reference_translation": "惊讶"
+    },
+    {
+      "seg_sequence": [
+        "seg_011654",
+        "seg_011655"
+      ],
+      "icon_images": [
+        "./auto_cut_segments/011654.jpg",
+        "./auto_cut_segments/011655.jpg"
+      ],
+      "annotations": {
+        "pos_like_category": "整句/整体表达 / Clause-like Unit",
+        "pragmatic_meaning": "十分震惊",
+        "morphological_features": "强调 / Emphasis"
+      },
+      "reference_translation": "很惊讶"
+    },
+    {
+      "seg_sequence": [
+        "seg_011656",
+        "seg_011657",
+        "seg_011658"
+      ],
+      "icon_images": [
+        "./auto_cut_segments/011656.jpg",
+        "./auto_cut_segments/011657.jpg",
+        "./auto_cut_segments/011658.jpg"
+      ],
+      "annotations": {
+        "pos_like_category": "整句/整体表达 / Clause-like Unit",
+        "pragmatic_meaning": "从床上坐起",
+        "morphological_features": "进行体 / Progressive"
+      },
+      "reference_translation": "起床"
+    },
+    {
+      "seg_sequence": [
+        "seg_011664",
+        "seg_011665",
+        "seg_011666"
+      ],
+      "icon_images": [
+        "./auto_cut_segments/011664.jpg",
+        "./auto_cut_segments/011665.jpg",
+        "./auto_cut_segments/011666.jpg"
+      ],
+      "annotations": {
+        "pos_like_category": "形容词性 / State-like",
+        "pragmatic_meaning": "十分震惊",
+        "morphological_features": "复数/集合 / Plural-Collective"
+      },
+      "reference_translation": "惊讶"
+    },
+    {
+      "seg_sequence": [
+        "seg_011706",
+        "seg_011707",
+        "seg_011708"
+      ],
+      "icon_images": [
+        "./auto_cut_segments/011706.jpg",
+        "./auto_cut_segments/011707.jpg",
+        "./auto_cut_segments/011708.jpg"
+      ],
+      "annotations": {
+        "pos_like_category": "整句/整体表达 / Clause-like Unit",
+        "pragmatic_meaning": "走到起床",
+        "morphological_features": "进行体 / Progressive"
+      },
+      "reference_translation": "回到床上"
+    },
+    {
+      "seg_sequence": [
+        "seg_011710",
+        "seg_011711",
+        "seg_011712",
+        "seg_011713"
+      ],
+      "icon_images": [
+        "./auto_cut_segments/011710.jpg",
+        "./auto_cut_segments/011711.jpg",
+        "./auto_cut_segments/011712.jpg",
+        "./auto_cut_segments/011713.jpg"
+      ],
+      "annotations": {
+        "pos_like_category": "整句/整体表达 / Clause-like Unit",
+        "pragmatic_meaning": "看到时间已经六点了",
+        "morphological_features": "强调 / Emphasis"
+      },
+      "reference_translation": "发现六点了"
+    },
+    {
+      "seg_sequence": [
+        "seg_011530",
+        "seg_011531",
+        "seg_011532"
+      ],
+      "icon_images": [
+        "./auto_cut_segments/011530.jpg",
+        "./auto_cut_segments/011531.jpg",
+        "./auto_cut_segments/011532.jpg"
+      ],
+      "annotations": {
+        "pos_like_category": "名词性 / Entity-like",
+        "pragmatic_meaning": "一辆跑车从花丛中出来",
+        "morphological_features": "强调 / Emphasis"
+      },
+      "reference_translation": "花车花"
+    },
+    {
+      "seg_sequence": [
+        "seg_011542",
+        "seg_011543"
+      ],
+      "icon_images": [
+        "./auto_cut_segments/011542.jpg",
+        "./auto_cut_segments/011543.jpg"
+      ],
+      "annotations": {
+        "pos_like_category": "整句/整体表达 / Clause-like Unit",
+        "pragmatic_meaning": "男孩向女孩求婚",
+        "morphological_features": "进行体 / Progressive"
+      },
+      "reference_translation": "一男一女"
+    },
+    {
+      "seg_sequence": [
+        "seg_011545",
+        "seg_011546",
+        "seg_011547"
+      ],
+      "icon_images": [
+        "./auto_cut_segments/011545.jpg",
+        "./auto_cut_segments/011546.jpg",
+        "./auto_cut_segments/011547.jpg"
+      ],
+      "annotations": {
+        "pos_like_category": "动词性 / Action-like",
+        "pragmatic_meaning": "两人在花丛中约会",
+        "morphological_features": "强调 / Emphasis"
+      },
+      "reference_translation": "恋爱"
+    },
+    {
+      "seg_sequence": [
+        "seg_011549",
+        "seg_011550",
+        "seg_011551"
+      ],
+      "icon_images": [
+        "./auto_cut_segments/011549.jpg",
+        "./auto_cut_segments/011550.jpg",
+        "./auto_cut_segments/011551.jpg"
+      ],
+      "annotations": {
+        "pos_like_category": "动词性 / Action-like",
+        "pragmatic_meaning": "两人在花丛中亲昵",
+        "morphological_features": "强调 / Emphasis"
+      },
+      "reference_translation": "做这种梦也是神人一个了"
+    },
+    {
+      "seg_sequence": [
+        "seg_011553",
+        "seg_011554",
+        "seg_011555"
+      ],
+      "icon_images": [
+        "./auto_cut_segments/011553.jpg",
+        "./auto_cut_segments/011554.jpg",
+        "./auto_cut_segments/011555.jpg"
+      ],
+      "annotations": {
+        "pos_like_category": "动词性 / Action-like",
+        "pragmatic_meaning": "生理交配",
+        "morphological_features": "强调 / Emphasis"
+      },
+      "reference_translation": "做这种梦也是神人一个了"
+    },
+    {
+      "seg_sequence": [
+        "seg_011558",
+        "seg_011559",
+        "seg_011560"
+      ],
+      "icon_images": [
+        "./auto_cut_segments/011558.jpg",
+        "./auto_cut_segments/011559.jpg",
+        "./auto_cut_segments/011560.jpg"
+      ],
+      "annotations": {
+        "pos_like_category": "整句/整体表达 / Clause-like Unit",
+        "pragmatic_meaning": "生理交配",
+        "morphological_features": "强调 / Emphasis"
+      },
+      "reference_translation": "做这种梦也是神人一个了"
+    },
+    {
+      "seg_sequence": [
+        "seg_011562",
+        "seg_011563",
+        "seg_011564"
+      ],
+      "icon_images": [
+        "./auto_cut_segments/011562.jpg",
+        "./auto_cut_segments/011563.jpg",
+        "./auto_cut_segments/011564.jpg"
+      ],
+      "annotations": {
+        "pos_like_category": "整句/整体表达 / Clause-like Unit",
+        "pragmatic_meaning": "两人在花丛中亲昵",
+        "morphological_features": "强调 / Emphasis"
+      },
+      "reference_translation": "做这种梦也是神人一个了"
+    },
+    {
+      "seg_sequence": [
+        "seg_011566",
+        "seg_011567",
+        "seg_011568"
+      ],
+      "icon_images": [
+        "./auto_cut_segments/011566.jpg",
+        "./auto_cut_segments/011567.jpg",
+        "./auto_cut_segments/011568.jpg"
+      ],
+      "annotations": {
+        "pos_like_category": "整句/整体表达 / Clause-like Unit",
+        "pragmatic_meaning": "两人在花丛中亲昵",
+        "morphological_features": "强调 / Emphasis"
+      },
+      "reference_translation": "做这种梦也是神人一个了"
+    },
+    {
+      "seg_sequence": [
+        "seg_007662",
+        "seg_007663",
+        "seg_007664"
+      ],
+      "icon_images": [
+        "./auto_cut_segments/007662.jpg",
+        "./auto_cut_segments/007663.jpg",
+        "./auto_cut_segments/007664.jpg"
+      ],
+      "annotations": {
+        "pos_like_category": "整句/整体表达 / Clause-like Unit",
+        "pragmatic_meaning": "不对",
+        "morphological_features": "重复/迭代 / Iterative"
+      },
+      "reference_translation": "长时间写文档办公"
+    },
+    {
+      "seg_sequence": [
+        "seg_007666",
+        "seg_007667"
+      ],
+      "icon_images": [
+        "./auto_cut_segments/007666.jpg",
+        "./auto_cut_segments/007667.jpg"
+      ],
+      "annotations": {
+        "pos_like_category": "整句/整体表达 / Clause-like Unit",
+        "pragmatic_meaning": "单眼看",
+        "morphological_features": "进行体 / Progressive"
+      },
+      "reference_translation": "挡住右眼睛"
+    },
+    {
+      "seg_sequence": [
+        "seg_007710",
+        "seg_007711",
+        "seg_007712",
+        "seg_007713"
+      ],
+      "icon_images": [
+        "./auto_cut_segments/007710.jpg",
+        "./auto_cut_segments/007711.jpg",
+        "./auto_cut_segments/007712.jpg",
+        "./auto_cut_segments/007713.jpg"
+      ],
+      "annotations": {
+        "pos_like_category": "整句/整体表达 / Clause-like Unit",
+        "pragmatic_meaning": "到晚上",
+        "morphological_features": "进行体 / Progressive"
+      },
+      "reference_translation": "持续到半夜"
+    },
+    {
+      "seg_sequence": [
+        "seg_007773",
+        "seg_007774"
+      ],
+      "icon_images": [
+        "./auto_cut_segments/007773.jpg",
+        "./auto_cut_segments/007774.jpg"
+      ],
+      "annotations": {
+        "pos_like_category": "动词性 / Action-like",
+        "pragmatic_meaning": "打车",
+        "morphological_features": "现在 / Present"
+      },
+      "reference_translation": "而是选择打车"
+    },
+    {
+      "seg_sequence": [
+        "seg_011436",
+        "seg_011437",
+        "seg_011438"
+      ],
+      "icon_images": [
+        "./auto_cut_segments/011436.jpg",
+        "./auto_cut_segments/011437.jpg",
+        "./auto_cut_segments/011438.jpg"
+      ],
+      "annotations": {
+        "pos_like_category": "动词性 / Action-like",
+        "pragmatic_meaning": "一个气球在转",
+        "morphological_features": "进行体 / Progressive"
+      },
+      "reference_translation": "反复旋转"
+    },
+    {
+      "seg_sequence": [
+        "seg_011439",
+        "seg_011440",
+        "seg_011441",
+        "seg_011442",
+        "seg_011443",
+        "seg_011444"
+      ],
+      "icon_images": [
+        "./auto_cut_segments/011439.jpg",
+        "./auto_cut_segments/011440.jpg",
+        "./auto_cut_segments/011441.jpg",
+        "./auto_cut_segments/011442.jpg",
+        "./auto_cut_segments/011443.jpg",
+        "./auto_cut_segments/011444.jpg"
+      ],
+      "annotations": {
+        "pos_like_category": "连接/关系标记 / Connector",
+        "pragmatic_meaning": "一直在转",
+        "morphological_features": "进行体 / Progressive"
+      },
+      "reference_translation": "过了一会"
+    },
+    {
+      "seg_sequence": [
+        "seg_011480",
+        "seg_011481",
+        "seg_011482",
+        "seg_011483",
+        "seg_011484"
+      ],
+      "icon_images": [
+        "./auto_cut_segments/011480.jpg",
+        "./auto_cut_segments/011481.jpg",
+        "./auto_cut_segments/011482.jpg",
+        "./auto_cut_segments/011483.jpg",
+        "./auto_cut_segments/011484.jpg"
+      ],
+      "annotations": {
+        "pos_like_category": "整句/整体表达 / Clause-like Unit",
+        "pragmatic_meaning": "漏气到最后变得更小",
+        "morphological_features": "进行体 / Progressive"
+      },
+      "reference_translation": "气越来越少"
+    },
+    {
+      "seg_sequence": [
+        "seg_007438",
+        "seg_007439",
+        "seg_007440",
+        "seg_007441"
+      ],
+      "icon_images": [
+        "./auto_cut_segments/007438.jpg",
+        "./auto_cut_segments/007439.jpg",
+        "./auto_cut_segments/007440.jpg",
+        "./auto_cut_segments/007441.jpg"
+      ],
+      "annotations": {
+        "pos_like_category": "动词性 / Action-like",
+        "pragmatic_meaning": "想洗手",
+        "morphological_features": "过去 / Past"
+      },
+      "reference_translation": "想象成功"
+    },
+    {
+      "seg_sequence": [
+        "seg_007453",
+        "seg_007454",
+        "seg_007455",
+        "seg_007456"
+      ],
+      "icon_images": [
+        "./auto_cut_segments/007453.jpg",
+        "./auto_cut_segments/007454.jpg",
+        "./auto_cut_segments/007455.jpg",
+        "./auto_cut_segments/007456.jpg"
+      ],
+      "annotations": {
+        "pos_like_category": "动词性 / Action-like",
+        "pragmatic_meaning": "老师通知成绩",
+        "morphological_features": "现在 / Present"
+      },
+      "reference_translation": "他刚刚做了演讲"
+    },
+    {
+      "seg_sequence": [
+        "seg_007666",
+        "seg_007667",
+        "seg_007668",
+        "seg_007669",
+        "seg_007670"
+      ],
+      "icon_images": [
+        "./auto_cut_segments/007666.jpg",
+        "./auto_cut_segments/007667.jpg",
+        "./auto_cut_segments/007668.jpg",
+        "./auto_cut_segments/007669.jpg",
+        "./auto_cut_segments/007670.jpg"
+      ],
+      "annotations": {
+        "pos_like_category": "名词性 / Entity-like",
+        "pragmatic_meaning": "遮左眼",
+        "morphological_features": "进行体 / Progressive"
+      },
+      "reference_translation": "向右看电脑重影"
+    },
+    {
+      "seg_sequence": [
+        "seg_007672",
+        "seg_007673",
+        "seg_007674"
+      ],
+      "icon_images": [
+        "./auto_cut_segments/007672.jpg",
+        "./auto_cut_segments/007673.jpg",
+        "./auto_cut_segments/007674.jpg"
+      ],
+      "annotations": {
+        "pos_like_category": "整句/整体表达 / Clause-like Unit",
+        "pragmatic_meaning": "遮右眼",
+        "morphological_features": "进行体 / Progressive"
+      },
+      "reference_translation": "向左看也电脑重影"
+    },
+    {
+      "seg_sequence": [
+        "seg_007677",
+        "seg_007678",
+        "seg_007679"
+      ],
+      "icon_images": [
+        "./auto_cut_segments/007677.jpg",
+        "./auto_cut_segments/007678.jpg",
+        "./auto_cut_segments/007679.jpg"
+      ],
+      "annotations": {
+        "pos_like_category": "整句/整体表达 / Clause-like Unit",
+        "pragmatic_meaning": "担心猝死",
+        "morphological_features": "过去 / Past"
+      },
+      "reference_translation": "认为自己要倒下了"
+    },
+    {
+      "seg_sequence": [
+        "seg_007707",
+        "seg_007708",
+        "seg_007709"
+      ],
+      "icon_images": [
+        "./auto_cut_segments/007707.jpg",
+        "./auto_cut_segments/007708.jpg",
+        "./auto_cut_segments/007709.jpg"
+      ],
+      "annotations": {
+        "pos_like_category": "整句/整体表达 / Clause-like Unit",
+        "pragmatic_meaning": "员工加班好",
+        "morphological_features": "现在 / Present"
+      },
+      "reference_translation": "老板为员工点赞"
+    },
+    {
+      "seg_sequence": [
+        "seg_007741",
+        "seg_007742",
+        "seg_007743"
+      ],
+      "icon_images": [
+        "./auto_cut_segments/007741.jpg",
+        "./auto_cut_segments/007742.jpg",
+        "./auto_cut_segments/007743.jpg"
+      ],
+      "annotations": {
+        "pos_like_category": "动词性 / Action-like",
+        "pragmatic_meaning": "约会",
+        "morphological_features": "进行体 / Progressive"
+      },
+      "reference_translation": "回家喝酒？"
+    },
+    {
+      "seg_sequence": [
+        "seg_007756",
+        "seg_007757"
+      ],
+      "icon_images": [
+        "./auto_cut_segments/007756.jpg",
+        "./auto_cut_segments/007757.jpg"
+      ],
+      "annotations": {
+        "pos_like_category": "动词性 / Action-like",
+        "pragmatic_meaning": "坐电梯跑",
+        "morphological_features": "进行体 / Progressive"
+      },
+      "reference_translation": "进电梯下楼"
+    },
+    {
+      "seg_sequence": [
+        "seg_007758",
+        "seg_007759"
+      ],
+      "icon_images": [
+        "./auto_cut_segments/007758.jpg",
+        "./auto_cut_segments/007759.jpg"
+      ],
+      "annotations": {
+        "pos_like_category": "动词性 / Action-like",
+        "pragmatic_meaning": "继续跑",
+        "morphological_features": "进行体 / Progressive"
+      },
+      "reference_translation": "再向前跑"
+    },
+    {
+      "seg_sequence": [
+        "seg_007782",
+        "seg_007783",
+        "seg_007784",
+        "seg_007785"
+      ],
+      "icon_images": [
+        "./auto_cut_segments/007782.jpg",
+        "./auto_cut_segments/007783.jpg",
+        "./auto_cut_segments/007784.jpg",
+        "./auto_cut_segments/007785.jpg"
+      ],
+      "annotations": {
+        "pos_like_category": "动词性 / Action-like",
+        "pragmatic_meaning": "点击了具体的楼就显示了楼的细节",
+        "morphological_features": "强调 / Emphasis"
+      },
+      "reference_translation": "从城市的工作地点回家"
+    },
+    {
+      "seg_sequence": [
+        "seg_007762",
+        "seg_007763",
+        "seg_007764",
+        "seg_007765",
+        "seg_007766"
+      ],
+      "icon_images": [
+        "./auto_cut_segments/007762.jpg",
+        "./auto_cut_segments/007763.jpg",
+        "./auto_cut_segments/007764.jpg",
+        "./auto_cut_segments/007765.jpg",
+        "./auto_cut_segments/007766.jpg"
+      ],
+      "annotations": {
+        "pos_like_category": "整句/整体表达 / Clause-like Unit",
+        "pragmatic_meaning": "上路",
+        "morphological_features": "进行体 / Progressive"
+      },
+      "reference_translation": "从公司跑到马路上"
+    },
+    {
+      "seg_sequence": [
+        "seg_011728",
+        "seg_011729"
+      ],
+      "icon_images": [
+        "./auto_cut_segments/011728.jpg",
+        "./auto_cut_segments/011729.jpg"
+      ],
+      "annotations": {
+        "pos_like_category": "整句/整体表达 / Clause-like Unit",
+        "pragmatic_meaning": "拿出游戏机",
+        "morphological_features": "将来 / Future"
+      },
+      "reference_translation": "拿起游戏机"
+    },
+    {
+      "seg_sequence": [
+        "seg_011732",
+        "seg_011733"
+      ],
+      "icon_images": [
+        "./auto_cut_segments/011732.jpg",
+        "./auto_cut_segments/011733.jpg"
+      ],
+      "annotations": {
+        "pos_like_category": "整句/整体表达 / Clause-like Unit",
+        "pragmatic_meaning": "解锁",
+        "morphological_features": "现在 / Present"
+      },
+      "reference_translation": "滑动解锁"
+    },
+    {
+      "seg_sequence": [
+        "seg_011747",
+        "seg_011748",
+        "seg_011749"
+      ],
+      "icon_images": [
+        "./auto_cut_segments/011747.jpg",
+        "./auto_cut_segments/011748.jpg",
+        "./auto_cut_segments/011749.jpg"
+      ],
+      "annotations": {
+        "pos_like_category": "整句/整体表达 / Clause-like Unit",
+        "pragmatic_meaning": "翻找游戏",
+        "morphological_features": "进行体 / Progressive"
+      },
+      "reference_translation": "挑来挑去"
+    },
+    {
+      "seg_sequence": [
+        "seg_011751",
+        "seg_011752",
+        "seg_011753",
+        "seg_011754"
+      ],
+      "icon_images": [
+        "./auto_cut_segments/011751.jpg",
+        "./auto_cut_segments/011752.jpg",
+        "./auto_cut_segments/011753.jpg",
+        "./auto_cut_segments/011754.jpg"
+      ],
+      "annotations": {
+        "pos_like_category": "整句/整体表达 / Clause-like Unit",
+        "pragmatic_meaning": "选俄罗斯方块",
+        "morphological_features": "进行体 / Progressive"
+      },
+      "reference_translation": "最终决定玩俄罗斯方块"
+    },
+    {
+      "seg_sequence": [
+        "seg_012064",
+        "seg_012065"
+      ],
+      "icon_images": [
+        "./auto_cut_segments/012064.jpg",
+        "./auto_cut_segments/012065.jpg"
+      ],
+      "annotations": {
+        "pos_like_category": "整句/整体表达 / Clause-like Unit",
+        "pragmatic_meaning": "劲爆地拿起公文包",
+        "morphological_features": "现在 / Present"
+      },
+      "reference_translation": "拿起公文包"
+    },
+    {
+      "seg_sequence": [
+        "seg_012060",
+        "seg_012061"
+      ],
+      "icon_images": [
+        "./auto_cut_segments/012060.jpg",
+        "./auto_cut_segments/012061.jpg"
+      ],
+      "annotations": {
+        "pos_like_category": "整句/整体表达 / Clause-like Unit",
+        "pragmatic_meaning": "关闭闹钟",
+        "morphological_features": "现在 / Present"
+      },
+      "reference_translation": "接一个电话"
+    },
+    {
+      "seg_sequence": [
+        "seg_012032",
+        "seg_012033",
+        "seg_012034",
+        "seg_012035",
+        "seg_012036",
+        "seg_012037",
+        "seg_012038"
+      ],
+      "icon_images": [
+        "./auto_cut_segments/012032.jpg",
+        "./auto_cut_segments/012033.jpg",
+        "./auto_cut_segments/012034.jpg",
+        "./auto_cut_segments/012035.jpg",
+        "./auto_cut_segments/012036.jpg",
+        "./auto_cut_segments/012037.jpg",
+        "./auto_cut_segments/012038.jpg"
+      ],
+      "annotations": {
+        "pos_like_category": "动词性 / Action-like",
+        "pragmatic_meaning": "手机响了",
+        "morphological_features": "进行体 / Progressive"
+      },
+      "reference_translation": "手机开始震动"
+    },
+    {
+      "seg_sequence": [
+        "seg_011944",
+        "seg_011945",
+        "seg_011946"
+      ],
+      "icon_images": [
+        "./auto_cut_segments/011944.jpg",
+        "./auto_cut_segments/011945.jpg",
+        "./auto_cut_segments/011946.jpg"
+      ],
+      "annotations": {
+        "pos_like_category": "动词性 / Action-like",
+        "pragmatic_meaning": "劲爆的选择游戏过程",
+        "morphological_features": "现在 / Present"
+      },
+      "reference_translation": "我左选右选"
+    },
+    {
+      "seg_sequence": [
+        "seg_011871",
+        "seg_011872",
+        "seg_011873",
+        "seg_011874"
+      ],
+      "icon_images": [
+        "./auto_cut_segments/011871.jpg",
+        "./auto_cut_segments/011872.jpg",
+        "./auto_cut_segments/011873.jpg",
+        "./auto_cut_segments/011874.jpg"
+      ],
+      "annotations": {
+        "pos_like_category": "动词性 / Action-like",
+        "pragmatic_meaning": "手机好玩",
+        "morphological_features": "将来 / Future"
+      },
+      "reference_translation": "还是坐在床上想（手机长耳朵了）"
+    },
+    {
+      "seg_sequence": [
+        "seg_009176",
+        "seg_009177",
+        "seg_009178"
+      ],
+      "icon_images": [
+        "./auto_cut_segments/009176.jpg",
+        "./auto_cut_segments/009177.jpg",
+        "./auto_cut_segments/009178.jpg"
+      ],
+      "annotations": {
+        "pos_like_category": "动词性 / Action-like",
+        "pragmatic_meaning": "感情升温",
+        "morphological_features": "现在 / Present"
+      },
+      "reference_translation": "聊天"
+    },
+    {
+      "seg_sequence": [
+        "seg_009224",
+        "seg_009225",
+        "seg_009226",
+        "seg_009227",
+        "seg_009228"
+      ],
+      "icon_images": [
+        "./auto_cut_segments/009224.jpg",
+        "./auto_cut_segments/009225.jpg",
+        "./auto_cut_segments/009226.jpg",
+        "./auto_cut_segments/009227.jpg",
+        "./auto_cut_segments/009228.jpg"
+      ],
+      "annotations": {
+        "pos_like_category": "动词性 / Action-like",
+        "pragmatic_meaning": "看到对方的人",
+        "morphological_features": "现在 / Present"
+      },
+      "reference_translation": "不接电话"
+    },
+    {
+      "seg_sequence": [
+        "seg_009235",
+        "seg_009236",
+        "seg_009237"
+      ],
+      "icon_images": [
+        "./auto_cut_segments/009235.jpg",
+        "./auto_cut_segments/009236.jpg",
+        "./auto_cut_segments/009237.jpg"
+      ],
+      "annotations": {
+        "pos_like_category": "整句/整体表达 / Clause-like Unit",
+        "pragmatic_meaning": "和对方在视频通话交流",
+        "morphological_features": "进行体 / Progressive"
+      },
+      "reference_translation": "打电话"
+    },
+    {
+      "seg_sequence": [
+        "seg_009314",
+        "seg_009315",
+        "seg_009316",
+        "seg_009317"
+      ],
+      "icon_images": [
+        "./auto_cut_segments/009314.jpg",
+        "./auto_cut_segments/009315.jpg",
+        "./auto_cut_segments/009316.jpg",
+        "./auto_cut_segments/009317.jpg"
+      ],
+      "annotations": {
+        "pos_like_category": "动词性 / Action-like",
+        "pragmatic_meaning": "跑向面馆",
+        "morphological_features": "进行体 / Progressive"
+      },
+      "reference_translation": "跑去餐厅"
+    },
+    {
+      "seg_sequence": [
+        "seg_009391",
+        "seg_009392",
+        "seg_009393",
+        "seg_009394"
+      ],
+      "icon_images": [
+        "./auto_cut_segments/009391.jpg",
+        "./auto_cut_segments/009392.jpg",
+        "./auto_cut_segments/009393.jpg",
+        "./auto_cut_segments/009394.jpg"
+      ],
+      "annotations": {
+        "pos_like_category": "动词性 / Action-like",
+        "pragmatic_meaning": "陷入黑暗",
+        "morphological_features": "进行体 / Progressive"
+      },
+      "reference_translation": "眼科"
+    },
+    {
+      "seg_sequence": [
+        "seg_007634",
+        "seg_007635"
+      ],
+      "icon_images": [
+        "./auto_cut_segments/007634.jpg",
+        "./auto_cut_segments/007635.jpg"
+      ],
+      "annotations": {
+        "pos_like_category": "整句/整体表达 / Clause-like Unit",
+        "pragmatic_meaning": "响铃",
+        "morphological_features": "强调 / Emphasis"
+      },
+      "reference_translation": "电话响了"
+    },
+    {
+      "seg_sequence": [
+        "seg_007652",
+        "seg_007653",
+        "seg_007654",
+        "seg_007655"
+      ],
+      "icon_images": [
+        "./auto_cut_segments/007652.jpg",
+        "./auto_cut_segments/007653.jpg",
+        "./auto_cut_segments/007654.jpg",
+        "./auto_cut_segments/007655.jpg"
+      ],
+      "annotations": {
+        "pos_like_category": "连接/关系标记 / Connector",
+        "pragmatic_meaning": "看邮件也有重影",
+        "morphological_features": "进行体 / Progressive"
+      },
+      "reference_translation": "他又打开邮件。"
+    },
+    {
+      "seg_sequence": [
+        "seg_007677",
+        "seg_007678",
+        "seg_007679",
+        "seg_007680"
+      ],
+      "icon_images": [
+        "./auto_cut_segments/007677.jpg",
+        "./auto_cut_segments/007678.jpg",
+        "./auto_cut_segments/007679.jpg",
+        "./auto_cut_segments/007680.jpg"
+      ],
+      "annotations": {
+        "pos_like_category": "动词性 / Action-like",
+        "pragmatic_meaning": "焦虑地想是不是要昏倒了",
+        "morphological_features": "进行体 / Progressive"
+      },
+      "reference_translation": "久坐办公会让人身体不适"
+    },
+    {
+      "seg_sequence": [
+        "seg_007702",
+        "seg_007703"
+      ],
+      "icon_images": [
+        "./auto_cut_segments/007702.jpg",
+        "./auto_cut_segments/007703.jpg"
+      ],
+      "annotations": {
+        "pos_like_category": "整句/整体表达 / Clause-like Unit",
+        "pragmatic_meaning": "加班到晚上",
+        "morphological_features": "完成体 / Perfect"
+      },
+      "reference_translation": "员工干到半夜"
+    },
+    {
+      "seg_sequence": [
+        "seg_007735",
+        "seg_007736",
+        "seg_007737",
+        "seg_007738",
+        "seg_007739"
+      ],
+      "icon_images": [
+        "./auto_cut_segments/007735.jpg",
+        "./auto_cut_segments/007736.jpg",
+        "./auto_cut_segments/007737.jpg",
+        "./auto_cut_segments/007738.jpg",
+        "./auto_cut_segments/007739.jpg"
+      ],
+      "annotations": {
+        "pos_like_category": "整句/整体表达 / Clause-like Unit",
+        "pragmatic_meaning": "开心",
+        "morphological_features": "过去 / Past"
+      },
+      "reference_translation": "心情从不适变得开心"
+    },
+    {
+      "seg_sequence": [
+        "seg_007768",
+        "seg_007769",
+        "seg_007770",
+        "seg_007771",
+        "seg_007772"
+      ],
+      "icon_images": [
+        "./auto_cut_segments/007768.jpg",
+        "./auto_cut_segments/007769.jpg",
+        "./auto_cut_segments/007770.jpg",
+        "./auto_cut_segments/007771.jpg",
+        "./auto_cut_segments/007772.jpg"
+      ],
+      "annotations": {
+        "pos_like_category": "整句/整体表达 / Clause-like Unit",
+        "pragmatic_meaning": "认为坐地铁挤",
+        "morphological_features": "将来 / Future"
+      },
+      "reference_translation": "不选择地铁和排队"
+    },
+    {
+      "seg_sequence": [
+        "seg_007791",
+        "seg_007792",
+        "seg_007793",
+        "seg_007794",
+        "seg_007795"
+      ],
+      "icon_images": [
+        "./auto_cut_segments/007791.jpg",
+        "./auto_cut_segments/007792.jpg",
+        "./auto_cut_segments/007793.jpg",
+        "./auto_cut_segments/007794.jpg",
+        "./auto_cut_segments/007795.jpg"
+      ],
+      "annotations": {
+        "pos_like_category": "名词性 / Entity-like",
+        "pragmatic_meaning": "出租停车",
+        "morphological_features": "现在 / Present"
+      },
+      "reference_translation": "出租车快速开到家门口停下"
+    },
+    {
+      "seg_sequence": [
+        "seg_007797",
+        "seg_007798",
+        "seg_007799",
+        "seg_007800",
+        "seg_007801",
+        "seg_007802",
+        "seg_007803"
+      ],
+      "icon_images": [
+        "./auto_cut_segments/007797.jpg",
+        "./auto_cut_segments/007798.jpg",
+        "./auto_cut_segments/007799.jpg",
+        "./auto_cut_segments/007800.jpg",
+        "./auto_cut_segments/007801.jpg",
+        "./auto_cut_segments/007802.jpg",
+        "./auto_cut_segments/007803.jpg"
+      ],
+      "annotations": {
+        "pos_like_category": "动词性 / Action-like",
+        "pragmatic_meaning": "下车回家",
+        "morphological_features": "现在 / Present"
+      },
+      "reference_translation": "下车后他跑回家。"
+    },
+    {
+      "seg_sequence": [
+        "seg_009198",
+        "seg_009199"
+      ],
+      "icon_images": [
+        "./auto_cut_segments/009198.jpg",
+        "./auto_cut_segments/009199.jpg"
+      ],
+      "annotations": {
+        "pos_like_category": "动词性 / Action-like",
+        "pragmatic_meaning": "手指按键挂断电话",
+        "morphological_features": "进行体 / Progressive"
+      },
+      "reference_translation": "挂掉电话"
+    },
+    {
+      "seg_sequence": [
+        "seg_011454",
+        "seg_011455",
+        "seg_011456"
+      ],
+      "icon_images": [
+        "./auto_cut_segments/011454.jpg",
+        "./auto_cut_segments/011455.jpg",
+        "./auto_cut_segments/011456.jpg"
+      ],
+      "annotations": {
+        "pos_like_category": "动词性 / Action-like",
+        "pragmatic_meaning": "踩着气球在上升",
+        "morphological_features": "现在 / Present"
+      },
+      "reference_translation": "把皮球向上踢"
+    },
+    {
+      "seg_sequence": [
+        "seg_011468",
+        "seg_011469"
+      ],
+      "icon_images": [
+        "./auto_cut_segments/011468.jpg",
+        "./auto_cut_segments/011469.jpg"
+      ],
+      "annotations": {
+        "pos_like_category": "名词性 / Entity-like",
+        "pragmatic_meaning": "一些钉子飞过来扎气球",
+        "morphological_features": "现在 / Present"
+      },
+      "reference_translation": "几个图钉飞来扎破了皮球"
+    },
+    {
+      "seg_sequence": [
+        "seg_011592",
+        "seg_011593",
+        "seg_011594"
+      ],
+      "icon_images": [
+        "./auto_cut_segments/011592.jpg",
+        "./auto_cut_segments/011593.jpg",
+        "./auto_cut_segments/011594.jpg"
+      ],
+      "annotations": {
+        "pos_like_category": "名词性 / Entity-like",
+        "pragmatic_meaning": "乌云密布",
+        "morphological_features": "进行体 / Progressive"
+      },
+      "reference_translation": "天气又晴了"
+    },
+    {
+      "seg_sequence": [
+        "seg_011675",
+        "seg_011676",
+        "seg_011677"
+      ],
+      "icon_images": [
+        "./auto_cut_segments/011675.jpg",
+        "./auto_cut_segments/011676.jpg",
+        "./auto_cut_segments/011677.jpg"
+      ],
+      "annotations": {
+        "pos_like_category": "整句/整体表达 / Clause-like Unit",
+        "pragmatic_meaning": "来回踱步走",
+        "morphological_features": "现在 / Present"
+      },
+      "reference_translation": "来回踱步"
+    },
+    {
+      "seg_sequence": [
+        "seg_011679",
+        "seg_011680",
+        "seg_011681"
+      ],
+      "icon_images": [
+        "./auto_cut_segments/011679.jpg",
+        "./auto_cut_segments/011680.jpg",
+        "./auto_cut_segments/011681.jpg"
+      ],
+      "annotations": {
+        "pos_like_category": "整句/整体表达 / Clause-like Unit",
+        "pragmatic_meaning": "向前走",
+        "morphological_features": "现在 / Present"
+      },
+      "reference_translation": "来回踱步"
+    },
+    {
+      "seg_sequence": [
+        "seg_011683",
+        "seg_011684",
+        "seg_011685",
+        "seg_011686",
+        "seg_011687"
+      ],
+      "icon_images": [
+        "./auto_cut_segments/011683.jpg",
+        "./auto_cut_segments/011684.jpg",
+        "./auto_cut_segments/011685.jpg",
+        "./auto_cut_segments/011686.jpg",
+        "./auto_cut_segments/011687.jpg"
+      ],
+      "annotations": {
+        "pos_like_category": "整句/整体表达 / Clause-like Unit",
+        "pragmatic_meaning": "来回踱步走",
+        "morphological_features": "复数/集合 / Plural-Collective"
+      },
+      "reference_translation": "掉头"
+    },
+    {
+      "seg_sequence": [
+        "seg_011689",
+        "seg_011690",
+        "seg_011691"
+      ],
+      "icon_images": [
+        "./auto_cut_segments/011689.jpg",
+        "./auto_cut_segments/011690.jpg",
+        "./auto_cut_segments/011691.jpg"
+      ],
+      "annotations": {
+        "pos_like_category": "整句/整体表达 / Clause-like Unit",
+        "pragmatic_meaning": "来回踱步走",
+        "morphological_features": "现在 / Present"
+      },
+      "reference_translation": "来回踱步"
+    },
+    {
+      "seg_sequence": [
+        "seg_011693",
+        "seg_011694",
+        "seg_011695"
+      ],
+      "icon_images": [
+        "./auto_cut_segments/011693.jpg",
+        "./auto_cut_segments/011694.jpg",
+        "./auto_cut_segments/011695.jpg"
+      ],
+      "annotations": {
+        "pos_like_category": "整句/整体表达 / Clause-like Unit",
+        "pragmatic_meaning": "向前走",
+        "morphological_features": "现在 / Present"
+      },
+      "reference_translation": "来回踱步"
+    },
+    {
+      "seg_sequence": [
+        "seg_011697",
+        "seg_011698",
+        "seg_011699"
+      ],
+      "icon_images": [
+        "./auto_cut_segments/011697.jpg",
+        "./auto_cut_segments/011698.jpg",
+        "./auto_cut_segments/011699.jpg"
+      ],
+      "annotations": {
+        "pos_like_category": "整句/整体表达 / Clause-like Unit",
+        "pragmatic_meaning": "来回踱步走",
+        "morphological_features": "现在 / Present"
+      },
+      "reference_translation": "来回踱步"
+    },
+    {
+      "seg_sequence": [
+        "seg_011487",
+        "seg_011488",
+        "seg_011489",
+        "seg_011490",
+        "seg_011491",
+        "seg_011492",
+        "seg_011493",
+        "seg_011494"
+      ],
+      "icon_images": [
+        "./auto_cut_segments/011487.jpg",
+        "./auto_cut_segments/011488.jpg",
+        "./auto_cut_segments/011489.jpg",
+        "./auto_cut_segments/011490.jpg",
+        "./auto_cut_segments/011491.jpg",
+        "./auto_cut_segments/011492.jpg",
+        "./auto_cut_segments/011493.jpg",
+        "./auto_cut_segments/011494.jpg"
+      ],
+      "annotations": {
+        "pos_like_category": "整句/整体表达 / Clause-like Unit",
+        "pragmatic_meaning": "气球一步一步变大，又到了云层中",
+        "morphological_features": "进行体 / Progressive"
+      },
+      "reference_translation": "球飞起来变成了太阳"
+    },
+    {
+      "seg_sequence": [
+        "seg_006982",
+        "seg_006983",
+        "seg_006984"
+      ],
+      "icon_images": [
+        "./auto_cut_segments/006982.jpg",
+        "./auto_cut_segments/006983.jpg",
+        "./auto_cut_segments/006984.jpg"
+      ],
+      "annotations": {
+        "pos_like_category": "动词性 / Action-like",
+        "pragmatic_meaning": "想上厕所",
+        "morphological_features": "进行体 / Progressive"
+      },
+      "reference_translation": "溜去上厕所"
+    },
+    {
+      "seg_sequence": [
+        "seg_006995",
+        "seg_006996",
+        "seg_006997",
+        "seg_006998",
+        "seg_006999",
+        "seg_007000"
+      ],
+      "icon_images": [
+        "./auto_cut_segments/006995.jpg",
+        "./auto_cut_segments/006996.jpg",
+        "./auto_cut_segments/006997.jpg",
+        "./auto_cut_segments/006998.jpg",
+        "./auto_cut_segments/006999.jpg",
+        "./auto_cut_segments/007000.jpg"
+      ],
+      "annotations": {
+        "pos_like_category": "动词性 / Action-like",
+        "pragmatic_meaning": "紧张得心跳",
+        "morphological_features": "强调 / Emphasis"
+      },
+      "reference_translation": "看到那个人脸红心动"
+    },
+    {
+      "seg_sequence": [
+        "seg_007004",
+        "seg_007005",
+        "seg_007006"
+      ],
+      "icon_images": [
+        "./auto_cut_segments/007004.jpg",
+        "./auto_cut_segments/007005.jpg",
+        "./auto_cut_segments/007006.jpg"
+      ],
+      "annotations": {
+        "pos_like_category": "动词性 / Action-like",
+        "pragmatic_meaning": "插入U盘",
+        "morphological_features": "进行体 / Progressive"
+      },
+      "reference_translation": "连接数据线"
+    },
+    {
+      "seg_sequence": [
+        "seg_007016",
+        "seg_007017",
+        "seg_007018",
+        "seg_007019",
+        "seg_007020",
+        "seg_007021"
+      ],
+      "icon_images": [
+        "./auto_cut_segments/007016.jpg",
+        "./auto_cut_segments/007017.jpg",
+        "./auto_cut_segments/007018.jpg",
+        "./auto_cut_segments/007019.jpg",
+        "./auto_cut_segments/007020.jpg",
+        "./auto_cut_segments/007021.jpg"
+      ],
+      "annotations": {
+        "pos_like_category": "名词性 / Entity-like",
+        "pragmatic_meaning": "加载中",
+        "morphological_features": "重复/迭代 / Iterative"
+      },
+      "reference_translation": "加载中"
+    },
+    {
+      "seg_sequence": [
+        "seg_007008",
+        "seg_007009",
+        "seg_007010"
+      ],
+      "icon_images": [
+        "./auto_cut_segments/007008.jpg",
+        "./auto_cut_segments/007009.jpg",
+        "./auto_cut_segments/007010.jpg"
+      ],
+      "annotations": {
+        "pos_like_category": "动词性 / Action-like",
+        "pragmatic_meaning": "打开放映机",
+        "morphological_features": "进行体 / Progressive"
+      },
+      "reference_translation": "打开放映机"
+    },
+    {
+      "seg_sequence": [
+        "seg_007011",
+        "seg_007012",
+        "seg_007013"
+      ],
+      "icon_images": [
+        "./auto_cut_segments/007011.jpg",
+        "./auto_cut_segments/007012.jpg",
+        "./auto_cut_segments/007013.jpg"
+      ],
+      "annotations": {
+        "pos_like_category": "副词性 / Degree-like",
+        "pragmatic_meaning": "无反应",
+        "morphological_features": "重复/迭代 / Iterative"
+      },
+      "reference_translation": "等待"
+    },
+    {
+      "seg_sequence": [
+        "seg_007027",
+        "seg_007028"
+      ],
+      "icon_images": [
+        "./auto_cut_segments/007027.jpg",
+        "./auto_cut_segments/007028.jpg"
+      ],
+      "annotations": {
+        "pos_like_category": "动词性 / Action-like",
+        "pragmatic_meaning": "微笑着汇报",
+        "morphological_features": "进行体 / Progressive"
+      },
+      "reference_translation": "打招呼"
+    },
+    {
+      "seg_sequence": [
+        "seg_007040",
+        "seg_007041",
+        "seg_007042"
+      ],
+      "icon_images": [
+        "./auto_cut_segments/007040.jpg",
+        "./auto_cut_segments/007041.jpg",
+        "./auto_cut_segments/007042.jpg"
+      ],
+      "annotations": {
+        "pos_like_category": "动词性 / Action-like",
+        "pragmatic_meaning": "想上厕所",
+        "morphological_features": "进行体 / Progressive"
+      },
+      "reference_translation": "想上厕所"
+    },
+    {
+      "seg_sequence": [
+        "seg_007048",
+        "seg_007049",
+        "seg_007050",
+        "seg_007051",
+        "seg_007052",
+        "seg_007053"
+      ],
+      "icon_images": [
+        "./auto_cut_segments/007048.jpg",
+        "./auto_cut_segments/007049.jpg",
+        "./auto_cut_segments/007050.jpg",
+        "./auto_cut_segments/007051.jpg",
+        "./auto_cut_segments/007052.jpg",
+        "./auto_cut_segments/007053.jpg"
+      ],
+      "annotations": {
+        "pos_like_category": "名词性 / Entity-like",
+        "pragmatic_meaning": "惊的一声",
+        "morphological_features": "进行体 / Progressive"
+      },
+      "reference_translation": "举手说话"
+    },
+    {
+      "seg_sequence": [
+        "seg_007059",
+        "seg_007060"
+      ],
+      "icon_images": [
+        "./auto_cut_segments/007059.jpg",
+        "./auto_cut_segments/007060.jpg"
+      ],
+      "annotations": {
+        "pos_like_category": "名词性 / Entity-like",
+        "pragmatic_meaning": "没声音",
+        "morphological_features": "完成体 / Perfect"
+      },
+      "reference_translation": "声音关闭"
+    },
+    {
+      "seg_sequence": [
+        "seg_007062",
+        "seg_007063"
+      ],
+      "icon_images": [
+        "./auto_cut_segments/007062.jpg",
+        "./auto_cut_segments/007063.jpg"
+      ],
+      "annotations": {
+        "pos_like_category": "动词性 / Action-like",
+        "pragmatic_meaning": "继续尝试",
+        "morphological_features": "进行体 / Progressive"
+      },
+      "reference_translation": "打招呼"
+    },
+    {
+      "seg_sequence": [
+        "seg_007065",
+        "seg_007066"
+      ],
+      "icon_images": [
+        "./auto_cut_segments/007065.jpg",
+        "./auto_cut_segments/007066.jpg"
+      ],
+      "annotations": {
+        "pos_like_category": "动词性 / Action-like",
+        "pragmatic_meaning": "没声音",
+        "morphological_features": "完成体 / Perfect"
+      },
+      "reference_translation": "声音关闭"
+    },
+    {
+      "seg_sequence": [
+        "seg_007068",
+        "seg_007069",
+        "seg_007070",
+        "seg_007071",
+        "seg_007072",
+        "seg_007073"
+      ],
+      "icon_images": [
+        "./auto_cut_segments/007068.jpg",
+        "./auto_cut_segments/007069.jpg",
+        "./auto_cut_segments/007070.jpg",
+        "./auto_cut_segments/007071.jpg",
+        "./auto_cut_segments/007072.jpg",
+        "./auto_cut_segments/007073.jpg"
+      ],
+      "annotations": {
+        "pos_like_category": "动词性 / Action-like",
+        "pragmatic_meaning": "心想为什么没声音",
+        "morphological_features": "进行体 / Progressive"
+      },
+      "reference_translation": "说话发现声音关闭"
+    },
+    {
+      "seg_sequence": [
+        "seg_007425",
+        "seg_007426",
+        "seg_007427",
+        "seg_007428",
+        "seg_007429"
+      ],
+      "icon_images": [
+        "./auto_cut_segments/007425.jpg",
+        "./auto_cut_segments/007426.jpg",
+        "./auto_cut_segments/007427.jpg",
+        "./auto_cut_segments/007428.jpg",
+        "./auto_cut_segments/007429.jpg"
+      ],
+      "annotations": {
+        "pos_like_category": "动词性 / Action-like",
+        "pragmatic_meaning": "进行小便",
+        "morphological_features": "进行体 / Progressive"
+      },
+      "reference_translation": "上厕所"
+    },
+    {
+      "seg_sequence": [
+        "seg_007416",
+        "seg_007417",
+        "seg_007418",
+        "seg_007419",
+        "seg_007420",
+        "seg_007421"
+      ],
+      "icon_images": [
+        "./auto_cut_segments/007416.jpg",
+        "./auto_cut_segments/007417.jpg",
+        "./auto_cut_segments/007418.jpg",
+        "./auto_cut_segments/007419.jpg",
+        "./auto_cut_segments/007420.jpg",
+        "./auto_cut_segments/007421.jpg"
+      ],
+      "annotations": {
+        "pos_like_category": "动词性 / Action-like",
+        "pragmatic_meaning": "看到一个小便池",
+        "morphological_features": "进行体 / Progressive"
+      },
+      "reference_translation": "看到尿坑"
+    },
+    {
+      "seg_sequence": [
+        "seg_007397",
+        "seg_007398",
+        "seg_007399"
+      ],
+      "icon_images": [
+        "./auto_cut_segments/007397.jpg",
+        "./auto_cut_segments/007398.jpg",
+        "./auto_cut_segments/007399.jpg"
+      ],
+      "annotations": {
+        "pos_like_category": "动词性 / Action-like",
+        "pragmatic_meaning": "心想里面的人在大便吗",
+        "morphological_features": "进行体 / Progressive"
+      },
+      "reference_translation": "想拉屎拉不出来"
+    },
+    {
+      "seg_sequence": [
+        "seg_007030",
+        "seg_007031",
+        "seg_007032",
+        "seg_007033"
+      ],
+      "icon_images": [
+        "./auto_cut_segments/007030.jpg",
+        "./auto_cut_segments/007031.jpg",
+        "./auto_cut_segments/007032.jpg",
+        "./auto_cut_segments/007033.jpg"
+      ],
+      "annotations": {
+        "pos_like_category": "动词性 / Action-like",
+        "pragmatic_meaning": "想到了老板的表扬",
+        "morphological_features": "进行体 / Progressive"
+      },
+      "reference_translation": "想到某个讲师"
+    },
+    {
+      "seg_sequence": [
+        "seg_007393",
+        "seg_007394",
+        "seg_007395"
+      ],
+      "icon_images": [
+        "./auto_cut_segments/007393.jpg",
+        "./auto_cut_segments/007394.jpg",
+        "./auto_cut_segments/007395.jpg"
+      ],
+      "annotations": {
+        "pos_like_category": "形容词性 / State-like",
+        "pragmatic_meaning": "时间过了好久",
+        "morphological_features": "强调 / Emphasis"
+      },
+      "reference_translation": "上到坑里"
+    },
+    {
+      "seg_sequence": [
+        "seg_007139",
+        "seg_007140",
+        "seg_007141"
+      ],
+      "icon_images": [
+        "./auto_cut_segments/007139.jpg",
+        "./auto_cut_segments/007140.jpg",
+        "./auto_cut_segments/007141.jpg"
+      ],
+      "annotations": {
+        "pos_like_category": "动词性 / Action-like",
+        "pragmatic_meaning": "想上厕所",
+        "morphological_features": "现在 / Present"
+      },
+      "reference_translation": "想上厕所"
+    },
+    {
+      "seg_sequence": [
+        "seg_007159",
+        "seg_007160",
+        "seg_007161",
+        "seg_007162",
+        "seg_007163",
+        "seg_007164",
+        "seg_007165",
+        "seg_007166",
+        "seg_007167",
+        "seg_007168"
+      ],
+      "icon_images": [
+        "./auto_cut_segments/007159.jpg",
+        "./auto_cut_segments/007160.jpg",
+        "./auto_cut_segments/007161.jpg",
+        "./auto_cut_segments/007162.jpg",
+        "./auto_cut_segments/007163.jpg",
+        "./auto_cut_segments/007164.jpg",
+        "./auto_cut_segments/007165.jpg",
+        "./auto_cut_segments/007166.jpg",
+        "./auto_cut_segments/007167.jpg",
+        "./auto_cut_segments/007168.jpg"
+      ],
+      "annotations": {
+        "pos_like_category": "名词性 / Entity-like",
+        "pragmatic_meaning": "七嘴八舌",
+        "morphological_features": "过去 / Past"
+      },
+      "reference_translation": "嘈杂"
+    },
+    {
+      "seg_sequence": [
+        "seg_007180",
+        "seg_007181",
+        "seg_007182"
+      ],
+      "icon_images": [
+        "./auto_cut_segments/007180.jpg",
+        "./auto_cut_segments/007181.jpg",
+        "./auto_cut_segments/007182.jpg"
+      ],
+      "annotations": {
+        "pos_like_category": "动词性 / Action-like",
+        "pragmatic_meaning": "尴尬望向老板",
+        "morphological_features": "进行体 / Progressive"
+      },
+      "reference_translation": "不高兴见领导"
+    },
+    {
+      "seg_sequence": [
+        "seg_007184",
+        "seg_007185",
+        "seg_007186",
+        "seg_007187",
+        "seg_007188",
+        "seg_007189",
+        "seg_007190"
+      ],
+      "icon_images": [
+        "./auto_cut_segments/007184.jpg",
+        "./auto_cut_segments/007185.jpg",
+        "./auto_cut_segments/007186.jpg",
+        "./auto_cut_segments/007187.jpg",
+        "./auto_cut_segments/007188.jpg",
+        "./auto_cut_segments/007189.jpg",
+        "./auto_cut_segments/007190.jpg"
+      ],
+      "annotations": {
+        "pos_like_category": "动词性 / Action-like",
+        "pragmatic_meaning": "心脏直跳",
+        "morphological_features": "强调 / Emphasis"
+      },
+      "reference_translation": "心跳加速"
+    },
+    {
+      "seg_sequence": [
+        "seg_007285",
+        "seg_007286",
+        "seg_007287"
+      ],
+      "icon_images": [
+        "./auto_cut_segments/007285.jpg",
+        "./auto_cut_segments/007286.jpg",
+        "./auto_cut_segments/007287.jpg"
+      ],
+      "annotations": {
+        "pos_like_category": "动词性 / Action-like",
+        "pragmatic_meaning": "边走边尿急",
+        "morphological_features": "进行体 / Progressive"
+      },
+      "reference_translation": "想溜去上厕所"
+    },
+    {
+      "seg_sequence": [
+        "seg_007263",
+        "seg_007264",
+        "seg_007265",
+        "seg_007266"
+      ],
+      "icon_images": [
+        "./auto_cut_segments/007263.jpg",
+        "./auto_cut_segments/007264.jpg",
+        "./auto_cut_segments/007265.jpg",
+        "./auto_cut_segments/007266.jpg"
+      ],
+      "annotations": {
+        "pos_like_category": "动词性 / Action-like",
+        "pragmatic_meaning": "慢走",
+        "morphological_features": "进行体 / Progressive"
+      },
+      "reference_translation": "快速溜走"
+    },
+    {
+      "seg_sequence": [
+        "seg_007301",
+        "seg_007302",
+        "seg_007303",
+        "seg_007304",
+        "seg_007305",
+        "seg_007306"
+      ],
+      "icon_images": [
+        "./auto_cut_segments/007301.jpg",
+        "./auto_cut_segments/007302.jpg",
+        "./auto_cut_segments/007303.jpg",
+        "./auto_cut_segments/007304.jpg",
+        "./auto_cut_segments/007305.jpg",
+        "./auto_cut_segments/007306.jpg"
+      ],
+      "annotations": {
+        "pos_like_category": "动词性 / Action-like",
+        "pragmatic_meaning": "跑着跑着摔跤了",
+        "morphological_features": "进行体 / Progressive"
+      },
+      "reference_translation": "跑步摔倒了"
+    },
+    {
+      "seg_sequence": [
+        "seg_007110",
+        "seg_007111",
+        "seg_007112"
+      ],
+      "icon_images": [
+        "./auto_cut_segments/007110.jpg",
+        "./auto_cut_segments/007111.jpg",
+        "./auto_cut_segments/007112.jpg"
+      ],
+      "annotations": {
+        "pos_like_category": "整句/整体表达 / Clause-like Unit",
+        "pragmatic_meaning": "两个车",
+        "morphological_features": "复数/集合 / Plural-Collective"
+      },
+      "reference_translation": "两个普通汽车"
+    },
+    {
+      "seg_sequence": [
+        "seg_007123",
+        "seg_007124",
+        "seg_007125"
+      ],
+      "icon_images": [
+        "./auto_cut_segments/007123.jpg",
+        "./auto_cut_segments/007124.jpg",
+        "./auto_cut_segments/007125.jpg"
+      ],
+      "annotations": {
+        "pos_like_category": "名词性 / Entity-like",
+        "pragmatic_meaning": "两个燃油车",
+        "morphological_features": "强调 / Emphasis"
+      },
+      "reference_translation": "两个豪华汽车"
+    },
+    {
+      "seg_sequence": [
+        "seg_007291",
+        "seg_007292",
+        "seg_007293"
+      ],
+      "icon_images": [
+        "./auto_cut_segments/007291.jpg",
+        "./auto_cut_segments/007292.jpg",
+        "./auto_cut_segments/007293.jpg"
+      ],
+      "annotations": {
+        "pos_like_category": "动词性 / Action-like",
+        "pragmatic_meaning": "跑起来",
+        "morphological_features": "进行体 / Progressive"
+      },
+      "reference_translation": "快跑"
+    },
+    {
+      "seg_sequence": [
+        "seg_007295",
+        "seg_007296",
+        "seg_007297"
+      ],
+      "icon_images": [
+        "./auto_cut_segments/007295.jpg",
+        "./auto_cut_segments/007296.jpg",
+        "./auto_cut_segments/007297.jpg"
+      ],
+      "annotations": {
+        "pos_like_category": "动词性 / Action-like",
+        "pragmatic_meaning": "越跑越快",
+        "morphological_features": "重复/迭代 / Iterative"
+      },
+      "reference_translation": "快跑"
+    },
+    {
+      "seg_sequence": [
+        "seg_007268",
+        "seg_007269",
+        "seg_007270",
+        "seg_007271",
+        "seg_007272"
+      ],
+      "icon_images": [
+        "./auto_cut_segments/007268.jpg",
+        "./auto_cut_segments/007269.jpg",
+        "./auto_cut_segments/007270.jpg",
+        "./auto_cut_segments/007271.jpg",
+        "./auto_cut_segments/007272.jpg"
+      ],
+      "annotations": {
+        "pos_like_category": "动词性 / Action-like",
+        "pragmatic_meaning": "老板疑惑",
+        "morphological_features": "进行体 / Progressive"
+      },
+      "reference_translation": "对那瓶水疑惑"
+    },
+    {
+      "seg_sequence": [
+        "seg_007361",
+        "seg_007362"
+      ],
+      "icon_images": [
+        "./auto_cut_segments/007361.jpg",
+        "./auto_cut_segments/007362.jpg"
+      ],
+      "annotations": {
+        "pos_like_category": "动词性 / Action-like",
+        "pragmatic_meaning": "想起老板的水",
+        "morphological_features": "过去 / Past"
+      },
+      "reference_translation": "喝水"
+    },
+    {
+      "seg_sequence": [
+        "seg_007088",
+        "seg_007089",
+        "seg_007090",
+        "seg_007091"
+      ],
+      "icon_images": [
+        "./auto_cut_segments/007088.jpg",
+        "./auto_cut_segments/007089.jpg",
+        "./auto_cut_segments/007090.jpg",
+        "./auto_cut_segments/007091.jpg"
+      ],
+      "annotations": {
+        "pos_like_category": "动词性 / Action-like",
+        "pragmatic_meaning": "领导对这个人说",
+        "morphological_features": "进行体 / Progressive"
+      },
+      "reference_translation": "受到老师批评"
+    },
+    {
+      "seg_sequence": [
+        "seg_007279",
+        "seg_007280",
+        "seg_007281"
+      ],
+      "icon_images": [
+        "./auto_cut_segments/007279.jpg",
+        "./auto_cut_segments/007280.jpg",
+        "./auto_cut_segments/007281.jpg"
+      ],
+      "annotations": {
+        "pos_like_category": "动词性 / Action-like",
+        "pragmatic_meaning": "赶路",
+        "morphological_features": "进行体 / Progressive"
+      },
+      "reference_translation": "溜走"
+    },
+    {
+      "seg_sequence": [
+        "seg_007402",
+        "seg_007403",
+        "seg_007404",
+        "seg_007405",
+        "seg_007406",
+        "seg_007407"
+      ],
+      "icon_images": [
+        "./auto_cut_segments/007402.jpg",
+        "./auto_cut_segments/007403.jpg",
+        "./auto_cut_segments/007404.jpg",
+        "./auto_cut_segments/007405.jpg",
+        "./auto_cut_segments/007406.jpg",
+        "./auto_cut_segments/007407.jpg"
+      ],
+      "annotations": {
+        "pos_like_category": "动词性 / Action-like",
+        "pragmatic_meaning": "离开厕所",
+        "morphological_features": "进行体 / Progressive"
+      },
+      "reference_translation": "看到有人从厕所出来"
+    },
+    {
+      "seg_sequence": [
+        "seg_005857",
+        "seg_005858",
+        "seg_005859",
+        "seg_005860"
+      ],
+      "icon_images": [
+        "./auto_cut_segments/005857.jpg",
+        "./auto_cut_segments/005858.jpg",
+        "./auto_cut_segments/005859.jpg",
+        "./auto_cut_segments/005860.jpg"
+      ],
+      "annotations": {
+        "pos_like_category": "名词性 / Entity-like",
+        "pragmatic_meaning": "翻开一本书",
+        "morphological_features": "完成体 / Perfect"
+      },
+      "reference_translation": "看书"
+    },
+    {
+      "seg_sequence": [
+        "seg_006052",
+        "seg_006053",
+        "seg_006054"
+      ],
+      "icon_images": [
+        "./auto_cut_segments/006052.jpg",
+        "./auto_cut_segments/006053.jpg",
+        "./auto_cut_segments/006054.jpg"
+      ],
+      "annotations": {
+        "pos_like_category": "标点/边界标记 / Boundary Marker",
+        "pragmatic_meaning": "等等",
+        "morphological_features": "将来 / Future"
+      },
+      "reference_translation": "等一会"
+    },
+    {
+      "seg_sequence": [
+        "seg_006184",
+        "seg_006185",
+        "seg_006186",
+        "seg_006187",
+        "seg_006188"
+      ],
+      "icon_images": [
+        "./auto_cut_segments/006184.jpg",
+        "./auto_cut_segments/006185.jpg",
+        "./auto_cut_segments/006186.jpg",
+        "./auto_cut_segments/006187.jpg",
+        "./auto_cut_segments/006188.jpg"
+      ],
+      "annotations": {
+        "pos_like_category": "动词性 / Action-like",
+        "pragmatic_meaning": "看到一本书",
+        "morphological_features": "强调 / Emphasis"
+      },
+      "reference_translation": "看书"
+    },
+    {
+      "seg_sequence": [
+        "seg_006298",
+        "seg_006299",
+        "seg_006300"
+      ],
+      "icon_images": [
+        "./auto_cut_segments/006298.jpg",
+        "./auto_cut_segments/006299.jpg",
+        "./auto_cut_segments/006300.jpg"
+      ],
+      "annotations": {
+        "pos_like_category": "动词性 / Action-like",
+        "pragmatic_meaning": "拿去结账",
+        "morphological_features": "现在 / Present"
+      },
+      "reference_translation": "我去买车"
+    },
+    {
+      "seg_sequence": [
+        "seg_006340",
+        "seg_006341",
+        "seg_006342"
+      ],
+      "icon_images": [
+        "./auto_cut_segments/006340.jpg",
+        "./auto_cut_segments/006341.jpg",
+        "./auto_cut_segments/006342.jpg"
+      ],
+      "annotations": {
+        "pos_like_category": "名词性 / Entity-like",
+        "pragmatic_meaning": "按了向上的电梯",
+        "morphological_features": "现在 / Present"
+      },
+      "reference_translation": "坐电梯"
+    },
+    {
+      "seg_sequence": [
+        "seg_006355",
+        "seg_006356",
+        "seg_006357"
+      ],
+      "icon_images": [
+        "./auto_cut_segments/006355.jpg",
+        "./auto_cut_segments/006356.jpg",
+        "./auto_cut_segments/006357.jpg"
+      ],
+      "annotations": {
+        "pos_like_category": "名词性 / Entity-like",
+        "pragmatic_meaning": "按电梯",
+        "morphological_features": "现在 / Present"
+      },
+      "reference_translation": "坐电梯"
+    },
+    {
+      "seg_sequence": [
+        "seg_006372",
+        "seg_006373"
+      ],
+      "icon_images": [
+        "./auto_cut_segments/006372.jpg",
+        "./auto_cut_segments/006373.jpg"
+      ],
+      "annotations": {
+        "pos_like_category": "名词性 / Entity-like",
+        "pragmatic_meaning": "出电梯",
+        "morphological_features": "现在 / Present"
+      },
+      "reference_translation": "北电梯困住"
+    },
+    {
+      "seg_sequence": [
+        "seg_006393",
+        "seg_006394",
+        "seg_006395"
+      ],
+      "icon_images": [
+        "./auto_cut_segments/006393.jpg",
+        "./auto_cut_segments/006394.jpg",
+        "./auto_cut_segments/006395.jpg"
+      ],
+      "annotations": {
+        "pos_like_category": "名词性 / Entity-like",
+        "pragmatic_meaning": "来到工位",
+        "morphological_features": "复数/集合 / Plural-Collective"
+      },
+      "reference_translation": "回办公室"
+    },
+    {
+      "seg_sequence": [
+        "seg_011683",
+        "seg_011684",
+        "seg_011685"
+      ],
+      "icon_images": [
+        "./auto_cut_segments/011683.jpg",
+        "./auto_cut_segments/011684.jpg",
+        "./auto_cut_segments/011685.jpg"
+      ],
+      "annotations": {
+        "pos_like_category": "动词性 / Action-like",
+        "pragmatic_meaning": "折返",
+        "morphological_features": "现在 / Present"
+      },
+      "reference_translation": "来回踱步"
+    },
+    {
+      "seg_sequence": [
+        "seg_003481",
+        "seg_003482"
+      ],
+      "icon_images": [
+        "./auto_cut_segments/003481.jpg",
+        "./auto_cut_segments/003482.jpg"
+      ],
+      "annotations": {
+        "pos_like_category": "动词性 / Action-like",
+        "pragmatic_meaning": "下楼",
+        "morphological_features": "现在 / Present"
+      },
+      "reference_translation": "他下楼"
+    },
+    {
+      "seg_sequence": [
+        "seg_003483",
+        "seg_003484",
+        "seg_003485"
+      ],
+      "icon_images": [
+        "./auto_cut_segments/003483.jpg",
+        "./auto_cut_segments/003484.jpg",
+        "./auto_cut_segments/003485.jpg"
+      ],
+      "annotations": {
+        "pos_like_category": "副词性 / Degree-like",
+        "pragmatic_meaning": "去星巴克",
+        "morphological_features": "现在 / Present"
+      },
+      "reference_translation": "去了星巴克"
+    },
+    {
+      "seg_sequence": [
+        "seg_003474",
+        "seg_003475",
+        "seg_003476",
+        "seg_003477"
+      ],
+      "icon_images": [
+        "./auto_cut_segments/003474.jpg",
+        "./auto_cut_segments/003475.jpg",
+        "./auto_cut_segments/003476.jpg",
+        "./auto_cut_segments/003477.jpg"
+      ],
+      "annotations": {
+        "pos_like_category": "动词性 / Action-like",
+        "pragmatic_meaning": "关闭电脑",
+        "morphological_features": "进行体 / Progressive"
+      },
+      "reference_translation": "关闭电脑"
+    },
+    {
+      "seg_sequence": [
+        "seg_003487",
+        "seg_003488",
+        "seg_003489"
+      ],
+      "icon_images": [
+        "./auto_cut_segments/003487.jpg",
+        "./auto_cut_segments/003488.jpg",
+        "./auto_cut_segments/003489.jpg"
+      ],
+      "annotations": {
+        "pos_like_category": "动词性 / Action-like",
+        "pragmatic_meaning": "看见一个人",
+        "morphological_features": "现在 / Present"
+      },
+      "reference_translation": "看到熟人"
+    },
+    {
+      "seg_sequence": [
+        "seg_003491",
+        "seg_003492",
+        "seg_003493",
+        "seg_003494"
+      ],
+      "icon_images": [
+        "./auto_cut_segments/003491.jpg",
+        "./auto_cut_segments/003492.jpg",
+        "./auto_cut_segments/003493.jpg",
+        "./auto_cut_segments/003494.jpg"
+      ],
+      "annotations": {
+        "pos_like_category": "动词性 / Action-like",
+        "pragmatic_meaning": "互相打招呼",
+        "morphological_features": "现在 / Present"
+      },
+      "reference_translation": "打招呼"
+    },
+    {
+      "seg_sequence": [
+        "seg_003498",
+        "seg_003499"
+      ],
+      "icon_images": [
+        "./auto_cut_segments/003498.jpg",
+        "./auto_cut_segments/003499.jpg"
+      ],
+      "annotations": {
+        "pos_like_category": "副词性 / Degree-like",
+        "pragmatic_meaning": "去星巴克",
+        "morphological_features": "现在 / Present"
+      },
+      "reference_translation": "去喝咖啡"
+    },
+    {
+      "seg_sequence": [
+        "seg_003678",
+        "seg_003679"
+      ],
+      "icon_images": [
+        "./auto_cut_segments/003678.jpg",
+        "./auto_cut_segments/003679.jpg"
+      ],
+      "annotations": {
+        "pos_like_category": "名词性 / Entity-like",
+        "pragmatic_meaning": "汇率上升",
+        "morphological_features": "将来 / Future"
+      },
+      "reference_translation": "汇率提高"
+    },
+    {
+      "seg_sequence": [
+        "seg_003628",
+        "seg_003629",
+        "seg_003630",
+        "seg_003631"
+      ],
+      "icon_images": [
+        "./auto_cut_segments/003628.jpg",
+        "./auto_cut_segments/003629.jpg",
+        "./auto_cut_segments/003630.jpg",
+        "./auto_cut_segments/003631.jpg"
+      ],
+      "annotations": {
+        "pos_like_category": "动词性 / Action-like",
+        "pragmatic_meaning": "我在网上看到",
+        "morphological_features": "现在 / Present"
+      },
+      "reference_translation": "联网"
+    },
+    {
+      "seg_sequence": [
+        "seg_003701",
+        "seg_003702",
+        "seg_003703",
+        "seg_003704"
+      ],
+      "icon_images": [
+        "./auto_cut_segments/003701.jpg",
+        "./auto_cut_segments/003702.jpg",
+        "./auto_cut_segments/003703.jpg",
+        "./auto_cut_segments/003704.jpg"
+      ],
+      "annotations": {
+        "pos_like_category": "动词性 / Action-like",
+        "pragmatic_meaning": "挥手告别",
+        "morphological_features": "复数/集合 / Plural-Collective"
+      },
+      "reference_translation": "拜拜"
+    },
+    {
+      "seg_sequence": [
+        "seg_003706",
+        "seg_003707"
+      ],
+      "icon_images": [
+        "./auto_cut_segments/003706.jpg",
+        "./auto_cut_segments/003707.jpg"
+      ],
+      "annotations": {
+        "pos_like_category": "动词性 / Action-like",
+        "pragmatic_meaning": "下楼",
+        "morphological_features": "现在 / Present"
+      },
+      "reference_translation": "下楼"
+    },
+    {
+      "seg_sequence": [
+        "seg_003709",
+        "seg_003710"
+      ],
+      "icon_images": [
+        "./auto_cut_segments/003709.jpg",
+        "./auto_cut_segments/003710.jpg"
+      ],
+      "annotations": {
+        "pos_like_category": "动词性 / Action-like",
+        "pragmatic_meaning": "上楼",
+        "morphological_features": "现在 / Present"
+      },
+      "reference_translation": "上楼"
+    },
+    {
+      "seg_sequence": [
+        "seg_003716",
+        "seg_003717"
+      ],
+      "icon_images": [
+        "./auto_cut_segments/003716.jpg",
+        "./auto_cut_segments/003717.jpg"
+      ],
+      "annotations": {
+        "pos_like_category": "动词性 / Action-like",
+        "pragmatic_meaning": "上楼",
+        "morphological_features": "现在 / Present"
+      },
+      "reference_translation": "上楼"
+    },
+    {
+      "seg_sequence": [
+        "seg_003742",
+        "seg_003743",
+        "seg_003744"
+      ],
+      "icon_images": [
+        "./auto_cut_segments/003742.jpg",
+        "./auto_cut_segments/003743.jpg",
+        "./auto_cut_segments/003744.jpg"
+      ],
+      "annotations": {
+        "pos_like_category": "动词性 / Action-like",
+        "pragmatic_meaning": "打开拉链",
+        "morphological_features": "进行体 / Progressive"
+      },
+      "reference_translation": "我要上厕所"
+    },
+    {
+      "seg_sequence": [
+        "seg_003758",
+        "seg_003759",
+        "seg_003760"
+      ],
+      "icon_images": [
+        "./auto_cut_segments/003758.jpg",
+        "./auto_cut_segments/003759.jpg",
+        "./auto_cut_segments/003760.jpg"
+      ],
+      "annotations": {
+        "pos_like_category": "整句/整体表达 / Clause-like Unit",
+        "pragmatic_meaning": "走出厕所",
+        "morphological_features": "现在 / Present"
+      },
+      "reference_translation": "上完了"
+    },
+    {
+      "seg_sequence": [
+        "seg_003765",
+        "seg_003766",
+        "seg_003767",
+        "seg_003768",
+        "seg_003769",
+        "seg_003770",
+        "seg_003771",
+        "seg_003772",
+        "seg_003773",
+        "seg_003774",
+        "seg_003775",
+        "seg_003776"
+      ],
+      "icon_images": [
+        "./auto_cut_segments/003765.jpg",
+        "./auto_cut_segments/003766.jpg",
+        "./auto_cut_segments/003767.jpg",
+        "./auto_cut_segments/003768.jpg",
+        "./auto_cut_segments/003769.jpg",
+        "./auto_cut_segments/003770.jpg",
+        "./auto_cut_segments/003771.jpg",
+        "./auto_cut_segments/003772.jpg",
+        "./auto_cut_segments/003773.jpg",
+        "./auto_cut_segments/003774.jpg",
+        "./auto_cut_segments/003775.jpg",
+        "./auto_cut_segments/003776.jpg"
+      ],
+      "annotations": {
+        "pos_like_category": "动词性 / Action-like",
+        "pragmatic_meaning": "看见女人",
+        "morphological_features": "复数/集合 / Plural-Collective"
+      },
+      "reference_translation": "男人看到女人"
+    },
+    {
+      "seg_sequence": [
+        "seg_003819",
+        "seg_003820",
+        "seg_003821"
+      ],
+      "icon_images": [
+        "./auto_cut_segments/003819.jpg",
+        "./auto_cut_segments/003820.jpg",
+        "./auto_cut_segments/003821.jpg"
+      ],
+      "annotations": {
+        "pos_like_category": "整句/整体表达 / Clause-like Unit",
+        "pragmatic_meaning": "没带卡",
+        "morphological_features": "将来 / Future"
+      },
+      "reference_translation": "因该把他铲起来"
+    },
+    {
+      "seg_sequence": [
+        "seg_003830",
+        "seg_003831",
+        "seg_003832"
+      ],
+      "icon_images": [
+        "./auto_cut_segments/003830.jpg",
+        "./auto_cut_segments/003831.jpg",
+        "./auto_cut_segments/003832.jpg"
+      ],
+      "annotations": {
+        "pos_like_category": "整句/整体表达 / Clause-like Unit",
+        "pragmatic_meaning": "回到工位",
+        "morphological_features": "现在 / Present"
+      },
+      "reference_translation": "回去工作"
+    },
+    {
+      "seg_sequence": [
+        "seg_011015",
+        "seg_011016",
+        "seg_011017"
+      ],
+      "icon_images": [
+        "./auto_cut_segments/011015.jpg",
+        "./auto_cut_segments/011016.jpg",
+        "./auto_cut_segments/011017.jpg"
+      ],
+      "annotations": {
+        "pos_like_category": "整句/整体表达 / Clause-like Unit",
+        "pragmatic_meaning": "未完待续",
+        "morphological_features": "复数/集合 / Plural-Collective"
+      },
+      "reference_translation": "点点点"
+    },
+    {
+      "seg_sequence": [
+        "seg_003719",
+        "seg_003720",
+        "seg_003721",
+        "seg_003722",
+        "seg_003723",
+        "seg_003724",
+        "seg_003725",
+        "seg_003726"
+      ],
+      "icon_images": [
+        "./auto_cut_segments/003719.jpg",
+        "./auto_cut_segments/003720.jpg",
+        "./auto_cut_segments/003721.jpg",
+        "./auto_cut_segments/003722.jpg",
+        "./auto_cut_segments/003723.jpg",
+        "./auto_cut_segments/003724.jpg",
+        "./auto_cut_segments/003725.jpg",
+        "./auto_cut_segments/003726.jpg"
+      ],
+      "annotations": {
+        "pos_like_category": "动词性 / Action-like",
+        "pragmatic_meaning": "拐了很多弯",
+        "morphological_features": "复数/集合 / Plural-Collective"
+      },
+      "reference_translation": "七拐八拐"
+    },
+    {
+      "seg_sequence": [
+        "seg_003590",
+        "seg_003591",
+        "seg_003592",
+        "seg_003593",
+        "seg_003594",
+        "seg_003595",
+        "seg_003596"
+      ],
+      "icon_images": [
+        "./auto_cut_segments/003590.jpg",
+        "./auto_cut_segments/003591.jpg",
+        "./auto_cut_segments/003592.jpg",
+        "./auto_cut_segments/003593.jpg",
+        "./auto_cut_segments/003594.jpg",
+        "./auto_cut_segments/003595.jpg",
+        "./auto_cut_segments/003596.jpg"
+      ],
+      "annotations": {
+        "pos_like_category": "名词性 / Entity-like",
+        "pragmatic_meaning": "描述踢球的动作",
+        "morphological_features": "现在 / Present"
+      },
+      "reference_translation": "看滑冰"
+    },
+    {
+      "seg_sequence": [
+        "seg_003546",
+        "seg_003547",
+        "seg_003548"
+      ],
+      "icon_images": [
+        "./auto_cut_segments/003546.jpg",
+        "./auto_cut_segments/003547.jpg",
+        "./auto_cut_segments/003548.jpg"
+      ],
+      "annotations": {
+        "pos_like_category": "整句/整体表达 / Clause-like Unit",
+        "pragmatic_meaning": "我要一杯茶和一个苹果",
+        "morphological_features": "现在 / Present"
+      },
+      "reference_translation": "喝下午茶"
+    },
+    {
+      "seg_sequence": [
+        "seg_003533",
+        "seg_003534",
+        "seg_003535"
+      ],
+      "icon_images": [
+        "./auto_cut_segments/003533.jpg",
+        "./auto_cut_segments/003534.jpg",
+        "./auto_cut_segments/003535.jpg"
+      ],
+      "annotations": {
+        "pos_like_category": "整句/整体表达 / Clause-like Unit",
+        "pragmatic_meaning": "我要一杯咖啡和一个可颂",
+        "morphological_features": "现在 / Present"
+      },
+      "reference_translation": "喝下午茶"
+    },
+    {
+      "seg_sequence": [
+        "seg_003780",
+        "seg_003781",
+        "seg_003782",
+        "seg_003783",
+        "seg_003784",
+        "seg_003785",
+        "seg_003786",
+        "seg_003787",
+        "seg_003788",
+        "seg_003789",
+        "seg_003790",
+        "seg_003791",
+        "seg_003792",
+        "seg_003793",
+        "seg_003794",
+        "seg_003795",
+        "seg_003796"
+      ],
+      "icon_images": [
+        "./auto_cut_segments/003780.jpg",
+        "./auto_cut_segments/003781.jpg",
+        "./auto_cut_segments/003782.jpg",
+        "./auto_cut_segments/003783.jpg",
+        "./auto_cut_segments/003784.jpg",
+        "./auto_cut_segments/003785.jpg",
+        "./auto_cut_segments/003786.jpg",
+        "./auto_cut_segments/003787.jpg",
+        "./auto_cut_segments/003788.jpg",
+        "./auto_cut_segments/003789.jpg",
+        "./auto_cut_segments/003790.jpg",
+        "./auto_cut_segments/003791.jpg",
+        "./auto_cut_segments/003792.jpg",
+        "./auto_cut_segments/003793.jpg",
+        "./auto_cut_segments/003794.jpg",
+        "./auto_cut_segments/003795.jpg",
+        "./auto_cut_segments/003796.jpg"
+      ],
+      "annotations": {
+        "pos_like_category": "动词性 / Action-like",
+        "pragmatic_meaning": "看着女生想",
+        "morphological_features": "现在 / Present"
+      },
+      "reference_translation": "看到一个美女"
+    },
+    {
+      "seg_sequence": [
+        "seg_007636",
+        "seg_007637"
+      ],
+      "icon_images": [
+        "./auto_cut_segments/007636.jpg",
+        "./auto_cut_segments/007637.jpg"
+      ],
+      "annotations": {
+        "pos_like_category": "整句/整体表达 / Clause-like Unit",
+        "pragmatic_meaning": "工作",
+        "morphological_features": "现在 / Present"
+      },
+      "reference_translation": "拿出一本书"
+    },
+    {
+      "seg_sequence": [
+        "seg_007645",
+        "seg_007646",
+        "seg_007647"
+      ],
+      "icon_images": [
+        "./auto_cut_segments/007645.jpg",
+        "./auto_cut_segments/007646.jpg",
+        "./auto_cut_segments/007647.jpg"
+      ],
+      "annotations": {
+        "pos_like_category": "整句/整体表达 / Clause-like Unit",
+        "pragmatic_meaning": "看",
+        "morphological_features": "否定 / Negation"
+      },
+      "reference_translation": "眼睛模糊"
+    },
+    {
+      "seg_sequence": [
+        "seg_007652",
+        "seg_007653",
+        "seg_007654"
+      ],
+      "icon_images": [
+        "./auto_cut_segments/007652.jpg",
+        "./auto_cut_segments/007653.jpg",
+        "./auto_cut_segments/007654.jpg"
+      ],
+      "annotations": {
+        "pos_like_category": "整句/整体表达 / Clause-like Unit",
+        "pragmatic_meaning": "花眼",
+        "morphological_features": "强调 / Emphasis"
+      },
+      "reference_translation": "重影"
+    },
+    {
+      "seg_sequence": [
+        "seg_007656",
+        "seg_007657",
+        "seg_007658"
+      ],
+      "icon_images": [
+        "./auto_cut_segments/007656.jpg",
+        "./auto_cut_segments/007657.jpg",
+        "./auto_cut_segments/007658.jpg"
+      ],
+      "annotations": {
+        "pos_like_category": "整句/整体表达 / Clause-like Unit",
+        "pragmatic_meaning": "重影",
+        "morphological_features": "比较 / Comparative"
+      },
+      "reference_translation": "重影"
+    },
+    {
+      "seg_sequence": [
+        "seg_007727",
+        "seg_007728"
+      ],
+      "icon_images": [
+        "./auto_cut_segments/007727.jpg",
+        "./auto_cut_segments/007728.jpg"
+      ],
+      "annotations": {
+        "pos_like_category": "整句/整体表达 / Clause-like Unit",
+        "pragmatic_meaning": "回家",
+        "morphological_features": "将来 / Future"
+      },
+      "reference_translation": "到家"
+    },
+    {
+      "seg_sequence": [
+        "seg_007740",
+        "seg_007741",
+        "seg_007742",
+        "seg_007743",
+        "seg_007744"
+      ],
+      "icon_images": [
+        "./auto_cut_segments/007740.jpg",
+        "./auto_cut_segments/007741.jpg",
+        "./auto_cut_segments/007742.jpg",
+        "./auto_cut_segments/007743.jpg",
+        "./auto_cut_segments/007744.jpg"
+      ],
+      "annotations": {
+        "pos_like_category": "整句/整体表达 / Clause-like Unit",
+        "pragmatic_meaning": "酒吧",
+        "morphological_features": "将来 / Future"
+      },
+      "reference_translation": "想着两个人一起回家喝酒"
+    },
+    {
+      "seg_sequence": [
+        "seg_007765",
+        "seg_007766"
+      ],
+      "icon_images": [
+        "./auto_cut_segments/007765.jpg",
+        "./auto_cut_segments/007766.jpg"
+      ],
+      "annotations": {
+        "pos_like_category": "整句/整体表达 / Clause-like Unit",
+        "pragmatic_meaning": "跑上马路",
+        "morphological_features": "进行体 / Progressive"
+      },
+      "reference_translation": "穿过马路"
+    },
+    {
+      "seg_sequence": [
+        "seg_007800",
+        "seg_007801"
+      ],
+      "icon_images": [
+        "./auto_cut_segments/007800.jpg",
+        "./auto_cut_segments/007801.jpg"
+      ],
+      "annotations": {
+        "pos_like_category": "整句/整体表达 / Clause-like Unit",
+        "pragmatic_meaning": "到家",
+        "morphological_features": "现在 / Present"
+      },
+      "reference_translation": "最后回家"
+    },
+    {
+      "seg_sequence": [
+        "seg_011416",
+        "seg_011417"
+      ],
+      "icon_images": [
+        "./auto_cut_segments/011416.jpg",
+        "./auto_cut_segments/011417.jpg"
+      ],
+      "annotations": {
+        "pos_like_category": "整句/整体表达 / Clause-like Unit",
+        "pragmatic_meaning": "书",
+        "morphological_features": "复数/集合 / Plural-Collective"
+      },
+      "reference_translation": "工作越来越多"
+    },
+    {
+      "seg_sequence": [
+        "seg_011576",
+        "seg_011577"
+      ],
+      "icon_images": [
+        "./auto_cut_segments/011576.jpg",
+        "./auto_cut_segments/011577.jpg"
+      ],
+      "annotations": {
+        "pos_like_category": "整句/整体表达 / Clause-like Unit",
+        "pragmatic_meaning": "又梦到",
+        "morphological_features": "进行体 / Progressive"
+      },
+      "reference_translation": "继续做梦"
+    },
+    {
+      "seg_sequence": [
+        "seg_011810",
+        "seg_011811",
+        "seg_011812",
+        "seg_011813",
+        "seg_011814",
+        "seg_011815",
+        "seg_011816",
+        "seg_011817",
+        "seg_011818",
+        "seg_011819"
+      ],
+      "icon_images": [
+        "./auto_cut_segments/011810.jpg",
+        "./auto_cut_segments/011811.jpg",
+        "./auto_cut_segments/011812.jpg",
+        "./auto_cut_segments/011813.jpg",
+        "./auto_cut_segments/011814.jpg",
+        "./auto_cut_segments/011815.jpg",
+        "./auto_cut_segments/011816.jpg",
+        "./auto_cut_segments/011817.jpg",
+        "./auto_cut_segments/011818.jpg",
+        "./auto_cut_segments/011819.jpg"
+      ],
+      "annotations": {
+        "pos_like_category": "整句/整体表达 / Clause-like Unit",
+        "pragmatic_meaning": "想跳楼",
+        "morphological_features": "过去 / Past"
+      },
+      "reference_translation": "方块在下落，我也要下落，我心想Oh no"
+    },
+    {
+      "seg_sequence": [
+        "seg_011850",
+        "seg_011851",
+        "seg_011852",
+        "seg_011853",
+        "seg_011854",
+        "seg_011855"
+      ],
+      "icon_images": [
+        "./auto_cut_segments/011850.jpg",
+        "./auto_cut_segments/011851.jpg",
+        "./auto_cut_segments/011852.jpg",
+        "./auto_cut_segments/011853.jpg",
+        "./auto_cut_segments/011854.jpg",
+        "./auto_cut_segments/011855.jpg"
+      ],
+      "annotations": {
+        "pos_like_category": "整句/整体表达 / Clause-like Unit",
+        "pragmatic_meaning": "想变成马里奥",
+        "morphological_features": "现在 / Present"
+      },
+      "reference_translation": "接着玩马里奥"
+    },
+    {
+      "seg_sequence": [
+        "seg_011948",
+        "seg_011949",
+        "seg_011950",
+        "seg_011951"
+      ],
+      "icon_images": [
+        "./auto_cut_segments/011948.jpg",
+        "./auto_cut_segments/011949.jpg",
+        "./auto_cut_segments/011950.jpg",
+        "./auto_cut_segments/011951.jpg"
+      ],
+      "annotations": {
+        "pos_like_category": "整句/整体表达 / Clause-like Unit",
+        "pragmatic_meaning": "看到啦",
+        "morphological_features": "现在 / Present"
+      },
+      "reference_translation": "我看到了一个肌肉男"
+    },
+    {
+      "seg_sequence": [
+        "seg_011024",
+        "seg_011025",
+        "seg_011026",
+        "seg_011027",
+        "seg_011028"
+      ],
+      "icon_images": [
+        "./auto_cut_segments/011024.jpg",
+        "./auto_cut_segments/011025.jpg",
+        "./auto_cut_segments/011026.jpg",
+        "./auto_cut_segments/011027.jpg",
+        "./auto_cut_segments/011028.jpg"
+      ],
+      "annotations": {
+        "pos_like_category": "动词性 / Action-like",
+        "pragmatic_meaning": "蚊子在耳边嗡嗡",
+        "morphological_features": "重复/迭代 / Iterative"
+      },
+      "reference_translation": "蚊子嗡嗡嗡地在耳边吵"
+    },
+    {
+      "seg_sequence": [
+        "seg_011156",
+        "seg_011157",
+        "seg_011158"
+      ],
+      "icon_images": [
+        "./auto_cut_segments/011156.jpg",
+        "./auto_cut_segments/011157.jpg",
+        "./auto_cut_segments/011158.jpg"
+      ],
+      "annotations": {
+        "pos_like_category": "副词性 / Degree-like",
+        "pragmatic_meaning": "蚊子发出声音",
+        "morphological_features": "现在 / Present"
+      },
+      "reference_translation": "蚊子正发出声音"
+    },
+    {
+      "seg_sequence": [
+        "seg_011034",
+        "seg_011035",
+        "seg_011036"
+      ],
+      "icon_images": [
+        "./auto_cut_segments/011034.jpg",
+        "./auto_cut_segments/011035.jpg",
+        "./auto_cut_segments/011036.jpg"
+      ],
+      "annotations": {
+        "pos_like_category": "形容词性 / State-like",
+        "pragmatic_meaning": "烦躁",
+        "morphological_features": "现在 / Present"
+      },
+      "reference_translation": "起床气"
+    },
+    {
+      "seg_sequence": [
+        "seg_011267",
+        "seg_011268",
+        "seg_011269",
+        "seg_011270",
+        "seg_011271"
+      ],
+      "icon_images": [
+        "./auto_cut_segments/011267.jpg",
+        "./auto_cut_segments/011268.jpg",
+        "./auto_cut_segments/011269.jpg",
+        "./auto_cut_segments/011270.jpg",
+        "./auto_cut_segments/011271.jpg"
+      ],
+      "annotations": {
+        "pos_like_category": "形容词性 / State-like",
+        "pragmatic_meaning": "疑惑的人",
+        "morphological_features": "现在 / Present"
+      },
+      "reference_translation": "感到疑惑"
+    },
+    {
+      "seg_sequence": [
+        "seg_011107",
+        "seg_011108",
+        "seg_011109"
+      ],
+      "icon_images": [
+        "./auto_cut_segments/011107.jpg",
+        "./auto_cut_segments/011108.jpg",
+        "./auto_cut_segments/011109.jpg"
+      ],
+      "annotations": {
+        "pos_like_category": "动词性 / Action-like",
+        "pragmatic_meaning": "关闭台灯",
+        "morphological_features": "现在 / Present"
+      },
+      "reference_translation": "关掉台灯"
+    },
+    {
+      "seg_sequence": [
+        "seg_010693",
+        "seg_010694",
+        "seg_010695"
+      ],
+      "icon_images": [
+        "./auto_cut_segments/010693.jpg",
+        "./auto_cut_segments/010694.jpg",
+        "./auto_cut_segments/010695.jpg"
+      ],
+      "annotations": {
+        "pos_like_category": "整句/整体表达 / Clause-like Unit",
+        "pragmatic_meaning": "心想太晚了打不到车",
+        "morphological_features": "现在 / Present"
+      },
+      "reference_translation": "可能是因为太晚了，已经没有出租车了"
+    },
+    {
+      "seg_sequence": [
+        "seg_011999",
+        "seg_012000",
+        "seg_012001",
+        "seg_012002"
+      ],
+      "icon_images": [
+        "./auto_cut_segments/011999.jpg",
+        "./auto_cut_segments/012000.jpg",
+        "./auto_cut_segments/012001.jpg",
+        "./auto_cut_segments/012002.jpg"
+      ],
+      "annotations": {
+        "pos_like_category": "动词性 / Action-like",
+        "pragmatic_meaning": "劲爆的我也不知道的什么游戏游玩过程，总之加分了",
+        "morphological_features": "现在 / Present"
+      },
+      "reference_translation": "对方被击倒，+75"
+    },
+    {
+      "seg_sequence": [
+        "seg_012005",
+        "seg_012006",
+        "seg_012007",
+        "seg_012008",
+        "seg_012009"
+      ],
+      "icon_images": [
+        "./auto_cut_segments/012005.jpg",
+        "./auto_cut_segments/012006.jpg",
+        "./auto_cut_segments/012007.jpg",
+        "./auto_cut_segments/012008.jpg",
+        "./auto_cut_segments/012009.jpg"
+      ],
+      "annotations": {
+        "pos_like_category": "动词性 / Action-like",
+        "pragmatic_meaning": "劲爆的我也不知道的什么游戏游玩过程",
+        "morphological_features": "现在 / Present"
+      },
+      "reference_translation": "对方又使用了技能"
+    },
+    {
+      "seg_sequence": [
+        "seg_012010",
+        "seg_012011",
+        "seg_012012",
+        "seg_012013"
+      ],
+      "icon_images": [
+        "./auto_cut_segments/012010.jpg",
+        "./auto_cut_segments/012011.jpg",
+        "./auto_cut_segments/012012.jpg",
+        "./auto_cut_segments/012013.jpg"
+      ],
+      "annotations": {
+        "pos_like_category": "动词性 / Action-like",
+        "pragmatic_meaning": "劲爆的我也不知道的什么游戏游玩过程，总之减分了",
+        "morphological_features": "现在 / Present"
+      },
+      "reference_translation": "我又被摔在地上，-50"
+    },
+    {
+      "seg_sequence": [
+        "seg_007699",
+        "seg_007700",
+        "seg_007701",
+        "seg_007702",
+        "seg_007703"
+      ],
+      "icon_images": [
+        "./auto_cut_segments/007699.jpg",
+        "./auto_cut_segments/007700.jpg",
+        "./auto_cut_segments/007701.jpg",
+        "./auto_cut_segments/007702.jpg",
+        "./auto_cut_segments/007703.jpg"
+      ],
+      "annotations": {
+        "pos_like_category": "整句/整体表达 / Clause-like Unit",
+        "pragmatic_meaning": "老板难道让我晚上加班？",
+        "morphological_features": "将来 / Future"
+      },
+      "reference_translation": "想要休息一会"
+    },
+    {
+      "seg_sequence": [
+        "seg_011423",
+        "seg_011424",
+        "seg_011425",
+        "seg_011426",
+        "seg_011427",
+        "seg_011428",
+        "seg_011429",
+        "seg_011430"
+      ],
+      "icon_images": [
+        "./auto_cut_segments/011423.jpg",
+        "./auto_cut_segments/011424.jpg",
+        "./auto_cut_segments/011425.jpg",
+        "./auto_cut_segments/011426.jpg",
+        "./auto_cut_segments/011427.jpg",
+        "./auto_cut_segments/011428.jpg",
+        "./auto_cut_segments/011429.jpg",
+        "./auto_cut_segments/011430.jpg"
+      ],
+      "annotations": {
+        "pos_like_category": "形容词性 / State-like",
+        "pragmatic_meaning": "人在顺时针旋转",
+        "morphological_features": "重复/迭代 / Iterative"
+      },
+      "reference_translation": "总裁旋转一分钟"
+    },
+    {
+      "seg_sequence": [
+        "seg_007750",
+        "seg_007751"
+      ],
+      "icon_images": [
+        "./auto_cut_segments/007750.jpg",
+        "./auto_cut_segments/007751.jpg"
+      ],
+      "annotations": {
+        "pos_like_category": "动词性 / Action-like",
+        "pragmatic_meaning": "往下跑",
+        "morphological_features": "进行体 / Progressive"
+      },
+      "reference_translation": "转弯"
+    },
+    {
+      "seg_sequence": [
+        "seg_007752",
+        "seg_007753"
+      ],
+      "icon_images": [
+        "./auto_cut_segments/007752.jpg",
+        "./auto_cut_segments/007753.jpg"
+      ],
+      "annotations": {
+        "pos_like_category": "动词性 / Action-like",
+        "pragmatic_meaning": "往右跑",
+        "morphological_features": "进行体 / Progressive"
+      },
+      "reference_translation": "向下跑"
+    },
+    {
+      "seg_sequence": [
+        "seg_007754",
+        "seg_007755"
+      ],
+      "icon_images": [
+        "./auto_cut_segments/007754.jpg",
+        "./auto_cut_segments/007755.jpg"
+      ],
+      "annotations": {
+        "pos_like_category": "动词性 / Action-like",
+        "pragmatic_meaning": "加速跑",
+        "morphological_features": "进行体 / Progressive"
+      },
+      "reference_translation": "继续向前"
+    },
+    {
+      "seg_sequence": [
+        "seg_007273",
+        "seg_007274",
+        "seg_007275",
+        "seg_007276",
+        "seg_007277",
+        "seg_007278"
+      ],
+      "icon_images": [
+        "./auto_cut_segments/007273.jpg",
+        "./auto_cut_segments/007274.jpg",
+        "./auto_cut_segments/007275.jpg",
+        "./auto_cut_segments/007276.jpg",
+        "./auto_cut_segments/007277.jpg",
+        "./auto_cut_segments/007278.jpg"
+      ],
+      "annotations": {
+        "pos_like_category": "副词性 / Degree-like",
+        "pragmatic_meaning": "一段时间后",
+        "morphological_features": "强调 / Emphasis"
+      },
+      "reference_translation": "等等"
+    },
+    {
+      "seg_sequence": [
+        "seg_010693",
+        "seg_010694",
+        "seg_010695",
+        "seg_010696",
+        "seg_010697",
+        "seg_010698"
+      ],
+      "icon_images": [
+        "./auto_cut_segments/010693.jpg",
+        "./auto_cut_segments/010694.jpg",
+        "./auto_cut_segments/010695.jpg",
+        "./auto_cut_segments/010696.jpg",
+        "./auto_cut_segments/010697.jpg",
+        "./auto_cut_segments/010698.jpg"
+      ],
+      "annotations": {
+        "pos_like_category": "动词性 / Action-like",
+        "pragmatic_meaning": "半夜没车",
+        "morphological_features": "强调 / Emphasis"
+      },
+      "reference_translation": "时间太晚没有出租车了"
+    },
+    {
+      "seg_sequence": [
+        "seg_010732",
+        "seg_010733",
+        "seg_010734",
+        "seg_010735"
+      ],
+      "icon_images": [
+        "./auto_cut_segments/010732.jpg",
+        "./auto_cut_segments/010733.jpg",
+        "./auto_cut_segments/010734.jpg",
+        "./auto_cut_segments/010735.jpg"
+      ],
+      "annotations": {
+        "pos_like_category": "动词性 / Action-like",
+        "pragmatic_meaning": "走",
+        "morphological_features": "重复/迭代 / Iterative"
+      },
+      "reference_translation": "路过一个车站"
+    },
+    {
+      "seg_sequence": [
+        "seg_011030",
+        "seg_011031",
+        "seg_011032"
+      ],
+      "icon_images": [
+        "./auto_cut_segments/011030.jpg",
+        "./auto_cut_segments/011031.jpg",
+        "./auto_cut_segments/011032.jpg"
+      ],
+      "annotations": {
+        "pos_like_category": "动词性 / Action-like",
+        "pragmatic_meaning": "睁开眼睛",
+        "morphological_features": "进行体 / Progressive"
+      },
+      "reference_translation": "睁开了眼睛"
+    },
+    {
+      "seg_sequence": [
+        "seg_011291",
+        "seg_011292",
+        "seg_011293",
+        "seg_011294"
+      ],
+      "icon_images": [
+        "./auto_cut_segments/011291.jpg",
+        "./auto_cut_segments/011292.jpg",
+        "./auto_cut_segments/011293.jpg",
+        "./auto_cut_segments/011294.jpg"
+      ],
+      "annotations": {
+        "pos_like_category": "动词性 / Action-like",
+        "pragmatic_meaning": "拍蚊子",
+        "morphological_features": "进行体 / Progressive"
+      },
+      "reference_translation": "用手拍蚊子"
+    },
+    {
+      "seg_sequence": [
+        "seg_006977",
+        "seg_006978",
+        "seg_006979"
+      ],
+      "icon_images": [
+        "./auto_cut_segments/006977.jpg",
+        "./auto_cut_segments/006978.jpg",
+        "./auto_cut_segments/006979.jpg"
+      ],
+      "annotations": {
+        "pos_like_category": "动词性 / Action-like",
+        "pragmatic_meaning": "想上厕所",
+        "morphological_features": "进行体 / Progressive"
+      },
+      "reference_translation": "溜去上厕所"
+    },
+    {
+      "seg_sequence": [
+        "seg_010758",
+        "seg_010759",
+        "seg_010760",
+        "seg_010761",
+        "seg_010762"
+      ],
+      "icon_images": [
+        "./auto_cut_segments/010758.jpg",
+        "./auto_cut_segments/010759.jpg",
+        "./auto_cut_segments/010760.jpg",
+        "./auto_cut_segments/010761.jpg",
+        "./auto_cut_segments/010762.jpg"
+      ],
+      "annotations": {
+        "pos_like_category": "动词性 / Action-like",
+        "pragmatic_meaning": "回到家",
+        "morphological_features": "进行体 / Progressive"
+      },
+      "reference_translation": "走到了家"
+    }
+  ],
+  "total": 312
+}

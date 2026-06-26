@@ -1,0 +1,473 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>地书世界 · DISHU WORLD</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@200;300;400&family=Cinzel+Decorative:wght@400;700&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:#000;overflow:hidden;font-family:'Noto Serif SC',serif}
+#c{display:block;width:100vw;height:100vh}
+
+#intro{position:fixed;inset:0;z-index:100;background:#000;display:flex;flex-direction:column;align-items:center;justify-content:center;pointer-events:all;}
+#intro.hide{animation:introOut 1.2s 0.2s cubic-bezier(.7,0,.3,1) forwards;pointer-events:none;}
+@keyframes introOut{0%{opacity:1;clip-path:circle(100% at 50% 50%)}100%{opacity:0;clip-path:circle(0% at 50% 50%)}}
+.intro-bg{position:absolute;inset:0;background:radial-gradient(ellipse 80% 60% at 50% 50%,#1a0e04 0%,#000 100%);}
+.intro-lines{position:absolute;inset:0;overflow:hidden;background:repeating-linear-gradient(0deg,transparent,transparent 59px,rgba(201,168,76,0.04) 60px),repeating-linear-gradient(90deg,transparent,transparent 59px,rgba(201,168,76,0.04) 60px);}
+.intro-content{position:relative;z-index:2;text-align:center}
+.intro-eyebrow{font-family:'Cinzel Decorative',serif;font-size:clamp(0.55rem,1vw,0.75rem);letter-spacing:0.6em;color:rgba(201,168,76,0.6);margin-bottom:2.5rem;opacity:0;animation:fadeSlideUp 0.8s 0.3s ease forwards;}
+.intro-title-wrap{overflow:hidden;margin-bottom:1.5rem}
+.intro-title{font-size:clamp(3rem,8vw,7rem);font-weight:200;letter-spacing:0.6em;color:#fff;line-height:1.1;opacity:0;transform:translateY(60px);animation:fadeSlideUp 1s 0.7s cubic-bezier(.22,.68,0,1.2) forwards;text-shadow:0 0 60px rgba(201,168,76,0.3);}
+.intro-sub{font-size:clamp(0.75rem,1.5vw,1rem);letter-spacing:0.3em;color:rgba(255,255,255,0.4);font-weight:200;opacity:0;animation:fadeSlideUp 0.8s 1.3s ease forwards;}
+.intro-divider{width:1px;height:80px;background:linear-gradient(180deg,transparent,rgba(201,168,76,0.6),transparent);margin:2.5rem auto;opacity:0;animation:fadeIn 0.8s 1.7s ease forwards,dividerGrow 0.8s 1.7s ease forwards;}
+@keyframes dividerGrow{from{height:0}to{height:80px}}
+.intro-welcome{font-size:clamp(1rem,2.5vw,1.6rem);letter-spacing:0.25em;color:rgba(201,168,76,0.9);font-weight:300;opacity:0;animation:fadeSlideUp 0.8s 2.2s ease forwards;}
+.intro-welcome-en{font-family:'Cinzel Decorative',serif;font-size:clamp(0.55rem,1vw,0.75rem);letter-spacing:0.4em;color:rgba(201,168,76,0.4);margin-top:0.6rem;opacity:0;animation:fadeSlideUp 0.6s 2.6s ease forwards;}
+.intro-enter{margin-top:3.5rem;padding:0.9rem 3rem;border:1px solid rgba(201,168,76,0.4);background:transparent;color:rgba(201,168,76,0.9);font-family:'Noto Serif SC',serif;font-size:0.85rem;letter-spacing:0.4em;cursor:pointer;opacity:0;animation:fadeSlideUp 0.6s 3s ease forwards;transition:all 0.3s;position:relative;overflow:hidden;}
+.intro-enter:hover{border-color:rgba(201,168,76,0.9);box-shadow:0 0 30px rgba(201,168,76,0.2);}
+.intro-sparks{position:absolute;inset:0;pointer-events:none}
+.spark{position:absolute;border-radius:50%;background:rgba(201,168,76,0.8);animation:sparkFloat linear infinite;}
+@keyframes sparkFloat{0%{opacity:.8;transform:translateY(0) scale(1)}100%{opacity:0;transform:translateY(-100vh) scale(0)}}
+@keyframes fadeSlideUp{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
+@keyframes fadeIn{from{opacity:0}to{opacity:1}}
+
+#hud{position:fixed;inset:0;z-index:50;pointer-events:none;opacity:0;transition:opacity 1s;}
+#hud.show{opacity:1}
+.hud-top{position:absolute;top:0;left:0;right:0;padding:1.5rem 2.5rem;display:flex;justify-content:space-between;align-items:flex-start;background:linear-gradient(180deg,rgba(0,0,0,0.25),transparent);}
+.hud-logo{font-size:clamp(1rem,1.8vw,1.4rem);letter-spacing:0.4em;color:rgba(201,168,76,1);font-weight:200;text-shadow:0 1px 6px rgba(0,0,0,0.5);}
+.hud-logo span{font-family:'Cinzel Decorative',serif;font-size:0.6em;letter-spacing:0.3em;color:rgba(201,168,76,0.7);display:block;}
+.hud-compass{width:60px;height:60px;}
+.compass-ring{width:100%;height:100%;border-radius:50%;border:1px solid rgba(201,168,76,0.5);display:flex;align-items:center;justify-content:center;position:relative;background:rgba(0,0,0,0.3);}
+.compass-ring::before{content:'N';font-size:.55rem;letter-spacing:.1em;color:rgba(201,168,76,.9);position:absolute;top:6px;}
+.compass-needle{width:2px;height:28px;position:absolute;transform-origin:center bottom;top:6px;left:50%;margin-left:-1px;}
+.compass-needle-top{width:100%;height:50%;background:rgba(201,168,76,.9)}
+.compass-needle-bot{width:100%;height:50%;background:rgba(255,255,255,.4)}
+.hud-bottom{position:absolute;bottom:0;left:0;right:0;padding:1.5rem 2.5rem;display:flex;justify-content:flex-end;align-items:flex-end;}
+.hud-mini-map{width:100px;height:100px;border:1px solid rgba(201,168,76,0.3);border-radius:4px;background:rgba(0,0,0,0.3);position:relative;overflow:hidden;}
+.mini-dot{position:absolute;top:50%;left:50%;width:6px;height:6px;border-radius:50%;background:rgba(201,168,76,.9);transform:translate(-50%,-50%);box-shadow:0 0 6px rgba(201,168,76,.6);}
+.mini-dir{position:absolute;top:50%;left:50%;width:0;height:0;border-left:3px solid transparent;border-right:3px solid transparent;border-bottom:10px solid rgba(201,168,76,.6);transform-origin:bottom center;margin-left:-3px;margin-top:-10px;}
+
+#placeTag{position:fixed;z-index:60;left:50%;top:50%;transform:translate(-50%,-120px);pointer-events:none;opacity:0;transition:opacity 0.35s;text-align:center;}
+#placeTag.show{opacity:1;pointer-events:all;}
+.place-name{font-size:clamp(1rem,2vw,1.3rem);letter-spacing:0.3em;color:#fff;text-shadow:0 2px 12px rgba(0,0,0,0.7);margin-bottom:0.6rem;font-weight:300;}
+.place-btn{padding:0.5rem 1.8rem;border:1px solid rgba(201,168,76,0.7);background:rgba(0,0,0,0.55);color:rgba(201,168,76,0.95);font-family:'Noto Serif SC',serif;font-size:0.78rem;letter-spacing:0.35em;cursor:pointer;pointer-events:all;transition:all 0.25s;border-radius:2px;backdrop-filter:blur(4px);}
+.place-btn:hover{background:rgba(201,168,76,0.2);border-color:rgba(201,168,76,1);box-shadow:0 0 20px rgba(201,168,76,0.3);}
+
+#loader{position:fixed;inset:0;z-index:150;background:#000;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:1.5rem;transition:opacity .8s;}
+#loader.hide{opacity:0;pointer-events:none}
+.loader-text{color:rgba(201,168,76,.7);font-size:.75rem;letter-spacing:.4em;}
+.loader-bar-wrap{width:220px;height:2px;background:rgba(201,168,76,.15);border-radius:2px;overflow:hidden;}
+.loader-bar{height:100%;width:0%;background:rgba(201,168,76,.8);transition:width .3s;border-radius:2px;}
+.loader-pct{color:rgba(201,168,76,.5);font-size:.65rem;letter-spacing:.3em;}
+
+
+#coordPanel.show{opacity:1;}
+#crosshair{position:fixed;top:50%;left:50%;transform:translate(-50%,-50%);z-index:55;pointer-events:none;opacity:0;transition:opacity .5s;}
+#crosshair.show{opacity:1}
+.ch-h{width:16px;height:1px;background:rgba(201,168,76,.5);position:absolute;top:50%;left:50%;transform:translate(-50%,-50%)}
+.ch-v{width:1px;height:16px;background:rgba(201,168,76,.5);position:absolute;top:50%;left:50%;transform:translate(-50%,-50%)}
+.ch-c{width:4px;height:4px;border-radius:50%;border:1px solid rgba(201,168,76,.5);position:absolute;top:50%;left:50%;transform:translate(-50%,-50%)}
+</style>
+</head>
+<body>
+
+<div id="loader">
+  <div class="loader-text">正在加载地书世界…</div>
+  <div class="loader-bar-wrap"><div class="loader-bar" id="loaderBar"></div></div>
+  <div class="loader-pct" id="loaderPct">0%</div>
+</div>
+
+<div id="intro" style="display:none">
+  <div class="intro-bg"></div><div class="intro-lines"></div>
+  <div class="intro-sparks" id="sparks"></div>
+  <div class="intro-content">
+    <div class="intro-eyebrow">WELCOME TO</div>
+    <div class="intro-title-wrap"><div class="intro-title">地 书 世 界</div></div>
+    <div class="intro-sub">BOOK FROM THE GROUND · IMMERSIVE WORLD</div>
+    <div class="intro-divider"></div>
+    <div class="intro-welcome">欢迎来到地书的世界</div>
+    <div class="intro-welcome-en">A CITY WRITTEN IN PICTOGRAPHS</div>
+    <button class="intro-enter" id="enterBtn">踏 入 城 市</button>
+  </div>
+</div>
+
+<div id="hud">
+  <div class="hud-top">
+    <div class="hud-logo">地书世界<span>DISHU WORLD</span></div>
+    <div class="hud-compass"><div class="compass-ring">
+      <div class="compass-needle" id="compassNeedle">
+        <div class="compass-needle-top"></div><div class="compass-needle-bot"></div>
+      </div>
+    </div></div>
+  </div>
+  <div class="hud-bottom">
+    <div class="hud-mini-map"><div class="mini-dot"></div><div class="mini-dir" id="miniDir"></div></div>
+  </div>
+</div>
+
+<div id="crosshair"><div class="ch-h"></div><div class="ch-v"></div><div class="ch-c"></div></div>
+
+<div id="placeTag">
+  <div class="place-name" id="placeName"></div>
+  <button class="place-btn" id="placeBtn">进 入</button>
+</div>
+
+<canvas id="c"></canvas>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/loaders/GLTFLoader.js"></script>
+
+<script>
+/* ═══════════════════════════════════════
+   历史栈：确保主城在栈里，返回键从子页面回主城
+═══════════════════════════════════════ */
+(function setupHistory() {
+  if (!history.state || history.state.page !== 'city') {
+    history.replaceState({ page: 'city' }, '', window.location.href);
+  }
+})();
+
+/* ═══════════════════════════════════════
+   恢复位置：从子页面返回时读取上次的位置和朝向
+   KEY: 'dishu_cam' → JSON { x, z, yaw, pitch, resumed }
+═══════════════════════════════════════ */
+var savedCam = null;
+try {
+  var raw = sessionStorage.getItem('dishu_cam');
+  if (raw) {
+    savedCam = JSON.parse(raw);
+    sessionStorage.removeItem('dishu_cam'); // 读完即清，避免普通刷新也恢复
+  }
+} catch(e) {}
+
+/* ═══════════════════════════════════════
+   常量
+═══════════════════════════════════════ */
+const FLOOR_Y   = 2.475;
+const EYE_H     = 1.8;
+const CAM_START = { x: 10.3, z: 25.2 };
+
+const PLACES = [
+  {
+    label: '符语咖啡馆',
+    url:   'Boook/book.html',
+    color: 0xffaa44,
+    x: -13.01, z: -9.98
+  },
+  {
+    label: '符语邮局',
+    url:   'http://localhost:8000/dishu_diary_apartment.html',
+    color: 0x88ddaa,
+    x: 23.62, z: 23.72
+  },
+  {
+    label: '符语工坊',
+    url:   'game/templates/index.html',
+    color: 0x66aaff,
+    x: 17.01, z: 14.28
+  }
+];
+
+/* ── 粒子 ── */
+function buildSparks() {
+  const sc = document.getElementById('sparks');
+  for (let i = 0; i < 60; i++) {
+    const s = document.createElement('div');
+    s.className = 'spark';
+    s.style.cssText = 'left:' + (Math.random()*100) + 'vw;bottom:' + (Math.random()*50) + 'vh;' +
+      'animation-duration:' + (4+Math.random()*8) + 's;animation-delay:' + (Math.random()*5) + 's;' +
+      'width:' + (1+Math.random()*2) + 'px;height:' + (1+Math.random()*2) + 'px';
+    sc.appendChild(s);
+  }
+}
+
+/* ── Renderer ── */
+const canvas = document.getElementById('c');
+const renderer = new THREE.WebGLRenderer({ canvas, antialias: true });
+renderer.setPixelRatio(Math.min(devicePixelRatio, 2));
+renderer.shadowMap.enabled = true;
+renderer.shadowMap.type = THREE.PCFSoftShadowMap;
+renderer.toneMapping = THREE.ACESFilmicToneMapping;
+renderer.toneMappingExposure = 1.1;
+renderer.outputEncoding = THREE.sRGBEncoding;
+
+const scene = new THREE.Scene();
+
+/* ── 背景 ── */
+new THREE.TextureLoader().load('bg.png', function(tex) {
+  tex.encoding = THREE.sRGBEncoding;
+  tex.mapping  = THREE.EquirectangularReflectionMapping;
+  tex.repeat.set(0.5, 0.5);
+  tex.offset.set(0.25, 0.25);
+  scene.background = tex;
+});
+
+scene.fog = new THREE.Fog(0xe8dcc8, 60, 320);
+
+/* ── 相机：若有存档则从存档位置开始，否则默认入口 ── */
+var initX   = savedCam ? savedCam.x     : CAM_START.x;
+var initZ   = savedCam ? savedCam.z     : CAM_START.z;
+var initYaw = savedCam ? savedCam.yaw   : Math.PI;
+var initPit = savedCam ? savedCam.pitch : 0;
+
+const camera = new THREE.PerspectiveCamera(60, innerWidth / innerHeight, 0.05, 1000);
+camera.position.set(initX, FLOOR_Y + EYE_H, initZ);
+
+function onResize() {
+  renderer.setSize(innerWidth, innerHeight);
+  camera.aspect = innerWidth / innerHeight;
+  camera.updateProjectionMatrix();
+}
+window.addEventListener('resize', onResize);
+onResize();
+
+/* ── 灯光 ── */
+scene.add(new THREE.HemisphereLight(0xfff8e8, 0xd4c8a0, 2.2));
+const sun = new THREE.DirectionalLight(0xfff0d0, 2.8);
+sun.position.set(80, 160, 60);
+sun.castShadow = true;
+sun.shadow.mapSize.set(4096, 4096);
+sun.shadow.bias = -0.0005;
+sun.shadow.camera.left   = -120;
+sun.shadow.camera.right  =  120;
+sun.shadow.camera.top    =  120;
+sun.shadow.camera.bottom = -120;
+sun.shadow.camera.far    =  600;
+scene.add(sun);
+const fill = new THREE.DirectionalLight(0xd8c8a0, 0.6);
+fill.position.set(-40, 40, -20);
+scene.add(fill);
+
+/* ── 地面 ── */
+const groundMesh = new THREE.Mesh(
+  new THREE.PlaneGeometry(2000, 2000),
+  new THREE.MeshLambertMaterial({ color: 0xd8cdb0 })
+);
+groundMesh.rotation.x = -Math.PI / 2;
+groundMesh.position.y = FLOOR_Y - 0.01;
+groundMesh.receiveShadow = true;
+scene.add(groundMesh);
+
+const placeGlows = [];
+
+/* ── GLB 加载 ── */
+const loaderBar = document.getElementById('loaderBar');
+const loaderPct = document.getElementById('loaderPct');
+const loaderEl  = document.getElementById('loader');
+let cityReady = false;
+
+new THREE.GLTFLoader().load('Boook/cartoon.glb',
+  function(gltf) {
+    const obj = gltf.scene;
+
+    const raw = new THREE.Box3().setFromObject(obj);
+    const rawSz = new THREE.Vector3();
+    raw.getSize(rawSz);
+    const sc = 100 / Math.max(rawSz.x, rawSz.z, 0.001);
+    obj.scale.setScalar(sc);
+
+    const box = new THREE.Box3().setFromObject(obj);
+    const boxCenter = new THREE.Vector3();
+    box.getCenter(boxCenter);
+    obj.position.set(-boxCenter.x, -box.min.y, -boxCenter.z);
+
+    /* 阴影 */
+    obj.traverse(function(child) {
+      if (!child.isMesh) return;
+      child.castShadow    = true;
+      child.receiveShadow = true;
+    });
+
+    /* 按确认坐标放置光圈和热点 */
+    PLACES.forEach(function(place) {
+      const worldPos = new THREE.Vector3(place.x, FLOOR_Y, place.z);
+
+      const ring = new THREE.Mesh(
+        new THREE.RingGeometry(1.2, 1.6, 48),
+        new THREE.MeshBasicMaterial({ color: place.color, transparent: true, opacity: 0.5, side: THREE.DoubleSide })
+      );
+      ring.rotation.x = -Math.PI / 2;
+      ring.position.set(place.x, FLOOR_Y + 0.05, place.z);
+      scene.add(ring);
+
+      const pl = new THREE.PointLight(place.color, 1.5, 18);
+      pl.position.set(place.x, FLOOR_Y + 2, place.z);
+      scene.add(pl);
+
+      placeGlows.push({ place: place, ring: ring, pl: pl, worldPos: worldPos });
+    });
+
+    scene.add(obj);
+    cityReady = true;
+
+    loaderEl.classList.add('hide');
+    setTimeout(function() {
+      loaderEl.style.display = 'none';
+
+      /* ── 关键：若是从子页面返回，直接跳过封面进入游戏 ── */
+      if (savedCam) {
+        document.getElementById('intro').style.display = 'none';
+        document.getElementById('hud').classList.add('show');
+        /* 不强制 requestPointerLock，等用户点击 canvas 再锁 */
+      } else {
+        buildSparks();
+        document.getElementById('intro').style.display = 'flex';
+      }
+    }, 800);
+  },
+  function(xhr) {
+    if (xhr.lengthComputable) {
+      const p = Math.round(xhr.loaded / xhr.total * 100);
+      loaderBar.style.width = p + '%';
+      loaderPct.textContent = p + '%';
+    }
+  },
+  function(err) {
+    console.error(err);
+    loaderPct.textContent = '加载失败';
+    loaderPct.style.color = '#f64';
+  }
+);
+
+/* ── 控制 ── */
+const keys = {};
+let yaw = initYaw, pitch = initPit, isLocked = false, targetFov = 60;
+
+document.addEventListener('keydown', function(e) { keys[e.code] = true; });
+document.addEventListener('keyup',   function(e) { keys[e.code] = false; });
+
+canvas.addEventListener('click', function() {
+  // ESC 解锁后点击 canvas 可重新锁定恢复控制
+  const intro = document.getElementById('intro');
+  const introVisible = intro && intro.style.display === 'flex' && !intro.classList.contains('hide');
+  if (!introVisible && cityReady) {
+    canvas.requestPointerLock();
+  }
+});
+
+document.addEventListener('pointerlockchange', function() {
+  isLocked = document.pointerLockElement === canvas;
+  document.getElementById('crosshair').classList.toggle('show', isLocked);
+});
+
+document.addEventListener('mousemove', function(e) {
+  if (!isLocked) return;
+  yaw  -= e.movementX * 0.002;
+  pitch = Math.max(-0.5, Math.min(0.6, pitch - e.movementY * 0.002));
+});
+
+canvas.addEventListener('wheel', function(e) {
+  e.preventDefault();
+  targetFov = Math.max(15, Math.min(90, targetFov + e.deltaY * 0.04));
+}, { passive: false });
+
+document.getElementById('enterBtn').addEventListener('click', function() {
+  document.getElementById('intro').classList.add('hide');
+  setTimeout(function() {
+    document.getElementById('intro').style.display = 'none';
+  }, 1400);
+  document.getElementById('hud').classList.add('show');
+  setTimeout(function() { canvas.requestPointerLock(); }, 1500);
+});
+
+/* ═══════════════════════════════════════
+   进入建筑：
+   1. 把当前位置和朝向存入 sessionStorage
+   2. pushState 确保浏览器返回键回主城
+   3. 跳转子页面
+═══════════════════════════════════════ */
+function enterPlace(place) {
+  try {
+    sessionStorage.setItem('dishu_cam', JSON.stringify({
+      x:     camera.position.x,
+      z:     camera.position.z,
+      yaw:   yaw,
+      pitch: pitch
+    }));
+  } catch(e) {}
+  history.pushState({ page: 'city' }, '', window.location.href);
+  window.location.href = place.url;
+}
+
+/* ── 建筑互动 ── */
+const placeTag    = document.getElementById('placeTag');
+const placeNameEl = document.getElementById('placeName');
+const placeBtnEl  = document.getElementById('placeBtn');
+let nearPlace = null;
+
+placeBtnEl.addEventListener('click', function() {
+  if (nearPlace) enterPlace(nearPlace);
+});
+
+document.addEventListener('keydown', function(e) {
+  if (e.code === 'KeyE' && nearPlace) enterPlace(nearPlace);
+});
+
+/* ── 渲染循环 ── */
+const clock = new THREE.Clock();
+let frame = 0;
+
+function animate() {
+  requestAnimationFrame(animate);
+  const dt = Math.min(clock.getDelta(), 0.05);
+  frame++;
+
+  camera.fov += (targetFov - camera.fov) * 0.1;
+  camera.updateProjectionMatrix();
+
+  if (cityReady) {
+    const spd = (keys.ShiftLeft || keys.ShiftRight) ? 16 : 6;
+    const dir  = new THREE.Vector3();
+    if (keys.KeyW  || keys.ArrowUp)    dir.z -= 1;
+    if (keys.KeyS  || keys.ArrowDown)  dir.z += 1;
+    if (keys.KeyA  || keys.ArrowLeft)  dir.x -= 1;
+    if (keys.KeyD  || keys.ArrowRight) dir.x += 1;
+    if (dir.lengthSq() > 0) {
+      dir.normalize().multiplyScalar(spd * dt);
+      dir.applyEuler(new THREE.Euler(0, yaw, 0));
+      camera.position.add(dir);
+    }
+    camera.position.y = FLOOR_Y + EYE_H;
+    camera.position.x = Math.max(-200, Math.min(200, camera.position.x));
+    camera.position.z = Math.max(-200, Math.min(200, camera.position.z));
+  }
+
+  camera.rotation.order = 'YXZ';
+  camera.rotation.y = yaw;
+  camera.rotation.x = pitch;
+
+  const needle = document.getElementById('compassNeedle');
+  if (needle) needle.style.transform = 'rotate(' + (-yaw) + 'rad)';
+  const md = document.getElementById('miniDir');
+  if (md) md.style.transform = 'translateX(-50%) rotate(' + yaw + 'rad)';
+
+
+
+  if (frame % 2 === 0) {
+    const t = performance.now() * 0.001;
+    placeGlows.forEach(function(g) {
+      g.ring.material.opacity = 0.3 + 0.25 * Math.sin(t * 2);
+      g.pl.intensity = 1.2 + 0.6 * Math.sin(t * 2.5);
+    });
+  }
+
+  nearPlace = null;
+  let minDist = Infinity;
+  placeGlows.forEach(function(g) {
+    const d = camera.position.distanceTo(g.worldPos);
+    if (d < 6 && d < minDist) { minDist = d; nearPlace = g.place; }
+  });
+  if (nearPlace) {
+    placeNameEl.textContent = nearPlace.label;
+    placeTag.classList.add('show');
+  } else {
+    placeTag.classList.remove('show');
+  }
+
+  renderer.render(scene, camera);
+}
+animate();
+</script>
+</body>
+</html>

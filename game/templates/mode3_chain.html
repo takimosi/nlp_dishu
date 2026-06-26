@@ -1,0 +1,729 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <title>《标注者》- 符号接龙 · 多人游戏</title>
+    <style>
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+        :root {
+            --ink: #1a1a18;
+            --paper: #f5f0e8;
+            --paper-dark: #ede8dc;
+            --paper-line: #d4ccb8;
+            --accent: #8b3a2a;
+            --accent-light: #c4604a;
+            --muted: #7a7468;
+            --border: #c8c0aa;
+            --success: #3a6b3a;
+            --chain: #8b6914;
+            --chain-dark: #5a4500;
+            --bezel: #121212;
+            --plastic-light: #e0dbce;
+            --plastic-dark: #b8b09c;
+        }
+
+        html, body { height: 100%; overflow: hidden; }
+        body {
+            background: linear-gradient(145deg, #2b221a 0%, #140f0a 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Noto Sans SC', 'Microsoft YaHei', 'PingFang SC', system-ui, sans-serif;
+            padding: 24px;
+        }
+
+        .game-console {
+            width: 1400px;
+            max-width: 95vw;
+            height: 92vh;
+            min-height: 680px;
+            background: linear-gradient(135deg, #ddd6c8 0%, #c2b9a6 100%);
+            border-radius: 48px 48px 40px 40px;
+            box-shadow: 0 30px 40px rgba(0,0,0,0.6), inset 0 1px 2px rgba(255,255,240,0.7);
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .console-header { background: linear-gradient(90deg, var(--chain), #8b6914, var(--chain)); height: 14px; width: 100%; border-radius: 40px 40px 0 0; flex-shrink: 0; }
+        .console-body { background: var(--plastic-light); flex: 1; display: flex; flex-direction: column; padding: 20px 28px 24px 28px; overflow: hidden; }
+        .screen-bezel { background: var(--bezel); border-radius: 24px; padding: 20px 24px; box-shadow: inset 0 0 0 2px #3e3e3e, inset 0 0 0 6px #1a1a1a, 0 8px 14px rgba(0,0,0,0.3); flex: 1; display: flex; flex-direction: column; }
+        .crt-screen { background: #1e2a1a; border-radius: 16px; display: flex; flex-direction: column; box-shadow: inset 0 0 30px rgba(0,0,0,0.5), 0 0 0 1px rgba(200,210,140,0.2); overflow: hidden; flex: 1; }
+        .game-content-fixed { flex: 1; padding: 1.2rem 1.8rem; background: var(--paper); overflow-y: auto; display: flex; flex-direction: column; }
+
+        .page-number { font-family: 'Space Mono', monospace; font-size: 10px; color: var(--muted); letter-spacing: 0.2em; margin-bottom: 0.5rem; opacity: 0.7; }
+        .date-stamp { font-family: 'Space Mono', monospace; font-size: 11px; color: var(--muted); margin-bottom: 0.8rem; padding-bottom: 0.4rem; border-bottom: 1px solid var(--paper-line); }
+
+        .game-status { background: var(--ink); color: var(--paper); padding: 0.5rem 1rem; border-radius: 40px; margin-bottom: 1rem; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 8px; font-family: 'Space Mono', monospace; font-size: 10.5px; }
+        .status-badge { background: var(--chain); padding: 3px 12px; border-radius: 30px; }
+
+        .room-panel { display: flex; gap: 20px; flex-wrap: wrap; margin-bottom: 1rem; }
+        .room-info-card { flex: 1; background: var(--paper-dark); border: 1px solid var(--border); border-radius: 16px; padding: 1rem; }
+        .room-code-display { font-family: 'Space Mono', monospace; font-size: 28px; letter-spacing: 0.1em; color: var(--chain); text-align: center; margin: 0.5rem 0; }
+        .player-list { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 0.5rem; }
+        .player-tag { background: white; padding: 4px 12px; border-radius: 20px; font-size: 11px; font-family: 'Space Mono', monospace; border: 1px solid var(--border); }
+        .player-tag.current { background: var(--chain); color: white; border-color: var(--chain); }
+        .player-tag.host { background: var(--chain-dark); color: white; }
+
+        .game-area { background: var(--paper-dark); border: 1px solid var(--border); border-radius: 16px; padding: 1rem; margin-bottom: 1rem; }
+        .current-task { background: white; padding: 0.8rem; border-radius: 12px; margin-bottom: 0.8rem; text-align: center; }
+        .current-task-label { font-size: 10px; font-family: 'Space Mono', monospace; color: var(--muted); margin-bottom: 0.5rem; }
+        .current-task-content { font-size: 18px; font-family: 'Noto Serif SC', serif; color: var(--ink); }
+        .icon-sequence-preview { display: flex; gap: 8px; justify-content: center; flex-wrap: wrap; margin: 0.5rem 0; }
+        .icon-sequence-preview img { max-width: 50px; max-height: 50px; border: 1px solid var(--border); border-radius: 8px; background: white; padding: 4px; }
+
+        .chain-history { max-height: 200px; overflow-y: auto; margin-top: 0.8rem; }
+        .chain-item { background: white; padding: 8px 12px; margin-bottom: 6px; border-radius: 10px; border-left: 3px solid var(--chain); font-size: 11px; }
+        .chain-author { font-weight: bold; color: var(--chain); font-family: 'Space Mono', monospace; font-size: 10px; }
+        .chain-content { margin-top: 4px; }
+
+        .action-area { margin-top: 1rem; }
+        .composed-icons { display: flex; gap: 8px; flex-wrap: wrap; align-items: center; margin: 0.8rem 0; padding: 0.8rem; background: white; border-radius: 12px; border: 1px solid var(--border); min-height: 70px; }
+        .composed-icon { position: relative; background: var(--paper-dark); border-radius: 8px; padding: 4px; }
+        .composed-icon img { max-width: 40px; max-height: 40px; }
+        .remove-icon { position: absolute; top: -6px; right: -6px; width: 16px; height: 16px; background: var(--accent); color: white; border-radius: 50%; font-size: 10px; text-align: center; line-height: 14px; cursor: pointer; }
+
+        .icon-library { background: var(--paper-dark); border: 1px solid var(--border); border-radius: 16px; padding: 0.8rem; margin-top: 0.8rem; }
+        .cat-row { display: flex; gap: 6px; overflow-x: auto; padding-bottom: 0.5rem; margin-bottom: 0.8rem; }
+        .cat-btn { padding: 4px 12px; background: transparent; border: 1px solid var(--border); border-radius: 20px; font-size: 10px; cursor: pointer; font-family: 'Space Mono', monospace; white-space: nowrap; }
+        .cat-btn.active { background: var(--chain); color: white; border-color: var(--chain); }
+        .icon-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(70px, 1fr)); gap: 6px; max-height: 160px; overflow-y: auto; }
+        .icon-card { background: white; border: 1px solid var(--border); border-radius: 10px; padding: 6px; text-align: center; cursor: pointer; transition: all 0.1s; }
+        .icon-card:hover { transform: scale(0.98); border-color: var(--chain); }
+        .icon-card img { max-width: 40px; max-height: 40px; }
+        .icon-card .label { font-size: 9px; margin-top: 4px; color: var(--muted); }
+
+        textarea { width: 100%; padding: 10px; border: 1px solid var(--border); border-radius: 12px; font-family: inherit; font-size: 12px; resize: vertical; }
+        button {
+            font-family: 'Space Mono', monospace;
+            font-size: 10px;
+            padding: 8px 20px;
+            background: var(--ink);
+            color: var(--paper);
+            border: none;
+            cursor: pointer;
+            border-radius: 40px;
+            transition: all 0.1s;
+        }
+        button:hover:not(:disabled) { background: #333330; transform: translateY(-1px); }
+        button:disabled { opacity: 0.5; cursor: not-allowed; }
+
+        .control-deck { background: #c9c0ae; margin-top: 12px; padding: 8px 20px; border-radius: 28px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; flex-shrink: 0; gap: 12px; }
+        .dpad { display: flex; flex-direction: column; align-items: center; gap: 3px; }
+        .dpad-row { display: flex; gap: 5px; justify-content: center; }
+        .dpad-btn { width: 34px; height: 34px; background: #2e2a24; border-radius: 10px; box-shadow: 0 2px 0 #121212; display: flex; align-items: center; justify-content: center; color: #ccb; font-size: 16px; cursor: default; }
+        .action-buttons { display: flex; gap: 12px; }
+        .action-btn { width: 46px; height: 46px; background: #382e2a; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 18px; color: #e6bc8c; box-shadow: 0 3px 0 #211a16; cursor: default; }
+        .console-brand { font-family: 'Space Mono', monospace; font-size: 9px; color: #4e4538; background: rgba(0,0,0,0.1); padding: 4px 10px; border-radius: 40px; }
+        .reset-btn { background: var(--chain); padding: 5px 16px; width: auto; border-radius: 60px; }
+        .back-link { font-family: 'Space Mono', monospace; font-size: 9px; color: #5f5542; text-decoration: none; background: rgba(0,0,0,0.05); padding: 3px 10px; border-radius: 50px; }
+
+        @media (max-height: 780px) {
+            .icon-grid { max-height: 100px; }
+            .chain-history { max-height: 140px; }
+        }
+    </style>
+</head>
+<body>
+<div style="position:fixed; top:15px; left:15px; z-index:9999;">
+  <button onclick="backToWorld()" style="background:rgba(0,0,0,0.7); border:1px solid #c09040; color:#c09040; padding:8px 16px; border-radius:30px; cursor:pointer; font-family:monospace; font-size:12px; backdrop-filter:blur(5px);">
+    ← 返回地书世界
+  </button>
+</div>
+<script>
+function backToWorld() {
+  window.location.href = 'http://localhost:8080/index.html';
+}
+</script>
+
+<div class="game-console">
+    <div class="console-header"></div>
+    <div class="console-body">
+        <div class="screen-bezel">
+            <div class="crt-screen">
+                <div class="game-content-fixed" id="app">
+                    <!-- 动态内容 -->
+                    <div id="joinPhase" style="display: block;">
+                        <div class="page-number">⟡ 符号接龙 · 多人游戏 ⟡</div>
+                        <div class="date-stamp" id="dateStamp"></div>
+
+                        <div class="room-panel">
+                            <div class="room-info-card">
+                                <div style="text-align: center; margin-bottom: 1rem;">
+                                    <div style="font-size: 12px; color: var(--muted);">🔗 创建新房间</div>
+                                    <input type="text" id="playerNameCreate" placeholder="你的名字" maxlength="10" style="width: 100%; padding: 8px; margin: 10px 0; border-radius: 40px; border: 1px solid var(--border);">
+                                    <button onclick="createRoom()" style="width: 100%;">创建房间</button>
+                                </div>
+                            </div>
+                            <div class="room-info-card">
+                                <div style="text-align: center; margin-bottom: 1rem;">
+                                    <div style="font-size: 12px; color: var(--muted);">🔑 加入已有房间</div>
+                                    <input type="text" id="roomCodeJoin" placeholder="房间码 (6位)" maxlength="6" style="width: 100%; padding: 8px; margin: 10px 0; border-radius: 40px; border: 1px solid var(--border); text-transform: uppercase;">
+                                    <input type="text" id="playerNameJoin" placeholder="你的名字" maxlength="10" style="width: 100%; padding: 8px; margin: 10px 0; border-radius: 40px; border: 1px solid var(--border);">
+                                    <button onclick="joinRoom()" style="width: 100%;">加入房间</button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="footer-quote" style="text-align: center; margin-top: 1rem; font-size: 10px; color: var(--muted);">
+                            🎭 轮流「画」和「猜」，看一句话会变成什么样
+                        </div>
+                    </div>
+
+                    <div id="roomPhase" style="display: none;">
+                        <div class="page-number">⟡ 符号接龙 · 房间 ⟡</div>
+                        <div class="date-stamp" id="roomDateStamp"></div>
+
+                        <div class="game-status">
+                            <span>🔗 符号接龙</span>
+                            <span class="status-badge" id="roomStatusBadge">等待中</span>
+                            <span>👥 <span id="playerCount">0</span>/<span id="maxPlayers">4</span></span>
+                        </div>
+
+                        <div class="room-panel">
+                            <div class="room-info-card">
+                                <div style="font-size: 11px; color: var(--muted); text-align: center;">房间码</div>
+                                <div class="room-code-display" id="roomCodeDisplay"></div>
+                                <button onclick="copyRoomCode()" style="width: 100%; margin-top: 8px;">📋 复制房间码</button>
+                            </div>
+                            <div class="room-info-card">
+                                <div style="font-size: 11px; color: var(--muted);">玩家列表</div>
+                                <div class="player-list" id="playerList"></div>
+                                <div id="startGameBtn" style="margin-top: 12px; text-align: center;">
+                                    <button onclick="startGame()" id="startGameButton" style="background: var(--success);">🎮 开始游戏</button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div id="gamePlayArea" style="display: none;">
+                            <div class="game-area">
+                                <div class="current-task">
+                                    <div class="current-task-label" id="taskLabel"></div>
+                                    <div class="current-task-content" id="taskContent"></div>
+                                </div>
+                                <div id="drawArea" style="display: none;">
+                                    <div class="icon-library">
+                                        <div class="cat-row" id="catRow"></div>
+                                        <div class="icon-grid" id="iconGrid"></div>
+                                    </div>
+                                    <div class="composed-icons" id="composedIcons"></div>
+                                    <button onclick="submitDraw()" id="submitDrawBtn">📨 提交图标序列</button>
+                                </div>
+                                <div id="guessArea" style="display: none;">
+                                    <textarea id="guessInput" rows="2" placeholder="用一句话描述你看到的图标序列..."></textarea>
+                                    <button onclick="submitGuess()" id="submitGuessBtn" style="margin-top: 10px;">📝 提交猜测</button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="chain-history" id="chainHistory"></div>
+
+                        <div style="text-align: center; margin-top: 0.5rem;">
+                            <button class="reset-btn" onclick="leaveRoom()">🚪 离开房间</button>
+                        </div>
+                        <div style="text-align: center; margin-top: 0.5rem;">
+                            <a href="#" onclick="resetToJoin()" class="back-link">← 返回创建/加入</a>
+                        </div>
+                    </div>
+
+                    <div id="resultPhase" style="display: none;">
+                        <div class="page-number">⟡ 游戏结束 ⟡</div>
+                        <div class="game-area" style="text-align: center;">
+                            <div style="font-size: 18px; margin-bottom: 1rem;">🏆 游戏结束 🏆</div>
+                            <div id="resultWinner"></div>
+                            <div class="chain-history" id="resultChain" style="margin-top: 1rem;"></div>
+                            <button onclick="resetToJoin()" style="margin-top: 1rem;">🔗 新的一局</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="control-deck">
+            <div class="dpad">
+                <div class="dpad-row"><div class="dpad-btn">▲</div></div>
+                <div class="dpad-row"><div class="dpad-btn">◀</div><div class="dpad-btn">▼</div><div class="dpad-btn">▶</div></div>
+            </div>
+            <div class="console-brand">SYMBOL CHAIN · 符号接龙</div>
+            <div class="action-buttons">
+                <div class="action-btn">A</div>
+                <div class="action-btn">B</div>
+                <div class="action-btn">C</div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    // ==================== 全局变量 ====================
+    let API_BASE = 'http://localhost:5001';
+    let currentRoomCode = null;
+    let currentPlayerId = null;
+    let currentPlayerName = null;
+    let pollInterval = null;
+    let isHost = false;
+
+    // 图标库数据
+    let iconsDB = [];
+    let currentCategory = '人物动作';
+    let composedIcons = [];
+
+    // 分类列表
+    const categories = ['人物动作', '地点场所', '情感表达', '时间', '饮食', '科技设备', '方向箭头', '交通出行', '数字符号', '自然天气', '其他'];
+
+    // 模拟图标数据（实际可以从后端获取）
+    const mockIcons = [
+        { file: '000127', label: '咖啡馆', category: '地点场所' },
+        { file: '000004', label: '前进', category: '方向箭头' },
+        { file: '000130', label: '对话', category: '情感表达' },
+        { file: '000053', label: '房子', category: '地点场所' },
+        { file: '000244', label: '跑步', category: '人物动作' },
+        { file: '000281', label: '感叹号', category: '情感表达' },
+        { file: '000826', label: '时钟', category: '时间' },
+        { file: '000090', label: '邮件', category: '情感表达' },
+        { file: '001233', label: '咖啡', category: '饮食' },
+        { file: '000089', label: '电脑', category: '科技设备' },
+        { file: '000005', label: '行人', category: '人物动作' },
+        { file: '000055', label: '高铁', category: '交通出行' },
+        { file: '000049', label: '数字1', category: '数字符号' },
+        { file: '001276', label: '下雨', category: '自然天气' },
+        { file: '000093', label: '括号', category: '其他' },
+    ];
+
+    // ==================== 工具函数 ====================
+    function getImageUrl(file) {
+        return `http://localhost:8080/Boook/auto_cut_segments/${file.padStart(6, '0')}.jpg`;
+    }
+
+    function escapeHtml(str) {
+        if (!str) return '';
+        return String(str).replace(/[&<>]/g, function(m) {
+            if (m === '&') return '&amp;';
+            if (m === '<') return '&lt;';
+            if (m === '>') return '&gt;';
+            return m;
+        });
+    }
+
+    function showPhase(phase) {
+        document.getElementById('joinPhase').style.display = phase === 'join' ? 'block' : 'none';
+        document.getElementById('roomPhase').style.display = phase === 'room' ? 'block' : 'none';
+        document.getElementById('resultPhase').style.display = phase === 'result' ? 'block' : 'none';
+    }
+
+    // ==================== 房间操作 ====================
+    async function createRoom() {
+        const name = document.getElementById('playerNameCreate').value.trim();
+        if (!name) {
+            alert('请输入你的名字');
+            return;
+        }
+
+        try {
+            const resp = await fetch(`${API_BASE}/api/room/create`, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ name: name, max_players: 4 })
+            });
+            const data = await resp.json();
+            if (data.success) {
+                currentRoomCode = data.room_code;
+                currentPlayerId = data.player_id;
+                currentPlayerName = name;
+                isHost = true;
+                await enterRoom();
+            } else {
+                alert('创建房间失败');
+            }
+        } catch(e) {
+            alert('连接服务器失败: ' + e.message);
+        }
+    }
+
+    async function joinRoom() {
+        const roomCode = document.getElementById('roomCodeJoin').value.trim().toUpperCase();
+        const name = document.getElementById('playerNameJoin').value.trim();
+        if (!roomCode || !name) {
+            alert('请输入房间码和名字');
+            return;
+        }
+
+        try {
+            const resp = await fetch(`${API_BASE}/api/room/join`, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ room_code: roomCode, name: name })
+            });
+            const data = await resp.json();
+            if (data.success) {
+                currentRoomCode = roomCode;
+                currentPlayerId = data.player_id;
+                currentPlayerName = name;
+                isHost = false;
+                await enterRoom();
+            } else {
+                alert(data.error || '加入房间失败');
+            }
+        } catch(e) {
+            alert('连接服务器失败: ' + e.message);
+        }
+    }
+
+    async function enterRoom() {
+        showPhase('room');
+        document.getElementById('roomCodeDisplay').innerText = currentRoomCode;
+        document.getElementById('roomDateStamp').innerText = new Date().toLocaleDateString('zh-CN');
+
+        // 加载图标库
+        loadIcons();
+        renderCategories();
+        renderIconGrid();
+
+        // 开始轮询
+        if (pollInterval) clearInterval(pollInterval);
+        pollInterval = setInterval(pollRoomState, 1500);
+        await pollRoomState();
+    }
+
+    async function pollRoomState() {
+        if (!currentRoomCode) return;
+
+        try {
+            const resp = await fetch(`${API_BASE}/api/room/state?room_code=${currentRoomCode}&player_id=${currentPlayerId}`);
+            const data = await resp.json();
+            if (data.success) {
+                updateRoomUI(data.state);
+            } else if (data.error === '房间不存在') {
+                // 房间已关闭
+                clearInterval(pollInterval);
+                alert('房间已关闭');
+                resetToJoin();
+            }
+        } catch(e) {
+            console.error('轮询失败', e);
+        }
+    }
+
+    function updateRoomUI(state) {
+        // 更新玩家列表
+        const playerList = document.getElementById('playerList');
+        playerList.innerHTML = '';
+        state.players.forEach(p => {
+            const tag = document.createElement('span');
+            tag.className = 'player-tag';
+            if (p.id === currentPlayerId) tag.classList.add('current');
+            if (p.name === state.host) tag.classList.add('host');
+            tag.textContent = p.name + (p.name === state.host ? ' (房主)' : '');
+            playerList.appendChild(tag);
+        });
+        document.getElementById('playerCount').innerText = state.players.length;
+        document.getElementById('maxPlayers').innerText = state.max_players;
+        document.getElementById('roomStatusBadge').innerText = state.status === 'waiting' ? '等待中' : (state.status === 'playing' ? '游戏中' : '已结束');
+
+        // 显示/隐藏开始按钮
+        const startBtnDiv = document.getElementById('startGameBtn');
+        if (state.status === 'waiting' && isHost && state.players.length >= 2) {
+            startBtnDiv.style.display = 'block';
+        } else {
+            startBtnDiv.style.display = 'none';
+        }
+
+        // 游戏区域
+        const gamePlayArea = document.getElementById('gamePlayArea');
+        if (state.status === 'playing') {
+            gamePlayArea.style.display = 'block';
+            updateGameUI(state);
+        } else {
+            gamePlayArea.style.display = 'none';
+        }
+
+        // 更新接龙历史
+        if (state.chain && state.chain.length > 0) {
+            renderChainHistory(state.chain);
+        }
+
+        // 如果游戏结束
+        if (state.status === 'finished') {
+            clearInterval(pollInterval);
+            showResult(state);
+        }
+    }
+
+    function updateGameUI(state) {
+        const taskLabel = document.getElementById('taskLabel');
+        const taskContent = document.getElementById('taskContent');
+        const drawArea = document.getElementById('drawArea');
+        const guessArea = document.getElementById('guessArea');
+
+        const isMyTurn = state.is_my_turn;
+        const currentPlayerName = state.current_player_name || '';
+
+        if (state.current_task === 'draw') {
+            taskLabel.innerHTML = `🎨 轮到 ${currentPlayerName} 画图`;
+            taskContent.innerHTML = `需要表达的句子：「${escapeHtml(state.current_prompt || '')}」`;
+            drawArea.style.display = isMyTurn ? 'block' : 'none';
+            guessArea.style.display = 'none';
+
+            if (!isMyTurn) {
+                const waitingMsg = document.createElement('div');
+                waitingMsg.style.textAlign = 'center';
+                waitingMsg.style.padding = '1rem';
+                waitingMsg.style.color = 'var(--muted)';
+                waitingMsg.innerHTML = '⏳ 等待其他玩家画图...';
+                const oldMsg = drawArea.querySelector('.waiting-msg');
+                if (oldMsg) oldMsg.remove();
+                if (!drawArea.querySelector('.waiting-msg')) {
+                    drawArea.appendChild(waitingMsg);
+                }
+            } else {
+                const oldMsg = drawArea.querySelector('.waiting-msg');
+                if (oldMsg) oldMsg.remove();
+            }
+        } else {
+            taskLabel.innerHTML = `🔍 轮到 ${currentPlayerName} 猜图`;
+            taskContent.innerHTML = `请解读上面的图标序列`;
+            drawArea.style.display = 'none';
+            guessArea.style.display = isMyTurn ? 'block' : 'none';
+
+            if (!isMyTurn) {
+                const waitingMsg = document.createElement('div');
+                waitingMsg.style.textAlign = 'center';
+                waitingMsg.style.padding = '1rem';
+                waitingMsg.style.color = 'var(--muted)';
+                waitingMsg.innerHTML = '⏳ 等待其他玩家猜图...';
+                const oldMsg = guessArea.querySelector('.waiting-msg');
+                if (oldMsg) oldMsg.remove();
+                if (!guessArea.querySelector('.waiting-msg')) {
+                    guessArea.appendChild(waitingMsg);
+                }
+            } else {
+                const oldMsg = guessArea.querySelector('.waiting-msg');
+                if (oldMsg) oldMsg.remove();
+            }
+        }
+    }
+
+    function renderChainHistory(chain) {
+        const container = document.getElementById('chainHistory');
+        container.innerHTML = '';
+
+        chain.forEach(item => {
+            const div = document.createElement('div');
+            div.className = 'chain-item';
+            let contentHtml = '';
+            if (item.type === 'text') {
+                contentHtml = `📝 「${escapeHtml(item.content)}」`;
+            } else {
+                const icons = item.content || [];
+                contentHtml = `<div class="icon-sequence-preview" style="justify-content: flex-start; margin: 0;">` +
+                    icons.map(ic => `<img src="${getImageUrl(ic.file)}" title="${ic.label}" style="max-width: 32px; max-height: 32px;">`).join('') +
+                    `</div>`;
+            }
+            div.innerHTML = `<div class="chain-author">${escapeHtml(item.author)} ${item.type === 'icons' ? '🎨 画' : '💬 猜'}</div>
+                             <div class="chain-content">${contentHtml}</div>`;
+            container.appendChild(div);
+        });
+    }
+
+    async function startGame() {
+        try {
+            const resp = await fetch(`${API_BASE}/api/room/start`, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ room_code: currentRoomCode, player_id: currentPlayerId })
+            });
+            const data = await resp.json();
+            if (!data.success) {
+                alert(data.error || '开始游戏失败');
+            }
+        } catch(e) {
+            alert('请求失败');
+        }
+    }
+
+    async function submitDraw() {
+        if (composedIcons.length === 0) {
+            alert('请先选择图标');
+            return;
+        }
+
+        try {
+            const resp = await fetch(`${API_BASE}/api/room/submit`, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({
+                    room_code: currentRoomCode,
+                    player_id: currentPlayerId,
+                    action: 'draw',
+                    content: composedIcons
+                })
+            });
+            const data = await resp.json();
+            if (data.success) {
+                composedIcons = [];
+                renderComposedIcons();
+                alert('提交成功！');
+            } else {
+                alert(data.error || '提交失败');
+            }
+        } catch(e) {
+            alert('请求失败');
+        }
+    }
+
+    async function submitGuess() {
+        const guess = document.getElementById('guessInput').value.trim();
+        if (!guess) {
+            alert('请输入你的猜测');
+            return;
+        }
+
+        try {
+            const resp = await fetch(`${API_BASE}/api/room/submit`, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({
+                    room_code: currentRoomCode,
+                    player_id: currentPlayerId,
+                    action: 'guess',
+                    content: guess
+                })
+            });
+            const data = await resp.json();
+            if (data.success) {
+                document.getElementById('guessInput').value = '';
+                alert('提交成功！');
+            } else {
+                alert(data.error || '提交失败');
+            }
+        } catch(e) {
+            alert('请求失败');
+        }
+    }
+
+    async function leaveRoom() {
+        if (currentRoomCode && currentPlayerId) {
+            try {
+                await fetch(`${API_BASE}/api/room/leave`, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ room_code: currentRoomCode, player_id: currentPlayerId })
+                });
+            } catch(e) {}
+        }
+        resetToJoin();
+    }
+
+    function resetToJoin() {
+        if (pollInterval) clearInterval(pollInterval);
+        currentRoomCode = null;
+        currentPlayerId = null;
+        isHost = false;
+        showPhase('join');
+        document.getElementById('playerNameCreate').value = '';
+        document.getElementById('roomCodeJoin').value = '';
+        document.getElementById('playerNameJoin').value = '';
+        composedIcons = [];
+    }
+
+    function showResult(state) {
+        showPhase('result');
+        document.getElementById('resultWinner').innerHTML = `🏆 胜利者: ${state.winner || '团队'} 🏆`;
+        renderChainHistory(state.full_chain || []);
+    }
+
+    function copyRoomCode() {
+        navigator.clipboard.writeText(currentRoomCode);
+        alert('房间码已复制: ' + currentRoomCode);
+    }
+
+    // ==================== 图标库 ====================
+    function loadIcons() {
+        iconsDB = [...mockIcons];
+    }
+
+    function renderCategories() {
+        const container = document.getElementById('catRow');
+        container.innerHTML = '';
+        categories.forEach(cat => {
+            const btn = document.createElement('button');
+            btn.className = 'cat-btn' + (cat === currentCategory ? ' active' : '');
+            btn.textContent = cat;
+            btn.onclick = () => {
+                currentCategory = cat;
+                renderCategories();
+                renderIconGrid();
+            };
+            container.appendChild(btn);
+        });
+    }
+
+    function renderIconGrid() {
+        const container = document.getElementById('iconGrid');
+        container.innerHTML = '';
+        const filtered = iconsDB.filter(ic => ic.category === currentCategory);
+        filtered.forEach(icon => {
+            const card = document.createElement('div');
+            card.className = 'icon-card';
+            card.onclick = () => addToCompose(icon);
+            const img = document.createElement('img');
+            img.src = getImageUrl(icon.file);
+            img.onerror = () => img.style.display = 'none';
+            const label = document.createElement('div');
+            label.className = 'label';
+            label.textContent = icon.label;
+            card.appendChild(img);
+            card.appendChild(label);
+            container.appendChild(card);
+        });
+        if (filtered.length === 0) {
+            container.innerHTML = '<div style="grid-column:1/-1; text-align:center; padding:1rem; color:var(--muted);">暂无图标</div>';
+        }
+    }
+
+    function addToCompose(icon) {
+        composedIcons.push({ ...icon });
+        renderComposedIcons();
+    }
+
+    function removeFromCompose(index) {
+        composedIcons.splice(index, 1);
+        renderComposedIcons();
+    }
+
+    function renderComposedIcons() {
+        const container = document.getElementById('composedIcons');
+        if (!container) return;
+        container.innerHTML = '';
+        if (composedIcons.length === 0) {
+            container.innerHTML = '<div style="color: var(--muted); font-size: 11px;">点击上方图标添加到序列...</div>';
+            return;
+        }
+        composedIcons.forEach((icon, idx) => {
+            const div = document.createElement('div');
+            div.className = 'composed-icon';
+            const img = document.createElement('img');
+            img.src = getImageUrl(icon.file);
+            img.onerror = () => img.style.display = 'none';
+            const removeBtn = document.createElement('div');
+            removeBtn.className = 'remove-icon';
+            removeBtn.textContent = '×';
+            removeBtn.onclick = (e) => {
+                e.stopPropagation();
+                removeFromCompose(idx);
+            };
+            div.appendChild(img);
+            div.appendChild(removeBtn);
+            container.appendChild(div);
+        });
+    }
+
+    // 日期显示
+    document.getElementById('dateStamp').innerText = new Date().toLocaleDateString('zh-CN', { year: 'numeric', month: 'long', day: 'numeric', weekday: 'long' });
+
+    // 初始化
+    showPhase('join');
+</script>
+</body>
+</html>
