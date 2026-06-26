@@ -19,6 +19,7 @@ services:
       CHAIN_ROOMS_FILE: /app/runtime/chain_rooms.json
     volumes:
       - ./runtime/game:/app/runtime
+      - ./game/models:/app/game/models:ro
     restart: unless-stopped
 
   diary-server:
@@ -31,4 +32,6 @@ services:
       DEEPSEEK_API_KEY: ${DEEPSEEK_API_KEY:-}
       DEEPSEEK_API_BASE: ${DEEPSEEK_API_BASE:-https://api.deepseek.com}
       DEEPSEEK_MODEL: ${DEEPSEEK_MODEL:-deepseek-v4-flash}
+    volumes:
+      - ./game/models:/app/game/models:ro
     restart: unless-stopped
