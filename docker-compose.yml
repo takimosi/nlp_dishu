@@ -1,6 +1,6 @@
 services:
   web:
-    image: nginx:1.27-alpine
+    image: nginx:alpine
     depends_on:
       - chain-server
       - diary-server
